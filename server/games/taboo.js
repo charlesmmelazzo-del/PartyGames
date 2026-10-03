@@ -13,12 +13,14 @@ const path = require('path');
 const MIN_GIVER_TEAM = 2; // the giver plus at least one teammate to guess
 const SUMMARY_MS = 20000; // turn recap stays up this long before the next giver is lined up
 const BUZZ_FLASH_MS = 3000;
-const DEFAULTS = { seconds: 60, rating: 'adult' };
+// source: 'all' cards, or only 'yours' (the host's own CSV deck).
+const DEFAULTS = { seconds: 60, rating: 'adult', source: 'all' };
+const DATA = path.join(__dirname, '..', 'data');
 
 // ---------- cards ----------
 
 // Parses server/data/taboo-cards.txt (format documented at the top of that file).
-function loadCards(file = path.join(__dirname, '..', 'data', 'taboo-cards.txt')) {
+function loadTxt(file) {
   const cards = [];
   let category = 'Misc';
   let categoryAdult = false;
@@ -40,9 +42,69 @@ function loadCards(file = path.join(__dirname, '..', 'data', 'taboo-cards.txt'))
         taboo: parts[1].split(',').map((x) => x.trim()).filter(Boolean),
         category,
         adult: categoryAdult || parts[2] === '21+',
+        source: 'built-in',
       });
     });
   return cards;
+}
+
+function parseCsvLine(line) {
+  const out = [];
+  let cur = '';
+  let quoted = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (quoted) {
+      if (ch === '"' && line[i + 1] === '"') {
+        cur += '"';
+        i++;
+      } else if (ch === '"') quoted = false;
+      else cur += ch;
+    } else if (ch === '"') quoted = true;
+    else if (ch === ',') {
+      out.push(cur.trim());
+      cur = '';
+    } else cur += ch;
+  }
+  out.push(cur.trim());
+  return out;
+}
+
+// Reads a spreadsheet export with columns like:
+//   Card, Guess word, Forbidden 1, Forbidden 2, ..., Category[, Rating]
+// Any column whose header starts with "Forbidden" is a forbidden word; a Rating of "21+" keeps
+// the card out of family mode.
+function loadCsv(file) {
+  const [header, ...rows] = fs
+    .readFileSync(file, 'utf8')
+    .replace(/^\uFEFF/, '')
+    .split(/\r?\n/)
+    .filter((l) => l.trim())
+    .map(parseCsvLine);
+  const col = (re) => header.findIndex((h) => re.test(h));
+  const wordCol = col(/word/i);
+  const catCol = col(/categor/i);
+  const ratingCol = col(/rating/i);
+  const forbiddenCols = header.flatMap((h, i) => (/^forbidden/i.test(h) ? [i] : []));
+  if (wordCol < 0 || !forbiddenCols.length) throw new Error(`${path.basename(file)}: needs a "Guess word" column and "Forbidden" columns`);
+  return rows
+    .filter((r) => r[wordCol])
+    .map((r) => ({
+      word: r[wordCol],
+      taboo: forbiddenCols.map((i) => r[i]).filter(Boolean),
+      category: (catCol >= 0 && r[catCol]) || 'Misc',
+      adult: ratingCol >= 0 && /21/.test(r[ratingCol] || ''),
+      source: 'yours',
+    }));
+}
+
+// The host's own cards come first; built-in cards with the same word are dropped.
+function loadCards(dir = DATA) {
+  const yoursFile = path.join(dir, 'taboo-cards-yours.csv');
+  const yours = fs.existsSync(yoursFile) ? loadCsv(yoursFile) : [];
+  const taken = new Set(yours.map((c) => c.word.toLowerCase()));
+  const builtIn = loadTxt(path.join(dir, 'taboo-cards.txt')).filter((c) => !taken.has(c.word.toLowerCase()));
+  return [...yours, ...builtIn];
 }
 
 const CARDS = loadCards();
@@ -55,7 +117,8 @@ function shuffle(arr, random) {
   return arr;
 }
 
-const allowed = (state, i) => state.settings.rating === 'adult' || !CARDS[i].adult;
+const allowed = (state, i) =>
+  (state.settings.rating === 'adult' || !CARDS[i].adult) && (state.settings.source === 'all' || CARDS[i].source === state.settings.source);
 
 // Cards seen tonight are remembered on the room, so switching games and coming back
 // doesn't repeat them. When everything has been seen, start over.
@@ -239,9 +302,11 @@ module.exports = {
           if (![45, 60, 90, 120].includes(s.seconds)) throw new Error('Bad turn length');
           state.settings.seconds = s.seconds;
         }
-        if (s.rating !== undefined) {
-          if (!['adult', 'family'].includes(s.rating)) throw new Error('Bad rating');
-          state.settings.rating = s.rating;
+        if (s.rating !== undefined && !['adult', 'family'].includes(s.rating)) throw new Error('Bad rating');
+        if (s.source !== undefined && !['all', 'yours'].includes(s.source)) throw new Error('Bad card choice');
+        if (s.rating !== undefined || s.source !== undefined) {
+          if (s.rating !== undefined) state.settings.rating = s.rating;
+          if (s.source !== undefined) state.settings.source = s.source;
           state.deck = []; // rebuilt from the right cards on the next draw
           if (state.phase === 'turn' && !allowed(state, t.card)) t.card = drawCard(state, api);
         }

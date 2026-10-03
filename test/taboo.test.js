@@ -19,9 +19,9 @@ function setup(n = 4) {
   return { room, players, s, view, act, giver, mates, others, card };
 }
 
-test('deck: every card has a word and exactly 5 forbidden words, no duplicates', () => {
-  assert.ok(CARDS.length >= 350, `${CARDS.length} cards`);
-  const bad = CARDS.filter((c) => c.taboo.length !== 5 || !c.word);
+test('deck: every card has a word and 4-5 forbidden words, no duplicates', () => {
+  assert.ok(CARDS.length >= 550, `${CARDS.length} cards`);
+  const bad = CARDS.filter((c) => c.taboo.length < 4 || c.taboo.length > 5 || !c.word);
   assert.deepStrictEqual(bad, []);
   const words = CARDS.map((c) => c.word.toLowerCase());
   assert.strictEqual(new Set(words).size, words.length, 'duplicate words');
@@ -118,5 +118,31 @@ test('family rating keeps grown-up cards out; seen cards are not repeated after 
   t.room.gameAction('host', 'settings', { rating: 'family' });
   t.act(t.giver(), 'start');
   assert.ok(!seen.has(t.s().turn.card), 'card from earlier tonight came back');
+  t.room.clearTimers();
+});
+
+test('your CSV deck is loaded in full and wins over built-in cards with the same word', () => {
+  const yours = CARDS.filter((c) => c.source === 'yours');
+  assert.strictEqual(yours.length, 300);
+  const dog = CARDS.find((c) => c.word === 'Dog');
+  assert.deepStrictEqual(dog, { word: 'Dog', taboo: ['Bark', 'Puppy', 'Leash', 'Fetch'], category: 'Animals', adult: false, source: 'yours' });
+  // Pizza is in both decks: only your version is kept.
+  const pizzas = CARDS.filter((c) => c.word.toLowerCase() === 'pizza');
+  assert.strictEqual(pizzas.length, 1);
+  assert.strictEqual(pizzas[0].source, 'yours');
+  // Quoted CSV fields with commas work.
+  assert.ok(CARDS.some((c) => c.category === 'Sports, Games & Hobbies'));
+});
+
+test('"your deck only" deals only your cards', () => {
+  const t = setup(4);
+  t.room.gameAction('host', 'settings', { source: 'yours' });
+  assert.strictEqual(t.view(t.players[0]).deckSize, 300);
+  t.act(t.giver(), 'start');
+  for (let i = 0; i < 30; i++) {
+    assert.strictEqual(CARDS[t.s().turn.card].source, 'yours');
+    t.act(t.giver(), 'pass', t.card());
+  }
+  assert.throws(() => t.room.gameAction('host', 'settings', { source: 'nope' }), /card choice/);
   t.room.clearTimers();
 });

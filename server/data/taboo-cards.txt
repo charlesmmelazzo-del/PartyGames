@@ -1,7 +1,8 @@
 # Taboo cards: original deck written for this project.
 # Format: one card per line, "Word | forbidden, forbidden, forbidden, forbidden, forbidden".
 # Lines starting with "## " start a category. Blank lines and "#" comments are ignored.
-# Every card needs exactly 5 forbidden words (checked by the tests).
+# Every card needs 4 or 5 forbidden words (checked by the tests).
+# Cards in taboo-cards-yours.csv take priority: a word that appears there is dropped from here.
 # Add " | 21+" after a card, or " [21+]" after a category name, to keep it out of family mode.
 
 ## Around the House
@@ -17,7 +18,6 @@ Bathtub | bath, water, bubbles, soak, bathroom
 Mirror | reflection, look, glass, face, wall
 Ceiling fan | spin, air, cool, blades, above
 Laundry | clothes, wash, dryer, dirty, basket
-Remote control | TV, channel, button, couch, change
 Light switch | on, off, flip, wall, lamp
 Junk drawer | kitchen, random, stuff, mess, open
 Garage | car, park, door, tools, house
@@ -239,7 +239,6 @@ Sunbathing | tan, sun, beach, lie, lotion
 Sleepwalking | sleep, night, walk, bed, dream
 Snorkeling | mask, underwater, fish, tube, swim
 Hiking | trail, walk, mountain, boots, nature
-Painting | brush, canvas, art, colors, picture
 Baking | oven, bread, cake, flour, cookies
 Binge-watching | Netflix, episodes, TV, show, couch
 Online dating | app, Tinder, swipe, match, profile | 21+
@@ -274,7 +273,6 @@ Super Bowl | football, NFL, game, commercials, February
 Olympics | games, gold, medal, rings, countries
 Marathon | run, miles, race, long, 26
 Boxing | punch, gloves, ring, fight, knockout
-Skateboarding | board, wheels, tricks, ramp, Tony Hawk
 Hula hoop | spin, hips, circle, plastic, waist
 Jenga | blocks, tower, wood, fall, pull
 Twister | mat, colors, spin, left, right
@@ -326,7 +324,6 @@ Netflix | streaming, shows, chill, subscription, movies
 Christmas | Santa, December, presents, tree, Jesus
 Halloween | costume, candy, October, trick, pumpkin
 Thanksgiving | turkey, November, thankful, pilgrims, feast
-Valentine's Day | love, February, hearts, roses, cupid
 New Year's Eve | midnight, countdown, ball drop, resolution, party
 Fourth of July | fireworks, America, independence, summer, flag
 Birthday | cake, candles, presents, party, age
@@ -338,7 +335,6 @@ Prom | dance, high school, dress, king, queen
 Easter | bunny, eggs, spring, Jesus, basket
 St. Patrick's Day | Irish, green, March, shamrock, leprechaun
 Mardi Gras | New Orleans, beads, parade, masks, Fat Tuesday
-Family reunion | relatives, gather, cousins, picnic, together
 Garage sale | yard, sell, used, cheap, Saturday
 Surprise party | hide, secret, jump, birthday, guests
 Costume party | dress up, outfit, Halloween, mask, pretend

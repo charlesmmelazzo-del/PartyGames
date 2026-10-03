@@ -46,9 +46,13 @@ Card data is from [JSON Against Humanity](https://github.com/crhallberg/json-aga
 4. The **guessing teammates never see the word**, and neither does the TV. They only see the timer, the turn score and the last finished card.
 5. When time is up, every screen shows a recap of each card and how it went, then the other team's turn is set up.
 
-The host can set the turn length (45/60/90/120s), choose **21+ / Family friendly** (family mode leaves out the bar and grown-up cards), start a turn for the giver, choose a different giver, or end a turn early. A host who isn't playing sees the card as referee. Cards already seen are remembered for the whole night, so switching games and coming back won't repeat them.
+The host can set the turn length (45/60/90/120s), choose **21+ / Family friendly** (family mode leaves out the bar and grown-up cards) and **All cards / Your deck only**, start a turn for the giver, choose a different giver, or end a turn early. A host who isn't playing sees the card as referee. Cards already seen are remembered for the whole night, so switching games and coming back won't repeat them.
 
-**Cards:** an original deck of 375 cards in 12 categories (Around the House, Food, Drinks & the Bar, Animals, Places, Jobs & People, Activities & Hobbies, Sports & Games, Movies/TV/Music, Holidays & Events, Things & Ideas, Nature & Science), written for this project. To add your own, add lines to `server/data/taboo-cards.txt` in the format `Word | five, forbidden, words, go, here`. Add `| 21+` to keep a card out of family mode. The tests check every card has exactly 5 forbidden words and no duplicates.
+**Cards:** 567 in total.
+- **Your deck** (300 cards in 12 categories, 4 forbidden words each) lives in `server/data/taboo-cards-yours.csv`, exactly as exported from your spreadsheet. To update it, edit it in any spreadsheet app and save it as CSV with the same columns (`Card, Guess word, Forbidden 1…4, Category`). You can add more "Forbidden" columns, or a `Rating` column where `21+` keeps a card out of family mode. Your cards take priority: if a word is in your deck, the built-in version is dropped.
+- **The built-in deck** (267 more cards, 5 forbidden words each, including Drinks & the Bar) lives in `server/data/taboo-cards.txt`, one card per line: `Word | five, forbidden, words, go, here`. Add `| 21+` to keep a card out of family mode.
+
+The host can play with **All** cards or **Your deck only**. The tests check every card has 4–5 forbidden words and no duplicate words.
 
 ### Buzzer Round
 

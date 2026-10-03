@@ -129,6 +129,7 @@ window.GameViews = window.GameViews || {};
     return `<details class="cah-settings" ${v.phase === 'waiting' ? 'open' : ''}><summary>Taboo settings</summary>
       <div class="row"><span class="grow">Turn length</span>${[45, 60, 90, 120].map((s) => pill('seconds', s, `${s}s`)).join('')}</div>
       <div class="row"><span class="grow">Rating</span>${pill('rating', 'adult', '21+')}${pill('rating', 'family', 'Family friendly')}</div>
+      <div class="row"><span class="grow">Cards</span>${pill('source', 'all', 'All')}${pill('source', 'yours', 'Your deck only')}</div>
       <p class="muted small">${v.deckSize} cards in play. Family friendly leaves out the bar and grown-up cards.</p>
     </details>`;
   }

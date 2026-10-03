@@ -1,0 +1,301 @@
+﻿Card,Guess word,Forbidden 1,Forbidden 2,Forbidden 3,Forbidden 4,Category
+1,Dog,Bark,Puppy,Leash,Fetch,Animals
+2,Cat,Meow,Purr,Kitten,Whiskers,Animals
+3,Elephant,Trunk,Tusks,Gray,Huge,Animals
+4,Giraffe,Neck,Tall,Spots,Africa,Animals
+5,Penguin,Ice,Waddle,Bird,Tuxedo,Animals
+6,Kangaroo,Australia,Pouch,Hop,Joey,Animals
+7,Dolphin,Ocean,Flipper,Mammal,Smart,Animals
+8,Shark,Teeth,Fin,Jaws,Ocean,Animals
+9,Octopus,Eight,Tentacles,Ink,Ocean,Animals
+10,Butterfly,Wings,Caterpillar,Flower,Insect,Animals
+11,Bee,Honey,Sting,Hive,Buzz,Animals
+12,Spider,Web,Eight,Legs,Arachnid,Animals
+13,Snake,Slither,Venom,Fangs,Reptile,Animals
+14,Turtle,Shell,Slow,Reptile,Tortoise,Animals
+15,Frog,Hop,Pond,Croak,Tadpole,Animals
+16,Owl,Hoot,Night,Bird,Wise,Animals
+17,Bat,Wings,Cave,Vampire,Night,Animals
+18,Peacock,Feathers,Tail,Colorful,Bird,Animals
+19,Flamingo,Pink,Leg,Bird,Lawn,Animals
+20,Zebra,Stripes,Black,White,Horse,Animals
+21,Lion,Mane,Roar,Pride,King,Animals
+22,Monkey,Banana,Tree,Primate,Swing,Animals
+23,Sloth,Slow,Tree,Sleep,Claws,Animals
+24,Raccoon,Trash,Mask,Night,Bandit,Animals
+25,Platypus,Duck,Bill,Eggs,Australia,Animals
+26,Pizza,Cheese,Crust,Slice,Pepperoni,Food & Drinks
+27,Taco,Tortilla,Mexico,Shell,Filling,Food & Drinks
+28,Burrito,Tortilla,Wrap,Beans,Rice,Food & Drinks
+29,Sushi,Rice,Fish,Raw,Roll,Food & Drinks
+30,Spaghetti,Pasta,Noodles,Sauce,Meatballs,Food & Drinks
+31,Hamburger,Beef,Patty,Bun,Grill,Food & Drinks
+32,Sandwich,Bread,Lunch,Filling,Deli,Food & Drinks
+33,Pancake,Syrup,Breakfast,Stack,Batter,Food & Drinks
+34,Waffle,Breakfast,Syrup,Iron,Belgian,Food & Drinks
+35,Doughnut,Hole,Glazed,Fried,Sprinkles,Food & Drinks
+36,Popcorn,Movie,Butter,Kernel,Snack,Food & Drinks
+37,Pretzel,Twisted,Salt,Snack,Knot,Food & Drinks
+38,Chocolate,Cocoa,Sweet,Candy,Bar,Food & Drinks
+39,Cheese,Milk,Dairy,Cheddar,Mouse,Food & Drinks
+40,Pickle,Cucumber,Vinegar,Jar,Sour,Food & Drinks
+41,Avocado,Guacamole,Green,Pit,Toast,Food & Drinks
+42,Pineapple,Tropical,Spiky,Fruit,Hawaii,Food & Drinks
+43,Watermelon,Seeds,Summer,Rind,Pink,Food & Drinks
+44,Marshmallow,Fluffy,Campfire,S'mores,Roast,Food & Drinks
+45,Cookie,Bake,Dough,Chocolate,Chips,Food & Drinks
+46,Ice cream,Frozen,Cone,Scoop,Dessert,Food & Drinks
+47,Coffee,Caffeine,Beans,Brew,Morning,Food & Drinks
+48,Tea,Leaves,Steep,Cup,Kettle,Food & Drinks
+49,Lemonade,Sour,Citrus,Drink,Stand,Food & Drinks
+50,Smoothie,Blender,Fruit,Drink,Thick,Food & Drinks
+51,Refrigerator,Cold,Kitchen,Food,Freezer,Around the House
+52,Microwave,Heat,Kitchen,Popcorn,Radiation,Around the House
+53,Toaster,Bread,Breakfast,Slice,Appliance,Around the House
+54,Blender,Smoothie,Kitchen,Puree,Blades,Around the House
+55,Dishwasher,Kitchen,Plates,Detergent,Appliance,Around the House
+56,Oven,Bake,Roast,Kitchen,Temperature,Around the House
+57,Vacuum,Carpet,Dust,Suction,Clean,Around the House
+58,Broom,Sweep,Floor,Witch,Bristles,Around the House
+59,Mop,Floor,Wet,Bucket,Clean,Around the House
+60,Sponge,Absorb,Dishes,Scrub,Porous,Around the House
+61,Pillow,Bed,Head,Soft,Sleep,Around the House
+62,Blanket,Warm,Cover,Bed,Cozy,Around the House
+63,Mattress,Bed,Sleep,Springs,Firm,Around the House
+64,Couch,Sofa,Sit,Cushions,Living room,Around the House
+65,Curtain,Window,Fabric,Drape,Privacy,Around the House
+66,Mirror,Reflection,Glass,Face,Look,Around the House
+67,Lamp,Light,Shade,Bulb,Bedside,Around the House
+68,Candle,Wax,Flame,Wick,Scent,Around the House
+69,Clock,Time,Hands,Hour,Tick,Around the House
+70,Calendar,Date,Month,Year,Schedule,Around the House
+71,Remote,Television,Channel,Button,Control,Around the House
+72,Doorbell,Ring,Visitor,Chime,Button,Around the House
+73,Key,Lock,Open,Metal,Spare,Around the House
+74,Ladder,Climb,Rungs,Height,Step,Around the House
+75,Scissors,Cut,Blades,Paper,Sharp,Around the House
+76,Umbrella,Rain,Wet,Open,Parasol,Clothing & Personal Items
+77,Backpack,School,Carry,Straps,Bag,Clothing & Personal Items
+78,Suitcase,Travel,Luggage,Pack,Wheels,Clothing & Personal Items
+79,Wallet,Money,Cards,Pocket,Cash,Clothing & Personal Items
+80,Purse,Handbag,Carry,Strap,Clutch,Clothing & Personal Items
+81,Sunglasses,Eyes,Shades,Bright,Lenses,Clothing & Personal Items
+82,Watch,Wrist,Time,Clock,Hands,Clothing & Personal Items
+83,Necklace,Jewelry,Chain,Pendant,Pearls,Clothing & Personal Items
+84,Bracelet,Wrist,Jewelry,Charm,Bangle,Clothing & Personal Items
+85,Ring,Finger,Wedding,Diamond,Jewelry,Clothing & Personal Items
+86,Earring,Jewelry,Piercing,Lobe,Stud,Clothing & Personal Items
+87,Hat,Head,Cap,Brim,Wear,Clothing & Personal Items
+88,Scarf,Neck,Warm,Winter,Wrap,Clothing & Personal Items
+89,Gloves,Hands,Fingers,Cold,Mittens,Clothing & Personal Items
+90,Boots,Feet,Winter,Shoes,Cowboy,Clothing & Personal Items
+91,Sneakers,Shoes,Feet,Laces,Run,Clothing & Personal Items
+92,Sandals,Shoes,Summer,Feet,Straps,Clothing & Personal Items
+93,Pajamas,Sleep,Bed,Night,Clothes,Clothing & Personal Items
+94,Jeans,Denim,Pants,Blue,Pockets,Clothing & Personal Items
+95,Apron,Kitchen,Cook,Stains,Tie,Clothing & Personal Items
+96,Helmet,Head,Protect,Bike,Safety,Clothing & Personal Items
+97,Crown,King,Queen,Royal,Head,Clothing & Personal Items
+98,Costume,Halloween,Dress,Disguise,Character,Clothing & Personal Items
+99,Mask,Face,Cover,Disguise,Halloween,Clothing & Personal Items
+100,Perfume,Scent,Fragrance,Spray,Smell,Clothing & Personal Items
+101,Airport,Plane,Flight,Terminal,Runway,Places & Transportation
+102,Library,Books,Borrow,Quiet,Read,Places & Transportation
+103,Museum,Art,Exhibit,History,Gallery,Places & Transportation
+104,Hospital,Doctor,Nurse,Patient,Sick,Places & Transportation
+105,School,Students,Teacher,Classroom,Learn,Places & Transportation
+106,Restaurant,Menu,Waiter,Food,Order,Places & Transportation
+107,Supermarket,Groceries,Cart,Aisle,Checkout,Places & Transportation
+108,Bakery,Bread,Pastry,Oven,Flour,Places & Transportation
+109,Hotel,Room,Stay,Travel,Reservation,Places & Transportation
+110,Bank,Money,Account,Deposit,Loan,Places & Transportation
+111,Zoo,Animals,Cages,Exhibit,Safari,Places & Transportation
+112,Aquarium,Fish,Tank,Water,Glass,Places & Transportation
+113,Beach,Sand,Ocean,Waves,Shore,Places & Transportation
+114,Island,Water,Land,Surrounded,Tropical,Places & Transportation
+115,Mountain,Peak,Climb,Summit,Tall,Places & Transportation
+116,Forest,Trees,Woods,Wildlife,Trail,Places & Transportation
+117,Desert,Sand,Dry,Cactus,Oasis,Places & Transportation
+118,Farm,Crops,Barn,Tractor,Animals,Places & Transportation
+119,Castle,King,Queen,Fortress,Moat,Places & Transportation
+120,Prison,Jail,Bars,Inmate,Cell,Places & Transportation
+121,Subway,Underground,Train,Station,Tunnel,Places & Transportation
+122,Train,Tracks,Station,Engine,Carriage,Places & Transportation
+123,Airplane,Fly,Wings,Pilot,Runway,Places & Transportation
+124,Bicycle,Pedal,Wheels,Ride,Handlebars,Places & Transportation
+125,Elevator,Lift,Floor,Button,Building,Places & Transportation
+126,Doctor,Patient,Hospital,Medicine,Sick,Jobs & Characters
+127,Dentist,Teeth,Cavity,Drill,Gums,Jobs & Characters
+128,Nurse,Hospital,Patient,Care,Doctor,Jobs & Characters
+129,Chef,Cook,Kitchen,Restaurant,Food,Jobs & Characters
+130,Teacher,School,Students,Classroom,Learn,Jobs & Characters
+131,Firefighter,Hose,Flames,Rescue,Truck,Jobs & Characters
+132,Police officer,Arrest,Badge,Law,Crime,Jobs & Characters
+133,Astronaut,Space,Rocket,Moon,NASA,Jobs & Characters
+134,Pilot,Airplane,Fly,Cockpit,Captain,Jobs & Characters
+135,Scientist,Experiment,Laboratory,Research,Hypothesis,Jobs & Characters
+136,Detective,Clues,Mystery,Solve,Investigate,Jobs & Characters
+137,Magician,Trick,Rabbit,Wand,Illusion,Jobs & Characters
+138,Clown,Circus,Funny,Nose,Makeup,Jobs & Characters
+139,Pirate,Ship,Treasure,Parrot,Captain,Jobs & Characters
+140,Ninja,Stealth,Japan,Warrior,Silent,Jobs & Characters
+141,Knight,Armor,Sword,Medieval,Castle,Jobs & Characters
+142,Farmer,Crops,Tractor,Barn,Harvest,Jobs & Characters
+143,Mechanic,Car,Repair,Engine,Garage,Jobs & Characters
+144,Plumber,Pipes,Leak,Toilet,Drain,Jobs & Characters
+145,Electrician,Wires,Power,Circuit,Outlet,Jobs & Characters
+146,Carpenter,Wood,Build,Hammer,Saw,Jobs & Characters
+147,Librarian,Books,Borrow,Quiet,Shelves,Jobs & Characters
+148,Photographer,Camera,Picture,Lens,Shoot,Jobs & Characters
+149,Referee,Whistle,Rules,Foul,Penalty,Jobs & Characters
+150,Lifeguard,Pool,Rescue,Swim,Drown,Jobs & Characters
+151,Smartphone,Call,Apps,Screen,Mobile,Technology & Entertainment
+152,Computer,Keyboard,Mouse,Screen,Laptop,Technology & Entertainment
+153,Keyboard,Type,Keys,Letters,Computer,Technology & Entertainment
+154,Mouse,Click,Cursor,Computer,Scroll,Technology & Entertainment
+155,Camera,Picture,Lens,Photo,Flash,Technology & Entertainment
+156,Television,Screen,Channel,Remote,Shows,Technology & Entertainment
+157,Radio,Broadcast,Station,Music,Frequency,Technology & Entertainment
+158,Headphones,Ears,Music,Listen,Audio,Technology & Entertainment
+159,Microphone,Sing,Voice,Amplify,Speaker,Technology & Entertainment
+160,Battery,Power,Charge,Energy,Electric,Technology & Entertainment
+161,Charger,Battery,Plug,Cable,Power,Technology & Entertainment
+162,Robot,Machine,Program,Metal,Automation,Technology & Entertainment
+163,Internet,Online,Web,Browser,Connection,Technology & Entertainment
+164,Password,Secret,Login,Account,Security,Technology & Entertainment
+165,Emoji,Face,Text,Symbol,Smiley,Technology & Entertainment
+166,Selfie,Photo,Camera,Face,Phone,Technology & Entertainment
+167,Podcast,Listen,Episode,Host,Audio,Technology & Entertainment
+168,Cartoon,Animation,Drawing,Character,Funny,Technology & Entertainment
+169,Movie,Film,Cinema,Actor,Screen,Technology & Entertainment
+170,Theater,Stage,Play,Audience,Performance,Technology & Entertainment
+171,Concert,Music,Live,Band,Tickets,Technology & Entertainment
+172,Guitar,Strings,Strum,Pick,Instrument,Technology & Entertainment
+173,Piano,Keys,Keyboard,Instrument,Play,Technology & Entertainment
+174,Drum,Beat,Sticks,Percussion,Rhythm,Technology & Entertainment
+175,Violin,Bow,Strings,Orchestra,Fiddle,Technology & Entertainment
+176,Soccer,Goal,Kick,Ball,Football,"Sports, Games & Hobbies"
+177,Basketball,Hoop,Dribble,Court,Dunk,"Sports, Games & Hobbies"
+178,Baseball,Bat,Pitch,Diamond,Home run,"Sports, Games & Hobbies"
+179,Football,Touchdown,Quarterback,Tackle,Helmet,"Sports, Games & Hobbies"
+180,Tennis,Racket,Net,Serve,Court,"Sports, Games & Hobbies"
+181,Golf,Club,Hole,Putt,Green,"Sports, Games & Hobbies"
+182,Bowling,Pins,Strike,Lane,Ball,"Sports, Games & Hobbies"
+183,Boxing,Punch,Gloves,Ring,Fight,"Sports, Games & Hobbies"
+184,Wrestling,Pin,Mat,Grapple,Match,"Sports, Games & Hobbies"
+185,Swimming,Pool,Water,Stroke,Laps,"Sports, Games & Hobbies"
+186,Surfing,Wave,Board,Ocean,Beach,"Sports, Games & Hobbies"
+187,Skiing,Snow,Slope,Poles,Winter,"Sports, Games & Hobbies"
+188,Skateboard,Wheels,Deck,Trick,Ramp,"Sports, Games & Hobbies"
+189,Fishing,Rod,Reel,Bait,Hook,"Sports, Games & Hobbies"
+190,Camping,Tent,Outdoors,Bonfire,Sleeping bag,"Sports, Games & Hobbies"
+191,Hiking,Trail,Walk,Boots,Mountain,"Sports, Games & Hobbies"
+192,Gardening,Plants,Soil,Flowers,Seeds,"Sports, Games & Hobbies"
+193,Chess,King,Queen,Checkmate,Board,"Sports, Games & Hobbies"
+194,Checkers,Board,Jump,Pieces,King,"Sports, Games & Hobbies"
+195,Monopoly,Money,Property,Rent,Board,"Sports, Games & Hobbies"
+196,Puzzle,Pieces,Fit,Jigsaw,Solve,"Sports, Games & Hobbies"
+197,Dice,Roll,Cube,Dots,Six,"Sports, Games & Hobbies"
+198,Dominoes,Tiles,Dots,Fall,Chain,"Sports, Games & Hobbies"
+199,Frisbee,Disc,Throw,Catch,Flying,"Sports, Games & Hobbies"
+200,Trampoline,Bounce,Jump,Springs,Net,"Sports, Games & Hobbies"
+201,Sun,Star,Hot,Light,Solar,Nature & Science
+202,Moon,Night,Orbit,Crater,Lunar,Nature & Science
+203,Star,Twinkle,Sky,Night,Constellation,Nature & Science
+204,Planet,Earth,Orbit,Mars,Solar system,Nature & Science
+205,Comet,Tail,Ice,Space,Halley,Nature & Science
+206,Galaxy,Stars,Milky Way,Space,Spiral,Nature & Science
+207,Rainbow,Colors,Rain,Arc,Pot of gold,Nature & Science
+208,Thunder,Storm,Loud,Lightning,Boom,Nature & Science
+209,Lightning,Flash,Bolt,Storm,Thunder,Nature & Science
+210,Tornado,Funnel,Wind,Twister,Storm,Nature & Science
+211,Hurricane,Wind,Storm,Eye,Tropical,Nature & Science
+212,Earthquake,Shake,Fault,Tremor,Seismic,Nature & Science
+213,Volcano,Lava,Erupt,Mountain,Ash,Nature & Science
+214,Avalanche,Snow,Mountain,Slide,Buried,Nature & Science
+215,Glacier,Ice,Frozen,Valley,Melt,Nature & Science
+216,Waterfall,Cascade,River,Cliff,Niagara,Nature & Science
+217,River,Flow,Stream,Water,Bank,Nature & Science
+218,Lake,Water,Pond,Shore,Freshwater,Nature & Science
+219,Ocean,Sea,Salt,Waves,Deep,Nature & Science
+220,Cave,Dark,Underground,Bats,Stalactite,Nature & Science
+221,Fossil,Ancient,Bones,Rock,Preserved,Nature & Science
+222,Dinosaur,Extinct,Prehistoric,Reptile,Jurassic,Nature & Science
+223,Gravity,Fall,Pull,Force,Newton,Nature & Science
+224,Magnet,Metal,Attract,Pole,Repel,Nature & Science
+225,Eclipse,Sun,Moon,Shadow,Block,Nature & Science
+226,Birthday,Cake,Candles,Age,Party,Events & Occasions
+227,Wedding,Bride,Groom,Marriage,Ceremony,Events & Occasions
+228,Graduation,Diploma,School,Cap,Gown,Events & Occasions
+229,Anniversary,Year,Celebrate,Date,Marriage,Events & Occasions
+230,Funeral,Death,Coffin,Mourn,Burial,Events & Occasions
+231,Picnic,Basket,Blanket,Outdoors,Food,Events & Occasions
+232,Parade,Float,March,Street,Procession,Events & Occasions
+233,Carnival,Rides,Games,Fair,Midway,Events & Occasions
+234,Festival,Celebrate,Music,Event,Gathering,Events & Occasions
+235,Vacation,Trip,Travel,Holiday,Relax,Events & Occasions
+236,Honeymoon,Wedding,Newlyweds,Trip,Romantic,Events & Occasions
+237,Reunion,Together,Classmates,Family,Meet,Events & Occasions
+238,Sleepover,Friends,Pajamas,Night,Party,Events & Occasions
+239,Barbecue,Grill,Meat,Smoke,Cookout,Events & Occasions
+240,Halloween,Costume,Candy,Pumpkin,October,Events & Occasions
+241,Christmas,Santa,Tree,Presents,December,Events & Occasions
+242,Thanksgiving,Turkey,Grateful,Feast,November,Events & Occasions
+243,Valentine,Love,Heart,February,Romance,Events & Occasions
+244,Easter,Bunny,Eggs,Spring,Basket,Events & Occasions
+245,Hanukkah,Menorah,Candles,Eight,Dreidel,Events & Occasions
+246,Prom,Dance,School,Dress,Date,Events & Occasions
+247,Retirement,Work,Career,Pension,Stop,Events & Occasions
+248,Election,Vote,Candidate,Ballot,Campaign,Events & Occasions
+249,Auction,Bid,Sell,Highest,Gavel,Events & Occasions
+250,Competition,Win,Contest,Opponent,Prize,Events & Occasions
+251,Whisper,Quiet,Soft,Speak,Secret,Actions
+252,Shout,Loud,Yell,Voice,Scream,Actions
+253,Laugh,Funny,Joke,Giggle,Humor,Actions
+254,Cry,Tears,Sad,Weep,Eyes,Actions
+255,Sneeze,Nose,Tissue,Allergy,Achoo,Actions
+256,Yawn,Tired,Mouth,Sleepy,Bored,Actions
+257,Snore,Sleep,Loud,Nose,Night,Actions
+258,Dream,Sleep,Night,Imagine,Nightmare,Actions
+259,Dance,Music,Move,Rhythm,Steps,Actions
+260,Sing,Song,Voice,Music,Melody,Actions
+261,Juggle,Balls,Toss,Catch,Circus,Actions
+262,Balance,Steady,Fall,Wobble,Equilibrium,Actions
+263,Climb,Up,Ladder,Mountain,Scale,Actions
+264,Crawl,Baby,Floor,Hands,Knees,Actions
+265,Tiptoe,Quiet,Sneak,Feet,Ballet,Actions
+266,Float,Water,Surface,Sink,Buoyant,Actions
+267,Dig,Hole,Shovel,Dirt,Bury,Actions
+268,Bake,Oven,Cake,Bread,Heat,Actions
+269,Stir,Spoon,Mix,Pot,Swirl,Actions
+270,Pour,Liquid,Cup,Spill,Tilt,Actions
+271,Knit,Yarn,Needles,Stitch,Sweater,Actions
+272,Sew,Needle,Thread,Fabric,Stitch,Actions
+273,Paint,Brush,Color,Canvas,Art,Actions
+274,Draw,Pencil,Sketch,Paper,Picture,Actions
+275,Erase,Remove,Pencil,Rubber,Mistake,Actions
+276,Love,Heart,Romance,Affection,Adore,Feelings & Ideas
+277,Jealousy,Envy,Green,Possessive,Rival,Feelings & Ideas
+278,Fear,Scared,Afraid,Danger,Terror,Feelings & Ideas
+279,Courage,Brave,Fear,Hero,Bold,Feelings & Ideas
+280,Pride,Achievement,Ego,Arrogance,Lion,Feelings & Ideas
+281,Embarrassment,Blush,Awkward,Shame,Humiliated,Feelings & Ideas
+282,Surprise,Unexpected,Shock,Astonished,Sudden,Feelings & Ideas
+283,Boredom,Dull,Uninteresting,Yawn,Nothing,Feelings & Ideas
+284,Patience,Wait,Calm,Time,Tolerate,Feelings & Ideas
+285,Trust,Believe,Reliable,Confidence,Faith,Feelings & Ideas
+286,Guilt,Wrong,Regret,Conscience,Blame,Feelings & Ideas
+287,Honesty,Truth,Lie,Sincere,Integrity,Feelings & Ideas
+288,Luck,Chance,Fortune,Clover,Rabbit,Feelings & Ideas
+289,Freedom,Liberty,Choice,Independence,Rights,Feelings & Ideas
+290,Peace,War,Calm,Dove,Harmony,Feelings & Ideas
+291,Chaos,Disorder,Confusion,Mess,Mayhem,Feelings & Ideas
+292,Secret,Hidden,Private,Tell,Confidential,Feelings & Ideas
+293,Rumor,Gossip,Unverified,Hear,Spread,Feelings & Ideas
+294,Promise,Vow,Pledge,Keep,Commitment,Feelings & Ideas
+295,Revenge,Payback,Retaliation,Get even,Grudge,Feelings & Ideas
+296,Forgiveness,Pardon,Sorry,Grudge,Mercy,Feelings & Ideas
+297,Curiosity,Wonder,Questions,Interest,Explore,Feelings & Ideas
+298,Imagination,Pretend,Fantasy,Creative,Ideas,Feelings & Ideas
+299,Memory,Remember,Recall,Past,Forget,Feelings & Ideas
+300,Wisdom,Knowledge,Experience,Advice,Insight,Feelings & Ideas
