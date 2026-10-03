@@ -12,17 +12,8 @@ const DEFAULT_CASH_OUT_LEAD = 10;
 const DEFAULT_SWITCH_PRICE = 15;
 const DEFAULT_SWITCH_MIN_MINUTES = 10;
 const ANNOUNCE_MS = 8000;
-const MAX_DARE = 80;
-const DEFAULT_DARES = [
-  'Whole team takes a shot',
-  'Whole team dances for 30 seconds',
-  'Whole team sings the chorus of a song the winners pick',
-  'Whole team does 10 jumping jacks',
-  'Whole team serenades the winning team',
-  'Each loser says something nice about a winner',
-  'Whole team does their best runway walk',
-  'Whole team finishes their drink',
-];
+const MAX_DARE = 120;
+const DARE_VOTE_MS = 60000;
 
 const secret = () => crypto.randomBytes(16).toString('hex');
 const shortId = () => crypto.randomBytes(6).toString('hex');
@@ -53,8 +44,9 @@ class Room {
     this.timers = new Set();
     this.log = [];
     this.cashOutLead = DEFAULT_CASH_OUT_LEAD;
-    this.dares = [...DEFAULT_DARES];
-    this.cashOut = null; // pending: { teamId, owedBy, dare, by, at }
+    // Pending cash out: { teamId, owedBy, dare, by, at, status: 'voting'|'accepted', votes: {playerId: bool}, deadline }
+    this.cashOut = null;
+    this.cashOutTimer = null;
     this.switchPrice = DEFAULT_SWITCH_PRICE;
     this.switchMinMinutes = DEFAULT_SWITCH_MIN_MINUTES;
     this.announcement = null; // { id, text, teamId, at } flashed on every screen
@@ -130,7 +122,7 @@ class Room {
   resetScores() {
     for (const t of this.teams) Object.assign(t, { score: 0, cashOuts: 0, banked: 0 });
     this.log = [];
-    this.cashOut = null;
+    this.cancelCashOut();
   }
 
   // ---------- cash out: a team with a big lead trades it for a dare by the other team ----------
@@ -144,22 +136,77 @@ class Room {
     return !this.cashOutBlocker(teamId);
   }
 
-  // dareIndex: a number into this.dares, or 'random'.
-  requestCashOut(teamId, dareIndex, byName) {
+  // The leading team writes a dare; the trailing team then votes to accept or reject it.
+  requestCashOut(teamId, dareText, byName) {
     if (this.cashOut) throw new Error('A cash out is already waiting on a dare');
     if (!this.canCashOut(teamId)) throw new Error(`You need a lead of ${this.cashOutLead} to cash out`);
-    if (!this.dares.length) throw new Error('There are no dares to pick from');
-    const i = dareIndex === 'random' ? Math.floor(this.random() * this.dares.length) : Number(dareIndex);
-    const dare = this.dares[i];
-    if (dare === undefined) throw new Error('Pick a dare');
+    const dare = String(dareText || '').replace(/\s+/g, ' ').trim();
+    if (dare.length < 3) throw new Error('Write a dare for the other team');
+    if (dare.length > MAX_DARE) throw new Error(`Keep the dare under ${MAX_DARE} characters`);
     const { trailer } = this.standings();
-    this.announce(`${this.team(teamId).name} cashed out! ${trailer.name} owes a dare.`, teamId);
-    this.cashOut = { teamId, owedBy: trailer.id, dare, by: byName, random: dareIndex === 'random', at: Date.now() };
+    this.cashOut = { teamId, owedBy: trailer.id, dare, by: byName, at: Date.now(), status: 'voting', votes: {}, deadline: Date.now() + DARE_VOTE_MS };
+    this.announce(`${this.team(teamId).name} dares ${trailer.name}! Vote on your phones.`, teamId);
+    clearTimeout(this.cashOutTimer);
+    const pending = this.cashOut;
+    this.cashOutTimer = setTimeout(() => {
+      if (this.cashOut !== pending || pending.status !== 'voting') return;
+      this.resolveDareVote(true);
+      this.onChange(this);
+    }, DARE_VOTE_MS);
+    if (this.cashOutTimer.unref) this.cashOutTimer.unref();
+  }
+
+  // Everyone on the dared team who could vote: online now, or already voted.
+  dareVoters() {
+    const c = this.cashOut;
+    return [...this.players.values()].filter((p) => p.teamId === c.owedBy && (p.connected || p.id in c.votes));
+  }
+
+  dareTally() {
+    const c = this.cashOut;
+    const votes = Object.values(c.votes);
+    const eligible = this.dareVoters().length;
+    return { accept: votes.filter(Boolean).length, reject: votes.filter((v) => !v).length, eligible, needed: Math.floor(eligible / 2) + 1 };
+  }
+
+  voteOnDare(player, accept) {
+    const c = this.cashOut;
+    if (!c || c.status !== 'voting') throw new Error('No dare to vote on');
+    if (player.teamId !== c.owedBy) throw new Error('Only the dared team votes');
+    c.votes[player.id] = !!accept;
+    this.resolveDareVote(false);
+  }
+
+  // Majority of the dared team decides; a tie means no. When time runs out, the votes cast decide,
+  // and if nobody voted at all the host makes the call.
+  resolveDareVote(timeUp) {
+    const c = this.cashOut;
+    const { accept, reject, eligible, needed } = this.dareTally();
+    let outcome = null;
+    if (accept >= needed) outcome = true;
+    else if (reject >= eligible - needed + 1 || (accept + reject === eligible && eligible > 0)) outcome = false;
+    else if (timeUp && accept + reject > 0) outcome = accept > reject;
+    if (outcome !== null) this.decideDare(outcome);
+  }
+
+  decideDare(accepted) {
+    const c = this.cashOut;
+    if (!c || c.status !== 'voting') throw new Error('No dare to decide');
+    clearTimeout(this.cashOutTimer);
+    const dared = this.team(c.owedBy).name;
+    if (accepted) {
+      c.status = 'accepted';
+      this.announce(`${dared} accepted the dare: ${c.dare}`, c.owedBy);
+    } else {
+      this.cashOut = null;
+      this.announce(`${dared} rejected the dare. ${this.team(c.teamId).name} can write another.`, c.owedBy);
+    }
   }
 
   // Host confirms the dare was done: the leader's lead is banked and the score is tied up.
   completeCashOut() {
     if (!this.cashOut) throw new Error('No cash out pending');
+    if (this.cashOut.status !== 'accepted') throw new Error('The dare has not been accepted yet');
     const t = this.team(this.cashOut.teamId);
     const other = this.team(this.cashOut.owedBy);
     const lead = Math.max(0, t.score - other.score);
@@ -172,6 +219,7 @@ class Room {
   }
 
   cancelCashOut() {
+    clearTimeout(this.cashOutTimer);
     this.cashOut = null;
   }
 
@@ -199,7 +247,7 @@ class Room {
     const cashOut = this.cashOutBlocker(teamId);
     const sw = this.switchBlocker(teamId);
     return [
-      { id: 'cashOut', name: 'Cash out', cost: 'Your whole lead', what: 'The other team does a dare; your lead is banked and the score is tied.', available: !cashOut, reason: cashOut },
+      { id: 'cashOut', name: 'Cash out', cost: 'Your whole lead', what: 'Write a dare for the other team. If they vote to accept and do it, your lead is banked and the score is tied.', available: !cashOut, reason: cashOut },
       { id: 'switchGame', name: 'Switch game', cost: `${this.switchPrice} points`, what: 'Your team picks the next game.', available: !sw, reason: sw },
     ];
   }
@@ -245,17 +293,6 @@ class Room {
     this.cashOutLead = v;
   }
 
-  addDare(text) {
-    const d = String(text || '').replace(/\s+/g, ' ').trim().slice(0, MAX_DARE);
-    if (!d) throw new Error('Type a dare');
-    if (this.dares.length >= 50) throw new Error('That is a lot of dares already');
-    this.dares.push(d);
-  }
-
-  removeDare(index) {
-    if (this.dares[index] === undefined) throw new Error('No such dare');
-    this.dares.splice(index, 1);
-  }
 
   clearTimers() {
     for (const t of this.timers) clearTimeout(t);
@@ -347,9 +384,17 @@ class Room {
         view: def.view(this.game.state, { role: viewer.role, player }, this.api()),
       },
       games: isHost ? games.list() : undefined,
-      cashOut: this.cashOut,
+      cashOut: this.cashOut && {
+        teamId: this.cashOut.teamId,
+        owedBy: this.cashOut.owedBy,
+        dare: this.cashOut.dare,
+        by: this.cashOut.by,
+        status: this.cashOut.status,
+        deadline: this.cashOut.deadline,
+        tally: this.dareTally(),
+        myVote: player && player.id in this.cashOut.votes ? this.cashOut.votes[player.id] : null,
+      },
       cashOutLead: this.cashOutLead,
-      dares: this.dares,
       canCashOut: {
         host: isHost ? this.teams.filter((t) => this.canCashOut(t.id)).map((t) => t.id) : [],
         me: !!player && this.canCashOut(player.teamId),
@@ -387,6 +432,7 @@ class RoomManager {
     const room = this.get(code);
     if (!room) return;
     room.clearTimers();
+    room.cancelCashOut();
     this.rooms.delete(room.code);
   }
 }

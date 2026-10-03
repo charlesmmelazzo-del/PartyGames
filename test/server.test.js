@@ -85,10 +85,15 @@ test('full night: host, balanced join, lock on reconnect, buzzer, TV, end', asyn
   const trailer = phones.find((p) => p.teamId === trailTeam);
   await call(host, 'host:action', { type: 'addPoints', teamId: leadTeam, points: 5 });
   await call(host, 'host:action', { type: 'addPoints', teamId: leadTeam, points: 5 });
-  assert.match((await call(trailer.c, 'player:action', { action: 'cashOut', payload: { dareIndex: 0 } })).error, /lead/);
-  assert.ok((await call(leader.c, 'player:action', { action: 'cashOut', payload: { dareIndex: 'random' } })).ok);
+  assert.match((await call(trailer.c, 'player:action', { action: 'cashOut', payload: { dare: 'Nope' } })).error, /lead/);
+  assert.ok((await call(leader.c, 'player:action', { action: 'cashOut', payload: { dare: 'Whole team does the worm' } })).ok);
   await settle();
   assert.strictEqual(tv.last.cashOut.owedBy, trailTeam);
+  assert.strictEqual(tv.last.cashOut.status, 'voting');
+  // Every online player on the dared team votes yes.
+  for (const p of phones.filter((x) => x.teamId === trailTeam)) await call(p.c, 'player:action', { action: 'dareVote', payload: { accept: true } });
+  await settle();
+  assert.strictEqual(tv.last.cashOut.status, 'accepted');
   await call(host, 'host:action', { type: 'cashOutDone' });
   await settle();
   const [s1, s2] = tv.last.teams.map((t) => t.score);

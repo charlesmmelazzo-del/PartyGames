@@ -7,6 +7,7 @@
   let state = null; // latest snapshot from the server
   let clockOffset = 0; // serverTime - Date.now()
   let hostTab = 'host'; // when the host is also a player: 'host' | 'play'
+  const drafts = {}; // text typed into inputs, kept across re-renders (keyed by element id)
   let picking = null; // open chooser: 'cashOut:<teamId>' | 'switch' | 'hostSwitch' | null
   let dismissedAnnouncement = null; // id of the announcement whose display time is over
   let announceTimer = null;
@@ -123,17 +124,14 @@
     return view[role](state.game.view, { state, esc, team, role });
   }
 
-  // Dare list the leading team (or host) picks from. `send` is 'player' or 'host'.
-  function darePicker(send, teamId) {
-    const payload = (dareIndex) =>
-      JSON.stringify(send === 'host' ? { teamId, dareIndex } : { action: 'cashOut', payload: { dareIndex } });
-    const type = send === 'host' ? 'data-type="cashOut"' : '';
+  // The leading team (or the host for them) writes a dare for the other team.
+  function dareComposer(send, teamId) {
+    const other = state.teams.find((t) => t.id !== teamId);
     return `<div class="dare-picker">
-      <p class="small muted">Pick the dare the other team has to do:</p>
-      <button class="big" data-send="${send}" ${type} data-payload='${payload('random')}'>🎲 Random dare</button>
-      ${state.dares
-        .map((d, i) => `<button class="dare" data-send="${send}" ${type} data-payload='${payload(i)}'>${esc(d)}</button>`)
-        .join('')}
+      <div class="dare-title">💰 Cash out</div>
+      <p class="small">Write a dare for <strong>${esc(other.name)}</strong>. They vote to accept or reject it. If they accept and do it, ${send === 'host' ? 'the leading team' : 'your'} lead is banked and the score is tied.</p>
+      <textarea id="dare-input" maxlength="120" rows="3" placeholder="e.g. Whole team does the worm across the room">${esc(drafts['dare-input'] || '')}</textarea>
+      <button class="big" data-act="send-dare" data-who="${send}" data-team="${teamId}">Send the dare</button>
       <button class="link" data-pick="">Never mind</button>
     </div>`;
   }
@@ -153,29 +151,50 @@
     </div>`;
   }
 
-  // Banner shown to everyone while a cash out is waiting on the losing team's dare.
+  // Banner shown to everyone while a cash out is pending: first the dared team votes, then does it.
   function cashOutBanner(myTeamId) {
     const c = state.cashOut;
     if (!c) return '';
     const winners = team(c.teamId);
     const losers = team(c.owedBy);
     const lead = Math.max(0, winners.score - losers.score);
+    const t = c.tally;
+    const tally = `<div class="small tally">✓ ${t.accept} accept · ✗ ${t.reject} reject · ${t.needed} of ${t.eligible} needed to accept</div>`;
+    if (c.status === 'voting') {
+      if (myTeamId === c.owedBy) {
+        const btn = (accept, label, cls) =>
+          `<button class="big ${cls} ${c.myVote === accept ? 'active' : ''}" data-send="player" data-payload='${JSON.stringify({ action: 'dareVote', payload: { accept } })}'>${label}</button>`;
+        return `<div class="cash-banner" style="--c:${winners.color}">
+          <div class="dare-title">🎯 ${esc(winners.name)} dares your team:</div>
+          <div class="dare-text">${esc(c.dare)}</div>
+          <div class="small">Accept it and do it, and their ${lead}-point lead gets wiped to a tie. Reject it and they have to write another.</div>
+          <div class="row vote-row">${btn(true, 'Accept ✓', 'good')}${btn(false, 'Reject ✗', 'danger')}</div>
+          ${c.myVote === null ? '' : '<div class="small">Voted! You can change your vote until it\'s decided.</div>'}
+          ${tally}<div class="small">Voting closes in <span data-until="${c.deadline}"></span></div>
+        </div>`;
+      }
+      const head = myTeamId === c.teamId ? `Dare sent! Waiting for ${esc(losers.name)} to vote…` : `${esc(winners.name)} dares ${esc(losers.name)}:`;
+      return `<div class="cash-banner" style="--c:${winners.color}">
+        <div class="dare-title">${head}</div>
+        <div class="dare-text">${esc(c.dare)}</div>
+        ${tally}<div class="small">Voting closes in <span data-until="${c.deadline}"></span></div>
+      </div>`;
+    }
     let line;
-    if (myTeamId === c.owedBy) line = `<div class="dare-title">Your team owes a dare!</div>`;
-    else if (myTeamId === c.teamId) line = `<div class="dare-title">You cashed out!</div>`;
-    else line = `<div class="dare-title">${esc(winners.name)} cashed out!</div>`;
+    if (myTeamId === c.owedBy) line = 'Your team accepted the dare. Do it!';
+    else if (myTeamId === c.teamId) line = `${esc(losers.name)} accepted your dare!`;
+    else line = `${esc(losers.name)} accepted the dare!`;
     return `<div class="cash-banner" style="--c:${losers.color}">
-      ${line}
+      <div class="dare-title">${line}</div>
       <div class="dare-text">${esc(c.dare)}</div>
-      <div class="small">${esc(losers.name)} does the dare → ${esc(winners.name)}'s ${lead}-point lead is banked and the score is tied.
-      ${myTeamId === undefined ? '' : 'The host confirms when it\'s done.'}</div>
+      <div class="small">Once it's done, ${esc(winners.name)}'s ${lead}-point lead is banked and the score is tied. The host confirms.</div>
     </div>`;
   }
 
   // Everything a team can spend its lead on. Open by default when something is affordable.
   function teamShop() {
     const items = state.shop;
-    if (picking === `cashOut:${state.me.teamId}`) return `<div class="card cash-offer">${darePicker('player', state.me.teamId)}</div>`;
+    if (picking === `cashOut:${state.me.teamId}`) return `<div class="card cash-offer">${dareComposer('player', state.me.teamId)}</div>`;
     if (picking === 'switch') return `<div class="card cash-offer">${gamePicker('player')}</div>`;
     const any = items.some((i) => i.available);
     const { leader, lead } = leadInfo();
@@ -244,10 +263,20 @@
 
   function hostCashOut() {
     const c = state.cashOut;
+    if (c && c.status === 'voting') {
+      return `<div class="card">
+        ${cashOutBanner()}
+        <p class="small muted">Written by ${esc(c.by)}. Nobody voting? Decide for them:</p>
+        <div class="row">
+          <button class="good" data-send="host" data-type="dareAccept">Accept for them</button>
+          <button class="danger" data-send="host" data-type="dareReject">Reject for them</button>
+          <button class="secondary" data-send="host" data-type="cashOutCancel">Cancel</button>
+        </div>
+      </div>`;
+    }
     if (c) {
       return `<div class="card">
         ${cashOutBanner()}
-        <p class="small muted">Requested by ${esc(c.by)}${c.random ? ' (random dare)' : ''}</p>
         <div class="row">
           <button class="big good" data-send="host" data-type="cashOutDone">Dare done ✓</button>
           <button class="big secondary" data-send="host" data-type="cashOutCancel">Cancel</button>
@@ -257,7 +286,7 @@
     const eligible = state.canCashOut.host;
     if (!eligible.length) return '';
     const t = team(eligible[0]);
-    if (picking === `cashOut:${t.id}`) return `<div class="card">${darePicker('host', t.id)}</div>`;
+    if (picking === `cashOut:${t.id}`) return `<div class="card">${dareComposer('host', t.id)}</div>`;
     return `<div class="card cash-offer"><div class="row">
       <span class="grow">💰 ${esc(t.name)} can cash out (up by ${leadInfo().lead})</span>
       <button data-pick="cashOut:${t.id}">Cash out for them</button>
@@ -374,12 +403,6 @@
               .join('')}
             <button class="pill ${[5, 10, 15, 20].includes(state.cashOutLead) ? '' : 'active'}" id="custom-lead">${[5, 10, 15, 20].includes(state.cashOutLead) ? '…' : state.cashOutLead}</button>
           </div>
-          <details><summary>Dares (${state.dares.length})</summary>
-            <ul class="dares">${state.dares
-              .map((d, i) => `<li><span class="grow">${esc(d)}</span><button class="x" title="Remove" data-send="host" data-type="removeDare" data-payload='{"index":${i}}'>×</button></li>`)
-              .join('')}</ul>
-            <button class="secondary" id="add-dare">+ Add a dare</button>
-          </details>
         </div>
 
         <div class="card danger-zone">
@@ -399,10 +422,6 @@
         if (res.error) return toast(res.error);
         saveSession({ ...loadSession(), playerId: res.playerId, playerToken: res.playerToken });
       };
-    document.getElementById('add-dare').onclick = () => {
-      const text = prompt('New dare (the losing team does this):');
-      if (text) call('host:action', { type: 'addDare', text }).then(handleResult);
-    };
     document.getElementById('custom-lead').onclick = () => {
       const lead = prompt('Lead needed to cash out:', state.cashOutLead);
       if (lead) call('host:action', { type: 'setCashOutLead', lead: Number(lead) }).then(handleResult);
@@ -438,7 +457,16 @@
 
   function render() {
     if (!state) return;
+    const focused = document.activeElement && document.activeElement.id && app.contains(document.activeElement) ? document.activeElement : null;
+    const sel = focused && 'selectionStart' in focused ? [focused.selectionStart, focused.selectionEnd] : null;
     renderScreen();
+    if (focused) {
+      const el = document.getElementById(focused.id);
+      if (el) {
+        el.focus({ preventScroll: true });
+        if (sel) el.setSelectionRange(sel[0], sel[1]);
+      }
+    }
     const a = state.announcement;
     if (a && a.id !== dismissedAnnouncement) {
       app.insertAdjacentHTML('afterbegin', announcementBanner());
@@ -454,7 +482,23 @@
   // ---------- events ----------
   const handleResult = (res) => res && res.error && toast(res.error);
 
-  app.addEventListener('click', (e) => {
+  app.addEventListener('input', (e) => {
+    if (e.target.id) drafts[e.target.id] = e.target.value;
+  });
+
+  app.addEventListener('click', async (e) => {
+    const act = e.target.closest('[data-act="send-dare"]');
+    if (act) {
+      const dare = (drafts['dare-input'] || '').trim();
+      const res =
+        act.dataset.who === 'host'
+          ? await call('host:action', { type: 'cashOut', teamId: act.dataset.team, dare })
+          : await call('player:action', { action: 'cashOut', payload: { dare } });
+      if (res.error) return toast(res.error);
+      drafts['dare-input'] = '';
+      picking = null;
+      return render();
+    }
     // Taps a game handles on the phone itself (e.g. choosing cards before submitting).
     const local = e.target.closest('[data-local]');
     if (local && state && state.game) {
@@ -496,6 +540,7 @@
   socket.on('state', (s) => {
     const prev = state;
     state = s;
+    // Buzz the dared team's phones when a dare arrives.
     if (s.cashOut && !(prev && prev.cashOut) && s.me && s.me.teamId === s.cashOut.owedBy && navigator.vibrate) navigator.vibrate([200, 100, 200]);
     if (s.cashOut) picking = null;
     clockOffset = s.serverTime - Date.now();

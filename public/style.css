@@ -323,3 +323,21 @@ ul.others .votes { color: var(--muted); white-space: nowrap; }
 .tv .scoreboard:not(.big) .muted.small { display: none; }
 body.tv-mode .announce { font-size: 1.8rem; padding: 14px; }
 .tv .black-card { font-size: 2.2rem; padding: 24px; }
+
+/* cash out: written dares + team vote */
+textarea {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  font: inherit;
+  font-size: 1.05rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+}
+.vote-row button.active { outline: 3px solid #fff; outline-offset: 2px; }
+.vote-row button:not(.active) { opacity: 0.85; }
+.tally { margin-top: 8px; font-weight: 700; }

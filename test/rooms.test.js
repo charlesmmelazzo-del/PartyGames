@@ -80,37 +80,106 @@ test('room codes are unique and lookup is case-insensitive', () => {
   assert.ok(mgr.get(` ${first.toLowerCase()} `));
 });
 
-test('cash out: needs the lead, waits for the dare, then ties and banks the lead', () => {
-  const room = new Room('TEST', { random: () => 0 });
+// A room with a 12-1 lead for team A and players on both teams.
+function cashOutRoom(bPlayers = 3) {
+  const room = new Room('TEST');
+  const ps = Array.from({ length: bPlayers * 2 }, (_, i) => room.addPlayer(`P${i}`));
+  room.addPoints('A', 12);
+  room.addPoints('B', 1);
+  const a = ps.filter((p) => p.teamId === 'A');
+  const b = ps.filter((p) => p.teamId === 'B');
+  return { room, a, b };
+}
+
+test('cash out: needs the lead and a written dare', () => {
+  const room = new Room('TEST');
   room.addPoints('A', 9);
   assert.strictEqual(room.canCashOut('A'), false);
-  assert.throws(() => room.requestCashOut('A', 0, 'Ana'), /lead of 10/);
-  room.addPoints('A', 3);
-  room.addPoints('B', 1); // A leads 12-1
+  assert.throws(() => room.requestCashOut('A', 'Do the worm', 'Ana'), /lead of 10/);
+  room.addPoints('A', 1);
   assert.strictEqual(room.canCashOut('B'), false);
-  room.requestCashOut('A', 'random', 'Ana');
-  assert.strictEqual(room.cashOut.dare, room.dares[0]);
-  assert.strictEqual(room.cashOut.owedBy, 'B');
-  assert.throws(() => room.requestCashOut('A', 1, 'Ana'), /already/);
-  room.addPoints('A', 2); // play continues while the dare is pending: 14-1
+  assert.throws(() => room.requestCashOut('A', '  ', 'Ana'), /Write a dare/);
+  assert.throws(() => room.requestCashOut('A', 'x'.repeat(121), 'Ana'), /under 120/);
+  room.requestCashOut('A', '  Whole team   does the worm ', 'Ana');
+  assert.strictEqual(room.cashOut.dare, 'Whole team does the worm');
+  assert.strictEqual(room.cashOut.status, 'voting');
+  assert.throws(() => room.requestCashOut('A', 'Another', 'Ana'), /already/);
+  assert.throws(() => room.completeCashOut(), /not been accepted/);
+  room.cancelCashOut();
+});
+
+test('cash out: dared team accepts by majority, then host confirms and the lead is banked', () => {
+  const { room, a, b } = cashOutRoom(3);
+  room.requestCashOut('A', 'Sing the national anthem', a[0].name);
+  assert.throws(() => room.voteOnDare(a[1], true), /Only the dared team/);
+  room.voteOnDare(b[0], true);
+  assert.strictEqual(room.cashOut.status, 'voting', '1 of 3 is not a majority');
+  room.voteOnDare(b[1], true);
+  assert.strictEqual(room.cashOut.status, 'accepted');
+  assert.match(room.announcement.text, /accepted the dare/);
+  room.addPoints('A', 2); // play continues while they do it: 14-1
   room.completeCashOut();
-  assert.deepStrictEqual(
-    room.teams.map((t) => [t.score, t.cashOuts, t.banked]),
-    [[1, 1, 13], [1, 0, 0]],
-  );
+  assert.deepStrictEqual(room.teams.map((t) => [t.score, t.cashOuts, t.banked]), [[1, 1, 13], [1, 0, 0]]);
   assert.strictEqual(room.cashOut, null);
 });
 
-test('cash out: cancel, custom threshold and dares', () => {
-  const room = new Room('TEST');
-  room.setCashOutLead(3);
-  room.addDare('  Do the  worm ');
-  assert.strictEqual(room.dares.at(-1), 'Do the worm');
-  room.addPoints('B', 3);
-  room.requestCashOut('B', room.dares.length - 1, 'Host');
+test('cash out: rejection or a tie throws the dare out so the leaders can write another', () => {
+  const { room, a, b } = cashOutRoom(2);
+  room.requestCashOut('A', 'Lick a shoe', a[0].name);
+  room.voteOnDare(b[0], true);
+  room.voteOnDare(b[1], false); // 1-1 tie with everyone voted = rejected
+  assert.strictEqual(room.cashOut, null);
+  assert.match(room.announcement.text, /rejected the dare/);
+  assert.deepStrictEqual(room.teams.map((t) => t.score), [12, 1], 'scores untouched');
+  room.requestCashOut('A', 'Do 5 push-ups', a[0].name); // can try again straight away
+  room.voteOnDare(b[1], true);
+  room.voteOnDare(b[0], true);
+  assert.strictEqual(room.cashOut.status, 'accepted');
   room.cancelCashOut();
-  assert.deepStrictEqual(room.teams.map((t) => t.score), [0, 3]);
-  room.removeDare(0);
+});
+
+test('cash out: you can change your vote until it is decided', () => {
+  const { room, a, b } = cashOutRoom(3);
+  room.requestCashOut('A', 'Do 5 push-ups', a[0].name);
+  room.voteOnDare(b[0], false);
+  room.voteOnDare(b[0], true); // changed mind
+  assert.strictEqual(room.cashOut.status, 'voting');
+  room.voteOnDare(b[1], true);
+  assert.strictEqual(room.cashOut.status, 'accepted');
+  room.cancelCashOut();
+});
+
+test('cash out: when time runs out, votes cast decide; with no votes the host decides', () => {
+  const { room, a, b } = cashOutRoom(3);
+  room.requestCashOut('A', 'Dance', a[0].name);
+  room.voteOnDare(b[0], true);
+  room.resolveDareVote(true); // what the 60s timer does
+  assert.strictEqual(room.cashOut.status, 'accepted');
+  room.cancelCashOut();
+  room.requestCashOut('A', 'Dance again', a[0].name);
+  room.resolveDareVote(true);
+  assert.strictEqual(room.cashOut.status, 'voting', 'nobody voted: waits for the host');
+  room.decideDare(false);
+  assert.strictEqual(room.cashOut, null);
+  // Only online players count toward the majority.
+  b[1].connected = false;
+  b[2].connected = false;
+  room.requestCashOut('A', 'Dance a third time', a[0].name);
+  room.voteOnDare(b[0], true);
+  assert.strictEqual(room.cashOut.status, 'accepted');
+  room.cancelCashOut();
+});
+
+test('cash out: snapshot shows the tally and my vote, and threshold/reset still work', () => {
+  const { room, a, b } = cashOutRoom(3);
+  room.requestCashOut('A', 'Do the worm', a[0].name);
+  room.voteOnDare(b[0], false);
+  const snap = room.snapshot({ role: 'player', playerId: b[0].id });
+  assert.deepStrictEqual(snap.cashOut.tally, { accept: 0, reject: 1, eligible: 3, needed: 2 });
+  assert.strictEqual(snap.cashOut.myVote, false);
+  assert.ok(!('votes' in snap.cashOut), 'individual votes stay private');
+  room.cancelCashOut();
+  room.setCashOutLead(3);
   assert.throws(() => room.setCashOutLead(0), /1-1000/);
   room.resetScores();
   assert.ok(room.teams.every((t) => t.score === 0 && t.cashOuts === 0));
