@@ -1,0 +1,221 @@
+# Trivia questions for one board column. The category name is the "## " line below.
+# One question per line:   difficulty | question | answer | answer | answer | answer
+# Difficulty is 1 (easy, worth 1 point) to 5 (hard, worth 5). Mark the correct answer with a
+# leading "*". Answers are shuffled when the question is asked.
+
+## Reality TV
+1 | Which show's famous line is "The tribe has spoken"? | *Survivor | Big Brother | The Amazing Race | Fear Factor
+1 | Which family starred in "Keeping Up with the ___"? | *Kardashians | Osbournes | Jenners | Duggars
+1 | On The Bachelor, what flower is handed out at the ceremony? | *A rose | A tulip | A lily | A daisy
+1 | Which show had judges Simon Cowell, Paula Abdul and Randy Jackson? | *American Idol | The X Factor | America's Got Talent | The Voice
+1 | In which show are houseguests watched 24/7 and evicted one by one? | *Big Brother | Survivor | The Real World | Love Island
+1 | Which Gordon Ramsay show splits chefs into red and blue teams? | *Hell's Kitchen | MasterChef | Top Chef | Kitchen Nightmares
+2 | On The Voice, what do coaches do when they want a singer? | *Turn their chairs around | Ring a bell | Press a gold buzzer | Stand up
+2 | In which dating show do singles "couple up" in a villa? | *Love Island | Too Hot to Handle | Bachelor in Paradise | Temptation Island
+2 | On RuPaul's Drag Race, what do the bottom two queens do to stay in? | *Lip sync for their life | Sew a dress | Have a dance-off | Answer trivia
+2 | Snooki and The Situation starred in which MTV show? | *Jersey Shore | The Hills | Laguna Beach | The Real World
+2 | Who won the first season of American Idol? | *Kelly Clarkson | Carrie Underwood | Ruben Studdard | Fantasia Barrino
+2 | On Netflix's Love Is Blind, couples get engaged before doing what? | *Seeing each other | Meeting the parents | Kissing | Moving in together
+3 | Who has hosted Survivor since the very first season? | *Jeff Probst | Ryan Seacrest | Phil Keoghan | Chris Harrison
+3 | Who hosted The Bachelor from 2002 to 2021? | *Chris Harrison | Jesse Palmer | Mario Lopez | Ryan Seacrest
+3 | Who hosts the U.S. version of Big Brother? | *Julie Chen Moonves | Andy Cohen | Phil Keoghan | Tom Bergeron
+3 | Which Bravo executive hosts the Real Housewives reunions? | *Andy Cohen | Ryan Seacrest | Jeff Lewis | Bruno Tonioli
+3 | Which show opened with "This is the true story of seven strangers..."? | *The Real World | Big Brother | Survivor | Jersey Shore
+3 | Who was a coach on the first season of The Voice with Adam Levine? | *Christina Aguilera | Gwen Stefani | Shakira | Miley Cyrus
+4 | Which American Idol contestant didn't win the show but later won an Oscar? | *Jennifer Hudson | Fantasia Barrino | Chris Daughtry | Clay Aiken
+4 | Who won the very first season of Survivor? | *Richard Hatch | Boston Rob | Tina Wesson | Ethan Zohn
+4 | Who hosts The Amazing Race? | *Phil Keoghan | Jeff Probst | Julie Chen Moonves | Tom Bergeron
+4 | Which Real Housewives city launched the franchise in 2006? | *Orange County | New York City | Atlanta | Beverly Hills
+4 | Paris Hilton and Nicole Richie lived on an Arkansas farm in which show? | *The Simple Life | Laguna Beach | The Hills | Newlyweds
+4 | Which Queer Eye expert is in charge of food? | *Antoni Porowski | Tan France | Bobby Berk | Karamo Brown
+5 | Who was the very first Bachelorette, in 2003? | *Trista Rehn | Jen Schefft | DeAnna Pappas | Ali Fedotowsky
+5 | Who won the first season of RuPaul's Drag Race? | *BeBe Zahara Benet | Raja | Tyra Sanchez | Bianca Del Rio
+5 | Who became the first person to win Survivor twice? | *Sandra Diaz-Twine | Tony Vlachos | Boston Rob | Parvati Shallow
+5 | Who took over from Padma Lakshmi as host of Top Chef in 2024? | *Kristen Kish | Gail Simmons | Tom Colicchio | Antoni Porowski
+5 | Since Season 41, how many days does a season of Survivor last? | *26 | 39 | 30 | 21
+5 | What is the real name of Jersey Shore's "JWoww"? | *Jenni Farley | Nicole Polizzi | Sammi Giancola | Deena Cortese
+1 | On Survivor, what do players win to be safe from that night's vote? | *Immunity | A reward | Fire | An extra vote
+1 | How much money does the winner of Survivor get? | *$1 million | $500,000 | $100,000 | $2 million
+1 | On Big Brother, what is the weekly house leader called? | *Head of Household | House Captain | Big Boss | Top Dog
+1 | On Shark Tank, what are the investors called? | *Sharks | Dragons | Tigers | Bosses
+1 | What was Donald Trump's catchphrase on The Apprentice? | *You're fired! | You're out! | Pack your bags! | Game over!
+1 | On Dancing with the Stars, celebrities are paired with whom? | *Professional dancers | Choreographers | Singers | The judges
+1 | Which show has home bakers competing in a big tent? | *The Great British Bake Off | MasterChef | Cupcake Wars | Nailed It!
+1 | Who is the mother and manager of the Kardashian family? | *Kris Jenner | Kim Kardashian | Caitlyn Jenner | Kourtney Kardashian
+1 | Who has hosted American Idol since its very first season? | *Ryan Seacrest | Simon Cowell | Carson Daly | Nick Lachey
+1 | Which American Idol judge was famous for being brutally honest? | *Simon Cowell | Randy Jackson | Paula Abdul | Keith Urban
+1 | Which chef is famous for yelling at contestants on Hell's Kitchen? | *Gordon Ramsay | Bobby Flay | Guy Fieri | Tom Colicchio
+1 | What happens to Bachelor contestants who don't get a rose? | *They go home | They get immunity | They win a date | They get a second chance
+1 | Which rock star's family starred in MTV's The Osbournes? | *Ozzy Osbourne | Gene Simmons | Bret Michaels | Tommy Lee
+1 | Which show follows a family-run Las Vegas pawn shop? | *Pawn Stars | Storage Wars | American Pickers | Hardcore Pawn
+1 | Which supermodel created and hosted America's Next Top Model? | *Tyra Banks | Heidi Klum | Naomi Campbell | Cindy Crawford
+1 | On Survivor, what hidden item can save a player from being voted out? | *A hidden immunity idol | A secret shield | A golden token | A tribe pass
+1 | Which 2020 Netflix docuseries starred Joe Exotic? | *Tiger King | Making a Murderer | Fyre | Wild Wild Country
+1 | On which show do celebrities sing in elaborate full-body costumes? | *The Masked Singer | The Voice | Lip Sync Battle | I Can See Your Voice
+1 | Kylie Jenner founded what kind of company? | *A cosmetics company | A fashion label | A tequila brand | A shoe brand
+1 | Who is the youngest of the Kardashian-Jenner sisters? | *Kylie | Kendall | Khloé | Kourtney
+1 | What is "Snooki"'s show, set on the New Jersey coast? | *Jersey Shore | The Hills | Laguna Beach | Floribama Shore
+1 | Which show has singers try to get coaches to turn around in red chairs? | *The Voice | American Idol | The X Factor | America's Got Talent
+1 | What is the name of RuPaul's drag competition show? | *RuPaul's Drag Race | Drag Me to Fame | Queen of the Runway | Lip Sync Legends
+1 | On Love Island, what do contestants do to pair up? | *Couple up | Lock in | Match up | Pin
+1 | On The Bachelor, how many people usually get the final proposal? | *One | Two | Three | None
+1 | Which show has families swap moms for two weeks? | *Wife Swap | Trading Spaces | Supernanny | Undercover Boss
+1 | Which show has company bosses work in disguise among their own staff? | *Undercover Boss | The Apprentice | Shark Tank | Bar Rescue
+1 | Which show has a British nanny fixing families' parenting problems? | *Supernanny | Nanny 911 | Super Mom | Wife Swap
+1 | Which show has an expert help failing bars, often yelling at owners? | *Bar Rescue | Kitchen Nightmares | Restaurant: Impossible | Hotel Hell
+1 | Gordon Ramsay hosts which show for amateur home cooks? | *MasterChef | Top Chef | Chopped | The Taste
+1 | Which MTV show showed off celebrities' homes? | *MTV Cribs | Pimp My Ride | Punk'd | Room Raiders
+1 | On Shark Tank, what do entrepreneurs give up in exchange for money? | *Equity in their company | Their product rights | A royalty-free license | Their TV rights
+1 | Which Discovery show strands two strangers in the wild with no clothes? | *Naked and Afraid | Survivorman | Alone | Man vs. Wild
+1 | What do The Bachelor's contestants hope to receive each week? | *A rose | A ring | A letter | A key
+2 | What does Heidi Klum say to eliminated designers on Project Runway? | *Auf Wiedersehen | Goodbye | Ciao | Adieu
+2 | What trophy do Dancing with the Stars champions win? | *The Mirrorball Trophy | The Golden Shoe | The Glitter Cup | The Disco Crown
+2 | On The Great British Bake Off, whose handshake is the ultimate compliment? | *Paul Hollywood | Gordon Ramsay | Mary Berry | Prue Leith
+2 | Which competition show has a "Golden Buzzer"? | *America's Got Talent | American Idol | The Voice | The X Factor
+2 | Which Netflix show follows luxury real estate agents in Los Angeles? | *Selling Sunset | Million Dollar Listing | Buying Beverly Hills | Owning Manhattan
+2 | What is the name of Kim Kardashian's shapewear brand? | *Skims | Spanx | Fenty | Good American
+2 | Which MTV show followed teen moms after 16 and Pregnant? | *Teen Mom | Young Moms | Mom Life | 19 Kids and Counting
+2 | What does RuPaul say to the queen who is eliminated? | *Sashay away | Shantay, you stay | Bye, girl | Pack your wigs
+2 | Which show follows the Robertson family and their duck call business? | *Duck Dynasty | Swamp People | Here Comes Honey Boo Boo | Moonshiners
+2 | Which show follows crab fishermen in the Bering Sea? | *Deadliest Catch | Ice Road Truckers | Wicked Tuna | Life Below Zero
+2 | Which show has people bid on abandoned storage units? | *Storage Wars | American Pickers | Pawn Stars | Auction Kings
+2 | Which Queer Eye expert handles grooming? | *Jonathan Van Ness | Tan France | Karamo Brown | Bobby Berk
+2 | What does Tyra Banks call smiling with your eyes? | *Smizing | Smolding | Eyeing | Twinkling
+2 | Which supermodel hosted Project Runway for its first 16 seasons? | *Heidi Klum | Tyra Banks | Gisele Bündchen | Karlie Kloss
+2 | Which Project Runway mentor was famous for saying "Make it work"? | *Tim Gunn | Michael Kors | Isaac Mizrahi | Zac Posen
+2 | Who won Season 4 of American Idol? | *Carrie Underwood | Bo Bice | Fantasia Barrino | Kelly Clarkson
+2 | Which country star coached on The Voice from Season 1 until 2023? | *Blake Shelton | Keith Urban | Luke Bryan | Tim McGraw
+2 | Which fellow coach did Blake Shelton marry? | *Gwen Stefani | Kelly Clarkson | Miley Cyrus | Christina Aguilera
+2 | NeNe Leakes became famous on which Real Housewives franchise? | *Atlanta | New Jersey | Beverly Hills | Potomac
+2 | Which Shark Tank investor is nicknamed "Mr. Wonderful"? | *Kevin O'Leary | Mark Cuban | Robert Herjavec | Daymond John
+2 | Which Shark Tank investor was the longtime owner of the Dallas Mavericks? | *Mark Cuban | Kevin O'Leary | Robert Herjavec | Daymond John
+2 | On Top Chef, eliminated chefs are told to "please pack your…" | *knives and go | bags and leave | apron and go | things and leave
+2 | Which show features kids cooking for Gordon Ramsay? | *MasterChef Junior | Kids Baking Championship | Chopped Junior | Top Chef Junior
+2 | Which Netflix show has home bakers try to copy elaborate cakes, usually failing? | *Nailed It! | Sugar Rush | Is It Cake? | Bake Squad
+2 | Who was the dance teacher at the center of Dance Moms? | *Abby Lee Miller | Paula Abdul | Mia Michaels | Cheryl Burke
+2 | Which TLC show starred Alana "Honey Boo Boo" Thompson? | *Here Comes Honey Boo Boo | Toddlers & Tiaras | 19 Kids and Counting | Little People, Big World
+2 | Which TLC show followed the Duggar family? | *19 Kids and Counting | Jon & Kate Plus 8 | Sister Wives | Kate Plus 8
+2 | Which TLC show follows couples on fiancé visas? | *90 Day Fiancé | Married at First Sight | Love After Lockup | Sister Wives
+2 | Which TLC show followed a family with twins and sextuplets? | *Jon & Kate Plus 8 | OutDaughtered | 19 Kids and Counting | Sweet Home Sextuplets
+2 | Kim Kardashian was married to which rapper? | *Kanye West | Drake | Travis Scott | Tyga
+2 | Which Bravo show follows the crew of a luxury yacht? | *Below Deck | Southern Charm | Summer House | Yachting Life
+2 | On Big Brother, where do houseguests talk privately to the cameras? | *The Diary Room | The Confession Booth | The Secret Room | The Talk Room
+2 | What power lets a Big Brother houseguest save someone from the block? | *The Power of Veto | The Golden Key | The Royal Pardon | The Safety Pass
+2 | Which Bachelor spin-off sends past contestants to a beach in Mexico? | *Bachelor in Paradise | Bachelor Pad | The Bachelor Winter Games | Paradise Hotel
+2 | What does "GTL" stand for on Jersey Shore? | *Gym, Tan, Laundry | Gold, Tan, Lifting | Gym, Tacos, Lager | Girls, Tan, Lights
+2 | What is Mike Sorrentino's nickname on Jersey Shore? | *The Situation | The Hammer | The Mayor | The Boss
+2 | On Love Island, what do contestants shout when news arrives? | *"I got a text!" | "Letter for the villa!" | "Phone call!" | "Rose ceremony!"
+2 | On Love Is Blind, where do couples talk before ever seeing each other? | *The pods | The booths | The cabins | The confessionals
+2 | On Too Hot to Handle, what happens when contestants break the rules? | *Money comes out of the prize fund | They lose immunity | They're sent home at once | They lose a date
+2 | Which MTV prank show was hosted by Ashton Kutcher? | *Punk'd | Jackass | Scare Tactics | Boiling Points
+2 | Which MTV show filmed rich teenagers' extravagant birthday parties? | *My Super Sweet 16 | Rich Kids of Beverly Hills | Laguna Beach | The Hills
+3 | Which Kardashian sister is the oldest? | *Kourtney | Kim | Khloé | Kendall
+3 | Which Idol contestant finished fourth in Season 5 and formed his own rock band? | *Chris Daughtry | Taylor Hicks | Bo Bice | Adam Lambert
+3 | Adam Lambert has toured as the lead singer of which legendary band? | *Queen | Journey | Aerosmith | INXS
+3 | Which pop star was an American Idol judge from 2018 to 2024? | *Katy Perry | Lady Gaga | Ariana Grande | Kelly Clarkson
+3 | Who has hosted America's Got Talent since 2019? | *Terry Crews | Nick Cannon | Howie Mandel | Tom Bergeron
+3 | Which comedian has been a longtime judge on America's Got Talent? | *Howie Mandel | Jay Leno | Jerry Seinfeld | Steve Martin
+3 | Which Britain's Got Talent contestant went viral singing "I Dreamed a Dream" in 2009? | *Susan Boyle | Paul Potts | Leona Lewis | Diversity
+3 | Ariana Madix first became famous on which show? | *Vanderpump Rules | Love Island | The Hills | Summer House
+3 | Bethenny Frankel was a star of which Real Housewives franchise? | *New York City | Beverly Hills | Orange County | Atlanta
+3 | Which Real Housewife famously flipped a table in Season 1 of New Jersey? | *Teresa Giudice | Caroline Manzo | Dina Manzo | Danielle Staub
+3 | Kyle Richards is a star of which Real Housewives franchise? | *Beverly Hills | Orange County | New York City | Miami
+3 | What was Rob Mariano's Survivor nickname? | *Boston Rob | Big Rob | Rob the Builder | Captain Rob
+3 | How many days did a season of Survivor last before Season 41? | *39 | 30 | 42 | 26
+3 | Who votes for the winner at the end of Survivor? | *A jury of voted-out players | The viewers at home | Jeff Probst | The final three players
+3 | Which show was The Hills a spin-off of? | *Laguna Beach | The Real World | The O.C. | Newport Harbor
+3 | Who was the main star of The Hills? | *Lauren Conrad | Heidi Montag | Kristin Cavallari | Audrina Patridge
+3 | Heidi Montag married which Hills co-star? | *Spencer Pratt | Brody Jenner | Jason Wahler | Justin Bobby
+3 | Which country did the Love Island format come from? | *The United Kingdom | Australia | The United States | Spain
+3 | Who hosts Love Is Blind? | *Nick and Vanessa Lachey | Chris Harrison and Tayshia Adams | Andy Cohen and Bethenny Frankel | Jesse Palmer and Rachel Lindsay
+3 | What is Lana on Too Hot to Handle? | *An AI that enforces the rules | The host | The villa's chef | A contestant
+3 | Which Shark Tank investor founded the clothing brand FUBU? | *Daymond John | Robert Herjavec | Mark Cuban | Kevin O'Leary
+3 | Which Shark Tank investor is known as the "Queen of QVC"? | *Lori Greiner | Barbara Corcoran | Kendra Scott | Emma Grede
+3 | Which Shark built a famous New York real estate company? | *Barbara Corcoran | Lori Greiner | Daymond John | Robert Herjavec
+3 | Which cleaning sponge became one of Shark Tank's biggest success stories? | *Scrub Daddy | Dobie | O-Cedar | Magic Eraser
+3 | Who has been Top Chef's head judge since Season 1? | *Tom Colicchio | Gordon Ramsay | Bobby Flay | Anthony Bourdain
+3 | Which judge left Bake Off when it moved channels and was replaced by Prue Leith? | *Mary Berry | Paul Hollywood | Noel Fielding | Sue Perkins
+3 | What is The Great British Bake Off called in the United States? | *The Great British Baking Show | The Great British Bake-Off USA | British Baking Stars | The Big British Bake
+3 | Which Dance Moms star danced in Sia's "Chandelier" video? | *Maddie Ziegler | JoJo Siwa | Chloe Lukasiak | Kendall Vertes
+3 | Which TLC show follows Kody Brown and his multiple wives? | *Sister Wives | Seeking Sister Wife | My Five Wives | Polygamy USA
+3 | Which MrBeast competition show premiered on Prime Video in 2024? | *Beast Games | The Challenge: MrBeast | Squid Game: The Challenge | Beast Island
+3 | The Kardashians moved their show to which streaming service in 2022? | *Hulu | Netflix | Peacock | Max
+3 | Which network aired Keeping Up with the Kardashians? | *E! | Bravo | MTV | VH1
+3 | Which Kardashian sister married drummer Travis Barker? | *Kourtney | Khloé | Kim | Kendall
+3 | Where was the first season of The Real World set, in 1992? | *New York | Los Angeles | San Francisco | Miami
+3 | Where was the first season of Survivor filmed? | *Borneo | Australia | Fiji | Samoa
+3 | Who has hosted The Masked Singer since its first season? | *Nick Cannon | Ken Jeong | Jenny McCarthy | Ryan Seacrest
+3 | Who replaced Chris Harrison as host of The Bachelor? | *Jesse Palmer | Tayshia Adams | Mario Lopez | Andy Cohen
+3 | What does RuPaul tell the queen who survives a lip sync? | *Shantay, you stay | Sashay away | You're safe | Keep it up
+3 | Which Netflix real estate show centers on the Oppenheim Group? | *Selling Sunset | Million Dollar Listing LA | Selling Tampa | Buying Beverly Hills
+3 | Which rapper hosted MTV's Pimp My Ride? | *Xzibit | Snoop Dogg | Ludacris | Nelly
+3 | Which rapper looked for love on VH1's Flavor of Love? | *Flavor Flav | Snoop Dogg | Ice-T | Coolio
+4 | Who was the first Black lead of The Bachelor, in 2021? | *Matt James | Ben Higgins | Peter Weber | Colton Underwood
+4 | Who was the first Black Bachelorette, in 2017? | *Rachel Lindsay | Tayshia Adams | Charity Lawson | Michelle Young
+4 | Who was the first Golden Bachelor? | *Gerry Turner | Joan Vassos | Jim Davis | Gary Levingston
+4 | In which New Jersey town was Jersey Shore filmed? | *Seaside Heights | Atlantic City | Asbury Park | Point Pleasant
+4 | What is Snooki's real name? | *Nicole Polizzi | Jenni Farley | Sammi Giancola | Deena Cortese
+4 | Where does Love Island UK usually film its villa? | *Majorca | Ibiza | Greece | Cyprus
+4 | At which magazine did Lauren Conrad intern on The Hills? | *Teen Vogue | Cosmopolitan | Elle | Seventeen
+4 | Who won Season 5 of American Idol? | *Taylor Hicks | Katharine McPhee | Chris Daughtry | Elliott Yamin
+4 | Who won Season 2 of American Idol? | *Ruben Studdard | Clay Aiken | Kimberley Locke | Fantasia Barrino
+4 | Who hosted America's Got Talent from 2009 to 2016? | *Nick Cannon | Terry Crews | Jerry Springer | Tom Bergeron
+4 | Who has hosted Love Island USA since 2023? | *Ariana Madix | Sarah Hyland | Arielle Vandenberg | Iain Stirling
+4 | What is the name of Lisa Vanderpump's restaurant at the center of Vanderpump Rules? | *SUR | TomTom | PUMP | Villa Blanca
+4 | Which 2023 reality TV cheating scandal was nicknamed "Scandoval"? | *Tom Sandoval cheating on Ariana Madix | Tom Schwartz cheating on Katie Maloney | Jax Taylor cheating on Brittany | James Kennedy cheating on Raquel
+4 | Which drink brand did Bethenny Frankel create? | *Skinnygirl | White Claw | Truly | Casamigos
+4 | Jen Shah, who went to prison for fraud, starred in which Housewives franchise? | *Salt Lake City | Beverly Hills | Potomac | Dallas
+4 | Which Survivor player did Boston Rob marry? | *Amber Brkich | Parvati Shallow | Sandra Diaz-Twine | Natalie White
+4 | What was Tony Vlachos's job before winning Survivor twice? | *Police officer | Firefighter | Lawyer | Teacher
+4 | In which country did Big Brother begin, in 1999? | *The Netherlands | The United Kingdom | Germany | Sweden
+4 | Which producer brought Survivor and The Apprentice to American TV? | *Mark Burnett | Mike Fleiss | Simon Fuller | Jon Murray
+4 | In which country did The Masked Singer format originate? | *South Korea | Japan | The United Kingdom | Australia
+4 | What is the British version of Shark Tank called? | *Dragons' Den | Lions' Den | The Money Pit | Pitch Perfect
+4 | Which drag queen won Season 6 of RuPaul's Drag Race, known for insult comedy? | *Bianca Del Rio | Adore Delano | Courtney Act | Trixie Mattel
+4 | What is The Challenge star Johnny Devenanzio's nickname? | *Bananas | Hot Sauce | Ice | Rocket
+4 | Who has hosted MTV's The Challenge since 2008? | *TJ Lavin | Jonny Moseley | Dave Mirra | Mike Sorrentino
+4 | What colors are The Amazing Race's route markers? | *Yellow and red | Blue and white | Green and gold | Black and orange
+4 | What is the final stop of each leg of The Amazing Race called? | *The Pit Stop | The Checkpoint | The Finish Line | Base Camp
+4 | How much did the winner of Squid Game: The Challenge take home? | *$4.56 million | $1 million | $2.5 million | $10 million
+4 | Which pro dancer won six Mirrorball Trophies on Dancing with the Stars? | *Derek Hough | Mark Ballas | Cheryl Burke | Val Chmerkovskiy
+4 | Who hosted Dancing with the Stars from 2005 to 2019? | *Tom Bergeron | Ryan Seacrest | Alfonso Ribeiro | Mario Lopez
+4 | What was the original name of Queer Eye when it debuted in 2003? | *Queer Eye for the Straight Guy | The Fab Five | Makeover Men | Straight Talk
+4 | Tan France is Queer Eye's expert in what? | *Fashion | Food | Design | Culture
+4 | Which MTV dating show used matchmaking to hide "perfect matches" in a house? | *Are You the One? | Ex on the Beach | Love Island | Singled Out
+4 | Which rock singer looked for love on VH1's Rock of Love? | *Bret Michaels | Sebastian Bach | Vince Neil | Gene Simmons
+4 | Which 2024 Hulu show follows a group of Mormon mom-influencers? | *The Secret Lives of Mormon Wives | Utah Moms | Sister Wives: TikTok | Salt Lake Influencers
+5 | Who won Season 2 of Survivor, The Australian Outback? | *Tina Wesson | Colby Donaldson | Elisabeth Hasselbeck | Keith Famie
+5 | Who was the first Bachelor, in 2002? | *Alex Michel | Aaron Buerge | Bob Guiney | Jake Pavelka
+5 | Which Bachelor changed his mind about his final choice after the 2009 finale? | *Jason Mesnick | Brad Womack | Jake Pavelka | Arie Luyendyk Jr.
+5 | Which Bachelor lead famously dumped his fiancée on the After the Final Rose special in 2018? | *Arie Luyendyk Jr. | Jason Mesnick | Colton Underwood | Peter Weber
+5 | From which Swedish show did Survivor originate, in 1997? | *Expedition Robinson | Robinson Crusoe Live | The Island | Castaway
+5 | Who created the Pop Idol format that became American Idol? | *Simon Fuller | Simon Cowell | Mark Burnett | Ryan Seacrest
+5 | Who won the first season of The Voice? | *Javier Colon | Dia Frampton | Cassadee Pope | Jermaine Paul
+5 | Who won the first season of The Masked Singer, as the Monster? | *T-Pain | Donny Osmond | Wayne Brady | Rumer Willis
+5 | Who won the first season of Dancing with the Stars? | *Kelly Monaco | John O'Hurley | Drew Lachey | Emmitt Smith
+5 | Who won the first season of America's Next Top Model? | *Adrianne Curry | Yoanna House | Eva Pigford | Naima Mora
+5 | Who won Season 4 of RuPaul's Drag Race? | *Sharon Needles | Chad Michaels | Phi Phi O'Hara | Latrice Royale
+5 | On which network did RuPaul's Drag Race first air? | *Logo | VH1 | MTV | Bravo
+5 | Which Love Is Blind Season 1 couple married and stayed together? | *Lauren Speed and Cameron Hamilton | Jessica Batten and Mark Cuevas | Giannina Gibelli and Damian Powers | Kelly Chase and Kenny Barnes
+5 | In which city was the first season of Love Is Blind filmed? | *Atlanta | Chicago | Dallas | Seattle
+5 | Who hosted The Celebrity Apprentice after Donald Trump? | *Arnold Schwarzenegger | Mark Cuban | Martha Stewart | Kevin O'Leary
+5 | Which Atlanta Housewife is known for "Who gon' check me, boo?" | *Sheree Whitfield | NeNe Leakes | Kandi Burruss | Porsha Williams
+5 | Which Orange County Housewife made "Whoop it up!" her catchphrase? | *Vicki Gunvalson | Tamra Judge | Shannon Beador | Heather Dubrow
+5 | Who was the first winner of Big Brother in the U.S., in 2000? | *Eddie McGee | Dr. Will Kirby | Dan Gheesling | Evel Dick Donato
+5 | Who won Survivor: Cagayan, then later won again in Winners at War? | *Tony Vlachos | Kim Spradlin | Jeremy Collins | Michele Fitzgerald
+5 | How many contestants competed in Squid Game: The Challenge? | *456 | 100 | 1,000 | 250
+5 | Which Survivor contestant found the show's first hidden immunity idol, in Guatemala? | *Gary Hogeboom | Stephenie LaGrossa | Danni Boatwright | Rafe Judkins
+5 | Who won the very first season of Project Runway? | *Jay McCarroll | Christian Siriano | Chloe Dao | Austin Scarlett
+5 | Who won Season 4 of Project Runway, known for saying "fierce"? | *Christian Siriano | Jay McCarroll | Chloe Dao | Leanne Marshall
+5 | Who won Season 1 of Top Chef? | *Harold Dieterle | Ilan Hall | Hung Huynh | Stephanie Izard
+5 | Which Top Chef winner was the first woman to win, in Season 4? | *Stephanie Izard | Hosea Rosenberg | Kristen Kish | Mei Lin
+5 | Who were the first couple to win The Amazing Race, in 2001? | *Rob Frisbee and Brennan Swain | Boston Rob and Amber | Chip and Kim | Uchenna and Joyce
+5 | Who won the first season of MasterChef in the U.S., in 2010? | *Whitney Miller | Christine Ha | Luca Manfè | Claudia Sandoval
+5 | Which Survivor winner was the first to win unanimously? | *J.T. Thomas | Earl Cole | Tom Westman | Yul Kwon
+5 | Which Bachelorette star married Ryan Sutter in a televised 2003 wedding? | *Trista Rehn | Jen Schefft | Meredith Phillips | Ali Fedotowsky
+2 | What is the name of the Kardashian sisters' brother? | *Rob | Brody | Scott | Lamar
+5 | Who won Season 2 of Big Brother in the U.S.? | *Dr. Will Kirby | Nicole Schaffrich | Monica Bailey | Mike "Boogie" Malin
+5 | Who won Season 3 of American Idol? | *Fantasia Barrino | Diana DeGarmo | Jennifer Hudson | LaToya London
+5 | Who won Season 7 of American Idol? | *David Cook | David Archuleta | Syesha Mercado | Jason Castro
+5 | Who beat Adam Lambert to win Season 8 of American Idol? | *Kris Allen | Danny Gokey | Allison Iraheta | Matt Giraud
+5 | Who won the first series of The Great British Bake Off, in 2010? | *Edd Kimber | Jo Wheatley | John Whaite | Frances Quinn

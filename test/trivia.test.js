@@ -20,19 +20,23 @@ function setup(n = 4) {
   return { room, players, s, view, act, chooser, crowd, rightPos, wrongPos };
 }
 
-test('questions: the 5 requested categories, at least 5 per difficulty, one right answer each', () => {
+test('questions: the 5 requested categories, 200+ each, 40+ per difficulty, one right answer each', () => {
   assert.deepStrictEqual(trivia.categories, ['Bible', 'History', 'Pop Music', 'Reality TV', 'Sports']);
-  for (const c of trivia.categories)
+  for (const c of trivia.categories) {
+    assert.ok(Q.filter((q) => q.category === c).length >= 200, `${c} has fewer than 200 questions`);
     for (const level of [1, 2, 3, 4, 5]) {
       const n = Q.filter((q) => q.category === c && q.level === level).length;
-      assert.ok(n >= 5, `${c} level ${level} has ${n}`);
+      assert.ok(n >= 40, `${c} level ${level} has ${n}`);
     }
+  }
   for (const q of Q) {
     assert.strictEqual(q.answers.length, 4, q.question);
     assert.strictEqual(new Set(q.answers).size, 4, `duplicate answers: ${q.question}`);
     assert.ok(q.correct >= 0 && q.correct < 4);
   }
-  assert.strictEqual(new Set(Q.map((q) => q.question)).size, Q.length, 'duplicate questions');
+  const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  assert.strictEqual(new Set(Q.map((q) => norm(q.question))).size, Q.length, 'duplicate questions');
+  assert.deepStrictEqual(Q.filter((q) => new Set(q.answers.map(norm)).size !== 4).map((q) => q.question), [], 'repeated answers');
 });
 
 test('board is 5 categories x 5 difficulties; chooser picks a square', () => {

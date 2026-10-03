@@ -65,7 +65,7 @@ A Jeopardy-style board: **Bible, History, Pop Music, Reality TV and Sports**, ea
 
 When the board is used up, a fresh one is dealt with new questions. Questions asked during the night aren't repeated. The host can set the answer time (20/30/45/60s), pick a square for an absent player, let someone else pick, reveal early, or deal a fresh board.
 
-**Questions:** 150 in `server/data/trivia.txt` (30 per category, 6 per difficulty), one per line: `difficulty | question | *right answer | wrong | wrong | wrong`. Add your own lines or new `## Category` sections; each category needs at least 5 questions per difficulty. Pop Music and Reality TV were written for this project and cover up to 2024. Some Bible, History and Sports questions are adapted from [OpenTriviaQA](https://github.com/uberspot/OpenTriviaQA) (CC BY-SA 4.0).
+**Questions:** 1,067 in total, 200+ per category with 40+ at every difficulty, so a group can play several full boards across different nights without repeats. Each category has its own file in `server/data/trivia/` (files load in name order, which sets the board's column order), one question per line: `difficulty | question | *right answer | wrong | wrong | wrong`. To add a category, add a new file with a `## Category` line. The tests require 200+ questions per category, 40+ per difficulty, exactly 4 different answers and no duplicate questions. Pop Music and Reality TV were written for this project and cover up to 2025. Some Bible, History and Sports questions are adapted from [OpenTriviaQA](https://github.com/uberspot/OpenTriviaQA) (CC BY-SA 4.0).
 
 ### Buzzer Round
 

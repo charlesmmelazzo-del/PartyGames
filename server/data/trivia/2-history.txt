@@ -1,0 +1,219 @@
+# Trivia questions for one board column. The category name is the "## " line below.
+# One question per line:   difficulty | question | answer | answer | answer | answer
+# Difficulty is 1 (easy, worth 1 point) to 5 (hard, worth 5). Mark the correct answer with a
+# leading "*". Answers are shuffled when the question is asked.
+# Some questions adapted from OpenTriviaQA (github.com/uberspot/OpenTriviaQA, CC BY-SA 4.0).
+
+## History
+1 | Who was the first President of the United States? | *George Washington | Thomas Jefferson | John Adams | Abraham Lincoln
+1 | Which country gave the Statue of Liberty to the United States? | *France | England | Spain | Italy
+1 | Who was the U.S. president during the Civil War? | *Abraham Lincoln | Ulysses S. Grant | Andrew Johnson | James Buchanan
+1 | In which country are the Great Pyramids of Giza? | *Egypt | Mexico | Peru | Greece
+1 | Who was the first person to walk on the Moon? | *Neil Armstrong | Buzz Aldrin | Yuri Gagarin | John Glenn
+1 | In what year was the Declaration of Independence signed? | *1776 | 1789 | 1812 | 1765
+2 | Who gave the "I Have a Dream" speech in 1963? | *Martin Luther King Jr. | Malcolm X | John F. Kennedy | Frederick Douglass
+2 | Which ship carried the Pilgrims to America in 1620? | *Mayflower | Santa Maria | Endeavour | Beagle
+2 | In what year did the Titanic sink? | *1912 | 1905 | 1920 | 1898
+2 | Who was Britain's prime minister for most of World War II? | *Winston Churchill | Neville Chamberlain | Clement Attlee | Margaret Thatcher
+2 | Who is the only U.S. president to resign from office? | *Richard Nixon | Bill Clinton | Andrew Johnson | Gerald Ford
+2 | In what year did Christopher Columbus first reach the Americas? | *1492 | 1498 | 1501 | 1488
+3 | Julius Caesar was assassinated on the Ides of which month? | *March | April | May | January
+3 | Which president made the Louisiana Purchase? | *Thomas Jefferson | James Madison | John Adams | James Monroe
+3 | The United States bought Alaska from which country? | *Russia | Canada | Britain | Spain
+3 | Which Roman city was buried when Mount Vesuvius erupted in 79 AD? | *Pompeii | Carthage | Troy | Sparta
+3 | Who was the first female prime minister of the United Kingdom? | *Margaret Thatcher | Theresa May | Queen Victoria | Indira Gandhi
+3 | In what year did the Berlin Wall fall? | *1989 | 1991 | 1987 | 1985
+4 | Which president died just 31 days into his term? | *William Henry Harrison | James Garfield | Zachary Taylor | Warren Harding
+4 | In what year was the Magna Carta sealed? | *1215 | 1066 | 1492 | 1312
+4 | Which 1066 battle began the Norman conquest of England? | *Battle of Hastings | Battle of Agincourt | Battle of Bosworth | Battle of Waterloo
+4 | Which treaty formally ended World War I with Germany? | *Treaty of Versailles | Treaty of Paris | Treaty of Ghent | Treaty of Westphalia
+4 | What was the first state to secede from the Union before the Civil War? | *South Carolina | Virginia | Georgia | Mississippi
+4 | Who was the first emperor of Rome? | *Augustus | Julius Caesar | Nero | Caligula
+5 | Caligula succeeded which Roman emperor? | *Tiberius | Claudius | Nero | Augustus
+5 | Who was the first emperor of a unified China, in 221 BC? | *Qin Shi Huang | Kublai Khan | Sun Yat-sen | Puyi
+5 | The Hundred Years' War actually lasted about how many years? | *116 | 100 | 99 | 124
+5 | Which Aztec emperor ruled when Hernán Cortés arrived? | *Montezuma II | Atahualpa | Cuauhtémoc | Pachacuti
+5 | Which Russian tsar founded the city of St. Petersburg? | *Peter the Great | Ivan the Terrible | Catherine the Great | Nicholas II
+5 | What was the capital of the Byzantine Empire? | *Constantinople | Rome | Athens | Alexandria
+1 | Which city was divided by a wall from 1961 to 1989? | *Berlin | Moscow | Vienna | Warsaw
+1 | Who was president during the September 11 attacks? | *George W. Bush | Bill Clinton | Barack Obama | Al Gore
+1 | Who was the first Black president of the United States? | *Barack Obama | Colin Powell | Jesse Jackson | Kamala Harris
+1 | Which American war was fought between the North and the South? | *The Civil War | The Revolutionary War | The War of 1812 | The Spanish–American War
+1 | In which country did the ancient Olympic Games begin? | *Greece | Italy | Egypt | France
+1 | The American colonies won independence from which country? | *Great Britain | France | Spain | The Netherlands
+1 | Which huge structure in China was built to keep out invaders? | *The Great Wall | The Forbidden City | The Terracotta Army | The Summer Palace
+1 | Who led Nazi Germany? | *Adolf Hitler | Benito Mussolini | Joseph Stalin | Otto von Bismarck
+1 | Whose face is on the U.S. penny? | *Abraham Lincoln | Thomas Jefferson | George Washington | Benjamin Franklin
+1 | Which ancient people built the Colosseum? | *The Romans | The Greeks | The Egyptians | The Persians
+1 | How many states are in the United States? | *50 | 48 | 52 | 51
+1 | Which holiday celebrates American independence? | *The Fourth of July | Memorial Day | Labor Day | Presidents' Day
+1 | Who is usually credited with inventing the light bulb? | *Thomas Edison | Nikola Tesla | Alexander Graham Bell | Benjamin Franklin
+1 | Who is credited with inventing the telephone? | *Alexander Graham Bell | Thomas Edison | Samuel Morse | Guglielmo Marconi
+1 | Who made the first powered airplane flight in 1903? | *The Wright brothers | The Marx brothers | The Grimm brothers | The Montgolfier brothers
+1 | Who refused to give up her bus seat in Montgomery in 1955? | *Rosa Parks | Harriet Tubman | Coretta Scott King | Ruby Bridges
+1 | Which president was assassinated in Dallas in 1963? | *John F. Kennedy | Abraham Lincoln | William McKinley | James Garfield
+1 | Which country attacked Pearl Harbor in 1941? | *Japan | Germany | Italy | Russia
+1 | According to legend, Paul Revere rode to warn that who was coming? | *The British | The French | The Spanish | The Dutch
+1 | In what year did astronauts first land on the Moon? | *1969 | 1965 | 1972 | 1959
+1 | Who led India's nonviolent fight for independence from Britain? | *Mahatma Gandhi | Jawaharlal Nehru | Indira Gandhi | Muhammad Ali Jinnah
+1 | Which South African leader spent 27 years in prison before becoming president? | *Nelson Mandela | Desmond Tutu | F. W. de Klerk | Steve Biko
+1 | Which country was ruled by tsars? | *Russia | Germany | Austria | Poland
+1 | What was the long standoff between the U.S. and the Soviet Union called? | *The Cold War | The Great War | The Long War | The Iron War
+1 | Which 1773 protest saw colonists dump tea into a harbor? | *The Boston Tea Party | The Philadelphia Tea Riot | The New York Tea Strike | The Charleston Tea Revolt
+1 | Who became king of the United Kingdom after Elizabeth II? | *Charles III | William V | George VII | Edward IX
+1 | Who was the first woman to serve as U.S. vice president? | *Kamala Harris | Hillary Clinton | Geraldine Ferraro | Sarah Palin
+1 | How many original colonies formed the United States? | *13 | 10 | 12 | 15
+1 | In which country is Stonehenge? | *England | Ireland | Scotland | France
+1 | Who painted the Mona Lisa? | *Leonardo da Vinci | Michelangelo | Raphael | Vincent van Gogh
+1 | In what year did the September 11 attacks take place? | *2001 | 2000 | 2002 | 1999
+1 | Napoleon Bonaparte was the leader of which country? | *France | Italy | Spain | Austria
+1 | Which famous ship was called "unsinkable" before it sank? | *The Titanic | The Lusitania | The Bismarck | The Mayflower
+1 | Who freed the slaves with the Emancipation Proclamation? | *Abraham Lincoln | Ulysses S. Grant | Andrew Johnson | Frederick Douglass
+2 | Who is on the $100 bill? | *Benjamin Franklin | Alexander Hamilton | Ulysses S. Grant | Andrew Jackson
+2 | Which ancient civilization built Machu Picchu? | *The Inca | The Aztecs | The Maya | The Olmecs
+2 | In which city was the Declaration of Independence signed? | *Philadelphia | Boston | New York | Washington, D.C.
+2 | In what year did World War II end? | *1945 | 1944 | 1946 | 1939
+2 | Which boy pharaoh's tomb was discovered in 1922? | *Tutankhamun | Ramses II | Khufu | Akhenaten
+2 | Which NASA program first landed people on the Moon? | *Apollo | Gemini | Mercury | Artemis
+2 | Who was the main author of the Declaration of Independence? | *Thomas Jefferson | John Adams | Benjamin Franklin | George Washington
+2 | Who commanded the Confederate army in the Civil War? | *Robert E. Lee | Ulysses S. Grant | Stonewall Jackson | William T. Sherman
+2 | What did the 19th Amendment give American women? | *The right to vote | The right to own property | The right to serve in the military | Equal pay
+2 | Which document begins "We the People"? | *The U.S. Constitution | The Declaration of Independence | The Bill of Rights | The Gettysburg Address
+2 | Which speech begins "Four score and seven years ago"? | *The Gettysburg Address | The Emancipation Proclamation | The "I Have a Dream" speech | Washington's Farewell Address
+2 | Who was president during the Great Depression and most of World War II? | *Franklin D. Roosevelt | Herbert Hoover | Harry Truman | Woodrow Wilson
+2 | In what year did the stock market crash that began the Great Depression? | *1929 | 1919 | 1933 | 1939
+2 | Who was the first person to travel into space? | *Yuri Gagarin | Alan Shepard | John Glenn | Neil Armstrong
+2 | Which Egyptian queen allied with Mark Antony? | *Cleopatra | Nefertiti | Hatshepsut | Isis
+2 | Who founded the Mongol Empire? | *Genghis Khan | Kublai Khan | Attila the Hun | Tamerlane
+2 | Which English king had six wives? | *Henry VIII | Henry VII | Edward VI | Richard III
+2 | Who was the longest-reigning British monarch? | *Elizabeth II | Victoria | George III | Henry VIII
+2 | In what year did Queen Elizabeth II die? | *2022 | 2020 | 2021 | 2023
+2 | Who assassinated Abraham Lincoln? | *John Wilkes Booth | Lee Harvey Oswald | Charles Guiteau | Leon Czolgosz
+2 | According to the Warren Commission, who shot John F. Kennedy? | *Lee Harvey Oswald | Jack Ruby | James Earl Ray | Sirhan Sirhan
+2 | What was D-Day? | *The Allied invasion of Normandy | The attack on Pearl Harbor | Germany's surrender | The fall of Berlin
+2 | What was the Underground Railroad? | *A network that helped enslaved people escape | A secret subway in New York | A Civil War supply line | A gold-rush railroad
+2 | Who led dozens of enslaved people to freedom on the Underground Railroad? | *Harriet Tubman | Sojourner Truth | Frederick Douglass | Rosa Parks
+2 | The 1849 Gold Rush took place in which state? | *California | Alaska | Colorado | Nevada
+2 | Which French queen is said to have said "Let them eat cake"? | *Marie Antoinette | Catherine de' Medici | Josephine | Anne of Austria
+2 | What deadly plague swept Europe in the 1300s? | *The Black Death | The Spanish flu | Smallpox | Cholera
+2 | Who led the Soviet Union during World War II? | *Joseph Stalin | Vladimir Lenin | Nikita Khrushchev | Leon Trotsky
+2 | Which Italian dictator allied with Hitler? | *Benito Mussolini | Francisco Franco | Giuseppe Garibaldi | Victor Emmanuel III
+2 | Which Greek king built an empire that stretched to India? | *Alexander the Great | Leonidas | Pericles | Philip II
+2 | Which Greek city-state was famous for its fierce warriors? | *Sparta | Athens | Corinth | Thebes
+2 | Which French teenager led armies in the Hundred Years' War? | *Joan of Arc | Marie Curie | Catherine de' Medici | Eleanor of Aquitaine
+2 | In which state is the Alamo? | *Texas | New Mexico | Arizona | California
+2 | Which president had been a Hollywood actor? | *Ronald Reagan | Gerald Ford | Jimmy Carter | Richard Nixon
+2 | Which president said "Ask not what your country can do for you"? | *John F. Kennedy | Franklin D. Roosevelt | Lyndon B. Johnson | Ronald Reagan
+2 | Which Founding Father is on the $10 bill? | *Alexander Hamilton | Benjamin Franklin | Aaron Burr | John Jay
+2 | What writing system did the ancient Egyptians use? | *Hieroglyphics | Cuneiform | Sanskrit | Runes
+2 | Which stone helped scholars decode Egyptian hieroglyphics? | *The Rosetta Stone | The Blarney Stone | The Moonstone | The Philosopher's Stone
+2 | Who built Europe's first movable-type printing press, around 1440? | *Johannes Gutenberg | Leonardo da Vinci | Galileo Galilei | Martin Luther
+2 | Who painted the ceiling of the Sistine Chapel? | *Michelangelo | Leonardo da Vinci | Raphael | Donatello
+2 | Who said "I came, I saw, I conquered"? | *Julius Caesar | Alexander the Great | Napoleon | Genghis Khan
+3 | Who discovered penicillin in 1928? | *Alexander Fleming | Louis Pasteur | Marie Curie | Joseph Lister
+3 | What was the first artificial satellite, launched in 1957? | *Sputnik | Explorer 1 | Vostok | Telstar
+3 | Which queen ruled England in Shakespeare's time? | *Elizabeth I | Victoria | Mary I | Anne
+3 | Which nurse was called "The Lady with the Lamp"? | *Florence Nightingale | Clara Barton | Mary Seacole | Edith Cavell
+3 | In what year did World War I begin? | *1914 | 1917 | 1918 | 1905
+3 | Which empire built Hadrian's Wall in Britain? | *The Roman Empire | The Viking Empire | The Norman Empire | The Celtic Empire
+3 | Which amendment abolished slavery in the United States? | *13th | 14th | 15th | 19th
+3 | Which president ordered the atomic bombings of Japan? | *Harry Truman | Franklin D. Roosevelt | Dwight Eisenhower | John F. Kennedy
+3 | Who was the first American woman in space? | *Sally Ride | Mae Jemison | Eileen Collins | Christa McAuliffe
+3 | Which is the only Wonder of the Ancient World still standing? | *The Great Pyramid of Giza | The Hanging Gardens of Babylon | The Colossus of Rhodes | The Lighthouse of Alexandria
+3 | Which general crossed the Alps with war elephants? | *Hannibal | Scipio | Hamilcar | Attila
+3 | In what year did the American Civil War end? | *1865 | 1861 | 1863 | 1870
+3 | Who flew the first solo nonstop flight across the Atlantic, in 1927? | *Charles Lindbergh | Amelia Earhart | Howard Hughes | Orville Wright
+3 | Who was the first woman to fly solo across the Atlantic? | *Amelia Earhart | Bessie Coleman | Harriet Quimby | Jacqueline Cochran
+3 | In what year was D-Day? | *1944 | 1942 | 1943 | 1945
+3 | The Battle of the Bulge was fought in which war? | *World War II | World War I | The Korean War | The Civil War
+3 | The War of 1812 was fought between the United States and which country? | *Britain | France | Spain | Mexico
+3 | Which Paris fortress-prison was stormed on July 14, 1789? | *The Bastille | The Louvre | Versailles | Notre-Dame
+3 | Who led the Bolsheviks in the Russian Revolution of 1917? | *Vladimir Lenin | Joseph Stalin | Leon Trotsky | Nicholas II
+3 | Who was the last tsar of Russia? | *Nicholas II | Alexander III | Peter the Great | Ivan IV
+3 | Which Soviet leader introduced glasnost and perestroika? | *Mikhail Gorbachev | Boris Yeltsin | Leonid Brezhnev | Nikita Khrushchev
+3 | In what year did the Soviet Union collapse? | *1991 | 1989 | 1993 | 1985
+3 | Who led the first expedition to sail all the way around the world? | *Ferdinand Magellan | Christopher Columbus | Vasco da Gama | Francis Drake
+3 | Which Viking is believed to have reached North America around the year 1000? | *Leif Erikson | Erik the Red | Ragnar Lothbrok | Harald Hardrada
+3 | What legendary thing was Ponce de León said to be searching for in Florida? | *The Fountain of Youth | El Dorado | The Seven Cities of Gold | Atlantis
+3 | Which Roman general famously crossed the Rubicon? | *Julius Caesar | Pompey | Mark Antony | Augustus
+3 | Which Roman emperor supposedly "fiddled while Rome burned"? | *Nero | Caligula | Commodus | Tiberius
+3 | Who founded the People's Republic of China in 1949? | *Mao Zedong | Chiang Kai-shek | Deng Xiaoping | Sun Yat-sen
+3 | The Trail of Tears is best known for the forced removal of which nation? | *The Cherokee | The Sioux | The Apache | The Navajo
+3 | Custer's Last Stand took place at which battle? | *Little Bighorn | Wounded Knee | Gettysburg | The Alamo
+3 | Who was the first woman on the U.S. Supreme Court? | *Sandra Day O'Connor | Ruth Bader Ginsburg | Sonia Sotomayor | Elena Kagan
+3 | Whose portrait is on the $20 bill? | *Andrew Jackson | Alexander Hamilton | Ulysses S. Grant | Abraham Lincoln
+3 | Who killed Alexander Hamilton in a duel? | *Aaron Burr | Thomas Jefferson | James Madison | John Adams
+3 | Whose large signature on the Declaration of Independence became a word for "signature"? | *John Hancock | Samuel Adams | John Adams | Benjamin Franklin
+3 | Which president is NOT carved on Mount Rushmore? | *Franklin D. Roosevelt | Theodore Roosevelt | Thomas Jefferson | Abraham Lincoln
+3 | Whose assassination sparked World War I? | *Archduke Franz Ferdinand | Tsar Nicholas II | Kaiser Wilhelm II | King Umberto I
+3 | What was the Manhattan Project? | *The U.S. program to build the atomic bomb | A plan to rebuild New York | A Cold War spy ring | The Moon landing program
+3 | Which of these was NOT one of Columbus's ships in 1492? | *The Mayflower | The Niña | The Pinta | The Santa María
+3 | Which president was elected four times? | *Franklin D. Roosevelt | Theodore Roosevelt | Ulysses S. Grant | Woodrow Wilson
+4 | When Saigon fell in 1975, which war ended? | *The Vietnam War | The Korean War | The Gulf War | The Cold War
+4 | Where did Napoleon spend his final exile? | *Saint Helena | Elba | Corsica | Malta
+4 | Who was the first American in space? | *Alan Shepard | John Glenn | Gus Grissom | Neil Armstrong
+4 | Who was the first woman in space? | *Valentina Tereshkova | Sally Ride | Mae Jemison | Eileen Collins
+4 | What was the capital of the Aztec Empire? | *Tenochtitlan | Cusco | Chichen Itza | Teotihuacan
+4 | Which of Henry VIII's wives was the mother of Elizabeth I? | *Anne Boleyn | Catherine of Aragon | Jane Seymour | Catherine Parr
+4 | At which fort did the Civil War begin? | *Fort Sumter | Fort McHenry | Fort Knox | Fort Ticonderoga
+4 | Who assassinated Martin Luther King Jr.? | *James Earl Ray | Lee Harvey Oswald | Sirhan Sirhan | Jack Ruby
+4 | Who was the youngest person ever elected U.S. president? | *John F. Kennedy | Theodore Roosevelt | Bill Clinton | Barack Obama
+4 | What was the name of the plane that dropped the bomb on Hiroshima? | *Enola Gay | Bockscar | Memphis Belle | Spirit of St. Louis
+4 | Which treaty ended the American Revolutionary War in 1783? | *The Treaty of Paris | The Treaty of Ghent | The Treaty of Versailles | The Treaty of Utrecht
+4 | In what year did the Spanish flu pandemic begin? | *1918 | 1908 | 1928 | 1898
+4 | Who ruled Spain as dictator from 1939 to 1975? | *Francisco Franco | Antonio Salazar | Miguel Primo de Rivera | Juan Perón
+4 | Which explorer first sailed from Europe to India? | *Vasco da Gama | Ferdinand Magellan | Christopher Columbus | John Cabot
+4 | Who led the first expedition to reach the South Pole? | *Roald Amundsen | Robert Falcon Scott | Ernest Shackleton | Richard Byrd
+4 | Who conquered the Inca Empire? | *Francisco Pizarro | Hernán Cortés | Vasco Núñez de Balboa | Juan Ponce de León
+4 | Who was Alexander the Great's tutor? | *Aristotle | Plato | Socrates | Homer
+4 | At which battle did 300 Spartans make their famous stand? | *Thermopylae | Marathon | Salamis | Troy
+4 | The marathon race honors a messenger's run from Marathon to which city? | *Athens | Sparta | Rome | Corinth
+4 | What did Martin Luther famously post in 1517? | *The Ninety-five Theses | The Augsburg Confession | The Edict of Worms | The Book of Common Prayer
+4 | The Wars of the Roses were fought between the houses of York and… | *Lancaster | Tudor | Stuart | Windsor
+4 | Which British prime minister promised "peace for our time" in 1938? | *Neville Chamberlain | Winston Churchill | Stanley Baldwin | Clement Attlee
+4 | Who was India's first prime minister? | *Jawaharlal Nehru | Mahatma Gandhi | Indira Gandhi | Sardar Patel
+4 | In what year did India gain independence? | *1947 | 1950 | 1945 | 1962
+4 | In what year did the Korean War begin? | *1950 | 1945 | 1953 | 1948
+4 | Who was the first president to serve two non-consecutive terms? | *Grover Cleveland | Donald Trump | Theodore Roosevelt | Andrew Jackson
+4 | Which city was the first U.S. capital under the Constitution? | *New York City | Philadelphia | Washington, D.C. | Boston
+4 | Which ocean liner's sinking in 1915 helped turn Americans against Germany? | *The Lusitania | The Titanic | The Britannic | The Andrea Doria
+4 | Who was president when Apollo 11 landed on the Moon? | *Richard Nixon | John F. Kennedy | Lyndon B. Johnson | Gerald Ford
+4 | In what year did the Space Shuttle Challenger break apart after launch? | *1986 | 1981 | 1990 | 2003
+4 | Who was the first president to live in the White House? | *John Adams | George Washington | Thomas Jefferson | James Madison
+4 | Which civil rights leader led the 1965 marches from Selma to Montgomery? | *Martin Luther King Jr. | Malcolm X | Medgar Evers | Thurgood Marshall
+4 | Who was the first Black justice on the U.S. Supreme Court? | *Thurgood Marshall | Clarence Thomas | Earl Warren | Ralph Bunche
+4 | The Byzantine Empire's capital, Constantinople, is now which city? | *Istanbul | Athens | Ankara | Rome
+5 | In which city was Archduke Franz Ferdinand assassinated? | *Sarajevo | Vienna | Belgrade | Budapest
+5 | Which Wonder of the Ancient World stood at Alexandria? | *The Lighthouse | The Colossus | The Hanging Gardens | The Temple of Artemis
+5 | What was the capital of the Inca Empire? | *Cusco | Lima | Quito | Tenochtitlan
+5 | In what year did the Western Roman Empire traditionally fall? | *476 AD | 410 AD | 1453 AD | 312 AD
+5 | In what year did Constantinople fall to the Ottomans? | *1453 | 1492 | 1204 | 1517
+5 | Which Ottoman sultan conquered Constantinople? | *Mehmed II | Suleiman the Magnificent | Osman I | Selim I
+5 | Who was the first Tudor king of England? | *Henry VII | Henry VIII | Richard III | Edward IV
+5 | Who became the first chancellor of a united Germany in 1871? | *Otto von Bismarck | Kaiser Wilhelm I | Friedrich Ebert | Konrad Adenauer
+5 | From which country did the U.S. buy the Virgin Islands in 1917? | *Denmark | Spain | The Netherlands | Britain
+5 | Which two former presidents both died on July 4, 1826? | *John Adams and Thomas Jefferson | George Washington and James Madison | James Monroe and John Adams | Thomas Jefferson and James Madison
+5 | Which ancient people invented cuneiform writing? | *The Sumerians | The Egyptians | The Greeks | The Phoenicians
+5 | Persepolis was a capital of which ancient empire? | *The Persian Empire | The Babylonian Empire | The Assyrian Empire | The Ottoman Empire
+5 | Which was the first country to give all women the right to vote, in 1893? | *New Zealand | Finland | Australia | Norway
+5 | Which battle in 1415 is famous for English longbowmen defeating the French? | *Agincourt | Crécy | Poitiers | Hastings
+5 | Which Roman emperor made Christianity legal with the Edict of Milan? | *Constantine | Theodosius | Diocletian | Justinian
+5 | Which Byzantine emperor's law code, compiled in the 500s, shaped European law? | *Justinian | Constantine | Basil II | Heraclius
+5 | Which Mughal emperor built the Taj Mahal? | *Shah Jahan | Akbar | Babur | Aurangzeb
+5 | Which Egyptian female pharaoh ruled as king around 1470 BC? | *Hatshepsut | Cleopatra | Nefertiti | Nefertari
+5 | What 1494 treaty split the New World between Spain and Portugal? | *The Treaty of Tordesillas | The Treaty of Utrecht | The Treaty of Westphalia | The Treaty of Seville
+5 | Which famous French king was called "the Sun King"? | *Louis XIV | Louis XVI | Charles VII | Henry IV
+5 | Which battle in 1863 is considered the turning point of the Civil War? | *Gettysburg | Antietam | Bull Run | Shiloh
+5 | Who was the first U.S. president to be impeached? | *Andrew Johnson | Richard Nixon | Bill Clinton | Ulysses S. Grant
+5 | Which treaty created the European Union in 1993? | *The Maastricht Treaty | The Treaty of Rome | The Lisbon Treaty | The Schengen Agreement
+5 | Who was the best-known leader of the Haitian Revolution? | *Toussaint Louverture | Simón Bolívar | François Duvalier | Jean-Jacques Rousseau
+5 | Who liberated much of South America from Spain and has a country named after him? | *Simón Bolívar | José de San Martín | Bernardo O'Higgins | Francisco de Miranda
+5 | Which U.S. state was an independent republic from 1836 to 1845? | *Texas | California | Hawaii | Vermont
+5 | Which Chinese dynasty built most of the Great Wall that stands today? | *The Ming | The Qin | The Han | The Tang
+5 | Who was the Zulu king who fought the British in 1879? | *Cetshwayo | Shaka | Dingane | Mpande
+5 | What was the name of the first permanent English settlement in America? | *Jamestown | Plymouth | Roanoke | Salem
+5 | Which ancient city was destroyed by the Romans in 146 BC at the end of the Punic Wars? | *Carthage | Troy | Pompeii | Corinth
+5 | Which Frankish king was crowned Emperor by the Pope on Christmas Day in the year 800? | *Charlemagne | Otto I | Frederick Barbarossa | Charles V
+5 | The Battle of Waterloo took place in which present-day country? | *Belgium | France | The Netherlands | Germany
+5 | Who was the first female prime minister of India? | *Indira Gandhi | Sonia Gandhi | Pratibha Patil | Benazir Bhutto
+5 | In which year did Hawaii become a U.S. state? | *1959 | 1898 | 1945 | 1912

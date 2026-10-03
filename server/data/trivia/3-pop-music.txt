@@ -1,0 +1,222 @@
+# Trivia questions for one board column. The category name is the "## " line below.
+# One question per line:   difficulty | question | answer | answer | answer | answer
+# Difficulty is 1 (easy, worth 1 point) to 5 (hard, worth 5). Mark the correct answer with a
+# leading "*". Answers are shuffled when the question is asked.
+
+## Pop Music
+1 | Which singer's fans are called "Swifties"? | *Taylor Swift | Selena Gomez | Billie Eilish | Ariana Grande
+1 | Who is known as the "King of Pop"? | *Michael Jackson | Elvis Presley | Prince | Justin Timberlake
+1 | Which teen star had a huge 2010 hit with "Baby"? | *Justin Bieber | Shawn Mendes | Jesse McCartney | Zac Efron
+1 | Which singer broke out with "Just Dance" and "Poker Face"? | *Lady Gaga | Katy Perry | Kesha | Rihanna
+1 | Which singer's fans are known as the "BeyHive"? | *Beyoncé | Rihanna | Lizzo | Cardi B
+1 | Harry Styles first became famous in which band? | *One Direction | The Wanted | 5 Seconds of Summer | Big Time Rush
+2 | Who sang the 2019 hit "Bad Guy"? | *Billie Eilish | Olivia Rodrigo | Lorde | Halsey
+2 | Which singer released the album "21" in 2011? | *Adele | Amy Winehouse | Duffy | Florence Welch
+2 | "Uptown Funk" by Mark Ronson features which singer? | *Bruno Mars | Pharrell Williams | Justin Timberlake | The Weeknd
+2 | Which boy band sang "Bye Bye Bye"? | *NSYNC | Backstreet Boys | 98 Degrees | Boyz II Men
+2 | Which Disney Channel show made Miley Cyrus famous? | *Hannah Montana | Lizzie McGuire | That's So Raven | Wizards of Waverly Place
+2 | Which singer had hits with "Umbrella" and "Diamonds"? | *Rihanna | Beyoncé | Ciara | Kelly Rowland
+3 | Which girl group sang "Wannabe"? | *Spice Girls | Destiny's Child | TLC | All Saints
+3 | What was Olivia Rodrigo's debut single? | *drivers license | good 4 u | vampire | deja vu
+3 | What is Lady Gaga's real first name? | *Stefani | Stephanie | Gabriella | Lucinda
+3 | Which Beyoncé album was released with a film in 2016? | *Lemonade | Renaissance | 4 | Dangerously in Love
+3 | Which K-pop group topped the Billboard Hot 100 with "Dynamite"? | *BTS | Blackpink | EXO | TWICE
+3 | Which ex-Beatle wrote and sang "Imagine"? | *John Lennon | Paul McCartney | George Harrison | Ringo Starr
+4 | Which tour became the highest-grossing concert tour of all time? | *The Eras Tour | Renaissance World Tour | Music of the Spheres | The Divide Tour
+4 | Which actor was a Mouseketeer alongside Britney Spears and Justin Timberlake? | *Ryan Gosling | Zac Efron | Chris Pine | Jake Gyllenhaal
+4 | What was the first music video ever played on MTV, in 1981? | *Video Killed the Radio Star | Thriller | Take On Me | Bohemian Rhapsody
+4 | Which artist's real name is Abel Tesfaye? | *The Weeknd | Drake | Frank Ocean | Khalid
+4 | Ed Sheeran's "Shape of You" is on which album? | *÷ (Divide) | + (Plus) | × (Multiply) | = (Equals)
+4 | Ariana Grande first became famous on which Nickelodeon show? | *Victorious | iCarly | Zoey 101 | Big Time Rush
+5 | What is Bruno Mars's real first name? | *Peter | Bruno | Brandon | Pedro
+5 | What was the title of Madonna's 1983 debut album? | *Madonna | Like a Virgin | True Blue | Erotica
+5 | Which singer had the 1984 hit "99 Luftballons"? | *Nena | Falco | Kraftwerk | Alphaville
+5 | Which 2019 song set the record for most weeks at No. 1 on the Billboard Hot 100, with 19? | *Old Town Road | Despacito | One Sweet Day | Uptown Funk
+5 | Besides Beyoncé and Kelly Rowland, who was in Destiny's Child's best-known lineup? | *Michelle Williams | LeToya Luckett | Farrah Franklin | LaTavia Roberson
+5 | Who has won the Grammy for Album of the Year the most times? | *Taylor Swift | Frank Sinatra | Stevie Wonder | Paul Simon
+1 | Who sang "Shake It Off"? | *Taylor Swift | Katy Perry | Meghan Trainor | Selena Gomez
+1 | Whose 2015 hit begins "Hello, it's me"? | *Adele | Sam Smith | Lana Del Rey | Ellie Goulding
+1 | Who sang "...Baby One More Time"? | *Britney Spears | Christina Aguilera | Jessica Simpson | Mandy Moore
+1 | Who sang "Thriller"? | *Michael Jackson | Prince | Lionel Richie | Stevie Wonder
+1 | Which singer is known for "Firework" and "Roar"? | *Katy Perry | Kesha | Demi Lovato | Pink
+1 | Who sang "Single Ladies (Put a Ring on It)"? | *Beyoncé | Rihanna | Ciara | Alicia Keys
+1 | Which band sang "Hey Jude"? | *The Beatles | The Rolling Stones | Queen | The Who
+1 | Which band sang "Bohemian Rhapsody"? | *Queen | The Beatles | Led Zeppelin | Pink Floyd
+1 | Who sang "Shape of You"? | *Ed Sheeran | Sam Smith | Shawn Mendes | Harry Styles
+1 | Who sang "Thank U, Next"? | *Ariana Grande | Selena Gomez | Camila Cabello | Dua Lipa
+1 | Who sang "Blinding Lights"? | *The Weeknd | Drake | Post Malone | Khalid
+1 | Which pop star calls her fans "Little Monsters"? | *Lady Gaga | Katy Perry | Nicki Minaj | Miley Cyrus
+1 | Which boy band sang "I Want It That Way"? | *Backstreet Boys | NSYNC | 98 Degrees | Westlife
+1 | Who sang "Like a Virgin"? | *Madonna | Cyndi Lauper | Whitney Houston | Janet Jackson
+1 | Who sang "I Will Always Love You" for The Bodyguard? | *Whitney Houston | Mariah Carey | Celine Dion | Toni Braxton
+1 | Who sang "My Heart Will Go On" from Titanic? | *Celine Dion | Whitney Houston | Mariah Carey | Shania Twain
+1 | Who sang "All I Want for Christmas Is You"? | *Mariah Carey | Whitney Houston | Ariana Grande | Kelly Clarkson
+1 | Which instrument is Elton John famous for playing? | *Piano | Guitar | Drums | Saxophone
+1 | Who sang "Purple Rain"? | *Prince | Michael Jackson | Lenny Kravitz | Rick James
+1 | Who sang "Levitating"? | *Dua Lipa | Doja Cat | Rita Ora | Ava Max
+1 | Who sang "Happy" from Despicable Me 2? | *Pharrell Williams | Bruno Mars | Justin Timberlake | will.i.am
+1 | Which rapper sang "Hotline Bling"? | *Drake | Kanye West | Future | J. Cole
+1 | Justin Timberlake was in which boy band? | *NSYNC | Backstreet Boys | New Kids on the Block | 98 Degrees
+1 | Kevin, Joe and Nick make up which family band? | *Jonas Brothers | Hanson | The Jackson 5 | The Osmonds
+1 | Which family group made a young Michael Jackson famous? | *The Jackson 5 | The Osmonds | The Partridge Family | The Supremes
+1 | Who sang "Hips Don't Lie"? | *Shakira | Jennifer Lopez | Gloria Estefan | Paulina Rubio
+1 | Which singer and actress is nicknamed "J.Lo"? | *Jennifer Lopez | Jennifer Hudson | Janet Jackson | Jessica Lange
+1 | Which star's fans are called "Beliebers"? | *Justin Bieber | Shawn Mendes | Harry Styles | Charlie Puth
+1 | Who had a viral hit in 2012 with "Gangnam Style"? | *Psy | BTS | Big Bang | Rain
+1 | Who sang "Dancing Queen"? | *ABBA | Bee Gees | Spice Girls | Blondie
+1 | Beyoncé first became famous in which group? | *Destiny's Child | TLC | En Vogue | Spice Girls
+1 | The Grammy trophy is shaped like what? | *A gramophone | A vinyl record | A microphone | A star
+1 | What does MTV stand for? | *Music Television | Modern Television | Movie Television | Music Tunes Video
+1 | Which country is the K-pop group BTS from? | *South Korea | Japan | China | Thailand
+2 | What is Rihanna's real first name? | *Robyn | Rachel | Rhianne | Roberta
+2 | Which country is Rihanna from? | *Barbados | Jamaica | Trinidad and Tobago | The Bahamas
+2 | On which website was Justin Bieber discovered? | *YouTube | MySpace | Facebook | Vine
+2 | Who sang "Call Me Maybe"? | *Carly Rae Jepsen | Selena Gomez | Kesha | Avril Lavigne
+2 | Who sang "Complicated" and "Sk8er Boi"? | *Avril Lavigne | Michelle Branch | Kelly Clarkson | Pink
+2 | Who sang "Since U Been Gone"? | *Kelly Clarkson | Pink | Avril Lavigne | Ashlee Simpson
+2 | Who sang "Genie in a Bottle"? | *Christina Aguilera | Britney Spears | Jessica Simpson | Mandy Moore
+2 | Which duo recorded "Closer" with Halsey in 2016? | *The Chainsmokers | Daft Punk | Twenty One Pilots | Imagine Dragons
+2 | Who sang "Stay With Me" in 2014? | *Sam Smith | Ed Sheeran | John Legend | Hozier
+2 | Who sang "All of Me" in 2013? | *John Legend | Sam Smith | Ed Sheeran | Bruno Mars
+2 | Which band sang "Moves Like Jagger" and "Sugar"? | *Maroon 5 | OneRepublic | Coldplay | The Script
+2 | Which band sang "Viva la Vida"? | *Coldplay | Imagine Dragons | U2 | Keane
+2 | Which band sang "Radioactive" in 2012? | *Imagine Dragons | Twenty One Pilots | Fall Out Boy | Panic! at the Disco
+2 | Who sang "Royals"? | *Lorde | Lana Del Rey | Halsey | Sia
+2 | Which singer often performs with a big wig covering her face? | *Sia | Lorde | Billie Eilish | Lady Gaga
+2 | What was Lady Gaga's dress made of at the 2010 MTV VMAs? | *Raw meat | Feathers | Bubbles | Paper
+2 | Who sang "Despacito" with Daddy Yankee? | *Luis Fonsi | Enrique Iglesias | J Balvin | Bad Bunny
+2 | Who sang "Watermelon Sugar"? | *Harry Styles | Shawn Mendes | Niall Horan | Louis Tomlinson
+2 | Who sang "Señorita" with Shawn Mendes in 2019? | *Camila Cabello | Selena Gomez | Dua Lipa | Hailee Steinfeld
+2 | Who sang "Truth Hurts"? | *Lizzo | Megan Thee Stallion | Doja Cat | Normani
+2 | Who had a huge 2024 hit with "Espresso"? | *Sabrina Carpenter | Olivia Rodrigo | Chappell Roan | Tate McRae
+2 | Which singer's debut album was called "Sour"? | *Olivia Rodrigo | Billie Eilish | Gracie Abrams | Conan Gray
+2 | Who stormed the stage during Taylor Swift's speech at the 2009 VMAs? | *Kanye West | Jay-Z | Eminem | Chris Brown
+2 | Which country is ABBA from? | *Sweden | Norway | Denmark | The Netherlands
+2 | Which group sang "Stayin' Alive"? | *Bee Gees | ABBA | KC and the Sunshine Band | Earth, Wind & Fire
+2 | Who sang "Respect" in 1967? | *Aretha Franklin | Diana Ross | Tina Turner | Etta James
+2 | Who sang "I Will Survive"? | *Gloria Gaynor | Donna Summer | Diana Ross | Aretha Franklin
+2 | Who sang "Livin' la Vida Loca"? | *Ricky Martin | Enrique Iglesias | Marc Anthony | Luis Fonsi
+2 | Which band sang "Barbie Girl"? | *Aqua | Eiffel 65 | Vengaboys | S Club 7
+2 | Who rapped "Ice Ice Baby"? | *Vanilla Ice | MC Hammer | Marky Mark | Kid Rock
+2 | Who sang "U Can't Touch This"? | *MC Hammer | Vanilla Ice | Will Smith | Young MC
+2 | Which band sang "Wonderwall"? | *Oasis | Blur | Radiohead | Pulp
+2 | Who sang "Bodak Yellow"? | *Cardi B | Nicki Minaj | Megan Thee Stallion | Lil' Kim
+2 | Who sang "Super Bass"? | *Nicki Minaj | Cardi B | Iggy Azalea | Azealia Banks
+2 | Which band sang "Mr. Brightside"? | *The Killers | The Strokes | Arctic Monkeys | Kings of Leon
+2 | Who was the lead singer of No Doubt? | *Gwen Stefani | Shirley Manson | Hayley Williams | Avril Lavigne
+2 | Fergie was a member of which group? | *The Black Eyed Peas | The Pussycat Dolls | No Doubt | Fifth Harmony
+2 | Who sang "Hey Ya!"? | *OutKast | The Roots | Black Eyed Peas | N.E.R.D
+2 | Which Spice Girl was "Posh Spice"? | *Victoria Beckham | Mel B | Geri Halliwell | Emma Bunton
+2 | How many Spice Girls were there? | *5 | 4 | 6 | 3
+2 | Who sang "Shallow" with Bradley Cooper? | *Lady Gaga | Ariana Grande | Kelly Clarkson | Halsey
+2 | Selena Gomez starred in which Disney Channel show? | *Wizards of Waverly Place | Hannah Montana | Sonny with a Chance | That's So Raven
+2 | Which 2018 film told the story of Freddie Mercury and Queen? | *Bohemian Rhapsody | Rocketman | Walk the Line | Ray
+3 | Who sang "Girls Just Want to Have Fun"? | *Cyndi Lauper | Madonna | Pat Benatar | Debbie Harry
+3 | Who sang "Let It Go" in Disney's Frozen? | *Idina Menzel | Demi Lovato | Kristen Bell | Lea Michele
+3 | Who headlined the 2023 Super Bowl halftime show while pregnant? | *Rihanna | Beyoncé | Cardi B | Shakira
+3 | Who rapped on Rihanna's "Umbrella"? | *Jay-Z | Kanye West | Drake | Lil Wayne
+3 | Who joined Lil Nas X on the "Old Town Road" remix? | *Billy Ray Cyrus | Keith Urban | Blake Shelton | Garth Brooks
+3 | Who sang "Good Luck, Babe!" in 2024? | *Chappell Roan | Sabrina Carpenter | Gracie Abrams | Renée Rapp
+3 | Who sang "Stay" with Justin Bieber in 2021? | *The Kid LAROI | Shawn Mendes | Charlie Puth | Khalid
+3 | What was the name of Beyoncé's 2022 album? | *Renaissance | Lemonade | Cowboy Carter | 4
+3 | What are Ariana Grande's fans called? | *Arianators | Grandeheads | Ariheads | Moonlighters
+3 | Who sang "Somebody That I Used to Know" with Kimbra? | *Gotye | Fun. | Foster the People | MGMT
+3 | Which K-pop girl group sang "How You Like That"? | *Blackpink | TWICE | Red Velvet | ITZY
+3 | Madonna's 1990 hit was named after which dance? | *Vogue | The Twist | The Hustle | The Macarena
+3 | Which Motown group did Diana Ross lead? | *The Supremes | The Ronettes | The Shirelles | Martha and the Vandellas
+3 | Who sang "What's Love Got to Do with It"? | *Tina Turner | Diana Ross | Whitney Houston | Donna Summer
+3 | Which Cher hit from 1998 made Auto-Tune famous? | *Believe | If I Could Turn Back Time | Strong Enough | The Shoop Shoop Song
+3 | Which duo sang "Macarena"? | *Los del Río | Los Lobos | Gipsy Kings | Wham!
+3 | Which band of brothers sang "MMMBop"? | *Hanson | Jonas Brothers | Hansen | The Moffatts
+3 | Which group sang "No Scrubs"? | *TLC | Destiny's Child | En Vogue | SWV
+3 | Which act recorded "Get Lucky" with Pharrell in 2013? | *Daft Punk | Calvin Harris | David Guetta | Avicii
+3 | Which Swedish DJ released "Wake Me Up" in 2013? | *Avicii | Alesso | Swedish House Mafia | Kygo
+3 | Who sang "We Found Love" with Calvin Harris? | *Rihanna | Ellie Goulding | Dua Lipa | Rita Ora
+3 | Which duo sang "Party Rock Anthem"? | *LMFAO | Black Eyed Peas | Far East Movement | 3OH!3
+3 | Which award show hands out the "Moon Person" trophy? | *The MTV VMAs | The Grammys | The AMAs | The Billboard Music Awards
+3 | Whose "Running Up That Hill" became a hit again thanks to Stranger Things? | *Kate Bush | Stevie Nicks | Cyndi Lauper | Annie Lennox
+3 | Who sang "Unholy" with Kim Petras? | *Sam Smith | Troye Sivan | Charli XCX | Halsey
+3 | Who sang "Kill Bill" in 2022? | *SZA | Doja Cat | Summer Walker | H.E.R.
+3 | Who sang "Paint the Town Red" in 2023? | *Doja Cat | SZA | Ice Spice | Megan Thee Stallion
+3 | Who sang "Fancy" with Charli XCX? | *Iggy Azalea | Nicki Minaj | Cardi B | Rita Ora
+3 | Which band sang "Sugar, We're Goin Down"? | *Fall Out Boy | My Chemical Romance | Panic! at the Disco | Paramore
+3 | Who sang "Fergalicious"? | *Fergie | Gwen Stefani | Ciara | Christina Milian
+3 | Which band sang "Hey There Delilah"? | *Plain White T's | The Fray | OneRepublic | Boys Like Girls
+3 | How many members did One Direction have when they started? | *5 | 4 | 6 | 3
+3 | Which member left One Direction first, in 2015? | *Zayn Malik | Niall Horan | Liam Payne | Louis Tomlinson
+3 | On which TV show was One Direction put together? | *The X Factor | Britain's Got Talent | American Idol | Pop Idol
+3 | What is the name of Billie Eilish's brother and producer? | *Finneas | Jacob | Noah | Ryan
+3 | Billie Eilish sang the theme for which James Bond film? | *No Time to Die | Spectre | Skyfall | Quantum of Solace
+3 | Adele sang the theme for which James Bond film? | *Skyfall | Spectre | Casino Royale | No Time to Die
+3 | Camila Cabello started out in which girl group? | *Fifth Harmony | Little Mix | The Pussycat Dolls | Danity Kane
+3 | Demi Lovato and the Jonas Brothers starred in which Disney movie? | *Camp Rock | High School Musical | Starstruck | Lemonade Mouth
+3 | Which 2019 film is about Elton John's life? | *Rocketman | Bohemian Rhapsody | Elvis | Yesterday
+4 | What is Katy Perry's real last name? | *Hudson | Perry | Perez | Harper
+4 | Which British girl group won The X Factor in 2011? | *Little Mix | Girls Aloud | Sugababes | All Saints
+4 | Who sang "Torn" in 1997? | *Natalie Imbruglia | Alanis Morissette | Jewel | Lisa Loeb
+4 | Which band sang "Kiss Me" in 1998? | *Sixpence None the Richer | The Cardigans | Hanson | Savage Garden
+4 | What are Rihanna's fans called? | *The Navy | The Barbz | The Hive | The Army
+4 | In what year was Michael Jackson's "Thriller" album released? | *1982 | 1979 | 1984 | 1987
+4 | Michael Jackson first did the moonwalk on TV during which song? | *Billie Jean | Thriller | Beat It | Smooth Criminal
+4 | What is Drake's real first name? | *Aubrey | Andre | Darius | Dwayne
+4 | Drake first became famous acting on which TV show? | *Degrassi: The Next Generation | Saved by the Bell | iCarly | Glee
+4 | What was the title of Britney Spears's debut album? | *...Baby One More Time | Oops!... I Did It Again | Britney | Circus
+4 | In which state was Taylor Swift born? | *Pennsylvania | Tennessee | Texas | Georgia
+4 | Which Taylor Swift album won her first Album of the Year Grammy? | *Fearless | Red | 1989 | Speak Now
+4 | Who is known as the "Queen of Disco"? | *Donna Summer | Gloria Gaynor | Diana Ross | Cher
+4 | Which singer recorded "Bubbly" in 2007? | *Colbie Caillat | Sara Bareilles | Ingrid Michaelson | Feist
+4 | Who sang "Bleeding Love" in 2007? | *Leona Lewis | Jordin Sparks | Kelly Clarkson | Natasha Bedingfield
+4 | Who sang "Crazy" in 2006? | *Gnarls Barkley | OutKast | Scissor Sisters | Gorillaz
+4 | Which Spice Girl was "Baby Spice"? | *Emma Bunton | Mel C | Geri Halliwell | Victoria Beckham
+4 | How many members are in BTS? | *7 | 5 | 6 | 9
+4 | How many members are in Blackpink? | *4 | 5 | 3 | 6
+4 | Billie Eilish won an Oscar for which song from Barbie? | *What Was I Made For? | I'm Just Ken | Dance the Night | Pink
+4 | Who sang "Dance the Night" from Barbie? | *Dua Lipa | Lizzo | Nicki Minaj | Charli XCX
+4 | Who headlined the 2024 Super Bowl halftime show? | *Usher | The Weeknd | Rihanna | Kendrick Lamar
+4 | Which actor played Freddie Mercury in Bohemian Rhapsody? | *Rami Malek | Taron Egerton | Austin Butler | Ben Whishaw
+4 | What is the name of Selena Gomez's makeup brand? | *Rare Beauty | Fenty Beauty | Rhode | Haus Labs
+4 | Which rapper featured on Katy Perry's "E.T."? | *Kanye West | Snoop Dogg | Juicy J | Lil Wayne
+4 | Who sang "Low" with Flo Rida? | *T-Pain | Akon | Sean Paul | Usher
+4 | What are Demi Lovato's fans called? | *Lovatics | Demigods | Lovers | Demonators
+4 | Which song did Fleetwood Mac have go viral on TikTok in 2020? | *Dreams | Go Your Own Way | Landslide | Rhiannon
+4 | Who sang "Titanium" with Sia? | *David Guetta | Calvin Harris | Avicii | Zedd
+4 | Who sang "Tití Me Preguntó"? | *Bad Bunny | J Balvin | Daddy Yankee | Ozuna
+4 | Which British singer won six Grammys in one night in 2012? | *Adele | Amy Winehouse | Florence Welch | Duffy
+4 | Which singer married Kevin Federline in 2004? | *Britney Spears | Jessica Simpson | Christina Aguilera | Mandy Moore
+4 | Taylor Swift moved to which city as a teenager to pursue country music? | *Nashville | Austin | Memphis | Atlanta
+5 | What is Madonna's last name? | *Ciccone | Cicero | Costello | Conti
+5 | What was Elton John's name at birth? | *Reginald Dwight | Edward Smith | Elton Dwight | Richard Brown
+5 | What was Freddie Mercury's name at birth? | *Farrokh Bulsara | Frederick Mercer | Faisal Bakhsh | Francis Murray
+5 | What is Lizzo's real first name? | *Melissa | Elizabeth | Lisa | Eliza
+5 | What is Post Malone's real name? | *Austin Post | Malone Austin | Richard Post | Adam Malone
+5 | What was Taylor Swift's debut single, in 2006? | *Tim McGraw | Teardrops on My Guitar | Our Song | Love Story
+5 | What was the name of Britney Spears's 2007 album? | *Blackout | Circus | Femme Fatale | In the Zone
+5 | Who sang "Apologize" with OneRepublic? | *Timbaland | Akon | Pharrell Williams | Ne-Yo
+5 | Which Blackpink member is from Thailand? | *Lisa | Jennie | Rosé | Jisoo
+5 | Who sang the Bond theme "Writing's on the Wall"? | *Sam Smith | Adele | Billie Eilish | Ed Sheeran
+5 | What was the Beatles' first U.S. No. 1 single? | *I Want to Hold Your Hand | She Loves You | Love Me Do | Can't Buy Me Love
+5 | In what year did the Beatles first appear on The Ed Sullivan Show? | *1964 | 1962 | 1966 | 1960
+5 | What was Prince's full real name? | *Prince Rogers Nelson | Prince Roger Nelson Jr. | Rogers Nelson Prince | Prince Royce Nelson
+5 | Which album holds the record as the best-selling album of all time worldwide? | *Thriller | Back in Black | The Dark Side of the Moon | Bat Out of Hell
+5 | Who wrote and first recorded "Hallelujah"? | *Leonard Cohen | Jeff Buckley | Bob Dylan | John Cale
+5 | Who originally recorded "I Will Always Love You"? | *Dolly Parton | Whitney Houston | Linda Ronstadt | Reba McEntire
+5 | Which songwriter wrote "Girls Just Want to Have Fun" before Cyndi Lauper reworked it? | *Robert Hazard | Cyndi Lauper | Pat Benatar | Billy Steinberg
+5 | Who was the first female artist to win Album of the Year twice? | *Taylor Swift | Adele | Norah Jones | Alanis Morissette
+5 | What was Mariah Carey's debut single, a No. 1 hit in 1990? | *Vision of Love | Hero | Fantasy | Emotions
+5 | Who produced Michael Jackson's "Thriller"? | *Quincy Jones | Berry Gordy | Phil Spector | Babyface
+5 | Which band had a 1980s hit with "Take On Me"? | *a-ha | Duran Duran | Tears for Fears | Spandau Ballet
+5 | Which singer is known as "the Godfather of Soul"? | *James Brown | Ray Charles | Marvin Gaye | Otis Redding
+5 | Which song was Elvis Presley's first No. 1 hit in the U.S.? | *Heartbreak Hotel | Hound Dog | Love Me Tender | All Shook Up
+5 | What was the name of Whitney Houston's daughter? | *Bobbi Kristina | Brandy | Bethany | Brooke
+5 | Which boy band was formed by Lou Pearlman and featured AJ McLean? | *Backstreet Boys | NSYNC | O-Town | 98 Degrees
+5 | Which Australian duo sang "Truly Madly Deeply"? | *Savage Garden | Air Supply | Men at Work | INXS
+5 | Who sang "Bitter Sweet Symphony"? | *The Verve | Oasis | Blur | Pulp
+5 | Which Disney Channel star sang "This Is Me" in Camp Rock? | *Demi Lovato | Selena Gomez | Miley Cyrus | Vanessa Hudgens
+4 | Sting was the lead singer of which band? | *The Police | Genesis | Duran Duran | The Cars
+5 | In what year did Michael Jackson release "Off the Wall"? | *1979 | 1975 | 1982 | 1977
+5 | Which Destiny's Child song was written for the movie Charlie's Angels? | *Independent Women Part I | Survivor | Bootylicious | Say My Name
+5 | What was the name of Prince's band in the early 1980s? | *The Revolution | The New Power Generation | The Time | The Family
+5 | Which rapper was born Onika Maraj? | *Nicki Minaj | Cardi B | Lil' Kim | Missy Elliott
+5 | Which rapper was born Belcalis Almánzar? | *Cardi B | Nicki Minaj | Megan Thee Stallion | Saweetie
+5 | What was the Spice Girls' first album called? | *Spice | Spiceworld | Forever | Wannabe
+5 | Which Beatle was the last to join the band, in 1962? | *Ringo Starr | George Harrison | Paul McCartney | John Lennon

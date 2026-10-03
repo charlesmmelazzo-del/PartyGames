@@ -1,0 +1,214 @@
+# Trivia questions for one board column. The category name is the "## " line below.
+# One question per line:   difficulty | question | answer | answer | answer | answer
+# Difficulty is 1 (easy, worth 1 point) to 5 (hard, worth 5). Mark the correct answer with a
+# leading "*". Answers are shuffled when the question is asked.
+# Some questions adapted from OpenTriviaQA (github.com/uberspot/OpenTriviaQA, CC BY-SA 4.0).
+
+## Bible
+1 | Who built an ark to survive the great flood? | *Noah | Moses | Abraham | Jonah
+1 | In which town was Jesus born? | *Bethlehem | Nazareth | Jerusalem | Jericho
+1 | Who defeated the giant Goliath? | *David | Samson | Saul | Joshua
+1 | Which apostle betrayed Jesus? | *Judas Iscariot | Peter | Thomas | Matthew
+1 | What is the first book of the Bible? | *Genesis | Exodus | Matthew | Psalms
+1 | How many commandments did God give Moses? | *10 | 7 | 12 | 40
+2 | Who was swallowed by a great fish? | *Jonah | Job | Elijah | Daniel
+2 | Who was thrown into a den of lions? | *Daniel | Jonah | Elijah | Samuel
+2 | At a wedding in Cana, Jesus turned water into what? | *Wine | Milk | Oil | Honey
+2 | Who committed the first murder in the Bible? | *Cain | Abel | Lamech | Esau
+2 | Where did Samson's great strength come from? | *His hair | His sword | His father | His sandals
+2 | Which disciple doubted Jesus had risen until he saw the wounds? | *Thomas | Andrew | Philip | Bartholomew
+3 | Which disciple denied knowing Jesus three times? | *Peter | John | James | Andrew
+3 | What was the apostle Paul's name before his conversion? | *Saul | Silas | Simon | Stephen
+3 | Who was Moses's brother? | *Aaron | Joshua | Caleb | Levi
+3 | Which angel told Mary she would give birth to Jesus? | *Gabriel | Michael | Raphael | Uriel
+3 | Who succeeded Moses as leader of the Israelites? | *Joshua | Aaron | Caleb | Gideon
+3 | What is the shortest verse in most English Bibles? | *Jesus wept. | God is love. | Pray always. | Rejoice evermore.
+4 | Which book comes right after Genesis and Exodus? | *Leviticus | Numbers | Deuteronomy | Joshua
+4 | What did Esau trade his birthright for? | *A bowl of stew | A coat of many colors | Ten sheep | A camel
+4 | Who was Ruth's mother-in-law? | *Naomi | Orpah | Rahab | Deborah
+4 | Who was the father of King David? | *Jesse | Obed | Boaz | Saul
+4 | According to the Bible, who lived the longest? | *Methuselah | Noah | Adam | Enoch
+4 | How many books are in the New Testament? | *27 | 25 | 31 | 39
+5 | What is the last book of the Old Testament in Christian Bibles? | *Malachi | Zechariah | Haggai | Daniel
+5 | What name was Daniel given in Babylon? | *Belteshazzar | Shadrach | Belshazzar | Abednego
+5 | In which land did Job live? | *Uz | Ur | Moab | Edom
+5 | Who was the son of Ruth and Boaz? | *Obed | Jesse | Perez | Salmon
+5 | Which woman hid two Israelite spies on her roof in Jericho? | *Rahab | Deborah | Jael | Miriam
+5 | In total, how many years did Jacob work for Laban to marry Rachel? | *14 | 7 | 10 | 21
+1 | Who was the first man created by God? | *Adam | Abel | Noah | Abraham
+1 | Who was the first woman in the Bible? | *Eve | Mary | Sarah | Ruth
+1 | In which garden did Adam and Eve live? | *Eden | Gethsemane | Babylon | Canaan
+1 | What creature tempted Eve in the garden? | *A serpent | A lion | A raven | A goat
+1 | Who was the mother of Jesus? | *Mary | Martha | Elizabeth | Ruth
+1 | Who parted the Red Sea? | *Moses | Joshua | Elijah | David
+1 | How many disciples did Jesus choose? | *12 | 10 | 7 | 40
+1 | What is the last book of the Bible? | *Revelation | Malachi | Jude | Acts
+1 | According to the famous phrase, how did the animals enter Noah's ark? | *Two by two | One by one | Three by three | Four by four
+1 | What sign did God put in the sky after the flood? | *A rainbow | A comet | A cross | A star
+1 | On which holiday do Christians celebrate Jesus rising from the dead? | *Easter | Christmas | Pentecost | Lent
+1 | Who baptized Jesus? | *John the Baptist | Peter | Paul | Moses
+1 | What did the wise men follow to find baby Jesus? | *A star | A river | An angel | A comet
+1 | How many wise men are traditionally said to have visited baby Jesus? | *Three | Two | Seven | Twelve
+1 | What prayer begins "Our Father, who art in heaven"? | *The Lord's Prayer | The Hail Mary | The Apostles' Creed | The Beatitudes
+1 | What are the two main parts of the Christian Bible? | *Old and New Testament | First and Second Testament | Greater and Lesser Books | Law and Letters
+1 | What was the name of Mary's husband? | *Joseph | Joachim | Zechariah | James
+1 | Which brother did Cain kill? | *Abel | Seth | Enoch | Esau
+1 | For how many days and nights did it rain during Noah's flood? | *40 | 7 | 12 | 100
+1 | According to the Golden Rule, you should treat others the way… | *you want to be treated | they treat you | the law says | your parents taught you
+1 | What meal did Jesus share with his disciples the night before he died? | *The Last Supper | The Passover Feast | The Wedding at Cana | The Feeding of the 5,000
+1 | On which day after his death did Jesus rise? | *The third day | The seventh day | The second day | The fortieth day
+1 | What did soldiers put on Jesus's head before the crucifixion? | *A crown of thorns | A laurel wreath | A gold crown | A veil
+1 | What are the first four books of the New Testament called? | *The Gospels | The Epistles | The Psalms | The Prophets
+1 | In which book of the Bible does the story of creation appear? | *Genesis | Exodus | Psalms | John
+1 | What did God make on the very first day of creation? | *Light | Animals | Plants | People
+1 | Who was born in a stable and laid in a manger? | *Jesus | Moses | David | John the Baptist
+1 | What did Adam and Eve cover themselves with after eating the forbidden fruit? | *Fig leaves | Lamb's wool | Palm fronds | Linen cloth
+1 | How many people were saved on Noah's ark? | *8 | 2 | 12 | 40
+1 | Which young shepherd became king of Israel? | *David | Saul | Solomon | Samuel
+1 | What did Jesus famously walk on? | *Water | Fire | Clouds | Glass
+1 | What instrument did David play to soothe King Saul? | *A harp | A trumpet | A drum | A flute
+1 | What did Jesus say to the fishermen he would make them? | *Fishers of men | Kings of Israel | Shepherds of sheep | Builders of churches
+2 | Who was sold into slavery by his jealous brothers? | *Joseph | Benjamin | Moses | Isaac
+2 | Whose walls fell after the Israelites marched around the city? | *Jericho | Jerusalem | Babylon | Nineveh
+2 | How did God speak to Moses in the desert? | *From a burning bush | Through a talking donkey | In a whirlwind | Through a dove
+2 | What number is the Psalm that begins "The Lord is my shepherd"? | *23 | 1 | 91 | 100
+2 | What did Jesus use to feed 5,000 people? | *Five loaves and two fish | Seven loaves and three fish | Bread and wine | Manna and quail
+2 | What is Jesus's death on the cross called? | *The Crucifixion | The Ascension | The Transfiguration | The Annunciation
+2 | Who wrote many of the Psalms? | *David | Solomon | Moses | Paul
+2 | Which book tells of the Israelites leaving Egypt? | *Exodus | Genesis | Numbers | Judges
+2 | What food did God send the Israelites from heaven in the desert? | *Manna | Locusts | Figs | Honeycomb
+2 | How many pieces of silver was Judas paid to betray Jesus? | *30 | 10 | 40 | 100
+2 | Who was Isaac's father? | *Abraham | Jacob | Noah | Lot
+2 | Whose wife was turned into a pillar of salt? | *Lot's | Noah's | Abraham's | Job's
+2 | What tower did people build to try to reach heaven? | *The Tower of Babel | The Tower of Jericho | The Tower of Zion | The Tower of Nineveh
+2 | What gift from his father made Joseph's brothers jealous? | *A coat of many colors | A golden ring | A flock of sheep | A sword
+2 | How many plagues did God send on Egypt? | *10 | 7 | 12 | 3
+2 | Which Jewish holiday remembers the angel of death passing over Israelite homes? | *Passover | Hanukkah | Purim | Yom Kippur
+2 | Who betrayed Samson by cutting his hair? | *Delilah | Jezebel | Bathsheba | Salome
+2 | On which mountain did Moses receive the Ten Commandments? | *Mount Sinai | Mount Ararat | Mount Carmel | Mount Zion
+2 | Which son did God ask Abraham to sacrifice? | *Isaac | Ishmael | Jacob | Esau
+2 | How many tribes of Israel were there? | *12 | 10 | 7 | 40
+2 | Which man lost everything but stayed faithful in a book named after him? | *Job | Jonah | Joel | Jude
+2 | Which parable is about a son who wastes his inheritance and comes home? | *The Prodigal Son | The Good Samaritan | The Lost Sheep | The Sower
+2 | In the parable, who stopped to help the beaten man by the road? | *A Samaritan | A priest | A Levite | A soldier
+2 | What animal did Jesus ride into Jerusalem on Palm Sunday? | *A donkey | A horse | A camel | An ox
+2 | What did the crowds wave when Jesus entered Jerusalem? | *Palm branches | Olive branches | Flags | Scarves
+2 | What was Peter's job before he followed Jesus? | *Fisherman | Carpenter | Tax collector | Shepherd
+2 | What trade did Jesus learn from Joseph? | *Carpentry | Fishing | Shepherding | Tentmaking
+2 | In which town did Jesus grow up? | *Nazareth | Bethlehem | Capernaum | Jericho
+2 | In which river was Jesus baptized? | *The Jordan | The Nile | The Euphrates | The Tigris
+2 | For how many days did Jesus fast in the wilderness? | *40 | 7 | 12 | 3
+2 | What did the Israelites worship while Moses was up the mountain? | *A golden calf | A bronze snake | A silver bull | A stone idol
+2 | Which bird returned to Noah carrying an olive leaf? | *A dove | A raven | A sparrow | An eagle
+2 | Who was Jacob's twin brother? | *Esau | Laban | Reuben | Ishmael
+2 | Which sea did Jesus calm during a storm? | *The Sea of Galilee | The Dead Sea | The Red Sea | The Mediterranean Sea
+3 | How did Judas identify Jesus to the guards? | *With a kiss | With a handshake | By pointing | With a torch
+3 | Which disciple had been a tax collector? | *Matthew | Peter | Andrew | John
+3 | Which two brothers were the first disciples Jesus called as "fishers of men"? | *Peter and Andrew | James and Matthew | Thomas and Philip | Judas and Simon
+3 | Who climbed a sycamore tree to see Jesus? | *Zacchaeus | Nicodemus | Lazarus | Bartimaeus
+3 | Whom did Jesus raise from the dead after four days in the tomb? | *Lazarus | Jairus | Stephen | Barnabas
+3 | In which garden did Jesus pray the night he was arrested? | *Gethsemane | Eden | Golgotha | Bethany
+3 | Which Roman governor sentenced Jesus to death? | *Pontius Pilate | Herod Antipas | Caiaphas | Caesar Augustus
+3 | Which king ordered the killing of baby boys in Bethlehem? | *Herod | Pilate | Nero | Pharaoh
+3 | Which disciple stepped out of the boat to walk on water? | *Peter | John | Andrew | James
+3 | Who was Abraham's wife? | *Sarah | Rebekah | Rachel | Leah
+3 | Who interpreted Pharaoh's dreams about cows and grain? | *Joseph | Daniel | Moses | Aaron
+3 | What was the final plague of Egypt? | *The death of the firstborn | Frogs | Locusts | Darkness
+3 | Who was the first king of Israel? | *Saul | David | Solomon | Samuel
+3 | Who built the first Temple in Jerusalem? | *Solomon | David | Herod | Nehemiah
+3 | Which queen traveled to test King Solomon's wisdom? | *The Queen of Sheba | Queen Esther | Queen Jezebel | Queen Vashti
+3 | Which Jewish queen saved her people from Haman's plot? | *Esther | Ruth | Deborah | Miriam
+3 | On which road was Paul converted? | *The road to Damascus | The road to Emmaus | The road to Jericho | The road to Rome
+3 | In which language was most of the Old Testament first written? | *Hebrew | Greek | Latin | Arabic
+3 | Which Gospel begins "In the beginning was the Word"? | *John | Matthew | Mark | Luke
+3 | Where did Noah's ark come to rest? | *The mountains of Ararat | Mount Sinai | Mount Carmel | The Mount of Olives
+3 | What was Abraham's name before God changed it? | *Abram | Abiram | Abner | Abel
+3 | What new name did God give Jacob? | *Israel | Judah | Abraham | Joseph
+3 | Which book is mostly short wise sayings, many credited to Solomon? | *Proverbs | Psalms | Job | Lamentations
+3 | What did Jesus call the greatest commandment? | *Love the Lord your God | Do not murder | Keep the Sabbath | Honor your parents
+3 | What did Satan tempt Jesus to turn stones into? | *Bread | Gold | Wine | Fish
+3 | Who was pregnant with John the Baptist when Mary visited her? | *Elizabeth | Anna | Martha | Salome
+3 | Which disciple's name means "rock"? | *Peter | Thomas | Andrew | James
+3 | Who wrote the New Testament letters to Timothy? | *Paul | Peter | John | Luke
+3 | What does the word "gospel" mean? | *Good news | Holy book | God's law | Teaching
+3 | What was the box that held the Ten Commandments called? | *The Ark of the Covenant | Noah's Ark | The Tabernacle | The Mercy Seat
+3 | Which book of the Bible is a love poem? | *Song of Solomon | Ruth | Lamentations | Esther
+3 | In which town did Jesus perform his first miracle? | *Cana | Capernaum | Nazareth | Bethany
+3 | What title was posted above Jesus on the cross? | *King of the Jews | Son of God | Prophet of Nazareth | Teacher of Israel
+3 | Which book comes right after the four Gospels? | *Acts | Romans | Revelation | Hebrews
+3 | Who was thrown into the fiery furnace with Meshach and Abednego? | *Shadrach | Daniel | Ezra | Nehemiah
+3 | Who was Abraham's son with Hagar? | *Ishmael | Isaac | Esau | Lot
+3 | God promised Abraham his descendants would be as many as the… | *stars in the sky | trees in the forest | fish in the sea | birds in the air
+4 | The hill where Jesus was crucified, Golgotha, means "the place of the…" | *skull | cross | stones | olives
+4 | Which prophet went up to heaven in a chariot of fire? | *Elijah | Elisha | Isaiah | Enoch
+4 | Whose husband did King David have killed so he could marry her? | *Bathsheba's | Abigail's | Michal's | Tamar's
+4 | Who was the first Christian martyr? | *Stephen | James | Peter | Paul
+4 | What happened to the apostles at Pentecost? | *The Holy Spirit came upon them | They were arrested | Jesus ascended | They wrote the Gospels
+4 | In which language was most of the New Testament first written? | *Greek | Hebrew | Latin | Aramaic
+4 | How many books are in the Old Testament of Protestant Bibles? | *39 | 46 | 27 | 66
+4 | Which is the shortest of the four Gospels? | *Mark | Matthew | Luke | John
+4 | What was the name of Moses's sister? | *Miriam | Zipporah | Deborah | Leah
+4 | Which of these was one of Noah's three sons? | *Shem | Seth | Enoch | Abel
+4 | Who was Abraham's nephew who settled near Sodom? | *Lot | Laban | Nahor | Terah
+4 | Which of Jacob's wives did he love most? | *Rachel | Leah | Rebekah | Bilhah
+4 | Which woman judged Israel and led it to victory alongside Barak? | *Deborah | Jael | Miriam | Huldah
+4 | Who tested God by putting out a fleece? | *Gideon | Samson | Jephthah | Ehud
+4 | Which boy heard God call his name at night in the temple? | *Samuel | Jeremiah | Isaiah | Eli
+4 | Which book says "To everything there is a season"? | *Ecclesiastes | Proverbs | Psalms | Song of Solomon
+4 | In the Sermon on the Mount, who "shall inherit the earth"? | *The meek | The poor | The pure in heart | The peacemakers
+4 | According to John's Gospel, who first saw the risen Jesus? | *Mary Magdalene | Peter | John | Mary, his mother
+4 | For how many days did the risen Jesus appear before ascending to heaven? | *40 | 3 | 7 | 50
+4 | Which disciple was called "the disciple whom Jesus loved"? | *John | Peter | James | Andrew
+4 | What did John the Baptist eat in the wilderness? | *Locusts and wild honey | Bread and fish | Figs and dates | Manna and quail
+4 | Which Pharisee came to see Jesus at night? | *Nicodemus | Gamaliel | Caiaphas | Zacchaeus
+4 | Who was made to carry Jesus's cross part of the way? | *Simon of Cyrene | Simon Peter | Joseph of Arimathea | Barabbas
+4 | Which prisoner did the crowd ask Pilate to free instead of Jesus? | *Barabbas | Barnabas | Bartimaeus | Malchus
+4 | Who gave his own tomb for Jesus's burial? | *Joseph of Arimathea | Nicodemus | Lazarus | Simon of Cyrene
+4 | What does the name "Emmanuel" mean? | *God with us | Prince of peace | Holy one | Son of David
+4 | Which prophet wrote "For unto us a child is born"? | *Isaiah | Jeremiah | Ezekiel | Micah
+4 | Who took over from Elijah as prophet? | *Elisha | Isaiah | Jonah | Gehazi
+4 | Which queen was the prophet Elijah's great enemy? | *Jezebel | Athaliah | Vashti | Delilah
+4 | Which disciple was the brother of John? | *James | Andrew | Philip | Thomas
+4 | Which disciple cut off a servant's ear when Jesus was arrested? | *Peter | Judas | Thomas | John
+4 | Who was the father of John the Baptist? | *Zechariah | Joseph | Simeon | Joachim
+4 | How many psalms are in the Book of Psalms? | *150 | 100 | 120 | 176
+4 | What did Shadrach, Meshach and Abednego refuse to bow down to? | *A golden statue | A bronze snake | The king's crown | A golden calf
+4 | In John's Gospel, what were Jesus's last words on the cross? | *It is finished | Father, forgive them | I thirst | My God, why have you forsaken me
+4 | What did Jacob dream about at Bethel? | *A ladder reaching to heaven | Seven fat cows | A burning bush | A golden statue
+4 | Which woman laughed when told she'd have a baby in her old age? | *Sarah | Rebekah | Hannah | Elizabeth
+4 | Jesus raised the daughter of which synagogue leader? | *Jairus | Nicodemus | Zacchaeus | Simon
+5 | Which son of David rebelled and was caught by his hair in a tree? | *Absalom | Amnon | Solomon | Adonijah
+5 | Which prophet confronted David with a story about a poor man's lamb? | *Nathan | Samuel | Gad | Elijah
+5 | Who was chosen to replace Judas as the twelfth apostle? | *Matthias | Barnabas | Silas | Timothy
+5 | What was the name of Moses's wife? | *Zipporah | Miriam | Rachel | Hannah
+5 | Which two sons did Rachel give birth to? | *Joseph and Benjamin | Reuben and Simeon | Judah and Levi | Dan and Naphtali
+5 | Which woman prayed so hard for a child that the priest thought she was drunk? | *Hannah | Elizabeth | Sarah | Rachel
+5 | How many men did Gideon take into battle against the Midianites? | *300 | 1,000 | 12 | 40
+5 | What was the apostle Paul's trade? | *Tentmaker | Fisherman | Physician | Tax collector
+5 | Who asked for John the Baptist's head on a platter? | *The daughter of Herodias | Jezebel | Delilah | Bathsheba
+5 | Which disciple was called "the Zealot"? | *Simon | Jude | Philip | Bartholomew
+5 | Which high priest questioned Jesus before handing him to Pilate? | *Caiaphas | Eli | Nicodemus | Gamaliel
+5 | On which island was John when he wrote Revelation? | *Patmos | Crete | Malta | Cyprus
+5 | On which island was Paul shipwrecked? | *Malta | Patmos | Crete | Sicily
+5 | Who traveled with Paul on his first missionary journey? | *Barnabas | Silas | Luke | Timothy
+5 | Who was the oldest of Jacob's twelve sons? | *Reuben | Judah | Joseph | Levi
+5 | Which tribe of Israel served as priests? | *Levi | Judah | Benjamin | Dan
+5 | What did Moses lift up on a pole to heal people bitten by snakes? | *A bronze snake | A golden calf | His staff | A lamb
+5 | Which prophet foretold that the Messiah would come from Bethlehem? | *Micah | Isaiah | Hosea | Amos
+5 | Which book of the Bible never directly mentions God? | *Esther | Ruth | Jonah | Proverbs
+5 | Which disciple was also called Didymus, meaning "twin"? | *Thomas | Jude | James | Philip
+5 | Which old man in the Temple held baby Jesus and praised God? | *Simeon | Zechariah | Eli | Nicodemus
+5 | What words appeared on the wall at Belshazzar's feast? | *Mene, Mene, Tekel, Upharsin | Holy, Holy, Holy | Let my people go | It is finished
+5 | What did Jacob wrestle with through the night? | *An angel | A lion | His brother | A bear
+5 | Who was the left-handed judge who killed King Eglon? | *Ehud | Gideon | Othniel | Shamgar
+5 | Which king of Babylon destroyed Jerusalem and its Temple in 587 BC? | *Nebuchadnezzar | Cyrus | Darius | Belshazzar
+5 | Which Persian king allowed the Jews to return from exile? | *Cyrus | Xerxes | Darius | Artaxerxes
+5 | Who led the rebuilding of Jerusalem's walls? | *Nehemiah | Ezra | Zerubbabel | Haggai
+5 | Whose donkey spoke to him? | *Balaam's | Abraham's | Gideon's | Saul's
+5 | Which of these is one of the minor prophets? | *Habakkuk | Isaiah | Ezekiel | Jeremiah
+5 | Which disciple did Jesus call while sitting under a fig tree? | *Nathanael | Philip | Matthew | Thaddaeus
+5 | What was the name of Abraham's father? | *Terah | Nahor | Haran | Lamech
+5 | Which judge made a vow that led to the sacrifice of his daughter? | *Jephthah | Gideon | Samson | Ehud
+5 | In Revelation, how many horsemen ride out? | *4 | 7 | 3 | 12
+1 | Which holiday celebrates the birth of Jesus? | *Christmas | Easter | Pentecost | Epiphany
+5 | Which prophet was told to marry a woman named Gomer? | *Hosea | Amos | Joel | Micah

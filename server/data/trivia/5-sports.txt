@@ -1,0 +1,224 @@
+# Trivia questions for one board column. The category name is the "## " line below.
+# One question per line:   difficulty | question | answer | answer | answer | answer
+# Difficulty is 1 (easy, worth 1 point) to 5 (hard, worth 5). Mark the correct answer with a
+# leading "*". Answers are shuffled when the question is asked.
+# Some questions adapted from OpenTriviaQA (github.com/uberspot/OpenTriviaQA, CC BY-SA 4.0).
+
+## Sports
+1 | How many players does each soccer team have on the field? | *11 | 10 | 9 | 12
+1 | Michael Jordan won six NBA titles with which team? | *Chicago Bulls | Los Angeles Lakers | Boston Celtics | Miami Heat
+1 | Which sport is played at Wimbledon? | *Tennis | Golf | Cricket | Polo
+1 | In bowling, what is it called when you knock down all ten pins with your first ball? | *A strike | A spare | A split | A turkey
+1 | In baseball, how many strikes make an out? | *3 | 4 | 2 | 5
+1 | How many rings are on the Olympic flag? | *5 | 4 | 6 | 7
+2 | How many holes are in a standard round of golf? | *18 | 9 | 12 | 21
+2 | Which country has won the most men's FIFA World Cups? | *Brazil | Germany | Italy | Argentina
+2 | Tom Brady won his first six Super Bowls with which team? | *New England Patriots | Tampa Bay Buccaneers | Pittsburgh Steelers | Green Bay Packers
+2 | What color jacket does the winner of the Masters receive? | *Green | Red | Blue | Gold
+2 | Which boxer called himself "The Greatest"? | *Muhammad Ali | Mike Tyson | Joe Frazier | George Foreman
+2 | Which athlete has won the most Olympic gold medals ever? | *Michael Phelps | Usain Bolt | Carl Lewis | Mark Spitz
+3 | How tall is a regulation basketball hoop? | *10 feet | 9 feet | 11 feet | 12 feet
+3 | What is a perfect score in a game of ten-pin bowling? | *300 | 250 | 200 | 350
+3 | How many players does each hockey team have on the ice, including the goalie? | *6 | 5 | 7 | 11
+3 | In tennis, what is a score of zero called? | *Love | Nil | Duck | Zip
+3 | Which hockey player is known as "The Great One"? | *Wayne Gretzky | Mario Lemieux | Gordie Howe | Sidney Crosby
+3 | Which city hosted the 2012 Summer Olympics? | *London | Beijing | Rio de Janeiro | Tokyo
+4 | Who passed Kareem Abdul-Jabbar in 2023 to become the NBA's all-time leading scorer? | *LeBron James | Kevin Durant | Stephen Curry | Kobe Bryant
+4 | Which team won the first Super Bowl? | *Green Bay Packers | Kansas City Chiefs | New York Jets | Dallas Cowboys
+4 | In what year were the first modern Olympic Games held? | *1896 | 1900 | 1924 | 1888
+4 | Which golfer has won the most men's major championships? | *Jack Nicklaus | Tiger Woods | Arnold Palmer | Ben Hogan
+4 | Jackie Robinson broke Major League Baseball's color barrier with which team? | *Brooklyn Dodgers | New York Yankees | Boston Red Sox | St. Louis Cardinals
+4 | Who was the first gymnast to score a perfect 10 at the Olympics? | *Nadia Comăneci | Olga Korbut | Mary Lou Retton | Simone Biles
+5 | Which country won the first FIFA World Cup, in 1930? | *Uruguay | Brazil | Italy | Argentina
+5 | In which year did Babe Ruth hit 60 home runs? | *1927 | 1921 | 1932 | 1919
+5 | Which NFL team finished the only perfect season, including the Super Bowl? | *1972 Miami Dolphins | 2007 New England Patriots | 1985 Chicago Bears | 1989 San Francisco 49ers
+5 | Who holds Major League Baseball's record for career home runs? | *Barry Bonds | Hank Aaron | Babe Ruth | Alex Rodriguez
+5 | Which horse won the 1973 Triple Crown with a record Belmont Stakes win? | *Secretariat | Seabiscuit | Citation | American Pharoah
+5 | What is Tiger Woods's real first name? | *Eldrick | Tyler | Edward | Eldon
+1 | In which sport do players hit a shuttlecock? | *Badminton | Tennis | Squash | Table tennis
+1 | What is the NFL's championship game called? | *The Super Bowl | The World Series | The Stanley Cup | The Final Four
+1 | Which trophy goes to the NHL champion? | *The Stanley Cup | The Larry O'Brien Trophy | The Lombardi Trophy | The Commissioner's Trophy
+1 | What is Major League Baseball's championship called? | *The World Series | The Super Series | The Pennant Cup | The Grand Slam
+1 | In which sport would you see a slam dunk? | *Basketball | Volleyball | Football | Water polo
+1 | The Tour de France is a race in which sport? | *Cycling | Running | Sailing | Motor racing
+1 | In golf, what is a score of one under par on a hole called? | *A birdie | An eagle | A bogey | An albatross
+1 | What is it called when a player scores three goals in one game? | *A hat trick | A triple | A turkey | A trifecta
+1 | How many players does each basketball team have on the court? | *5 | 6 | 7 | 4
+1 | Usain Bolt is from which country? | *Jamaica | Trinidad and Tobago | The United States | Kenya
+1 | Which sport is Simone Biles famous for? | *Gymnastics | Figure skating | Diving | Swimming
+1 | Lionel Messi is from which country? | *Argentina | Spain | Brazil | Portugal
+1 | Cristiano Ronaldo is from which country? | *Portugal | Spain | Brazil | Italy
+1 | How long is a soccer match, not counting stoppage time? | *90 minutes | 60 minutes | 80 minutes | 100 minutes
+1 | How many quarters are in an NFL game? | *4 | 2 | 3 | 5
+1 | How many innings are in a regulation MLB game? | *9 | 7 | 10 | 12
+1 | In which game do players use a cue to hit balls into pockets? | *Pool | Croquet | Polo | Curling
+1 | What does NBA stand for? | *National Basketball Association | National Ball Association | North American Basketball Alliance | National Basketball Alliance
+1 | The Kentucky Derby is what kind of race? | *A horse race | A car race | A marathon | A bike race
+1 | The Daytona 500 is what kind of race? | *A NASCAR race | A marathon | A cycling race | A horse race
+1 | How often are the Summer Olympics held? | *Every 4 years | Every 2 years | Every 3 years | Every 5 years
+1 | In boxing, what does "KO" stand for? | *Knockout | Kick out | Knock-off | Keep on
+1 | What jersey number did Michael Jordan make famous? | *23 | 33 | 32 | 24
+1 | Which basketball center was known simply as "Shaq"? | *Shaquille O'Neal | Shawn Kemp | Shane Battier | Shareef Abdur-Rahim
+1 | Which NBA star is nicknamed "King James"? | *LeBron James | James Harden | James Worthy | Jimmy Butler
+1 | Which NBA player is most famous for his 3-pointers with the Golden State Warriors? | *Stephen Curry | Kevin Durant | Klay Thompson | Draymond Green
+1 | How many points is a basket from behind the arc worth? | *3 | 2 | 4 | 1
+1 | In soccer, which card sends a player off the field? | *Red | Yellow | Blue | Black
+1 | Lewis Hamilton is famous in which sport? | *Formula 1 | Golf | Tennis | Cycling
+1 | What is "March Madness"? | *The college basketball tournament | The start of baseball season | The NFL draft | A tennis tournament
+1 | What does a checkered flag signal in auto racing? | *The end of the race | A crash | A pit stop | The start
+1 | Rafael Nadal is from which country? | *Spain | Argentina | Italy | Portugal
+1 | Which sport is played in the Little League World Series? | *Baseball | Soccer | Basketball | Football
+1 | What does "MVP" stand for? | *Most Valuable Player | Most Victorious Player | Major Value Player | Most Visible Player
+2 | How many points is a touchdown worth, before the extra point? | *6 | 7 | 3 | 5
+2 | In golf, what is a score of one over par called? | *A bogey | A birdie | A par-plus | An eagle
+2 | How many players does each volleyball team have on the court? | *6 | 5 | 7 | 4
+2 | How many players does a baseball team have in the field? | *9 | 10 | 8 | 11
+2 | How many periods are in an NHL game? | *3 | 4 | 2 | 5
+2 | In tennis, what is a 40–40 score called? | *Deuce | Love | Advantage | Even
+2 | In which sport do players slide stones and sweep the ice? | *Curling | Bobsled | Hockey | Shuffleboard
+2 | In which sport do players form a scrum? | *Rugby | Lacrosse | Cricket | Water polo
+2 | In bowling, what are three strikes in a row called? | *A turkey | A triple | A hat trick | A hammer
+2 | Kobe Bryant played his entire career for which team? | *Los Angeles Lakers | Boston Celtics | Chicago Bulls | Miami Heat
+2 | Babe Ruth hit most of his home runs for which team? | *New York Yankees | Boston Red Sox | Chicago Cubs | Brooklyn Dodgers
+2 | Which country won the 2022 FIFA World Cup? | *Argentina | France | Brazil | Croatia
+2 | Which country hosted the 2022 FIFA World Cup? | *Qatar | Russia | Brazil | Saudi Arabia
+2 | Which city hosted the 2024 Summer Olympics? | *Paris | Los Angeles | Tokyo | London
+2 | Which city is hosting the 2028 Summer Olympics? | *Los Angeles | Brisbane | Paris | Madrid
+2 | Which city hosted the Summer Olympics held in 2021? | *Tokyo | Beijing | Paris | Rio de Janeiro
+2 | Which country has won the most Olympic medals of all time? | *The United States | Russia | China | Germany
+2 | Which team plays its home games at Fenway Park? | *Boston Red Sox | New York Yankees | Chicago Cubs | Philadelphia Phillies
+2 | Which team plays its home games at Wrigley Field? | *Chicago Cubs | Chicago White Sox | St. Louis Cardinals | Milwaukee Brewers
+2 | Which NBA team plays at Madison Square Garden? | *New York Knicks | Brooklyn Nets | Boston Celtics | Philadelphia 76ers
+2 | Which NFL team is nicknamed "America's Team"? | *Dallas Cowboys | New England Patriots | Green Bay Packers | Pittsburgh Steelers
+2 | Larry Bird spent his whole career with which team? | *Boston Celtics | Los Angeles Lakers | Indiana Pacers | Detroit Pistons
+2 | Which tennis star is nicknamed "Rafa"? | *Rafael Nadal | Roger Federer | Andy Roddick | Novak Djokovic
+2 | Michael Jordan briefly left basketball in 1994 to play which sport? | *Baseball | Golf | Football | Hockey
+2 | Which quarterback has won the most Super Bowls? | *Tom Brady | Joe Montana | Terry Bradshaw | Patrick Mahomes
+2 | On which surface is Wimbledon played? | *Grass | Clay | Hard court | Carpet
+2 | On which surface is the French Open played? | *Clay | Grass | Hard court | Carpet
+2 | Which boxer bit Evander Holyfield's ear in 1997? | *Mike Tyson | Lennox Lewis | George Foreman | Riddick Bowe
+2 | Lionel Messi spent most of his career at which club? | *Barcelona | Real Madrid | Paris Saint-Germain | Manchester City
+2 | Which MLS team did Lionel Messi join in 2023? | *Inter Miami | LA Galaxy | New York City FC | Atlanta United
+2 | Which MLB team has won the most World Series titles? | *New York Yankees | St. Louis Cardinals | Boston Red Sox | Los Angeles Dodgers
+2 | How many gold medals did Michael Phelps win at the 2008 Beijing Olympics? | *8 | 6 | 7 | 10
+2 | Which Bulls teammate of Jordan was famous for rebounding and dyed hair? | *Dennis Rodman | Scottie Pippen | Horace Grant | Toni Kukoč
+2 | Which team drafted LeBron James in 2003? | *Cleveland Cavaliers | Miami Heat | Los Angeles Lakers | Chicago Bulls
+2 | In which sport did Shaun White win Olympic gold medals? | *Snowboarding | Skateboarding | Skiing | Surfing
+2 | Which basketball star was nicknamed "The Black Mamba"? | *Kobe Bryant | Michael Jordan | Allen Iverson | Kevin Durant
+2 | Which country is Roger Federer from? | *Switzerland | Germany | Austria | Sweden
+2 | Which country is Novak Djokovic from? | *Serbia | Croatia | Russia | Montenegro
+2 | Which team does Patrick Mahomes play quarterback for? | *Kansas City Chiefs | Buffalo Bills | Dallas Cowboys | Cincinnati Bengals
+3 | How long is an NBA game, in minutes of game clock? | *48 | 40 | 60 | 44
+3 | In golf, what is two under par on a hole called? | *An eagle | A birdie | An albatross | A condor
+3 | Which country won the 2018 FIFA World Cup? | *France | Croatia | Germany | Brazil
+3 | Which country won the 2014 FIFA World Cup? | *Germany | Argentina | Brazil | Spain
+3 | Which three countries co-hosted the 2026 FIFA World Cup? | *United States, Canada and Mexico | United States, Mexico and Costa Rica | Canada, United States and Brazil | Mexico, Colombia and United States
+3 | Which city hosted the 2016 Summer Olympics? | *Rio de Janeiro | London | Tokyo | Buenos Aires
+3 | Which city hosted the 2008 Summer Olympics? | *Beijing | Athens | Sydney | London
+3 | Which NFL team plays at Lambeau Field? | *Green Bay Packers | Chicago Bears | Minnesota Vikings | Detroit Lions
+3 | Which uniform number is retired across all of Major League Baseball? | *42 | 23 | 3 | 7
+3 | Which number did Wayne Gretzky wear, now retired across the NHL? | *99 | 66 | 9 | 87
+3 | How many Super Bowls did Tom Brady win in total? | *7 | 6 | 5 | 8
+3 | Which brothers both won Super Bowls as quarterbacks? | *Peyton and Eli Manning | Tom and Jack Brady | Jim and John Harbaugh | Travis and Jason Kelce
+3 | What is the NFL championship trophy named? | *The Vince Lombardi Trophy | The George Halas Trophy | The Pete Rozelle Trophy | The Walter Camp Trophy
+3 | Which player won a record 14 French Open titles? | *Rafael Nadal | Novak Djokovic | Roger Federer | Björn Borg
+3 | Which golf competition pits Europe against the United States? | *The Ryder Cup | The Davis Cup | The Walker Cup | The Solheim Shield
+3 | What is the oldest tennis tournament in the world? | *Wimbledon | The US Open | The French Open | The Australian Open
+3 | Which Grand Slam tennis tournament is played first each year? | *The Australian Open | Wimbledon | The French Open | The US Open
+3 | Which boxer fought Joe Frazier in the "Thrilla in Manila"? | *Muhammad Ali | George Foreman | Larry Holmes | Ken Norton
+3 | What was Muhammad Ali's birth name? | *Cassius Clay | Cassius Marcellus | Clay Marshall | Marcus Clay
+3 | Which boxer, nicknamed "Money," retired with a 50–0 record? | *Floyd Mayweather Jr. | Manny Pacquiao | Oscar De La Hoya | Sugar Ray Leonard
+3 | Which English soccer club is nicknamed the "Red Devils"? | *Manchester United | Liverpool | Arsenal | Manchester City
+3 | David Beckham joined which MLS team in 2007? | *LA Galaxy | New York Red Bulls | Inter Miami | Seattle Sounders
+3 | Which U.S. soccer star was known for her pink hair and her 2019 World Cup goal celebrations? | *Megan Rapinoe | Alex Morgan | Carli Lloyd | Abby Wambach
+3 | Which coach won six Super Bowls with the New England Patriots? | *Bill Belichick | Chuck Noll | Vince Lombardi | Andy Reid
+3 | Which team won the Super Bowl in February 2024? | *Kansas City Chiefs | San Francisco 49ers | Philadelphia Eagles | Baltimore Ravens
+3 | Which team won the Super Bowl in February 2025? | *Philadelphia Eagles | Kansas City Chiefs | Buffalo Bills | Detroit Lions
+3 | Which team won the 2016 World Series, ending a 108-year drought? | *Chicago Cubs | Cleveland Indians | Boston Red Sox | San Francisco Giants
+3 | Which team broke the "Curse of the Bambino" in 2004? | *Boston Red Sox | Chicago Cubs | Chicago White Sox | New York Mets
+3 | Which franchise has won the most NBA championships? | *Boston Celtics | Los Angeles Lakers | Chicago Bulls | Golden State Warriors
+3 | LeBron James's televised "Decision" in 2010 took him to which team? | *Miami Heat | Los Angeles Lakers | Chicago Bulls | New York Knicks
+3 | Which golfer is nicknamed "Lefty"? | *Phil Mickelson | Bubba Watson | Mike Weir | Rory McIlroy
+3 | In which year did Tiger Woods win the Masters for his 15th major? | *2019 | 2008 | 2015 | 2021
+3 | The Masters golf tournament is played in which state? | *Georgia | Florida | South Carolina | North Carolina
+3 | Jesse Owens won four gold medals at which Olympics? | *Berlin 1936 | London 1948 | Los Angeles 1932 | Amsterdam 1928
+3 | Who was the first person to run a mile in under four minutes? | *Roger Bannister | Jesse Owens | Steve Prefontaine | Sebastian Coe
+3 | In the 1980 "Miracle on Ice," the U.S. hockey team beat which country? | *The Soviet Union | Canada | Finland | Sweden
+3 | The Heisman Trophy is awarded in which sport? | *College football | College basketball | College baseball | Hockey
+3 | Which university's teams are called the "Fighting Irish"? | *Notre Dame | Boston College | Georgetown | Villanova
+3 | Which men's tennis player has won the most Grand Slam singles titles? | *Novak Djokovic | Roger Federer | Rafael Nadal | Pete Sampras
+3 | Naomi Osaka represents which country? | *Japan | The United States | Haiti | South Korea
+4 | Which country won the 2010 FIFA World Cup? | *Spain | The Netherlands | Germany | Brazil
+4 | Which city hosted the 1996 Summer Olympics? | *Atlanta | Los Angeles | Barcelona | Sydney
+4 | Which U.S. city hosted the 2002 Winter Olympics? | *Salt Lake City | Lake Placid | Denver | Anchorage
+4 | Which two jersey numbers did Kobe Bryant wear? | *8 and 24 | 23 and 33 | 3 and 32 | 6 and 23
+4 | Peyton Manning won his first Super Bowl with which team? | *Indianapolis Colts | Denver Broncos | Tennessee Titans | New Orleans Saints
+4 | What is the NBA championship trophy called? | *The Larry O'Brien Trophy | The Bill Russell Trophy | The Naismith Trophy | The Wilt Chamberlain Cup
+4 | What is the most clubs a golfer may carry in a round? | *14 | 12 | 16 | 10
+4 | How many players does a rugby union team have on the field? | *15 | 13 | 11 | 12
+4 | The Davis Cup is a competition in which sport? | *Tennis | Golf | Sailing | Cricket
+4 | The America's Cup is a competition in which sport? | *Sailing | Rowing | Golf | Polo
+4 | How many players are on a cricket team? | *11 | 9 | 13 | 15
+4 | Lewis Hamilton shares the record for most Formula 1 titles with which driver? | *Michael Schumacher | Ayrton Senna | Sebastian Vettel | Alain Prost
+4 | In golf, what is three under par on a hole called? | *An albatross | An eagle | A condor | A birdie
+4 | Which golfer is nicknamed "The Golden Bear"? | *Jack Nicklaus | Arnold Palmer | Greg Norman | Gary Player
+4 | Who was the youngest heavyweight boxing champion in history? | *Mike Tyson | Muhammad Ali | Floyd Patterson | George Foreman
+4 | Which two boxers fought the 1974 "Rumble in the Jungle"? | *Muhammad Ali and George Foreman | Ali and Joe Frazier | Foreman and Frazier | Ali and Sonny Liston
+4 | Which three races make up horse racing's Triple Crown? | *Kentucky Derby, Preakness and Belmont | Kentucky Derby, Breeders' Cup and Belmont | Preakness, Travers and Belmont | Kentucky Derby, Preakness and Santa Anita
+4 | Which horse won the Triple Crown in 2015, ending a 37-year drought? | *American Pharoah | Justify | California Chrome | Smarty Jones
+4 | Who is the all-time leading goal scorer in men's international soccer? | *Cristiano Ronaldo | Lionel Messi | Pelé | Ali Daei
+4 | How many Ballon d'Or awards did Lionel Messi win? | *8 | 5 | 6 | 10
+4 | How many Women's World Cups has the U.S. women's team won? | *4 | 3 | 2 | 5
+4 | Which country won the 2023 Women's World Cup? | *Spain | England | The United States | Sweden
+4 | Who is the NFL's all-time leading rusher? | *Emmitt Smith | Walter Payton | Barry Sanders | Adrian Peterson
+4 | Who holds the NFL record for career receiving yards? | *Jerry Rice | Randy Moss | Larry Fitzgerald | Terrell Owens
+4 | Which NHL team has won the most Stanley Cups? | *Montreal Canadiens | Toronto Maple Leafs | Detroit Red Wings | Boston Bruins
+4 | Which NBA player scored 100 points in a single game? | *Wilt Chamberlain | Kobe Bryant | Michael Jordan | Elgin Baylor
+4 | Who holds Major League Baseball's record for career hits? | *Pete Rose | Ty Cobb | Hank Aaron | Derek Jeter
+4 | Which pitcher won a record 511 games, and now has an award named after him? | *Cy Young | Walter Johnson | Nolan Ryan | Christy Mathewson
+4 | Who passed Wayne Gretzky in 2025 to become the NHL's all-time leading goal scorer? | *Alex Ovechkin | Sidney Crosby | Jaromír Jágr | Gordie Howe
+4 | Which American skier broke the record for most World Cup race wins? | *Mikaela Shiffrin | Lindsey Vonn | Bode Miller | Julia Mancuso
+4 | Which college has won the most NCAA men's basketball championships? | *UCLA | Kentucky | North Carolina | Duke
+4 | Which coach won 11 NBA championships with the Bulls and Lakers? | *Phil Jackson | Pat Riley | Gregg Popovich | Red Auerbach
+4 | Which NBA player was nicknamed "The Mailman"? | *Karl Malone | John Stockton | Charles Barkley | Patrick Ewing
+4 | Which NBA player was nicknamed "The Answer"? | *Allen Iverson | Vince Carter | Tracy McGrady | Ray Allen
+4 | What was Kareem Abdul-Jabbar's signature shot? | *The skyhook | The fadeaway | The finger roll | The dream shake
+4 | In which sport is "the Ashes" series played? | *Cricket | Rugby | Golf | Tennis
+4 | Who has the most NASCAR Cup Series wins, with 200? | *Richard Petty | Dale Earnhardt | Jeff Gordon | Jimmie Johnson
+4 | Which Spanish player won Wimbledon in both 2023 and 2024? | *Carlos Alcaraz | Rafael Nadal | Jannik Sinner | Daniil Medvedev
+4 | Which famous coach is credited with "Winning isn't everything, it's the only thing"? | *Vince Lombardi | Bear Bryant | Knute Rockne | Don Shula
+4 | Which country invented the modern game of rugby? | *England | New Zealand | Ireland | France
+5 | In cricket, what is a score of zero called? | *A duck | A blob | A nil | An egg
+5 | Who holds Major League Baseball's record for consecutive games played? | *Cal Ripken Jr. | Lou Gehrig | Pete Rose | Derek Jeter
+5 | Which baseball player was known as "The Iron Horse"? | *Lou Gehrig | Cal Ripken Jr. | Joe DiMaggio | Mickey Mantle
+5 | Who was the MVP of the first Super Bowl? | *Bart Starr | Joe Namath | Johnny Unitas | Vince Lombardi
+5 | Which receiver made "The Catch" for the 49ers in the 1982 NFC Championship? | *Dwight Clark | Jerry Rice | John Taylor | Roger Craig
+5 | In what year did Roger Bannister run the first sub-four-minute mile? | *1954 | 1948 | 1960 | 1936
+5 | Exactly how long is a marathon in kilometers? | *42.195 | 40 | 42 | 44.2
+5 | Who coached UCLA to 10 NCAA basketball titles? | *John Wooden | Bob Knight | Dean Smith | Adolph Rupp
+5 | Which country has won the most Rugby World Cups? | *South Africa | New Zealand | Australia | England
+5 | In snooker, what score is a "maximum break"? | *147 | 155 | 180 | 100
+5 | Which NASCAR legend was killed in a crash at the 2001 Daytona 500? | *Dale Earnhardt | Adam Petty | Davey Allison | Alan Kulwicki
+5 | Who co-owns Inter Miami CF with Jorge and José Mas? | *David Beckham | Lionel Messi | LeBron James | Marc Anthony
+5 | In darts, what is the highest score possible with three darts? | *180 | 150 | 171 | 200
+5 | Which NFL team lost four Super Bowls in a row in the early 1990s? | *Buffalo Bills | Minnesota Vikings | Denver Broncos | Atlanta Falcons
+5 | Which pitcher threw a record seven no-hitters? | *Nolan Ryan | Sandy Koufax | Randy Johnson | Justin Verlander
+5 | Which country hosted the first Winter Olympics, in 1924? | *France | Switzerland | Norway | Austria
+5 | Which jockey rode Secretariat to the 1973 Triple Crown? | *Ron Turcotte | Willie Shoemaker | Bill Hartack | Angel Cordero Jr.
+5 | Which NHL player was nicknamed "Mr. Hockey"? | *Gordie Howe | Bobby Orr | Maurice Richard | Wayne Gretzky
+5 | Which defenseman flew through the air after his 1970 Stanley Cup-winning goal? | *Bobby Orr | Bobby Hull | Denis Potvin | Ray Bourque
+5 | The Walter Cup is the championship trophy of a women's pro league in which sport? | *Hockey | Lacrosse | Soccer | Basketball
+5 | How many times did Michael Jordan win the NBA Finals MVP? | *6 | 5 | 4 | 3
+5 | Which two teams played in the first NBA Finals game held outside the U.S., in Toronto in 2019? | *Raptors and Warriors | Raptors and Bucks | Raptors and Cavaliers | Raptors and Celtics
+5 | Which golfer won the career Grand Slam at age 24, the youngest ever? | *Tiger Woods | Jack Nicklaus | Rory McIlroy | Jordan Spieth
+5 | Which player hit 714 career home runs, a record that stood until 1974? | *Babe Ruth | Hank Aaron | Willie Mays | Mickey Mantle
+5 | Which player broke Babe Ruth's career home run record in 1974? | *Hank Aaron | Willie Mays | Roger Maris | Barry Bonds
+5 | Which player broke Babe Ruth's single-season home run record in 1961? | *Roger Maris | Mickey Mantle | Hank Aaron | Willie Mays
+5 | How long is an Olympic swimming pool? | *50 meters | 25 meters | 100 meters | 75 meters
+5 | What color jersey does the leader of the Tour de France wear? | *Yellow | Green | Polka dot | White
+5 | Which nation won the first Cricket World Cup, in 1975? | *West Indies | England | Australia | India
+5 | Who was the first woman to win a NASCAR Cup Series pole position? | *Danica Patrick | Shirley Muldowney | Janet Guthrie | Hailie Deegan
+5 | Which tennis player won the "Battle of the Sexes" against Bobby Riggs in 1973? | *Billie Jean King | Chris Evert | Martina Navratilova | Margaret Court
+5 | Which country has won the most men's Olympic ice hockey gold medals? | *Canada | The Soviet Union | The United States | Sweden
+5 | Which running back was nicknamed "Sweetness"? | *Walter Payton | Barry Sanders | Eric Dickerson | Marcus Allen
+5 | How many World Cups did Pelé win with Brazil? | *3 | 2 | 1 | 4

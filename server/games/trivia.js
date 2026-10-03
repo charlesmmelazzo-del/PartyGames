@@ -16,39 +16,42 @@ const DEFAULTS = { seconds: 30 };
 
 // ---------- questions ----------
 
-// Parses server/data/trivia.txt (format documented at the top of that file).
-function loadQuestions(file = path.join(__dirname, '..', 'data', 'trivia.txt')) {
+// Parses every .txt file in server/data/trivia/ (format documented at the top of each file).
+// Files load in name order, which is the board's column order.
+function loadQuestions(dir = path.join(__dirname, '..', 'data', 'trivia')) {
   const questions = [];
   const categories = [];
-  let category = null;
-  fs.readFileSync(file, 'utf8')
-    .split('\n')
-    .forEach((raw, i) => {
-      const line = raw.trim();
-      if (!line) return;
-      if (line.startsWith('## ')) {
-        category = line.slice(3).trim();
-        categories.push(category);
-        return;
-      }
-      if (line.startsWith('#')) return;
-      const parts = line.split('|').map((x) => x.trim());
-      const where = `trivia.txt line ${i + 1}`;
-      if (!category) throw new Error(`${where}: question before any "## Category"`);
-      if (parts.length !== 6) throw new Error(`${where}: expected "level | question | 4 answers"`);
-      const level = Number(parts[0]);
-      if (!LEVELS.includes(level)) throw new Error(`${where}: difficulty must be 1-5`);
-      const answers = parts.slice(2);
-      const correct = answers.filter((a) => a.startsWith('*'));
-      if (correct.length !== 1) throw new Error(`${where}: mark exactly one answer with *`);
-      questions.push({
-        category,
-        level,
-        question: parts[1],
-        answers: answers.map((a) => a.replace(/^\*/, '').trim()),
-        correct: answers.findIndex((a) => a.startsWith('*')),
+  for (const name of fs.readdirSync(dir).filter((f) => f.endsWith('.txt')).sort()) {
+    let category = null;
+    fs.readFileSync(path.join(dir, name), 'utf8')
+      .split('\n')
+      .forEach((raw, i) => {
+        const line = raw.trim();
+        if (!line) return;
+        if (line.startsWith('## ')) {
+          category = line.slice(3).trim();
+          if (!categories.includes(category)) categories.push(category);
+          return;
+        }
+        if (line.startsWith('#')) return;
+        const parts = line.split('|').map((x) => x.trim());
+        const where = `${name} line ${i + 1}`;
+        if (!category) throw new Error(`${where}: question before any "## Category"`);
+        if (parts.length !== 6) throw new Error(`${where}: expected "level | question | 4 answers"`);
+        const level = Number(parts[0]);
+        if (!LEVELS.includes(level)) throw new Error(`${where}: difficulty must be 1-5`);
+        const answers = parts.slice(2);
+        const correct = answers.filter((a) => a.startsWith('*'));
+        if (correct.length !== 1) throw new Error(`${where}: mark exactly one answer with *`);
+        questions.push({
+          category,
+          level,
+          question: parts[1],
+          answers: answers.map((a) => a.replace(/^\*/, '').trim()),
+          correct: answers.findIndex((a) => a.startsWith('*')),
+        });
       });
-    });
+  }
   return { categories, questions };
 }
 
