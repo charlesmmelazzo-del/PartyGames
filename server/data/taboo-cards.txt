@@ -1,0 +1,404 @@
+# Taboo cards: original deck written for this project.
+# Format: one card per line, "Word | forbidden, forbidden, forbidden, forbidden, forbidden".
+# Lines starting with "## " start a category. Blank lines and "#" comments are ignored.
+# Every card needs exactly 5 forbidden words (checked by the tests).
+# Add " | 21+" after a card, or " [21+]" after a category name, to keep it out of family mode.
+
+## Around the House
+Toaster | bread, kitchen, brown, pop, breakfast
+Refrigerator | cold, food, kitchen, milk, freezer
+Couch | sit, living room, cushion, sofa, TV
+Pillow | bed, sleep, head, soft, feathers
+Blanket | warm, bed, cover, cozy, sleep
+Microwave | heat, kitchen, popcorn, minutes, oven
+Doorbell | ring, door, visitor, button, ding-dong
+Vacuum | clean, carpet, dust, suck, floor
+Bathtub | bath, water, bubbles, soak, bathroom
+Mirror | reflection, look, glass, face, wall
+Ceiling fan | spin, air, cool, blades, above
+Laundry | clothes, wash, dryer, dirty, basket
+Remote control | TV, channel, button, couch, change
+Light switch | on, off, flip, wall, lamp
+Junk drawer | kitchen, random, stuff, mess, open
+Garage | car, park, door, tools, house
+Dishwasher | dishes, clean, kitchen, plates, machine
+Alarm clock | wake, morning, snooze, ring, time
+Doormat | welcome, feet, wipe, front, mud
+Smoke detector | fire, beep, battery, ceiling, alarm
+Candle | wax, light, flame, wick, smell
+Toothbrush | teeth, brush, paste, bathroom, morning
+Shower curtain | bathroom, water, hang, rings, privacy
+Bookshelf | books, read, wood, library, shelves
+Fireplace | fire, logs, chimney, warm, Santa
+Ironing board | clothes, wrinkles, flat, press, hot
+Coffee maker | brew, morning, beans, pot, cup
+Trash can | garbage, throw, bin, waste, lid
+Rocking chair | rock, porch, grandma, sit, back and forth
+Bunk bed | sleep, top, bottom, ladder, kids
+Hammock | swing, nap, trees, outside, hang
+Wallpaper | wall, paste, pattern, paint, decorate
+Thermostat | temperature, heat, cool, wall, degrees
+Lawn mower | grass, cut, yard, engine, push
+
+## Food
+Pizza | cheese, slice, pepperoni, Italian, delivery
+Spaghetti | pasta, noodles, sauce, meatballs, Italian
+Taco | Mexican, shell, Tuesday, beef, salsa
+Sushi | Japanese, fish, rice, raw, roll
+Hamburger | beef, bun, patty, fast food, cheese
+Pancakes | breakfast, syrup, flip, flat, stack
+Popcorn | movie, butter, pop, kernel, corn
+Avocado | guacamole, green, toast, pit, fruit
+Bacon | pig, pork, breakfast, crispy, strips
+French fries | potato, ketchup, salty, fried, McDonald's
+Ice cream | cold, cone, scoop, dessert, sundae
+Watermelon | fruit, seeds, summer, red, green
+Cupcake | cake, frosting, small, birthday, bake
+Peanut butter | jelly, sandwich, nut, spread, allergy
+Grilled cheese | sandwich, bread, melt, butter, toast
+Chicken wings | buffalo, hot, sauce, bones, game day
+Doughnut | sweet, hole, glazed, sprinkles, cop
+Burrito | Mexican, wrap, beans, tortilla, rice
+Mac and cheese | macaroni, pasta, cheddar, kids, orange
+Pretzel | twist, salt, bread, soft, knot
+Salad | lettuce, dressing, green, healthy, vegetables
+Lasagna | layers, pasta, Garfield, cheese, Italian
+Hot dog | sausage, bun, mustard, ballpark, ketchup
+Nachos | chips, cheese, Mexican, jalapeño, dip
+Cheesecake | dessert, cream cheese, graham, slice, New York
+Corn dog | stick, fair, fried, sausage, batter
+Pickle | cucumber, green, sour, jar, dill
+Banana | yellow, peel, monkey, fruit, split
+Cereal | breakfast, bowl, milk, box, spoon
+S'mores | campfire, marshmallow, chocolate, graham, camping
+Ramen | noodles, Japanese, soup, broth, college
+Meatloaf | beef, loaf, dinner, ketchup, mom
+Fortune cookie | Chinese, message, paper, future, dessert
+Chili | beans, spicy, bowl, pepper, cook-off
+Jelly beans | candy, Easter, flavors, small, sweet
+Bagel | bread, hole, cream cheese, New York, breakfast
+Garlic | vampire, smell, clove, breath, Italian
+Cotton candy | fair, pink, sugar, fluffy, stick
+
+## Drinks & the Bar [21+]
+Margarita | tequila, lime, salt, Mexican, frozen
+Martini | olive, gin, vodka, James Bond, shaken
+Mojito | mint, rum, lime, Cuba, muddle
+Bartender | drinks, bar, pour, tip, mix
+Happy hour | cheap, drinks, after work, discount, bar
+Hangover | headache, morning, drunk, sick, tired
+Wine | grapes, red, white, glass, bottle
+Beer | ale, lager, brew, pint, keg
+Champagne | bubbly, toast, celebrate, French, New Year
+Cocktail shaker | mix, ice, shake, metal, bartender
+Shot glass | small, tequila, drink, quick, take
+Bloody Mary | tomato, vodka, celery, brunch, spicy
+Piña colada | pineapple, coconut, rum, beach, rain
+Old Fashioned | whiskey, bourbon, orange, sugar, bitters
+Cosmopolitan | pink, cranberry, vodka, Sex and the City, martini
+Ice cube | cold, frozen, water, tray, melt
+Last call | bar, closing, drinks, final, bell
+Bar tab | pay, bill, open, card, drinks
+Coffee | caffeine, morning, beans, latte, Starbucks
+Lemonade | lemon, sugar, stand, yellow, summer
+Hot chocolate | cocoa, marshmallows, winter, warm, milk
+Smoothie | blend, fruit, yogurt, healthy, straw
+Toast | cheers, glass, raise, speech, celebrate
+Cork | wine, bottle, pop, screw, stopper
+Straw | sip, drink, plastic, suck, paper
+Designated driver | sober, car, keys, drunk, ride
+Bouncer | door, ID, club, big, security
+Tip jar | money, bartender, coins, counter, extra
+Sangria | wine, fruit, Spanish, pitcher, red
+Espresso | coffee, shot, Italian, strong, small
+Root beer | float, soda, brown, A&W, foam
+Energy drink | Red Bull, caffeine, can, buzz, wings
+Mimosa | champagne, orange juice, brunch, bubbly, breakfast
+Pub crawl | bars, walk, drinks, night, friends
+Wine tasting | sip, vineyard, grapes, sommelier, flight
+Whiskey | bourbon, scotch, brown, rocks, Irish
+
+## Animals
+Elephant | trunk, big, gray, ears, Africa
+Giraffe | neck, tall, spots, Africa, long
+Penguin | bird, ice, tuxedo, waddle, cold
+Kangaroo | Australia, jump, pouch, hop, baby
+Octopus | arms, eight, ink, sea, tentacles
+Peacock | feathers, bird, colorful, tail, proud
+Sloth | slow, tree, lazy, hang, sleep
+Flamingo | pink, bird, leg, lawn, stand
+Squirrel | nuts, tree, tail, acorn, gray
+Shark | teeth, ocean, Jaws, fin, fish
+Owl | hoot, night, wise, bird, eyes
+Skunk | smell, stink, black, white, spray
+Chameleon | color, change, lizard, blend, tongue
+Raccoon | mask, trash, night, bandit, rings
+Bumblebee | buzz, honey, sting, yellow, flower
+Turtle | shell, slow, green, sea, tortoise
+Llama | spit, wool, Peru, alpaca, neck
+Dolphin | smart, ocean, Flipper, swim, mammal
+Hedgehog | spikes, Sonic, small, quills, ball
+Zebra | stripes, black, white, horse, Africa
+Bat | night, fly, cave, vampire, upside down
+Goldfish | bowl, pet, orange, memory, fair
+Parrot | talk, bird, pirate, colorful, repeat
+Panda | bear, China, bamboo, black, white
+Spider | web, legs, eight, bug, tarantula
+Polar bear | white, Arctic, cold, ice, Coca-Cola
+Unicorn | horn, magic, horse, rainbow, myth
+Moose | antlers, Canada, big, deer, Alaska
+Mosquito | bite, itch, blood, bug, summer
+Lobster | red, claws, seafood, Maine, butter
+Rooster | crow, morning, chicken, farm, cock-a-doodle-doo
+Puppy | dog, young, cute, bark, small
+Snail | slow, shell, slime, garden, slug
+Pig | oink, farm, mud, pork, bacon
+
+## Places
+Beach | sand, ocean, sun, waves, swim
+Airport | plane, fly, gate, security, luggage
+Hospital | doctor, sick, nurse, emergency, patient
+Library | books, quiet, read, borrow, librarian
+Casino | gamble, Las Vegas, slots, cards, chips
+Zoo | animals, cage, lion, visit, keeper
+Gym | workout, exercise, weights, treadmill, sweat
+Las Vegas | casino, Nevada, gamble, strip, sin city
+Paris | France, Eiffel Tower, French, city, romance
+New York | city, Big Apple, Manhattan, Times Square, Statue of Liberty
+Hawaii | island, aloha, luau, surf, volcano
+Grand Canyon | Arizona, big, hole, river, national park
+Disney World | Mickey, Florida, park, rides, castle
+Igloo | ice, snow, Arctic, house, cold
+Lighthouse | light, ship, coast, tower, rocks
+Movie theater | film, popcorn, screen, seats, tickets
+Bowling alley | pins, ball, shoes, strike, lanes
+Haunted house | ghost, scary, Halloween, spooky, boo
+Farm | animals, barn, tractor, farmer, crops
+Desert | sand, hot, dry, camel, cactus
+Volcano | lava, erupt, mountain, hot, ash
+Jail | prison, bars, cell, crime, locked
+Mall | shopping, stores, food court, walk, buy
+Campground | tent, fire, outdoors, sleep, woods
+Waterpark | slides, splash, pool, summer, wet
+Antarctica | cold, ice, penguins, South Pole, continent
+Egypt | pyramids, Nile, Cairo, sphinx, pharaoh
+Hollywood | movies, stars, sign, California, Los Angeles
+Ski resort | snow, slopes, lodge, mountain, lift
+Car wash | soap, clean, water, drive, suds
+Laundromat | wash, dryer, coins, clothes, machines
+Dentist office | teeth, drill, cavity, chair, floss
+Cruise ship | boat, ocean, vacation, buffet, deck
+Rooftop bar | drinks, view, city, outside, high | 21+
+
+## Jobs & People
+Firefighter | fire, truck, hose, hero, flames
+Pilot | plane, fly, cockpit, captain, airport
+Chef | cook, kitchen, food, restaurant, hat
+Magician | magic, rabbit, hat, trick, wand
+Astronaut | space, moon, NASA, rocket, suit
+Lifeguard | pool, beach, save, whistle, swim
+Detective | mystery, clue, solve, Sherlock, crime
+Mail carrier | letters, deliver, postman, post office, stamps
+Plumber | pipes, toilet, leak, fix, wrench
+Clown | circus, red nose, funny, makeup, balloon
+Teacher | school, class, students, grade, lesson
+Dentist | teeth, cavity, drill, floss, mouth
+Barista | coffee, Starbucks, latte, cup, foam
+Cowboy | horse, hat, ranch, boots, Texas
+Pirate | ship, treasure, parrot, eye patch, arr
+Ninja | Japan, black, sneaky, sword, martial arts
+Babysitter | kids, watch, parents, night, money
+Wedding planner | marriage, bride, organize, ceremony, event
+DJ | music, spin, party, songs, turntable
+Mime | silent, invisible, box, white face, act
+Referee | whistle, game, rules, stripes, call
+Tour guide | group, travel, show, history, flag
+Grandma | old, mother, cookies, family, knit
+Bride | wedding, dress, white, marry, veil
+Superhero | powers, cape, save, comic, villain
+Zombie | undead, brains, walk, apocalypse, monster
+Vampire | blood, fangs, Dracula, bite, night
+Santa Claus | Christmas, beard, presents, North Pole, red
+Tooth Fairy | teeth, pillow, money, night, wings
+Influencer | Instagram, followers, social media, post, famous
+Life coach | advice, goals, motivate, help, career
+Personal trainer | gym, workout, exercise, fit, client
+
+## Activities & Hobbies
+Karaoke | sing, song, microphone, bar, lyrics
+Camping | tent, outdoors, fire, woods, sleeping bag
+Fishing | fish, pole, lake, bait, catch
+Knitting | yarn, needles, sweater, grandma, scarf
+Skydiving | jump, plane, parachute, fall, sky
+Gardening | plants, flowers, dirt, grow, seeds
+Yoga | stretch, mat, pose, meditate, breathe
+Road trip | car, drive, travel, highway, snacks
+Scrapbooking | photos, paste, album, memories, craft
+Bird watching | binoculars, birds, nature, look, species
+Sunbathing | tan, sun, beach, lie, lotion
+Sleepwalking | sleep, night, walk, bed, dream
+Snorkeling | mask, underwater, fish, tube, swim
+Hiking | trail, walk, mountain, boots, nature
+Painting | brush, canvas, art, colors, picture
+Baking | oven, bread, cake, flour, cookies
+Binge-watching | Netflix, episodes, TV, show, couch
+Online dating | app, Tinder, swipe, match, profile | 21+
+Selfie | photo, phone, camera, face, picture
+Napping | sleep, short, afternoon, tired, couch
+Juggling | balls, throw, circus, catch, hands
+Moving day | boxes, house, truck, pack, new
+Thrift shopping | used, cheap, Goodwill, store, clothes
+Speed dating | minutes, rotate, singles, quick, date | 21+
+Trivia night | questions, bar, team, answers, quiz
+Tailgating | parking lot, game, grill, beer, car | 21+
+Skinny dipping | naked, swim, pool, night, clothes | 21+
+Sleepover | friends, night, pajamas, kids, house
+Escape room | locked, puzzle, clues, team, time
+
+## Sports & Games
+Basketball | hoop, dribble, NBA, court, ball
+Soccer | ball, goal, kick, field, World Cup
+Bowling | pins, strike, ball, lane, spare
+Golf | club, hole, putt, tee, course
+Baseball | bat, home run, pitcher, base, diamond
+Tennis | racket, court, ball, net, Wimbledon
+Surfing | wave, board, ocean, beach, ride
+Chess | king, queen, board, checkmate, pawn
+Poker | cards, bet, chips, bluff, hand
+Monopoly | board game, money, property, jail, Boardwalk
+Hide and seek | find, count, game, kids, look
+Tug of war | rope, pull, teams, strength, game
+Beer pong | cups, table, ball, throw, party | 21+
+Darts | board, throw, bullseye, pub, point
+Super Bowl | football, NFL, game, commercials, February
+Olympics | games, gold, medal, rings, countries
+Marathon | run, miles, race, long, 26
+Boxing | punch, gloves, ring, fight, knockout
+Skateboarding | board, wheels, tricks, ramp, Tony Hawk
+Hula hoop | spin, hips, circle, plastic, waist
+Jenga | blocks, tower, wood, fall, pull
+Twister | mat, colors, spin, left, right
+Charades | act, guess, silent, game, clue
+Video games | play, controller, console, Xbox, PlayStation
+Mini golf | putt, windmill, hole, course, ball
+Rock paper scissors | hand, game, choose, shoot, beat
+Hockey | puck, ice, stick, skate, goal
+Wrestling | WWE, ring, pin, fight, mat
+Cornhole | bags, board, hole, toss, tailgate
+
+## Movies, TV & Music
+Star Wars | Jedi, force, Darth Vader, galaxy, Luke
+Titanic | ship, iceberg, Leonardo DiCaprio, sink, Rose
+Harry Potter | wizard, Hogwarts, magic, glasses, scar
+The Simpsons | Homer, Bart, cartoon, yellow, Springfield
+Friends | TV show, Ross, Rachel, coffee, sitcom
+Game of Thrones | dragons, Westeros, winter, throne, HBO
+Jaws | shark, movie, beach, bigger boat, Spielberg
+The Wizard of Oz | Dorothy, yellow brick road, witch, Toto, Kansas
+Barbie | doll, pink, Ken, Mattel, plastic
+Elvis | king, rock and roll, Graceland, hips, Presley
+Beyoncé | singer, Jay-Z, Queen, Destiny's Child, Bey
+Taylor Swift | singer, Eras, country, pop, Swifties
+The Beatles | band, Paul, John, Liverpool, Ringo
+Batman | Bruce Wayne, Gotham, Joker, bat, Robin
+Spider-Man | Peter Parker, web, superhero, Marvel, swing
+Frozen | Elsa, Disney, let it go, Anna, snow
+Shrek | ogre, green, donkey, swamp, Fiona
+Jurassic Park | dinosaurs, island, T. rex, movie, Spielberg
+The Office | Michael Scott, Dunder Mifflin, Dwight, paper, sitcom
+SpongeBob | sponge, Squarepants, Bikini Bottom, Patrick, yellow
+Rocky | boxer, Stallone, Philadelphia, stairs, Balboa
+Grease | Danny, Sandy, John Travolta, musical, 1950s
+Star Trek | Spock, Kirk, Enterprise, space, beam me up
+The Godfather | mafia, Corleone, offer, Brando, family
+Mean Girls | Regina, plastics, Wednesday, pink, Lindsay Lohan
+Top Gun | Tom Cruise, pilot, Maverick, jets, Navy
+Toy Story | Woody, Buzz, Pixar, toys, Andy
+Reality TV | real, show, drama, Kardashians, Survivor
+Rap music | rhymes, hip hop, beat, rapper, lyrics
+Disco | dance, 70s, ball, Saturday Night Fever, funk
+Air guitar | play, pretend, rock, strum, invisible
+Boy band | singers, group, NSYNC, Backstreet Boys, fans
+Lip sync | mouth, words, song, pretend, battle
+Netflix | streaming, shows, chill, subscription, movies
+
+## Holidays & Events
+Christmas | Santa, December, presents, tree, Jesus
+Halloween | costume, candy, October, trick, pumpkin
+Thanksgiving | turkey, November, thankful, pilgrims, feast
+Valentine's Day | love, February, hearts, roses, cupid
+New Year's Eve | midnight, countdown, ball drop, resolution, party
+Fourth of July | fireworks, America, independence, summer, flag
+Birthday | cake, candles, presents, party, age
+Wedding | bride, groom, marry, ring, vows
+Bachelor party | groom, Las Vegas, guys, wedding, last night | 21+
+Baby shower | pregnant, gifts, party, mom, diapers
+Graduation | cap, gown, diploma, school, ceremony
+Prom | dance, high school, dress, king, queen
+Easter | bunny, eggs, spring, Jesus, basket
+St. Patrick's Day | Irish, green, March, shamrock, leprechaun
+Mardi Gras | New Orleans, beads, parade, masks, Fat Tuesday
+Family reunion | relatives, gather, cousins, picnic, together
+Garage sale | yard, sell, used, cheap, Saturday
+Surprise party | hide, secret, jump, birthday, guests
+Costume party | dress up, outfit, Halloween, mask, pretend
+Road rage | angry, car, driving, honk, traffic
+First date | dinner, nervous, romance, meet, kiss
+Job interview | hire, résumé, questions, nervous, boss
+Blind date | set up, meet, stranger, dinner, romance | 21+
+Housewarming | new, home, party, gift, move
+
+## Things & Ideas
+Smartphone | iPhone, call, apps, text, screen
+Selfie stick | phone, photo, extend, pole, tourist
+Umbrella | rain, wet, open, cover, handle
+Sunglasses | sun, eyes, shades, dark, wear
+Passport | travel, country, photo, stamp, international
+Credit card | pay, plastic, debt, Visa, swipe
+Wi-Fi | internet, password, wireless, connect, router
+Emoji | smiley, text, face, icon, phone
+Hashtag | Twitter, pound, symbol, trend, social media
+Bubble wrap | pop, plastic, packaging, fragile, bubbles
+Duct tape | silver, sticky, fix, roll, everything
+Fidget spinner | spin, toy, fingers, bearing, trend
+Lava lamp | wax, blob, 70s, light, groovy
+Rubber duck | bath, yellow, toy, squeak, quack
+Time machine | travel, past, future, back, DeLorean
+Déjà vu | before, feeling, again, familiar, French
+Procrastination | later, delay, put off, lazy, tomorrow
+Midlife crisis | age, sports car, forty, change, old
+FOMO | missing out, fear, party, social, acronym
+Ghosting | disappear, text, dating, ignore, ghost
+Brain freeze | cold, ice cream, headache, fast, slushie
+Bucket list | before, die, goals, dreams, things
+Guilty pleasure | secret, enjoy, embarrassing, like, shame
+Inside joke | funny, friends, only, understand, laugh
+Pet peeve | annoy, bother, hate, small, habit
+Cold feet | nervous, wedding, scared, back out, doubt
+Beer goggles | drunk, attractive, glasses, look, bar | 21+
+Walk of shame | morning, clothes, last night, home, embarrassed | 21+
+Comfort food | eat, sad, mac and cheese, warm, cozy
+White lie | fib, small, harmless, untrue, polite
+Spring cleaning | clean, house, season, organize, dust
+
+## Nature & Science
+Rainbow | colors, rain, sky, arc, pot of gold
+Tornado | wind, storm, twister, spin, Kansas
+Earthquake | shake, ground, fault, California, Richter
+Snowman | snow, carrot, winter, Frosty, build
+Thunderstorm | lightning, rain, loud, clouds, storm
+Full moon | night, round, werewolf, bright, sky
+Shooting star | wish, sky, night, falling, meteor
+Gravity | fall, Newton, apple, pull, force
+Dinosaur | extinct, T. rex, Jurassic, fossil, big
+Black hole | space, gravity, suck, light, star
+Sunburn | sun, red, skin, beach, burn
+Hiccups | breath, jump, sudden, drink water, scare
+Sneeze | nose, bless you, achoo, allergy, cold
+Yawn | tired, mouth, open, sleepy, contagious
+Goosebumps | skin, cold, chills, scared, bumps
+Northern lights | aurora, sky, colors, Alaska, borealis
+Sunflower | yellow, seeds, tall, flower, sun
+Cactus | desert, spikes, plant, prickly, green
+Fossil | bones, dinosaur, rock, old, dig
+Magnet | metal, stick, attract, fridge, north

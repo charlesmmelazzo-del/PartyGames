@@ -36,6 +36,20 @@ The cards come from the published decks only: official CAH, commercial third-par
 
 Card data is from [JSON Against Humanity](https://github.com/crhallberg/json-against-humanity), which is generated from the same spreadsheet. To refresh it, run `node scripts/import-cards.js` (instructions are at the top of the file). Cards Against Humanity is licensed CC BY-NC-SA 2.0.
 
+### Taboo
+
+1. A **clue-giver** is chosen each turn. The role alternates between teams, and within a team it goes to whoever has gone longest without giving clues. A team needs 2 people online, the giver and at least one guesser. The giver taps **Start the clock** when their team is ready.
+2. The giver sees a word plus **5 forbidden words**, and gets their teammates to say the word before time runs out (default 60s).
+   - **✓ Got it:** +1 point for the team.
+   - **Pass:** skips to the next card and costs no points, but the team **owes one**. Their next correct card pays it off instead of scoring. Unpaid passes disappear at the end of the turn, so you can never lose points.
+3. **The other team sees the same card** on their phones, with a **BUZZ** button. A buzz means the giver said something forbidden: the card is skipped with no points, and "🚨 BUZZ! Ben caught a forbidden word" flashes on every screen.
+4. The **guessing teammates never see the word**, and neither does the TV. They only see the timer, the turn score and the last finished card.
+5. When time is up, every screen shows a recap of each card and how it went, then the other team's turn is set up.
+
+The host can set the turn length (45/60/90/120s), choose **21+ / Family friendly** (family mode leaves out the bar and grown-up cards), start a turn for the giver, choose a different giver, or end a turn early. A host who isn't playing sees the card as referee. Cards already seen are remembered for the whole night, so switching games and coming back won't repeat them.
+
+**Cards:** an original deck of 375 cards in 12 categories (Around the House, Food, Drinks & the Bar, Animals, Places, Jobs & People, Activities & Hobbies, Sports & Games, Movies/TV/Music, Holidays & Events, Things & Ideas, Nature & Science), written for this project. To add your own, add lines to `server/data/taboo-cards.txt` in the format `Word | five, forbidden, words, go, here`. Add `| 21+` to keep a card out of family mode. The tests check every card has exactly 5 forbidden words and no duplicates.
+
 ### Buzzer Round
 
 The host asks a question out loud and opens the buzzers. The first phone to buzz answers for its team. The host marks the answer right or wrong, and a wrong answer locks that team out until the next question.

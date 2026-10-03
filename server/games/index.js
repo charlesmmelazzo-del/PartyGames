@@ -9,13 +9,14 @@
 //   onPlayerJoined(state, player, api)   (optional)
 //
 // `api` gives the game access to the room: teams, players, awardPoints(teamId, n, reason),
-// schedule(ms, fn) for timers, and random(). Mutate `state` in place; the room re-broadcasts
+// schedule(ms, fn) for timers, random(), and memory (an object that survives game switches).
+// Mutate `state` in place; the room re-broadcasts
 // after every action. Throw an Error with a friendly message to reject an action.
 //
 // To add a game: create a file here, add it to the list below, and add a matching
 // renderer in public/games/<id>.js.
 
-const GAMES = [require('./cah'), require('./buzzer')];
+const GAMES = [require('./cah'), require('./taboo'), require('./buzzer')];
 
 const byId = new Map(GAMES.map((g) => [g.id, g]));
 

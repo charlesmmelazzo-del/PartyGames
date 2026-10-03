@@ -341,3 +341,29 @@ textarea {
 .vote-row button.active { outline: 3px solid #fff; outline-offset: 2px; }
 .vote-row button:not(.active) { opacity: 0.85; }
 .tally { margin-top: 8px; font-weight: 700; }
+
+/* Taboo */
+.taboo-card { background: #fff; color: #111; border-radius: 16px; overflow: hidden; margin: 10px 0; box-shadow: 0 6px 20px #0008; text-align: center; }
+.taboo-cat { background: #6a4c93; color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px; }
+.taboo-word { background: #6a4c93; color: #fff; font-size: 2rem; font-weight: 900; padding: 4px 12px 14px; overflow-wrap: anywhere; }
+.taboo-list { padding: 10px 0; }
+.taboo-list li { font-size: 1.25rem; font-weight: 700; padding: 5px 12px; border-bottom: 1px solid #eee; color: #b5179e; }
+.taboo-list li:last-child { border-bottom: 0; }
+.taboo-timer { text-align: center; margin: 6px 0; }
+.big-timer { font-size: 1.6rem; padding: 4px 18px; }
+.taboo-stats { display: flex; justify-content: center; gap: 14px; align-items: center; }
+.owed { color: var(--accent); font-weight: 700; }
+.taboo-actions { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; position: sticky; bottom: calc(8px + env(safe-area-inset-bottom)); }
+.taboo-actions .big { margin: 0; min-height: 72px; font-size: 1.3rem; }
+.guess-box { text-align: center; background: var(--card); border: 3px solid var(--team); border-radius: 16px; padding: 30px 12px; margin: 12px 0; }
+.taboo-buzz { --team: var(--bad); width: min(60vw, 220px); font-size: 2rem; }
+.buzz-flash { background: var(--bad); color: #fff; font-weight: 800; text-align: center; border-radius: 12px; padding: 12px; animation: pop 0.3s ease-out; margin-bottom: 8px; }
+.up-next { text-align: center; border: 3px solid var(--c); background: color-mix(in srgb, var(--c) 18%, var(--card)); border-radius: 16px; padding: 16px; }
+.taboo-results li { display: flex; gap: 10px; align-items: center; padding: 8px 10px; background: var(--card); border-radius: 8px; margin: 6px 0; }
+.taboo-results .ico { width: 22px; text-align: center; }
+.taboo-results .r-correct .ico { color: var(--good); }
+.taboo-results .r-buzz .ico, .taboo-results .r-buzz { color: #ff8a8a; }
+.tv .taboo-word { font-size: 3.4rem; }
+.tv .taboo-list li { font-size: 1.8rem; }
+.tv .big-timer { font-size: 3rem; }
+.tv .guess-box .huge { font-size: 4rem; }

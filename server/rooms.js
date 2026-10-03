@@ -42,6 +42,7 @@ class Room {
     this.round = 0;
     this.game = null;
     this.timers = new Set();
+    this.memory = {}; // per-room scratch space that outlives a single game (e.g. cards already seen)
     this.log = [];
     this.cashOutLead = DEFAULT_CASH_OUT_LEAD;
     // Pending cash out: { teamId, owedBy, dare, by, at, status: 'voting'|'accepted', votes: {playerId: bool}, deadline }
@@ -305,6 +306,7 @@ class Room {
       teams: this.teams,
       players: [...this.players.values()],
       random: this.random,
+      memory: this.memory,
       awardPoints: (teamId, n, reason) => this.addPoints(teamId, n, reason),
       schedule: (ms, fn) => {
         const gameAtSchedule = this.game;
