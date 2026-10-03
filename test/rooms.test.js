@@ -135,9 +135,9 @@ test('switch game: costs points, needs a big enough lead and a minimum run time'
   assert.strictEqual(room.switchBlocker('A'), null);
   assert.deepStrictEqual(room.shop('A').map((i) => i.available), [true, true]);
   room.buySwitch('A', 'random', 'Ana');
-  assert.strictEqual(room.game.id, 'dummy');
+  assert.notStrictEqual(room.game.id, 'buzzer');
   assert.strictEqual(room.teams[0].score, 6);
-  assert.match(room.announcement.text, /spent 15 points to switch to Dummy/);
+  assert.match(room.announcement.text, /spent 15 points to switch to/);
   // Fresh game: locked again even though they could otherwise afford nothing anyway.
   assert.ok(room.switchBlocker('A'));
   assert.throws(() => room.buySwitch('A', 'buzzer', 'Ana'), /lead/);

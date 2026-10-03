@@ -13,6 +13,26 @@ An all-night team party game you play on your phones, with an optional shared TV
 
 Games are kept in memory only. When the host ends a game, or the server restarts, it's gone.
 
+## Games
+
+### Cards Against Humanity (team edition)
+
+Comes with **205 decks** (every official and unofficial deck in the community master spreadsheet): **6,274 prompt cards and 22,260 answer cards**.
+
+1. A **picker** is chosen each round. The role alternates between teams, and within a team it goes to whoever has gone longest without picking.
+2. Everyone sees the prompt on their phone, and the picker reads it out loud. Every other player plays 1–3 cards (as many as the prompt asks for) from a hand of 10. When the timer runs out (default 60s), a random card is played for anyone who hasn't played.
+3. The picker steps through the answers **one at a time, on every screen at once**, reading each out loud and tapping Next. The answers are anonymous.
+4. The picker chooses a winner while everyone who played votes for their favourite (voting for your own card is allowed). The picker's choice stays hidden until the end.
+5. The winning card's team gets **1 point**, plus a **1-point bonus** if the picker's choice was also the crowd's top vote. Then the next round starts automatically after 25 seconds, or sooner when the picker taps Next round.
+
+The host can change the timer (Off/45/60/90s), switch between all decks and official-only decks, skip a prompt, stop waiting and reveal, or pick for a picker who has wandered off.
+
+Card data is from [JSON Against Humanity](https://github.com/crhallberg/json-against-humanity), which is generated from the same spreadsheet. To refresh it, run `node scripts/import-cards.js` (instructions are at the top of the file). Cards Against Humanity is licensed CC BY-NC-SA 2.0.
+
+### Buzzer Round
+
+The host asks a question out loud and opens the buzzers. The first phone to buzz answers for its team. The host marks the answer right or wrong, and a wrong answer locks that team out until the next question.
+
 ## Run locally
 
 ```bash

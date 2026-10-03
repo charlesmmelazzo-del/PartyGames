@@ -120,7 +120,7 @@
     if (!state.game) return '';
     const view = GameViews[state.game.id];
     if (!view || !view[role]) return `<p class="muted">This game has no ${role} screen.</p>`;
-    return view[role](state.game.view, { state, esc, team });
+    return view[role](state.game.view, { state, esc, team, role });
   }
 
   // Dare list the leading team (or host) picks from. `send` is 'player' or 'host'.
@@ -215,18 +215,27 @@
     const me = state.me;
     const myTeam = team(me.teamId);
     document.body.style.setProperty('--team', myTeam.color);
-    app.innerHTML = `
-      <section class="player">
-        <div class="team-banner">
+    // While a game runs, team + score shrink to one bar so the game sits at the top of the screen.
+    const top = state.game
+      ? `<div class="mini-head">
+          <span class="team-pill">🔒 ${esc(myTeam.name)} · ${esc(me.name)}</span>
+          <span class="mini-score">${state.teams.map((t) => `<b style="color:${t.color}">${t.score}</b>`).join(' – ')}</span>
+        </div>
+        <div class="mini-game muted small">Round ${state.game.round}: ${esc(state.game.name)} · game ${esc(state.code)}</div>`
+      : `<div class="team-banner">
           <div class="small">🔒 You're on</div>
           <div class="team-name">${esc(myTeam.name)}</div>
           <div class="small">${esc(me.name)} · game <strong>${esc(state.code)}</strong></div>
         </div>
         ${scoreboard()}
+        ${gameHeader()}`;
+    app.innerHTML = `
+      <section class="player">
+        ${top}
         ${cashOutBanner(me.teamId)}
-        ${teamShop()}
-        ${gameHeader()}
+        ${state.shop.some((i) => i.available) || !state.game ? teamShop() : ''}
         <div class="game">${gameBody('player')}</div>
+        ${state.game && !state.shop.some((i) => i.available) ? teamShop() : ''}
         <details class="card roster"><summary>Your teammates (${myTeam.players.length})</summary>
           <ul>${myTeam.players.map((p) => `<li class="${p.connected ? '' : 'muted'}">${esc(p.name)}</li>`).join('')}</ul>
         </details>
@@ -414,7 +423,7 @@
           <div><span class="muted">Join at</span> <strong>${esc(location.host)}</strong> <span class="muted">code</span> <strong class="code">${esc(state.code)}</strong></div>
           <img class="qr" src="/qr/${esc(state.code)}.svg" alt="">
         </header>
-        ${scoreboard({ big: true })}
+        ${scoreboard({ big: !state.game })}
         ${cashOutBanner()}
         ${gameHeader()}
         <div class="game">${gameBody('tv')}</div>
@@ -446,6 +455,13 @@
   const handleResult = (res) => res && res.error && toast(res.error);
 
   app.addEventListener('click', (e) => {
+    // Taps a game handles on the phone itself (e.g. choosing cards before submitting).
+    const local = e.target.closest('[data-local]');
+    if (local && state && state.game) {
+      const view = GameViews[state.game.id];
+      if (view && view.local) view.local(local.dataset, state.game.view);
+      return render();
+    }
     const tab = e.target.closest('[data-tab]');
     if (tab) {
       hostTab = tab.dataset.tab;
@@ -526,13 +542,20 @@
     if (!document.getElementById('join')) renderHome(params.get('code') || '');
   });
 
-  setInterval(() => {
+  const fmtLeft = (ms) => {
+    const s = Math.max(0, Math.ceil(ms / 1000));
+    return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+  };
+  function tick(onlyEmpty) {
     const now = Date.now() + clockOffset;
-    for (const el of document.querySelectorAll('[data-since]')) el.textContent = fmtElapsed(now - Number(el.dataset.since));
-  }, 1000);
+    for (const el of document.querySelectorAll(`[data-since]${onlyEmpty ? ':empty' : ''}`)) el.textContent = fmtElapsed(now - Number(el.dataset.since));
+    for (const el of document.querySelectorAll(`[data-until]${onlyEmpty ? ':empty' : ''}`)) {
+      const left = Number(el.dataset.until) - now;
+      el.textContent = fmtLeft(left);
+      el.classList.toggle('urgent', left < 10000);
+    }
+  }
+  setInterval(() => tick(false), 1000);
   // Fill timers immediately after each render too.
-  new MutationObserver(() => {
-    const now = Date.now() + clockOffset;
-    for (const el of document.querySelectorAll('[data-since]:empty')) el.textContent = fmtElapsed(now - Number(el.dataset.since));
-  }).observe(app, { childList: true, subtree: true });
+  new MutationObserver(() => tick(true)).observe(app, { childList: true, subtree: true });
 })();

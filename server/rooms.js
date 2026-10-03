@@ -94,6 +94,8 @@ class Room {
     const player = { id: shortId(), token: secret(), name, teamId: this.pickTeam(), connected: true };
     this.players.set(player.id, player);
     this.touch();
+    const def = this.game && games.get(this.game.id);
+    if (def && def.onPlayerJoined) def.onPlayerJoined(this.game.state, player, this.api());
     return player;
   }
 
