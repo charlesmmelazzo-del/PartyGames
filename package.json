@@ -1,0 +1,24 @@
+{
+  "name": "partygames",
+  "version": "0.1.0",
+  "private": true,
+  "description": "All-night team party game platform: host a room, players join by code word, rotating mini-games, running score.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.4"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.63.0",
+    "socket.io-client": "^4.8.4"
+  }
+}
