@@ -54,6 +54,19 @@ The host can set the turn length (45/60/90/120s), choose **21+ / Family friendly
 
 The host can play with **All** cards or **Your deck only**. The tests check every card has 4–5 forbidden words and no duplicate words.
 
+### Trivia Board
+
+A Jeopardy-style board: **Bible, History, Pop Music, Reality TV and Sports**, each with 5 squares worth **1 to 5 points** (harder questions are worth more). All questions are 4-option multiple choice.
+
+1. Each turn a player is chosen, alternating between teams. They pick a square from the board on their phone.
+2. **Everyone else answers too**, on their own phones. The player on the board sees a **live, anonymous count** of how many people picked each answer, but not who. Their teammates can help; the other team can try to lead them astray. Crowd members can change their pick until the player locks in. The crowd never sees the split, and neither does the TV.
+3. The player taps an answer, then **Lock in**. A right answer scores the square's points for their team. A wrong answer, or running out of time (default 30s), scores nothing.
+4. The reveal shows the right answer, the crowd's split, and **which team's crowd picked what**, so everyone finds out who was trying to fool whom. Then the other team's turn starts.
+
+When the board is used up, a fresh one is dealt with new questions. Questions asked during the night aren't repeated. The host can set the answer time (20/30/45/60s), pick a square for an absent player, let someone else pick, reveal early, or deal a fresh board.
+
+**Questions:** 150 in `server/data/trivia.txt` (30 per category, 6 per difficulty), one per line: `difficulty | question | *right answer | wrong | wrong | wrong`. Add your own lines or new `## Category` sections; each category needs at least 5 questions per difficulty. Pop Music and Reality TV were written for this project and cover up to 2024. Some Bible, History and Sports questions are adapted from [OpenTriviaQA](https://github.com/uberspot/OpenTriviaQA) (CC BY-SA 4.0).
+
 ### Buzzer Round
 
 The host asks a question out loud and opens the buzzers. The first phone to buzz answers for its team. The host marks the answer right or wrong, and a wrong answer locks that team out until the next question.

@@ -43,7 +43,7 @@ test('who sees the card: giver and other team yes, teammates and TV no', () => {
   const t = setup(4);
   t.act(t.giver(), 'start');
   assert.ok(t.view(t.giver()).card.word);
-  assert.strictEqual(t.view(t.giver()).card.taboo.length, 5);
+  assert.ok([4, 5].includes(t.view(t.giver()).card.taboo.length));
   assert.ok(t.view(t.others()[0]).card.word);
   assert.strictEqual(t.view(t.mates()[0]).card, undefined, 'guessers must not see the word');
   assert.strictEqual(t.room.snapshot({ role: 'tv' }).game.view.card, undefined, 'TV must not show the word');
