@@ -56,7 +56,7 @@ window.GameViews = window.GameViews || {};
     const pct = v.crowdTotal ? Math.round((100 * n) / v.crowdTotal) : 0;
     return `<button class="tq-opt ${cls}" ${attrs}>
       <span class="tq-letter">${LETTERS[i]}</span><span class="grow">${esc(v.answers[i])}</span>
-      ${bar ? `<span class="tq-count">${n}</span><span class="tq-bar" style="width:${pct}%"></span>` : ''}
+      ${bar && v.crowd ? `<span class="tq-count">${n}</span><span class="tq-bar" style="width:${pct}%"></span>` : ''}
     </button>`;
   }
 

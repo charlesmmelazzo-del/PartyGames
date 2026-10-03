@@ -121,7 +121,11 @@
     if (!state.game) return '';
     const view = GameViews[state.game.id];
     if (!view || !view[role]) return `<p class="muted">This game has no ${role} screen.</p>`;
-    return view[role](state.game.view, gameCtx(role));
+    // The host tab is for running the game: always show the referee screen with host controls,
+    // even when the host is also playing (they take their own turns from the "My team" tab).
+    // The server still decides what this viewer may see, so nothing secret can leak here.
+    const v = role === 'host' && state.me ? { ...state.game.view, role: 'referee', amPicker: false, canVote: false } : state.game.view;
+    return view[role](v, gameCtx(role));
   }
 
   // The leading team (or the host for them) writes a dare for the other team.
