@@ -17,7 +17,7 @@ Games are kept in memory only. When the host ends a game, or the server restarts
 
 ### Cards Against Humanity (team edition)
 
-Comes with **205 decks** (every official and unofficial deck in the community master spreadsheet): **6,273 prompt cards and 22,253 answer cards**.
+Comes with **205 decks** (every official deck plus published third-party decks from the community master spreadsheet): **6,273 prompt cards and 22,253 answer cards**.
 
 1. A **picker** is chosen each round. The role alternates between teams, and within a team it goes to whoever has gone longest without picking.
 2. Everyone sees the prompt on their phone, and the picker reads it out loud. Every other player plays 1–3 cards (as many as the prompt asks for) from a hand of 10. When the timer runs out (default 60s), a random card is played for anyone who hasn't played.
