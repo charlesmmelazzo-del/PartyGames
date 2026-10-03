@@ -151,3 +151,31 @@ test('card data has no spreadsheet leftovers or unplayable cards', () => {
   assert.deepStrictEqual(bad, []);
   assert.ok(CARDS.black.every(([t]) => t.replace(/[_\s.]/g, '').length > 0), 'no empty prompts');
 });
+
+test('rating: family mode deals only family decks, 21+ only adult decks', () => {
+  const t = setup(3);
+  const p = t.players.find((x) => x.id !== t.s().round.pickerId);
+  const rating = (c) => CARDS.packs[CARDS.white[c.id][1]].rating;
+  assert.strictEqual(t.s().settings.rating, 'adult');
+  assert.ok(t.view(p).hand.every((c) => rating(c) === 'adult'));
+  t.host('settings', { rating: 'family' });
+  const v = t.view(p);
+  assert.strictEqual(v.hand.length, 10);
+  assert.ok(v.hand.every((c) => rating(c) === 'family'), 'hand swapped to family cards');
+  assert.strictEqual(CARDS.packs[CARDS.black[t.s().round.black][2]].rating, 'family', 'prompt re-dealt');
+  assert.ok(t.s().blackPile.every((i) => CARDS.packs[CARDS.black[i][2]].rating === 'family'));
+  assert.ok(v.deckSize.packs >= 10 && v.deckSize.black > 500);
+  // Family + official = just CAH's own Family Edition.
+  t.host('settings', { decks: 'official' });
+  assert.strictEqual(t.view(p).deckSize.packs, 1);
+  assert.throws(() => t.host('settings', { rating: 'xxx' }), /rating/);
+  t.room.clearTimers();
+});
+
+test('family decks contain no adult content', () => {
+  const famPacks = new Set(CARDS.packs.flatMap((p, i) => (p.rating === 'family' ? [i] : [])));
+  const words = /\b(sex|sexy|fuck\w*|shit|boob\w*|naked|(?<!root )beer|wine|drunk|porn\w*|penis|vagina|nipples?)\b/i;
+  const bad = [...CARDS.black.filter((c) => famPacks.has(c[2])), ...CARDS.white.filter((c) => famPacks.has(c[1]))].filter((c) => words.test(c[0]));
+  assert.deepStrictEqual(bad, []);
+  assert.ok(CARDS.white.every(([t]) => !/^\*RANDOM\*/i.test(t)), 'no action cards');
+});

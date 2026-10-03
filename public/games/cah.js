@@ -173,9 +173,11 @@ window.GameViews = window.GameViews || {};
   function hostSettings(v) {
     const pill = (key, val, label) =>
       `<button class="pill ${v.settings[key] === val ? 'active' : ''}" ${send('host', 'settings', { [key]: val })}>${label}</button>`;
-    return `<details class="cah-settings"><summary>Card game settings</summary>
+    return `<details class="cah-settings" ${v.phase === 'waiting' ? 'open' : ''}><summary>Card game settings</summary>
       <div class="row"><span class="grow">Timer</span>${[0, 45, 60, 90].map((t) => pill('timer', t, t ? `${t}s` : 'Off')).join('')}</div>
-      <div class="row"><span class="grow">Decks</span>${pill('decks', 'all', 'All 205')}${pill('decks', 'official', 'Official only')}</div>
+      <div class="row"><span class="grow">Rating</span>${pill('rating', 'adult', '21+')}${pill('rating', 'family', 'Family friendly')}</div>
+      <div class="row"><span class="grow">Decks</span>${pill('decks', 'all', 'All published')}${pill('decks', 'official', 'Official CAH only')}</div>
+      <p class="muted small">In play: ${v.deckSize.packs} decks · ${v.deckSize.black.toLocaleString()} prompts · ${v.deckSize.white.toLocaleString()} answers</p>
       <p class="muted small">Win = ${v.settings.winPoints} point, +${v.settings.bonusPoints} bonus when the crowd vote matches the picker.</p>
     </details>`;
   }

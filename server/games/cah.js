@@ -12,7 +12,8 @@ const CARDS = require('../data/cah-cards.json');
 const HAND_SIZE = 10;
 const MIN_PLAYERS = 3; // picker + two answers
 const RESULT_MS = 25000; // result screen stays up this long before the next round deals
-const DEFAULTS = { timer: 60, decks: 'all', winPoints: 1, bonusPoints: 1 };
+// rating: 'adult' (21+ decks) or 'family' (family-friendly decks); decks: 'all' published or 'official' CAH only.
+const DEFAULTS = { timer: 60, rating: 'adult', decks: 'all', winPoints: 1, bonusPoints: 1 };
 
 const now = () => Date.now();
 
@@ -24,11 +25,22 @@ function shuffle(arr, random) {
   return arr;
 }
 
+// Whether a deck is in play under the current rating + deck settings.
+function deckInPlay(settings, packIdx) {
+  const pack = CARDS.packs[packIdx];
+  return pack.rating === settings.rating && (settings.decks === 'all' || pack.official);
+}
+
 function buildPiles(state, random) {
-  const ok = (packIdx) => state.settings.decks === 'all' || CARDS.packs[packIdx].official;
+  const ok = (packIdx) => deckInPlay(state.settings, packIdx);
   const inHands = new Set(Object.values(state.hands).flat());
   state.blackPile = shuffle(CARDS.black.flatMap((c, i) => (ok(c[2]) ? [i] : [])), random);
   state.whitePile = shuffle(CARDS.white.flatMap((c, i) => (ok(c[1]) && !inHands.has(i) ? [i] : [])), random);
+  state.pool = {
+    decks: CARDS.packs.filter((p, i) => ok(i)).length,
+    black: state.blackPile.length,
+    white: state.whitePile.length + inHands.size,
+  };
 }
 
 function drawWhite(state, api) {
@@ -293,15 +305,20 @@ module.exports = {
           if (![0, 30, 45, 60, 90, 120].includes(s.timer)) throw new Error('Bad timer');
           state.settings.timer = s.timer;
         }
-        if (s.decks !== undefined) {
-          if (!['all', 'official'].includes(s.decks)) throw new Error('Bad deck choice');
-          state.settings.decks = s.decks;
+        if (s.decks !== undefined && !['all', 'official'].includes(s.decks)) throw new Error('Bad deck choice');
+        if (s.rating !== undefined && !['adult', 'family'].includes(s.rating)) throw new Error('Bad rating');
+        if (s.decks !== undefined || s.rating !== undefined) {
+          if (s.decks !== undefined) state.settings.decks = s.decks;
+          if (s.rating !== undefined) state.settings.rating = s.rating;
+          // Swap out cards in hands that aren't in the chosen decks any more (refilled on next view).
+          for (const [pid, hand] of Object.entries(state.hands)) state.hands[pid] = hand.filter((c) => deckInPlay(state.settings, CARDS.white[c][1]));
           buildPiles(state, api.random);
-          // Swap out cards in hands that aren't in the chosen decks any more.
-          if (s.decks === 'official')
-            for (const [pid, hand] of Object.entries(state.hands)) {
-              state.hands[pid] = hand.filter((c) => CARDS.packs[CARDS.white[c][1]].official);
-            }
+          // A prompt from the old decks shouldn't linger: deal a fresh one if nobody has played yet.
+          const r = state.round;
+          if (r && state.phase === 'submit' && !Object.keys(r.submissions).length && !deckInPlay(state.settings, CARDS.black[r.black][2])) {
+            r.black = drawBlack(state, api);
+            r.pick = CARDS.black[r.black][1];
+          }
         }
         return;
       }
@@ -319,7 +336,7 @@ module.exports = {
       settings: state.settings,
       minPlayers: MIN_PLAYERS,
       online: connected(api).length,
-      deckSize: { black: CARDS.black.length, white: CARDS.white.length, packs: CARDS.packs.length },
+      deckSize: { black: state.pool.black, white: state.pool.white, packs: state.pool.decks },
     };
     if (!r) return v;
     const picker = playerById(api, r.pickerId);
