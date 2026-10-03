@@ -8,6 +8,18 @@ const DEFAULT_TEAMS = [
 ];
 const MAX_NAME = 20;
 const LOG_SIZE = 15;
+const DEFAULT_CASH_OUT_LEAD = 10;
+const MAX_DARE = 80;
+const DEFAULT_DARES = [
+  'Whole team takes a shot',
+  'Whole team dances for 30 seconds',
+  'Whole team sings the chorus of a song the winners pick',
+  'Whole team does 10 jumping jacks',
+  'Whole team serenades the winning team',
+  'Each loser says something nice about a winner',
+  'Whole team does their best runway walk',
+  'Whole team finishes their drink',
+];
 
 const secret = () => crypto.randomBytes(16).toString('hex');
 const shortId = () => crypto.randomBytes(6).toString('hex');
@@ -29,12 +41,17 @@ class Room {
       ...t,
       name: teamNames[i] ? cleanName(teamNames[i], 24) : t.name,
       score: 0,
+      cashOuts: 0,
+      banked: 0,
     }));
     this.players = new Map();
     this.round = 0;
     this.game = null;
     this.timers = new Set();
     this.log = [];
+    this.cashOutLead = DEFAULT_CASH_OUT_LEAD;
+    this.dares = [...DEFAULT_DARES];
+    this.cashOut = null; // pending: { teamId, owedBy, dare, by, at }
   }
 
   touch() {
@@ -99,8 +116,69 @@ class Room {
   }
 
   resetScores() {
-    for (const t of this.teams) t.score = 0;
+    for (const t of this.teams) Object.assign(t, { score: 0, cashOuts: 0, banked: 0 });
     this.log = [];
+    this.cashOut = null;
+  }
+
+  // ---------- cash out: a team with a big lead trades it for a dare by the other team ----------
+
+  standings() {
+    const [leader, trailer] = [...this.teams].sort((a, b) => b.score - a.score);
+    return { leader, trailer, lead: leader.score - trailer.score };
+  }
+
+  canCashOut(teamId) {
+    const { leader, lead } = this.standings();
+    return !this.cashOut && leader.id === teamId && lead >= this.cashOutLead;
+  }
+
+  // dareIndex: a number into this.dares, or 'random'.
+  requestCashOut(teamId, dareIndex, byName) {
+    if (this.cashOut) throw new Error('A cash out is already waiting on a dare');
+    if (!this.canCashOut(teamId)) throw new Error(`You need a lead of ${this.cashOutLead} to cash out`);
+    if (!this.dares.length) throw new Error('There are no dares to pick from');
+    const i = dareIndex === 'random' ? Math.floor(this.random() * this.dares.length) : Number(dareIndex);
+    const dare = this.dares[i];
+    if (dare === undefined) throw new Error('Pick a dare');
+    const { trailer } = this.standings();
+    this.cashOut = { teamId, owedBy: trailer.id, dare, by: byName, random: dareIndex === 'random', at: Date.now() };
+  }
+
+  // Host confirms the dare was done: the leader's lead is banked and the score is tied up.
+  completeCashOut() {
+    if (!this.cashOut) throw new Error('No cash out pending');
+    const t = this.team(this.cashOut.teamId);
+    const other = this.team(this.cashOut.owedBy);
+    const lead = Math.max(0, t.score - other.score);
+    t.score -= lead;
+    t.cashOuts++;
+    t.banked += lead;
+    this.log.unshift({ at: Date.now(), teamId: t.id, points: -lead, reason: `Cashed out: ${this.cashOut.dare}`.slice(0, 60) });
+    this.log.length = Math.min(this.log.length, LOG_SIZE);
+    this.cashOut = null;
+  }
+
+  cancelCashOut() {
+    this.cashOut = null;
+  }
+
+  setCashOutLead(n) {
+    const v = Number(n);
+    if (!Number.isInteger(v) || v < 1 || v > 1000) throw new Error('Lead must be 1-1000');
+    this.cashOutLead = v;
+  }
+
+  addDare(text) {
+    const d = String(text || '').replace(/\s+/g, ' ').trim().slice(0, MAX_DARE);
+    if (!d) throw new Error('Type a dare');
+    if (this.dares.length >= 50) throw new Error('That is a lot of dares already');
+    this.dares.push(d);
+  }
+
+  removeDare(index) {
+    if (this.dares[index] === undefined) throw new Error('No such dare');
+    this.dares.splice(index, 1);
   }
 
   clearTimers() {
@@ -170,6 +248,8 @@ class Room {
         name: t.name,
         color: t.color,
         score: t.score,
+        cashOuts: t.cashOuts,
+        banked: t.banked,
         players: [...this.players.values()]
           .filter((p) => p.teamId === t.id)
           .map((p) => ({ id: p.id, name: p.name, connected: p.connected })),
@@ -182,6 +262,13 @@ class Room {
         view: def.view(this.game.state, { role: viewer.role, player }, this.api()),
       },
       games: isHost ? games.list() : undefined,
+      cashOut: this.cashOut,
+      cashOutLead: this.cashOutLead,
+      dares: this.dares,
+      canCashOut: {
+        host: isHost ? this.teams.filter((t) => this.canCashOut(t.id)).map((t) => t.id) : [],
+        me: !!player && this.canCashOut(player.teamId),
+      },
       log: this.log,
       serverTime: Date.now(),
     };

@@ -188,3 +188,24 @@ input[name='code']::placeholder { text-transform: none; letter-spacing: normal; 
   .tv-big .huge { font-size: 3rem; }
   .tv-status { font-size: 1.6rem; }
 }
+
+/* cash out */
+.banked { color: var(--accent); margin-top: 4px; }
+.cash-offer { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--card)); }
+.dare-title { font-size: 1.3rem; font-weight: 800; }
+.dare-picker button.dare { display: block; width: 100%; text-align: left; margin: 6px 0; background: var(--line); color: var(--text); font-weight: 500; }
+.dare-picker .link { display: block; margin: 4px auto 0; }
+.cash-banner {
+  border: 3px solid var(--c);
+  background: color-mix(in srgb, var(--c) 22%, var(--card));
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  margin: 12px 0;
+}
+.cash-banner .dare-text { font-size: 1.6rem; font-weight: 800; margin: 8px 0; }
+.tv .cash-banner .dare-title { font-size: 2.4rem; }
+.tv .cash-banner .dare-text { font-size: 3.4rem; }
+.tv .cash-banner .small { font-size: 1.2rem; }
+ul.dares li { display: flex; align-items: center; padding: 4px 0; border-bottom: 1px solid var(--line); }
+details summary { cursor: pointer; margin: 8px 0; }

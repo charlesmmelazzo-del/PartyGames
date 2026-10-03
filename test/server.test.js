@@ -56,6 +56,7 @@ test('full night: host, balanced join, lock on reconnect, buzzer, TV, end', asyn
   await settle();
   assert.strictEqual(ana2.last.me.teamId, ana.teamId);
   assert.strictEqual(host.last.teams.flatMap((t) => t.players).length, 5);
+  phones[0] = { ...ana, c: ana2 };
 
   // Players can't use host powers; bad codes are rejected.
   assert.match((await call(ana2, 'host:action', { type: 'resetScores' })).error, /host/);
@@ -76,6 +77,23 @@ test('full night: host, balanced join, lock on reconnect, buzzer, TV, end', asyn
   await settle();
   const score = (t) => tv.last.teams.find((x) => x.id === t).score;
   assert.strictEqual(score(ben.teamId), ben.teamId === 'A' ? 6 : 1);
+
+  // Cash out: a player on the leading team triggers it, the host confirms the dare.
+  const leadTeam = tv.last.teams.find((t) => t.score > 0).id;
+  const trailTeam = leadTeam === 'A' ? 'B' : 'A';
+  const leader = phones.find((p) => p.teamId === leadTeam);
+  const trailer = phones.find((p) => p.teamId === trailTeam);
+  await call(host, 'host:action', { type: 'addPoints', teamId: leadTeam, points: 5 });
+  await call(host, 'host:action', { type: 'addPoints', teamId: leadTeam, points: 5 });
+  assert.match((await call(trailer.c, 'player:action', { action: 'cashOut', payload: { dareIndex: 0 } })).error, /lead/);
+  assert.ok((await call(leader.c, 'player:action', { action: 'cashOut', payload: { dareIndex: 'random' } })).ok);
+  await settle();
+  assert.strictEqual(tv.last.cashOut.owedBy, trailTeam);
+  await call(host, 'host:action', { type: 'cashOutDone' });
+  await settle();
+  const [s1, s2] = tv.last.teams.map((t) => t.score);
+  assert.strictEqual(s1, s2);
+  assert.strictEqual(tv.last.teams.find((t) => t.id === leadTeam).cashOuts, 1);
 
   // Host reconnects and is still host; host can also join a team.
   const host2 = client();

@@ -143,6 +143,24 @@ function createServer({ random } = {}) {
             }
           }
           break;
+        case 'cashOut':
+          room.requestCashOut(msg.teamId, msg.dareIndex, 'Host');
+          break;
+        case 'cashOutDone':
+          room.completeCashOut();
+          break;
+        case 'cashOutCancel':
+          room.cancelCashOut();
+          break;
+        case 'setCashOutLead':
+          room.setCashOutLead(msg.lead);
+          break;
+        case 'addDare':
+          room.addDare(msg.text);
+          break;
+        case 'removeDare':
+          room.removeDare(msg.index);
+          break;
         case 'resetScores':
           room.resetScores();
           break;
@@ -160,7 +178,9 @@ function createServer({ random } = {}) {
       const room = currentRoom();
       const player = socket.data.playerId && room.players.get(socket.data.playerId);
       if (!player) throw new Error('Join a team first');
-      room.gameAction('player', action, payload, player);
+      if (action === 'cashOut') room.requestCashOut(player.teamId, payload && payload.dareIndex, player.name);
+      else room.gameAction('player', action, payload, player);
+      room.touch();
       broadcast(room);
     });
 

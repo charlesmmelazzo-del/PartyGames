@@ -79,3 +79,39 @@ test('room codes are unique and lookup is case-insensitive', () => {
   const [first] = codes;
   assert.ok(mgr.get(` ${first.toLowerCase()} `));
 });
+
+test('cash out: needs the lead, waits for the dare, then ties and banks the lead', () => {
+  const room = new Room('TEST', { random: () => 0 });
+  room.addPoints('A', 9);
+  assert.strictEqual(room.canCashOut('A'), false);
+  assert.throws(() => room.requestCashOut('A', 0, 'Ana'), /lead of 10/);
+  room.addPoints('A', 3);
+  room.addPoints('B', 1); // A leads 12-1
+  assert.strictEqual(room.canCashOut('B'), false);
+  room.requestCashOut('A', 'random', 'Ana');
+  assert.strictEqual(room.cashOut.dare, room.dares[0]);
+  assert.strictEqual(room.cashOut.owedBy, 'B');
+  assert.throws(() => room.requestCashOut('A', 1, 'Ana'), /already/);
+  room.addPoints('A', 2); // play continues while the dare is pending: 14-1
+  room.completeCashOut();
+  assert.deepStrictEqual(
+    room.teams.map((t) => [t.score, t.cashOuts, t.banked]),
+    [[1, 1, 13], [1, 0, 0]],
+  );
+  assert.strictEqual(room.cashOut, null);
+});
+
+test('cash out: cancel, custom threshold and dares', () => {
+  const room = new Room('TEST');
+  room.setCashOutLead(3);
+  room.addDare('  Do the  worm ');
+  assert.strictEqual(room.dares.at(-1), 'Do the worm');
+  room.addPoints('B', 3);
+  room.requestCashOut('B', room.dares.length - 1, 'Host');
+  room.cancelCashOut();
+  assert.deepStrictEqual(room.teams.map((t) => t.score), [0, 3]);
+  room.removeDare(0);
+  assert.throws(() => room.setCashOutLead(0), /1-1000/);
+  room.resetScores();
+  assert.ok(room.teams.every((t) => t.score === 0 && t.cashOuts === 0));
+});

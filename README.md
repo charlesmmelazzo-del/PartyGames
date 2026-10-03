@@ -6,6 +6,7 @@ An all-night team party game you play on your phones, with an optional shared TV
 - Everyone else opens the site, enters the code and their name, and is **placed on a team automatically**. Teams stay even, and people can join at any point in the night.
 - Each phone is **locked to its team** for the rest of the game. Reloading the page or losing signal puts the player back on the same team. The lock is cleared only when the host taps **End game for everyone** or removes that player.
 - **Scores add up all night.** The host picks which mini-game is running (switching about once an hour) and can add or remove points by hand at any time.
+- **Cash out** keeps the game from turning into a blowout. When a team leads by 10 or more (the host can change the number), anyone on that team can cash out. They pick a dare from the list, or hit Random, and the trailing team has to do it: a shot, a dance and so on. Once the host confirms the dare was done, the scores go back to a tie. The leading team keeps its lead as **banked points**, and the scoreboard shows each team's cash-out count and banked total. The host can edit the dare list and cash out on a team's behalf.
 - **TV mode** (`Show a game on a TV`) shows the scoreboard, the join code and the current game, so people away from the TV can keep playing on their phones.
 
 Games are kept in memory only. When the host ends a game, or the server restarts, it's gone.
