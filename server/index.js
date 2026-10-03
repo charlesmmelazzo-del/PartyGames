@@ -127,6 +127,7 @@ function createServer({ random } = {}) {
           break;
         case 'setGame':
           room.setGame(msg.gameId);
+          if (room.game) room.announce(`New game: ${room.game.name}!`);
           break;
         case 'game':
           room.gameAction('host', msg.action, msg.payload);
@@ -145,6 +146,15 @@ function createServer({ random } = {}) {
           break;
         case 'cashOut':
           room.requestCashOut(msg.teamId, msg.dareIndex, 'Host');
+          break;
+        case 'randomGame':
+          room.randomGame();
+          break;
+        case 'setSwitchPrice':
+          room.setSwitchPrice(msg.price);
+          break;
+        case 'setSwitchMinMinutes':
+          room.setSwitchMinMinutes(msg.minutes);
           break;
         case 'cashOutDone':
           room.completeCashOut();
@@ -179,6 +189,7 @@ function createServer({ random } = {}) {
       const player = socket.data.playerId && room.players.get(socket.data.playerId);
       if (!player) throw new Error('Join a team first');
       if (action === 'cashOut') room.requestCashOut(player.teamId, payload && payload.dareIndex, player.name);
+      else if (action === 'switchGame') room.buySwitch(player.teamId, payload && payload.gameId, player.name);
       else room.gameAction('player', action, payload, player);
       room.touch();
       broadcast(room);

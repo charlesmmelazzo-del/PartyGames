@@ -9,6 +9,9 @@ const DEFAULT_TEAMS = [
 const MAX_NAME = 20;
 const LOG_SIZE = 15;
 const DEFAULT_CASH_OUT_LEAD = 10;
+const DEFAULT_SWITCH_PRICE = 15;
+const DEFAULT_SWITCH_MIN_MINUTES = 10;
+const ANNOUNCE_MS = 8000;
 const MAX_DARE = 80;
 const DEFAULT_DARES = [
   'Whole team takes a shot',
@@ -52,6 +55,13 @@ class Room {
     this.cashOutLead = DEFAULT_CASH_OUT_LEAD;
     this.dares = [...DEFAULT_DARES];
     this.cashOut = null; // pending: { teamId, owedBy, dare, by, at }
+    this.switchPrice = DEFAULT_SWITCH_PRICE;
+    this.switchMinMinutes = DEFAULT_SWITCH_MIN_MINUTES;
+    this.announcement = null; // { id, text, teamId, at } flashed on every screen
+  }
+
+  announce(text, teamId) {
+    this.announcement = { id: shortId(), text, teamId, at: Date.now() };
   }
 
   touch() {
@@ -129,8 +139,7 @@ class Room {
   }
 
   canCashOut(teamId) {
-    const { leader, lead } = this.standings();
-    return !this.cashOut && leader.id === teamId && lead >= this.cashOutLead;
+    return !this.cashOutBlocker(teamId);
   }
 
   // dareIndex: a number into this.dares, or 'random'.
@@ -142,6 +151,7 @@ class Room {
     const dare = this.dares[i];
     if (dare === undefined) throw new Error('Pick a dare');
     const { trailer } = this.standings();
+    this.announce(`${this.team(teamId).name} cashed out! ${trailer.name} owes a dare.`, teamId);
     this.cashOut = { teamId, owedBy: trailer.id, dare, by: byName, random: dareIndex === 'random', at: Date.now() };
   }
 
@@ -161,6 +171,70 @@ class Room {
 
   cancelCashOut() {
     this.cashOut = null;
+  }
+
+  // ---------- team shop: things the winning team can spend its lead on ----------
+
+  // Why `teamId` can't buy a game switch right now, or null if it can.
+  switchBlocker(teamId) {
+    const { leader, lead } = this.standings();
+    if (games.list().length < 2) return 'Only one game available so far';
+    if (!this.game) return 'No game is running';
+    if (leader.id !== teamId || lead < this.switchPrice) return `Your team needs a lead of ${this.switchPrice}`;
+    const left = this.game.startedAt + this.switchMinMinutes * 60000 - Date.now();
+    if (left > 0) return `Unlocks in ${Math.ceil(left / 60000)} min (this game just started)`;
+    return null;
+  }
+
+  cashOutBlocker(teamId) {
+    const { leader, lead } = this.standings();
+    if (this.cashOut) return 'Waiting on a dare';
+    if (leader.id !== teamId || lead < this.cashOutLead) return `Your team needs a lead of ${this.cashOutLead}`;
+    return null;
+  }
+
+  shop(teamId) {
+    const cashOut = this.cashOutBlocker(teamId);
+    const sw = this.switchBlocker(teamId);
+    return [
+      { id: 'cashOut', name: 'Cash out', cost: 'Your whole lead', what: 'The other team does a dare; your lead is banked and the score is tied.', available: !cashOut, reason: cashOut },
+      { id: 'switchGame', name: 'Switch game', cost: `${this.switchPrice} points`, what: 'Your team picks the next game.', available: !sw, reason: sw },
+    ];
+  }
+
+  // gameId: a game id or 'random' (any game other than the current one).
+  buySwitch(teamId, gameId, byName) {
+    const blocker = this.switchBlocker(teamId);
+    if (blocker) throw new Error(blocker);
+    const choices = games.list().filter((g) => g.id !== this.game.id);
+    const pick = gameId === 'random' ? choices[Math.floor(this.random() * choices.length)] : choices.find((g) => g.id === gameId);
+    if (!pick) throw new Error('Pick a different game');
+    const t = this.team(teamId);
+    this.addPoints(teamId, -this.switchPrice, `Bought a switch to ${pick.name}`);
+    this.setGame(pick.id);
+    this.announce(`${t.name} spent ${this.switchPrice} points to switch to ${pick.name}!`, teamId);
+  }
+
+  // Host's "crowd is bored" button: free, any game other than the current one.
+  randomGame() {
+    const choices = games.list().filter((g) => !this.game || g.id !== this.game.id);
+    if (!choices.length) throw new Error('No other games yet');
+    const pick = choices[Math.floor(this.random() * choices.length)];
+    this.setGame(pick.id);
+    this.announce(`New game: ${pick.name}!`);
+  }
+
+  setSwitchPrice(n) {
+    const v = Number(n);
+    if (!Number.isInteger(v) || v < 1 || v > 1000) throw new Error('Price must be 1-1000');
+    this.switchPrice = v;
+  }
+
+  setSwitchMinMinutes(n) {
+    const v = Number(n);
+    if (!Number.isInteger(v) || v < 0 || v > 240) throw new Error('Minutes must be 0-240');
+    this.switchMinMinutes = v;
+    this.scheduleSwitchUnlock();
   }
 
   setCashOutLead(n) {
@@ -205,6 +279,7 @@ class Room {
           }
           this.onChange(this);
         }, ms);
+        if (handle.unref) handle.unref(); // never keep the process alive just for a game timer
         this.timers.add(handle);
         return handle;
       },
@@ -222,6 +297,14 @@ class Room {
     this.round++;
     this.game = { id: def.id, name: def.name, round: this.round, startedAt: Date.now(), state: null };
     this.game.state = def.init(this.api());
+    this.scheduleSwitchUnlock();
+  }
+
+  // Re-broadcast when buying a switch unlocks, so phones' shops update on their own.
+  scheduleSwitchUnlock() {
+    if (!this.game) return;
+    const left = this.game.startedAt + this.switchMinMinutes * 60000 - Date.now();
+    if (left > 0) this.api().schedule(left + 250, () => {});
   }
 
   gameAction(from, action, payload, player) {
@@ -269,6 +352,11 @@ class Room {
         host: isHost ? this.teams.filter((t) => this.canCashOut(t.id)).map((t) => t.id) : [],
         me: !!player && this.canCashOut(player.teamId),
       },
+      shop: player ? this.shop(player.teamId) : null,
+      allGames: games.list().map(({ id, name }) => ({ id, name })),
+      switchPrice: this.switchPrice,
+      switchMinMinutes: this.switchMinMinutes,
+      announcement: this.announcement && Date.now() - this.announcement.at < ANNOUNCE_MS ? this.announcement : null,
       log: this.log,
       serverTime: Date.now(),
     };

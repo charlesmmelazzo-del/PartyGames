@@ -7,7 +7,9 @@
   let state = null; // latest snapshot from the server
   let clockOffset = 0; // serverTime - Date.now()
   let hostTab = 'host'; // when the host is also a player: 'host' | 'play'
-  let picking = null; // team id whose dare chooser is open, or null
+  let picking = null; // open chooser: 'cashOut:<teamId>' | 'switch' | 'hostSwitch' | null
+  let dismissedAnnouncement = null; // id of the announcement whose display time is over
+  let announceTimer = null;
 
   // ---------- session (keeps a phone locked to its team) ----------
   const loadSession = () => {
@@ -136,6 +138,21 @@
     </div>`;
   }
 
+  // Game list for buying a switch (player) or the host's quick switch.
+  function gamePicker(send) {
+    const others = state.allGames.filter((g) => !state.game || g.id !== state.game.id);
+    const btn = (gameId, label, cls) =>
+      send === 'host'
+        ? `<button class="${cls}" data-send="host" data-type="setGame" data-payload='${JSON.stringify({ gameId })}'>${label}</button>`
+        : `<button class="${cls}" data-send="player" data-payload='${JSON.stringify({ action: 'switchGame', payload: { gameId } })}'>${label}</button>`;
+    return `<div class="dare-picker">
+      <p class="small muted">${send === 'host' ? 'Switch to:' : `Spend ${state.switchPrice} points to switch to:`}</p>
+      ${send === 'host' ? '' : btn('random', '🎲 Random game', 'big')}
+      ${others.map((g) => btn(g.id, esc(g.name), 'dare')).join('')}
+      <button class="link" data-pick="">Never mind</button>
+    </div>`;
+  }
+
   // Banner shown to everyone while a cash out is waiting on the losing team's dare.
   function cashOutBanner(myTeamId) {
     const c = state.cashOut;
@@ -155,15 +172,38 @@
     </div>`;
   }
 
-  function cashOutOffer() {
-    if (!state.canCashOut.me) return '';
-    if (picking === state.me.teamId) return `<div class="card cash-offer">${darePicker('player', state.me.teamId)}</div>`;
-    const { lead } = leadInfo();
-    return `<div class="card cash-offer">
-      <div class="dare-title">💰 You're up by ${lead}!</div>
-      <p class="small">Cash out: the other team does a dare, your lead gets banked, and the score goes back to a tie.</p>
-      <button class="big" data-pick="${state.me.teamId}">Cash out</button>
-    </div>`;
+  // Everything a team can spend its lead on. Open by default when something is affordable.
+  function teamShop() {
+    const items = state.shop;
+    if (picking === `cashOut:${state.me.teamId}`) return `<div class="card cash-offer">${darePicker('player', state.me.teamId)}</div>`;
+    if (picking === 'switch') return `<div class="card cash-offer">${gamePicker('player')}</div>`;
+    const any = items.some((i) => i.available);
+    const { leader, lead } = leadInfo();
+    const headline = any
+      ? `💰 You're up by ${lead}! Spend it?`
+      : `💰 Team shop${leader.id === state.me.teamId && lead > 0 ? ` · up by ${lead}` : ''}`;
+    const pickKey = { cashOut: `cashOut:${state.me.teamId}`, switchGame: 'switch' };
+    return `<details class="card shop ${any ? 'cash-offer' : ''}" ${any ? 'open' : ''}>
+      <summary class="dare-title">${headline}</summary>
+      ${items
+        .map(
+          (i) => `<div class="shop-item">
+            <div class="grow"><strong>${esc(i.name)}</strong> <span class="price">${esc(i.cost)}</span>
+              <div class="small muted">${esc(i.what)}</div>
+              ${i.available ? '' : `<div class="small why">${esc(i.reason)}</div>`}
+            </div>
+            <button data-pick="${pickKey[i.id]}" ${i.available ? '' : 'disabled'}>Buy</button>
+          </div>`,
+        )
+        .join('')}
+    </details>`;
+  }
+
+  function announcementBanner() {
+    const a = state.announcement;
+    if (!a || a.id === dismissedAnnouncement) return '';
+    const t = a.teamId && team(a.teamId);
+    return `<div class="announce" style="--c:${t ? t.color : 'var(--accent)'}">${esc(a.text)}</div>`;
   }
 
   function leadInfo() {
@@ -184,7 +224,7 @@
         </div>
         ${scoreboard()}
         ${cashOutBanner(me.teamId)}
-        ${cashOutOffer()}
+        ${teamShop()}
         ${gameHeader()}
         <div class="game">${gameBody('player')}</div>
         <details class="card roster"><summary>Your teammates (${myTeam.players.length})</summary>
@@ -208,10 +248,10 @@
     const eligible = state.canCashOut.host;
     if (!eligible.length) return '';
     const t = team(eligible[0]);
-    if (picking === t.id) return `<div class="card">${darePicker('host', t.id)}</div>`;
+    if (picking === `cashOut:${t.id}`) return `<div class="card">${darePicker('host', t.id)}</div>`;
     return `<div class="card cash-offer"><div class="row">
       <span class="grow">💰 ${esc(t.name)} can cash out (up by ${leadInfo().lead})</span>
-      <button data-pick="${t.id}">Cash out for them</button>
+      <button data-pick="cashOut:${t.id}">Cash out for them</button>
     </div></div>`;
   }
 
@@ -261,6 +301,13 @@
           ${gameHeader()}
           ${running > 60 * 60 * 1000 ? '<p class="nudge">This game has been going over an hour. Time for a new one?</p>' : ''}
           <div class="game">${gameBody('host')}</div>
+          ${picking === 'hostSwitch'
+            ? gamePicker('host')
+            : `<div class="row quick-switch">
+                <span class="grow small muted">Crowd bored?</span>
+                <button class="secondary" data-send="host" data-type="randomGame" ${state.allGames.length > (state.game ? 1 : 0) ? '' : 'disabled'}>🎲 Random game</button>
+                <button class="secondary" data-pick="hostSwitch">Switch…</button>
+              </div>`}
         </div>
 
         <div class="card">
@@ -301,7 +348,17 @@
           .join('')}</ul></div>` : ''}
 
         <div class="card">
-          <h2>Cash out rules</h2>
+          <h2>Team shop prices</h2>
+          <div class="row"><span class="grow">Switch game costs</span>
+            ${[10, 15, 20, 30]
+              .map((n) => `<button class="pill ${state.switchPrice === n ? 'active' : ''}" data-send="host" data-type="setSwitchPrice" data-payload='{"price":${n}}'>${n}</button>`)
+              .join('')}
+          </div>
+          <div class="row"><span class="grow">Teams can't switch until a game has run</span>
+            ${[0, 10, 20, 30]
+              .map((n) => `<button class="pill ${state.switchMinMinutes === n ? 'active' : ''}" data-send="host" data-type="setSwitchMinMinutes" data-payload='{"minutes":${n}}'>${n}m</button>`)
+              .join('')}
+          </div>
           <div class="row"><span class="grow">Lead needed to cash out</span>
             ${[5, 10, 15, 20]
               .map((n) => `<button class="pill ${state.cashOutLead === n ? 'active' : ''}" data-send="host" data-type="setCashOutLead" data-payload='{"lead":${n}}'>${n}</button>`)
@@ -364,11 +421,25 @@
       </section>`;
   }
 
-  function render() {
-    if (!state) return;
+  function renderScreen() {
     if (state.role === 'tv') return renderTv();
     if (state.isHost) return renderHost();
     if (state.me) return renderPlayer();
+  }
+
+  function render() {
+    if (!state) return;
+    renderScreen();
+    const a = state.announcement;
+    if (a && a.id !== dismissedAnnouncement) {
+      app.insertAdjacentHTML('afterbegin', announcementBanner());
+      if (!announceTimer)
+        announceTimer = setTimeout(() => {
+          dismissedAnnouncement = a.id;
+          announceTimer = null;
+          render();
+        }, Math.max(1000, 8000 - (Date.now() + clockOffset - a.at)));
+    }
   }
 
   // ---------- events ----------

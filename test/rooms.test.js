@@ -115,3 +115,42 @@ test('cash out: cancel, custom threshold and dares', () => {
   room.resetScores();
   assert.ok(room.teams.every((t) => t.score === 0 && t.cashOuts === 0));
 });
+
+// A throwaway second game so switching has somewhere to go.
+require('../server/games').register({
+  id: 'dummy', name: 'Dummy', description: 'test only',
+  init: () => ({}), playerAction() {}, hostAction() {}, view: () => ({}),
+});
+
+test('switch game: costs points, needs a big enough lead and a minimum run time', () => {
+  const room = new Room('TEST', { random: () => 0 });
+  room.setGame('buzzer');
+  room.addPoints('A', 20);
+  room.addPoints('B', 6); // A leads by 14, price is 15
+  assert.match(room.switchBlocker('A'), /lead of 15/);
+  room.addPoints('A', 1); // lead 15
+  assert.match(room.switchBlocker('A'), /Unlocks in 10 min/);
+  assert.match(room.switchBlocker('B'), /lead of 15/);
+  room.game.startedAt -= 10 * 60000;
+  assert.strictEqual(room.switchBlocker('A'), null);
+  assert.deepStrictEqual(room.shop('A').map((i) => i.available), [true, true]);
+  room.buySwitch('A', 'random', 'Ana');
+  assert.strictEqual(room.game.id, 'dummy');
+  assert.strictEqual(room.teams[0].score, 6);
+  assert.match(room.announcement.text, /spent 15 points to switch to Dummy/);
+  // Fresh game: locked again even though they could otherwise afford nothing anyway.
+  assert.ok(room.switchBlocker('A'));
+  assert.throws(() => room.buySwitch('A', 'buzzer', 'Ana'), /lead/);
+  room.clearTimers();
+});
+
+test('host random game never repeats the current one', () => {
+  const room = new Room('TEST', { random: () => 0.99 });
+  room.setGame('dummy');
+  for (let i = 0; i < 5; i++) {
+    const before = room.game.id;
+    room.randomGame();
+    assert.notStrictEqual(room.game.id, before);
+  }
+  room.clearTimers();
+});

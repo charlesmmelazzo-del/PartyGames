@@ -21,4 +21,9 @@ const byId = new Map(GAMES.map((g) => [g.id, g]));
 module.exports = {
   get: (id) => byId.get(id),
   list: () => GAMES.map(({ id, name, description }) => ({ id, name, description })),
+  // Used by tests to plug in throwaway games.
+  register(def) {
+    GAMES.push(def);
+    byId.set(def.id, def);
+  },
 };

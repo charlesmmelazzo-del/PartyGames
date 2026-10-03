@@ -209,3 +209,27 @@ input[name='code']::placeholder { text-transform: none; letter-spacing: normal; 
 .tv .cash-banner .small { font-size: 1.2rem; }
 ul.dares li { display: flex; align-items: center; padding: 4px 0; border-bottom: 1px solid var(--line); }
 details summary { cursor: pointer; margin: 8px 0; }
+
+/* team shop + announcements */
+.shop summary { list-style: none; }
+.shop summary::-webkit-details-marker { display: none; }
+.shop-item { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+.price { color: var(--accent); font-weight: 700; margin-left: 4px; }
+.why { color: var(--muted); font-style: italic; margin-top: 2px; }
+.quick-switch { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 12px; }
+.announce {
+  position: sticky;
+  top: 8px;
+  z-index: 5;
+  background: var(--c);
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 2px #0006;
+  animation: pop 0.35s ease-out;
+}
+.tv .announce, body.tv-mode .announce { font-size: 2.4rem; padding: 24px; }
+@keyframes pop { from { transform: scale(0.94); } to { transform: none; } }
