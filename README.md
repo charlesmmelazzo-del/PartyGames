@@ -67,6 +67,20 @@ When the board is used up, a fresh one is dealt with new questions. Questions as
 
 **Questions:** 1,067 in total, 200+ per category with 40+ at every difficulty, so a group can play several full boards across different nights without repeats. Each category has its own file in `server/data/trivia/` (files load in name order, which sets the board's column order), one question per line: `difficulty | question | *right answer | wrong | wrong | wrong`. To add a category, add a new file with a `## Category` line. The tests require 200+ questions per category, 40+ per difficulty, exactly 4 different answers and no duplicate questions. Pop Music and Reality TV were written for this project and cover up to 2025. Some Bible, History and Sports questions are adapted from [OpenTriviaQA](https://github.com/uberspot/OpenTriviaQA) (CC BY-SA 4.0).
 
+### Catchphrase
+
+Based on Hasbro's Catch Phrase rules.
+
+1. A **random player** starts each round. They tap **Start the round** and get a word only they can see.
+2. They get **their own team** to say it: no saying the word or part of it, no "rhymes with", no first letters, no acting it out. **Skip** gives a new word, but the clock keeps running.
+3. When their team gets it, they tap **We got it!** and a fresh word jumps to a player on the **other team**. Players take turns, so everyone gets it.
+4. A **hidden, random timer** runs the whole time (default 45–75s). Nobody sees it, but every screen **pulses in the holder's team color, faster and faster**, and the holder's phone **ticks faster and faster**.
+5. When the **buzzer** goes off, every phone buzzes and vibrates. **The team holding the word loses the round, and the other team scores 1 point.** Everyone sees the words that were passed and who got stuck, then a new round lines up.
+
+Each team needs 2 people online. The host can set the hidden timer (30–50s / 45–75s / 60–100s), start a round for someone, pass the word to a teammate if the holder wanders off, or buzz early. Browsers only play sound after a tap on the page, so a phone that just reloaded shows "Tap anywhere to turn on the ticking sound".
+
+**Words:** 2,363 words and phrases in 11 categories (everyday words at three difficulties, animals, food & drink, places, famous people, around the house, sayings, characters, movies), from [game-words](https://github.com/nick-aschenbach/game-words) (MIT license). They live in `server/data/catchphrase-words.txt`, one per line under `## Category` headings. Add your own anywhere. `scripts/import-catchphrase.js` rebuilds the file from the source.
+
 ### Buzzer Round
 
 The host asks a question out loud and opens the buzzers. The first phone to buzz answers for its team. The host marks the answer right or wrong, and a wrong answer locks that team out until the next question.

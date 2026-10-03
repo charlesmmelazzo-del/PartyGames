@@ -1,0 +1,2388 @@
+# Catchphrase words and phrases, one per line, under "## Category" headings.
+# Imported by scripts/import-catchphrase.js from game-words by Nick Aschenbach (MIT license,
+# https://github.com/nick-aschenbach/game-words). Add your own lines anywhere.
+
+## Everyday (easy)
+shoelace
+iron
+library
+uncle
+sister
+notebook
+outer space
+brake
+shark
+money
+strong
+tunnel
+telephone
+fix
+study
+long
+purse
+mop
+wave
+beach
+markers
+bank
+nice
+knee
+cough
+big
+pencil
+field trip
+black
+mailman
+wedding
+mascot
+radio
+hello
+toothbrush
+pig
+shout
+sleep
+empty
+video camera
+dinner
+ankle
+broccoli
+vacation
+pajamas
+juice
+hungry
+chew
+moon
+storm
+pail
+dump truck
+guitar
+animal
+fan
+play
+kick
+athlete
+forehead
+computer
+scooter
+claw
+antlers
+young
+shopping
+magic
+horn
+silly
+rhyme
+fountain
+prince
+pen
+crib
+coat
+violin
+stick
+taxi
+red
+melt
+bag
+glasses
+boo
+jewelry
+bird's nest
+car
+dirty
+fall
+swimming pool
+gift
+tractor
+dress
+state
+country
+hail
+mouth
+brother
+makeup
+house
+hot
+lullaby
+fire hydrant
+dog
+chicken
+ear
+man
+night
+cat
+new
+fish
+mountain
+aunt
+happy
+roller coaster
+football
+cafeteria
+cowboy
+cousin
+paint
+buy
+nose
+type
+body
+zoo
+monster
+hide-and-seek
+weak
+artist
+diamond
+dishwasher
+high
+jelly
+stomach
+peas
+ladybug
+yellow
+spoon
+fox
+hair
+dad
+bird
+birthday
+water
+dream
+hotel
+stapler
+stump
+cloud
+nap
+puppy
+elephant
+asleep
+TV
+desk
+wind
+school
+wall
+calculator
+ballet
+finger
+Christmas
+journal
+laugh
+seashell
+candy
+tuba
+talk
+heavy
+trash can
+scientist
+shirt
+cold
+neighbor
+plank
+piano
+clap
+kite
+boat
+box
+bark
+grin
+quarter
+pants
+mall
+toe
+nurse
+escalator
+train
+shoe
+go
+salt
+tissue
+rainbow
+ring
+actor
+grandma
+race
+ranch
+straw
+cake
+ice cream cone
+tired
+moo
+wagon
+sailboat
+triangle
+duck
+lung
+good
+head
+wolf
+tree
+movie
+sun
+candle
+cook
+opposite
+shower
+up
+room
+girl
+lime
+thunder
+run
+stream
+letter
+bed
+dictionary
+alarm clock
+king
+hug
+doll
+rent
+cast
+couch
+slow
+bridge
+grandchild
+arm
+jump
+snow
+tree house
+eat
+fire engine
+towel
+mirror
+television
+table
+jacket
+short
+basketball
+doctor
+nightmare
+fire station
+witch
+spy
+tent
+baseball
+clean
+green
+dirt
+mailbox
+bug
+cow
+roof
+fire
+motorcycle
+lightning
+boy
+beak
+clock
+princess
+share
+frying pan
+cheek
+spider
+hit
+chef
+music
+dance
+Internet
+lock
+pepper
+grown-up
+bite
+sad
+paper
+fairy
+wheelchair
+crayon
+leg
+hurt
+picture
+mud
+winter
+museum
+singer
+queen
+bottle
+flower
+bride
+flashlight
+list
+popsicle
+day
+classroom
+shadow
+exercise
+zero
+white
+orange
+faucet
+umbrella
+worm
+fur
+pizza
+waitress
+chalk
+scarf
+hat
+sandcastle
+awake
+playground
+lion
+trip
+sleep in
+full
+pillow
+back
+loud
+flag
+toilet paper
+carrot
+family
+ball
+butterfly
+nephew
+banana
+scissors
+rose
+road
+baby
+suitcase
+oink
+bedtime
+fence
+earth
+alligator
+square
+niece
+sneeze
+window
+whisper
+lemon
+spool
+swing
+jail
+draw
+bike
+robot
+apple
+twig
+laundry
+gum
+park
+old
+horse
+shovel
+balloon
+grass
+light bulb
+pudding
+neck
+pantry
+volcano
+climb
+nest
+leaf
+grape
+lawn mower
+door
+tornado
+little
+belt
+tiger
+wrinkle
+dollar
+breakfast
+backpack
+brave
+costume
+ice
+mouse
+elbow
+yo-yo
+poem
+bat
+hot air balloon
+present
+fog
+light
+farm
+broom
+line
+eye
+push
+astronaut
+dentist
+stamp
+star
+please
+half
+blind
+helicopter
+hospital
+recycle
+soap
+city
+bald
+chocolate
+smell
+above
+rain
+frog
+fork
+school bus
+walk
+stop
+student
+blue
+cheerleader
+chair
+skirt
+truck
+clown
+oven mitt
+circle
+river
+cave
+party
+bowl
+refrigerator
+smoke
+lizard
+gym
+bib
+stairs
+smile
+sick
+sink
+eyebrow
+count
+rock
+ride
+airplane
+frown
+deep
+teacher
+help
+bedroom
+blanket
+fireman
+wallet
+pilot
+bath
+penny
+wrong
+restaurant
+marker
+pear
+prayer
+street
+vet
+picnic
+sandwich
+stand
+bad
+tusk
+tail
+heart
+noon
+cup
+scared
+snowman
+hill
+microwave
+goodbye
+hopscotch
+below
+holiday
+plate
+front
+freckle
+quiet
+church
+homework
+policeman
+lollipop
+hoof
+blue jeans
+mom
+Monday
+last
+golf
+broken
+fast
+first
+low
+grandpa
+key
+drums
+elevator
+sing
+down
+purple
+watermelon
+fly
+camera
+nail polish
+lunchbox
+sock
+pocket
+book
+right
+feet
+page
+game
+lunch
+
+## Everyday (medium)
+chin
+flock
+dimple
+skull
+hike
+button
+harp
+quilt
+tiptoe
+gold
+coin
+doghouse
+wedding ring
+lighthouse
+index
+spine
+bake
+airport
+saddle
+softball
+firefighter
+net
+time machine
+throne
+vase
+bicycle
+bathroom scale
+poster
+goal
+sap
+police officer
+pawn
+lip
+quill
+fishing pole
+prize
+sandpaper
+tickle
+stoplight
+jeep
+stomp
+spring
+mute
+sunburn
+shipwreck
+snuggle
+hose
+shelf
+iPod
+saw
+pond
+torch
+driveway
+log
+surfboard
+tooth
+maid
+front porch
+silverware
+quicksand
+funny
+glue stick
+spaceship
+cruise
+cramp
+dock
+darts
+fetch
+plumber
+ceiling fan
+snowball
+story
+match
+tank
+tennis shoes
+kiss
+ivy
+skin
+wristwatch
+blush
+slam dunk
+skateboard
+wrench
+attic
+bedspread
+cheer
+jog
+huddle
+barn
+lake
+t-shirt
+hot tub
+wag
+post office
+earache
+tool
+rollerblades
+bunk bed
+scar
+germ
+mold
+pinch
+president
+baby-sitter
+face
+sprinkler
+sip
+organ
+wrap
+Windex
+knight
+windmill
+bruise
+lunch tray
+lamp
+hook
+sponge
+pack
+crumb
+date
+easel
+snack
+cello
+shed
+flagpole
+gasoline
+card
+railroad
+rind
+swamp
+letter opener
+living room
+between
+hip
+cape
+heel
+forest
+rattle
+paperclip
+waist
+stiff
+slide
+rake
+sun block
+standing ovation
+blink
+map
+flu
+hurdle
+yawn
+rug
+ironing board
+banana peel
+click
+telephone booth
+skip
+Christmas carolers
+brick
+acne
+porch swing
+scale
+paperback
+mast
+grandfather
+bubble
+corner
+home movies
+batteries
+banister
+rib
+chain
+blackboard
+washing machine
+dawn
+ink
+plant
+photograph
+pull
+leather
+grill
+check
+rim
+bud
+matchstick
+shopping cart
+oil
+robe
+bedbug
+gumball
+curb
+puzzle piece
+newspaper
+plow
+seesaw
+glide
+feast
+campsite
+basket
+printer
+beg
+runt
+puppet
+plastic
+camp
+paddle
+eraser
+elf
+sidewalk
+sofa
+headache
+candlestick
+lid
+sheet
+wick
+photographer
+ditch
+ship
+snowboard
+shoulder
+stage
+think
+pin
+ballpoint pen
+gate
+rocking chair
+foil
+pigpen
+pride
+shower curtain
+pea
+chess
+hand
+ping pong
+pipe
+trumpet
+jaw
+pogo stick
+tar
+smog
+tulip
+flute
+rut
+rocket
+bait
+thread
+step-daughter
+stripe
+tag
+goblin
+leak
+team
+coach
+Old Spice
+ticket
+riddle
+tire
+brass
+waves
+shack
+fiddle
+nail
+curtains
+cot
+earthquake
+snowflake
+snap
+insect
+squint
+stem
+stationery
+stove
+address
+ribbon
+mail
+spider web
+baseboards
+cage
+cartoon
+wood
+dew
+zipper
+Friday
+branch
+top hat
+air
+blossom
+bobsled
+brain
+boil
+bonnet
+bowtie
+beanstalk
+fad
+sin
+
+## Everyday (hard)
+teleconference
+audacity
+cuticle
+crime
+standard
+airway
+spite
+safe
+billboard
+wool
+raft
+blimp
+shear
+sash
+falsetto
+buddy
+pine tree
+bucket
+jockey
+tine
+tilt
+confused
+diver
+fireman pole
+tugboat
+shrink ray
+bob
+Olympian
+chime
+nutrient
+twitterpated
+highjack
+cloak
+sum
+tide
+reimbursement
+picture frame
+punk
+capitalism
+garden hose
+cabin
+cure
+inconceivable
+cardboard
+retina
+battle
+fizz
+tinting
+elm
+sling
+shrub
+gusto
+suntan
+my
+applause
+dust bunny
+sunflower
+wish
+pomp
+flannel
+screenplay
+hedge
+jig
+jury
+jammin
+club
+reggae
+number
+demo
+phonemics
+example
+spoil
+Zen
+ginger
+romance
+jade
+plaid
+yardstick
+forever
+cliff
+fort
+sheriff
+mortician
+gray hairs
+beehive
+indent
+nanny
+path
+humidifier
+jazz
+whiplash
+amateur
+shock collar
+immune
+BFF
+brainstorm
+catering
+feudalism
+household
+highway
+guile
+potassium
+crate
+mess
+rag
+flush
+glum
+lend
+whatever
+hardhearted
+sale
+sandbox
+peck
+through
+fear
+haiku
+clockwork
+crop
+maze
+laminate
+password
+image
+bay
+booth
+fancy
+urgent
+sow's ear
+multiplication
+clay
+blur
+gang
+cupola
+wow
+life
+full moon
+sod
+inn
+fabric
+hatch
+hearty
+brand
+impact
+oak tree
+degree
+voice
+end
+tip
+simmer
+zigzag
+superpower
+pile
+welder
+eternity
+whole milk
+fluctuate
+crow's nest
+skim milk
+rendering
+application
+Murphy's Law
+hem
+group
+dent
+deployed
+hut
+ebony and ivory
+tiptop
+overhang
+rhetoric
+sunglasses
+dud
+collage
+scrap
+plug
+fortnight
+skating rink
+ogre
+swirl
+cell phone charger
+modern
+chicken coop
+incident
+scanner
+juggler
+fringe
+wreath
+bleach
+divine
+snag
+freight train
+population
+throb
+intern
+viscosity
+scar tissue
+ladder rung
+musician
+meticulous
+doom
+midsummer
+traffic jam
+tunic
+scramble
+dress shirt
+scoundrel
+first mate
+dot
+publisher
+kitchen knife set
+cog
+cuff
+scuff mark
+journey
+blueprint
+gem
+sentence
+handwriting
+lecture
+purge
+houseboat
+coast
+coal
+underestimate
+sequins
+
+## Animals
+mole
+komodo dragon
+ewe
+snapping turtle
+catfish
+polar bear
+wildebeest
+stallion
+Canadian goose
+crane
+partridge
+toucan
+whale
+trout
+baboon
+stork
+hyena
+panda
+canary
+ape
+skunk
+bear
+dolphin
+dragon
+pony
+kitten
+clam
+rabbit
+bass
+ox
+sheep
+humpback whale
+dragonfly
+dodo bird
+blowfish
+turkey
+gila monster
+salamander
+lemur
+grizzly
+lark
+eagle
+goat
+goose
+rolly polly
+crab
+reindeer
+parrot
+crow
+bulldog
+deer
+groundhog
+prairie dog
+koala
+meerkat
+manatee
+armadillo
+earthworm
+turtle
+monkey
+chameleon
+otter
+ostrich
+shrimp
+finch
+albatross
+ant
+bison
+bunny
+cougar
+camel
+rat
+flounder
+coyote
+penguin
+elk
+mallard
+chick
+boa constrictor
+hawk
+sheep dog
+dinosaur
+zebra
+leopard
+sea turtle
+bumblebee
+emu
+beaver
+hive
+antelope
+sea lion
+bush baby
+black bear
+gopher
+aardvark
+gerbil
+squirrel
+cheetah
+raven
+capybara
+moth
+human
+tortoise
+rooster
+dove
+housecat
+moose
+mule
+shrew
+pelican
+yak
+hamster
+wombat
+cricket
+cub
+macaw
+herd
+inchworm
+robin
+hedgehog
+mink
+calf
+crocodile
+gorilla
+badger
+school of fish
+mosquito
+grasshopper
+swordfish
+poodle
+caterpillar
+Tasmanian devil
+porcupine
+owl
+cockroach
+snail
+buffalo
+kangaroo
+gnu
+wasp
+barracuda
+giraffe
+hen
+blue whale
+piranha
+seahorse
+Galapagos tortoise
+bluebird
+clownfish
+alpaca
+jaguar
+chipmunk
+tadpole
+bald eagle
+gazelle
+anteater
+chimpanzee
+walrus
+hornet
+saber-tooth tiger
+parakeet
+squid
+warthog
+chinchilla
+pigeon
+jellyfish
+guinea pig
+narwhal
+doe
+donkey
+weasel
+swan
+ram
+joey
+snake
+seagull
+toad
+lobster
+starfish
+llama
+hare
+falcon
+killer whale
+eel
+bee
+panther
+hippopotamus
+basset hound
+flamingo
+salmon
+raccoon
+T-Rex
+rhinoceros
+jackalope
+tuna
+stingray
+oyster
+unicorn
+hummingbird
+cobra
+water buffalo
+wooly mammoth
+duckling
+ferret
+seal
+boar
+lamb
+hammerhead shark
+python
+iguana
+daddy longlegs
+three-toed sloth
+platypus
+
+## Food & Drink
+yam
+mozzarella cheese
+black beans
+fried chicken
+chocolate chip cookie
+vanilla extract
+croutons
+sponge cake
+chili pepper
+cherry pie
+chocolate shake
+raspberry
+hot dogs
+clams
+sardines
+gingerbread
+olive
+saltine crackers
+lasagna
+granola
+shish kabob
+kale
+toaster
+smoothie
+okra
+pistachio
+Brussels sprouts
+baked Alaska
+liver
+marshmallow
+celery
+rice
+tangerine
+Bundt pan
+poultry
+tofu
+jam
+à la carte
+Swiss cheese
+apricot
+chicken pot pie
+milkshake
+blackberry
+snickerdoodle
+brownie
+tomato
+basil
+pita
+chickpea
+egg salad
+refried beans
+ham
+custard
+cornmeal
+lima bean
+salad dressing
+sourdough bread
+sifter
+egg
+caramel
+sugar cookie
+curry
+grapefruit
+spam
+beet
+broil
+veggie burger
+salad
+baguette
+tempura
+pumpkin seeds
+chocolate milk
+scrambled eggs
+appetizer
+cinnamon
+lentils
+Boston cream pie
+drive-through
+pasta
+beef
+pretzel
+ratatouille
+wedding cake
+garlic
+doughnuts
+lemon zester
+almond
+wheat bread
+rolls
+crème brûlée
+scone
+cabbage
+banana split
+deep-fry
+cutting board
+Canadian bacon
+caviar
+pomegranate
+sea salt
+nutmeg
+gourd
+sweet potato
+plum
+sun-dried tomatoes
+Burger King
+muffin tin
+meatballs
+peach
+granola bar
+wok
+birthday cake
+banana bread
+baked beans
+zest
+oatmeal raisin cookies
+pork
+Bundt cake
+lettuce
+peanut butter cookies
+kumquat
+KFC
+squash
+flour
+grits
+soybean
+dredge
+venison
+tomato soup
+cashew
+cheeseburger
+potato chip
+hamburger
+macaroon
+octopus
+baking soda
+waffle cone
+fortune cookie
+mac and cheese
+oatmeal
+cherry
+pepperoni pizza
+toaster oven
+banana pudding
+chow mien
+green onion
+almond extract
+cottage cheese
+guacamole
+eggplant
+jell-o
+spaghetti
+gingerbread man
+cheddar cheese
+orange chicken
+baked potatoes
+spatula
+egg timer
+leek
+pancake
+mushroom
+baby carrots
+salt shaker
+potato salad
+angel food cake
+peanut
+coconut
+sloppy joe
+milk
+broth
+walnuts
+blender
+Kool-aid
+cereal
+bagel
+whisk
+turnip
+garbanzo bean
+fruitcake
+Taco Bell
+napkin
+raisin
+McDonalds
+bread bowl
+tortilla
+taco
+chicken soup
+chicken salad sandwich
+Alfredo sauce
+boiled egg
+rye bread
+corn on the cob
+popcorn shrimp
+honeydew
+all-you-can-eat buffet
+meat
+asparagus
+chocolate cake
+black-eyed pea
+deviled eggs
+freeze
+mustard
+frozen yogurt
+biscuits and gravy
+radish
+green bean
+pancakes
+crackers
+fruit smoothie
+s'mores
+popcorn
+muffin
+BLT
+avocado
+Balsamic vinegar
+chicken fried steak
+yogurt
+blanch
+turkey bacon
+green bean casserole
+soda
+zucchini
+jalapeño
+meatloaf
+tater tots
+peanut butter
+potato
+corn flakes
+key lime pie
+tortilla chips
+cookie
+blueberry
+pinto beans
+parsnip
+potatoes au gratin
+bran muffins
+biscuit
+fried rice
+Bavarian cream
+Twinkies
+cheesecake
+cinnamon rolls
+onion
+macaroni and cheese
+papaya
+crepe
+mashed potatoes
+ice cream sundae
+horseradish
+cheese
+french fries
+cauliflower
+sesame seeds
+kiwi
+kidney beans
+corndog
+wooden spoon
+water chestnut
+cucumber
+salsa
+tuna salad
+artichoke
+parmesan cheese
+pumpkin pie
+pecan
+onion rings
+bok choy
+flatbread
+low-fat
+soup de jour
+grilled cheese
+sushi
+ice cream
+poach
+pineapple
+jellybeans
+vanilla wafer
+cranberry
+pineapple upside down cake
+fig
+colander
+strawberry
+marinade
+flambé
+dairy
+peanut butter and jelly sandwich
+spinach
+rolling pin
+Pop Tart
+fruit salad
+cupcakes
+buffalo wings
+cornbread
+clementine
+pumpkin
+cantaloupe
+toast
+produce
+apple pie
+egg nog
+carrot cake
+sunflower seeds
+paella
+ranch dressing
+potato chips
+bread
+soufflé
+corn
+omelet
+waffles
+Dutch oven
+bell pepper
+beef jerky
+white bread
+barley
+egg salad sandwich
+soft pretzel
+noodles
+sweet potatoes
+
+## Places & Travel
+New York City
+binoculars
+summer
+Florida
+July
+England
+Scotland
+State of Liberty
+the Grand Canyon
+condo
+the Bahamas
+the Sphinx
+the Nile
+Broadway
+Istanbul
+Greece
+Portugal
+Austria
+Oregon
+Fiji
+Madagascar
+California
+South Dakota
+Barbados
+Switzerland
+Sydney
+Japan
+Rome
+sunscreen
+Asia
+scuba diving
+the Taj Mahal
+the Louvre
+Egyptian Pyramids
+passport
+relax
+Boston
+Buckingham Palace
+San Francisco
+Hong Kong
+the White House
+Honolulu
+Universal Studios
+sleeping bag
+coral reef
+fanny pack
+Tokyo
+beach house
+the Mayan ruins
+lazy river
+Arizona
+Canada
+Paris
+Great Wall of China
+layover
+Six Flags
+Texas
+New Zealand
+Los Angeles
+bird watching
+mountain biking
+the Eiffel Tower
+Luxembourg
+island
+family reunion
+airline
+Colorado
+hiking
+river rafting
+Easter Island
+scenery
+Bermuda
+Orlando
+Disneyland
+Sacramento
+backpacking
+customs
+Niagara Falls
+rainforest
+sunset
+skiing
+boardwalk
+Galapagos Islands
+theme park
+Italy
+the Coliseum
+road trip
+vacation day
+Beijing
+Barcelona
+London
+safari
+camping
+snowboarding
+Mediterranean Sea
+Europe
+Atlantic Ocean
+time off
+money belt
+Delaware
+national park
+Australia
+Ireland
+the Thames
+London Bridge
+Pacific Ocean
+Four Corners
+Belgium
+Mount Rushmore
+Yellowstone
+sightseeing
+packing
+Washington D.C.
+Aruba
+Maine
+Say "cheese
+sunshine
+honeymoon
+Venice
+Stonehenge
+Manhattan Island
+France
+Hawaii
+Antarctica
+Guam
+Egypt
+Vienna
+Mexico
+airport security
+Las Vegas
+tour guide
+Africa
+Carlsbad Caverns
+Brazil
+resort
+bug spray
+Arctic Ocean
+the Mississippi River
+Alaska
+sunny weather
+America
+the Golden Gate Bridge
+June
+tourist
+cruise ship
+Mount Everest
+snow cone
+luggage
+water park
+the Great Barrier Reef
+stroll
+first class
+Spain
+Jamaica
+movies
+Costa Rica
+kayak
+hang glider
+China
+Are we there yet?
+Miami
+South Africa
+Nepal
+Empire State Building
+the Dead Sea
+beach ball
+trains
+Big Ben
+Puerto Rico
+Ayers Rock
+the Amazon Rainforest
+Athens
+Singapore
+
+## Famous People
+Marie Curie
+Samuel L. Jackson
+Bill Clinton
+Sacajawea
+Neil Diamond
+James Madison
+Tiger Woods
+Tom Hanks
+Jacqueline Kennedy Onasis
+Shia LaBeouf
+Claude Monet
+Helen Keller
+Nicole Kidman
+Alexander the Great
+Salvador Dali
+Leonardo Da Vinci
+Albert Einstein
+the Beatles
+Amanda Bynes
+John F. Kennedy
+Archimedes
+Theodore Roosevelt
+Doris Day
+Harrison Ford
+Jack Black
+Sigmund Freud
+Dakota Fanning
+Eleanor Roosevelt
+Nathaniel Hawthorne
+Vincent Van Gogh
+Robin Williams
+Weird Al Yankovick
+Rosa Parks
+Jodie Foster
+Brad Pitt
+Joan of Arc
+Elvis Presley
+Jane Austen
+Cleopatra
+Walter Cronkite
+Aristotle
+Isaac Newton
+Betsy Ross
+Lewis Carrol
+Eddie Murphy
+Herbert Hoover
+Nikola Tesla
+Whoopi Goldberg
+Will Smith
+Andy Warhol
+Jimmy Stewart
+Amelia Earhart
+Mohammad Ali
+the Sundance Kid
+Zac Efron
+Victor Hugo
+Steven Spielberg
+Henry Ford
+Bill Gates
+Richard Nixon
+Michelangelo
+Mark Twain
+Johann Sebastian Bach
+Lucille Ball
+Mother Teresa
+Mary-Kate and Ashley Olsen
+Benjamin Franklin
+Alex Rodriguez
+Charles Darwin
+Leonardo DiCaprio
+Martin Sheen
+Steve Martin
+Elton John
+J.K. Rowling
+Napoleon Bonaparte
+Cameron Diaz
+Eli Whitney
+Wolfgang Amadeus Mozart
+Susan B. Anthony
+Pablo Piccaso
+Ulysses S. Grant
+Danny Glover
+Carrie Fisher
+Alexander Graham Bell
+Rembrandt
+King George
+Dwight D. Eisenhower
+Sigourney Weaver
+Oscar Wilde
+Tom Cruise
+Lewis and Clark
+Samuel Adams
+Martin Luther King, Jr.
+John Hancock
+Michael Jordan
+Steve Jobs
+Bill Cosby
+Jackson Pollock
+Christian Bale
+Johnny Depp
+Kevin Bacon
+C. S. Lewis
+Shakespeare
+Jonathan Taylor Thomas
+Elijah Wood
+Genghis Khan
+Georgia O'Keeffe
+Mahatma Gandhi
+Thomas Jefferson
+Sean Connery
+Franklin D. Roosevelt
+Barack Obama
+Thomas Edison
+Will Ferrell
+Matthew Broderick
+Plato
+Dr. Seuss
+Raphael
+Oprah Winfrey
+Socrates
+Harriet Tubman
+Galileo
+Patrick Henry
+Frank Lloyd Wright
+Dick Van Dyke
+Sally Ride
+Grace Kelly
+Buddy Holly
+David Beckham
+Drew Barrymore
+Stephanie Meyer
+James Taylor
+George Lucas
+Lance Armstrong
+Harry Houdini
+Diana, Princess of Wales
+Audrey Hepburn
+Buzz Aldrin
+Pelé
+Neil Armstrong
+Pocahontas
+Christopher Columbus
+Lord Byron
+Shel Silverstein
+Samuel Morse
+Michael Phelps
+Peyton Manning
+Copernicus
+Queen Latifah
+Reese Witherspoon
+Edgar Allen Poe
+Anne Frank
+Sir Arthur Conan Doyle
+Andy Griffith
+George W. Carver
+Beethoven
+Augustus Caesar
+Bruce Willis
+Shaquille O'Neal
+Michael Jackson
+James Earl Jones
+Norman Rockwell
+Frederick Douglass
+Ewan McGregor
+Mr. Rogers
+Ernest Hemingway
+Louis Armstrong
+Magic Johnson
+Charles Dickens
+Andrew Lloyd Webber
+Jim Carrey
+Tony Hawk
+Paul McCartney
+Celine Dion
+Michael J. Fox
+Mandy Moore
+Denzel Washington
+Thomas Paine
+Ronald Regan
+Walt Disney
+Regis Philbin
+the Wright Brothers
+Davy Crockett
+John Williams
+George Washington
+Justin Beiber
+Jim Henson
+Babe Ruth
+John Adams
+Billy the Kid
+Abraham Lincoln
+
+## Around the House
+necktie
+cleaning spray
+hand soap
+sweater vest
+laptop
+handle
+calendar
+shampoo
+ladder
+toothpaste
+watering can
+chimney
+CD
+cell phone
+printer paper
+books
+magazine
+red wagon
+loveseat
+meal
+bench
+headband
+boots
+shoes
+floor
+wheel
+spice rack
+kitchen
+yarn
+mitten
+stain
+door knob
+hairspray
+fake flowers
+vest
+junk drawer
+drill
+hand lotion
+globe
+dog leash
+loose change
+hairbrush
+dustpan
+DVDs
+pillowcase
+socks
+sweater
+rubber band
+band-aid
+hula hoop
+hot water
+doorway
+laundry basket
+speakers
+hair dryer
+extension cord
+cash
+stamps
+glass
+lipstick
+lace
+duct tape
+magnets
+block
+light switch
+flowers
+doorknob
+garage
+mini blinds
+bathroom
+laundry detergent
+jar
+bathtub
+ceiling
+garbage
+iPad
+chest
+electrical outlet
+dryer sheets
+doorbell
+boot
+doormat
+crayons
+tape
+garden
+Sunday shoes
+
+## Sayings
+at the bottom of the totem pole
+a bird in the hand is worth two in the bush
+in a pickle
+you catch more flies with honey than with vinegar
+up a creek without a paddle
+grass is always greener on the other side
+tie the knot
+get cold feet
+think outside the box
+why the long face?
+couch potato
+break a leg
+on the same page
+water under the bridge
+bite off more than you can chew
+small potatoes
+skeleton in the closet
+cat got your tongue
+ducks in a row
+spill the beans
+out of this world
+butterflies in your stomach
+pass the buck
+shoot the breeze
+not the only fish in the sea
+be all ears
+the cat's meow
+back to square one
+smarty pants
+set in stone
+knock your socks off
+my way or the highway
+let the cat out of the bag
+pick up the pace
+hit the nail on the head
+money doesn't grow on trees
+like watching paint dry
+wake up on the wrong side of the bed
+birds of a feather flock together
+over the moon
+from the bottom of my heart
+cut the rug
+scared stiff
+everybody and their dog
+busy bee
+a fifth wheel
+give my two cents
+open a can of worms
+go out on a limb
+in one ear and out the other
+reinvent the wheel
+in hot water
+a wolf in sheep's clothing
+out like a light
+in a nutshell
+too many irons in the fire
+have your cake and eat it too
+burn the candle at both ends
+out of sight, out of mind
+easy as falling off a log
+close, but no cigar
+just a drop in the bucket
+everything but the kitchen sink
+bull in a china closet
+stop cold turkey
+caught with your hand in the cookie jar
+get the ball rolling
+give him a piece of my mind
+when pigs fly
+teach an old dog new tricks
+don't rock the boat
+the bee's knees
+hold down the fort
+puppy love
+more than you can shake a stick at
+head over heels in love
+eat like a bird
+chip off the old block
+when it rains, it pours
+light at the end of the tunnel
+like a deer in the headlights
+better the devil you know
+sweet tooth
+dog and pony show
+burst your bubble
+pull someone's leg
+the lion's share
+raining cats and dogs
+bouncing off the walls
+in a jam
+burning bridges
+put it on the back burner
+so hungry I could eat a horse
+the way the cookie crumbles
+hit the road
+ballpark figure
+too many cooks in the kitchen
+ball is in your court
+draw the shortest straw
+in over your head
+a little bird told me
+fence-sitter
+down in the dumps
+push the envelope
+not my cup of tea
+hold your tongue
+wet blanket
+hold your horses
+recharge your batteries
+bring home the bacon
+go the extra mile
+keep your eye on the ball
+always a bridesmaid, never a bride
+money burns a hole in your pocket
+cost an arm and a leg
+kick the bucket
+where there's smoke, there's fire
+a stone's throw away
+straw that broke the camel's back
+get your feathers in a bunch
+the cold shoulder
+put your foot in your mouth
+take a leaf out of his book
+big fish in a small pond
+one foot in the door
+cry over spilt milk
+as the crow flies
+rub salt in an open wound
+pop the question
+out of the frying pan and into the fire
+take it with a grain of salt
+crocodile tears
+steal my thunder
+every cloud has a silver lining
+in the same boat
+out of my hair
+a fly on the wall
+fit as a fiddle
+ants in your pants
+all your eggs in one basket
+in the doghouse
+have two left feet
+stiff upper lip
+keep your chin up
+bury the hatchet
+cast pearls before swine
+over the hill
+stick out like a sore thumb
+like taking candy from a baby
+peanut gallery
+have a cow
+apple of my eye
+early bird gets the worm
+frog in your throat
+grab the bull by the horns
+bite the dust
+your eyes are bigger than your stomach
+while the cat's away, the mice will play
+fly off the handle
+at arm's length
+rise above the blues
+hit the sack
+like shooting fish in a barrel
+bring the house down
+squeaky wheel gets the grease
+at the end of your rope
+put your foot down
+fraidey cat
+get your feet wet
+throw a wrench in the works
+carry a tune
+needle in a haystack
+sweep you off your feet
+piece of cake
+fish or cut bait
+hit the books
+make a mountain out of a molehill
+a bolt out of the blue
+good fences make good neighbors
+bend over backwards
+teacher's pet
+cross the bridge when we come to it
+chip on your shoulder
+throw the towel in
+make a beeline for
+feeling under the weather
+comparing apples and oranges
+at the top of your lungs
+someone with a hollow leg
+barking up the wrong tree
+dropping like flies
+in the lap of luxury
+wallflower
+full of hot air
+bright as a button
+egg on your face
+between a rock and a hard place
+paint yourself into a corner
+on top of the world
+green thumb
+you're toast
+roll out the red carpet
+two peas in a pod
+baker's dozen
+bigger fish to fry
+heard it through the grapevine
+one smart cookie
+ruffle a few feathers
+icing on the cake
+best thing since sliced bread
+
+## Characters
+Luke Skywalker
+Harry Potter
+Sonic the Hedgehog
+Moby Dick
+Scooby Doo
+Gilligan
+Weird Al
+Spider Man
+Mozart
+Cinderella
+Alice in Wonderland
+Rocky
+Mary Poppins
+Cap'n Crunch
+you
+Barbie
+Coldplay
+James Bond
+Dora the Explorer
+Rapunzel
+Big Bird
+Captain Hook
+Princess Leia
+Kermit the Frog
+Waldo
+Inigo Montoya
+the Grinch
+Batman
+Darth Vader
+Robin Hood
+George of the Jungle
+Ben Franklin
+Sherlock Holmes
+Elmo
+Anakin Skywalker
+Buzz Lightyear
+Clark Kent
+Peter Pan
+Charlie Brown
+Pinocchio
+Oscar the Grouch
+Santa Claus
+Winnie the Pooh
+Mario
+Frankenstein
+Clifford the Big Red Dog
+Columbus
+Romeo and Juliet
+Pablo Picasso
+
+## Movies
+Lady and the Tramp
+The Wizard of Oz
+Star Wars
+Swiss Family Robinson
+Cars
+Newsies
+Zorro
+Napoleon Dynamite
+Annie
+A Bug's Life
+Mulan
+Jaws
+Remember the Titans
+Pete's Dragon
+The Sword in the Stone
+Aladdin
+Free Willy
+Tangled
+High School Musical
+The Brave Little Toaster
+Bambi
+Honey, I Shrunk the Kids
+The Little Mermaid
+Indiana Jones
+The Land Before Time
+Dumbo
+Back to the Future
+Air Bud
+RocketMan
+The Rescuers
+Snow White and the Seven Dwarves
+Hercules
+Teenage Mutant Ninja Turtles
+Finding Nemo
+Spider-Man
+Singin' in the Rain
+The Incredibles
+Ice Age
+Tron
+Bill and Ted's Excellent Adventure
+The Mighty Ducks
+The Princess Bride
+WALL-E
+Mighty Joe Young
+The Jungle Book
+Pirates of the Caribbean
+The Santa Clause
+The Sound of Music
+Toy Story
+Tarzan
+Shrek
+The Lord of the Rings
+Inception
+Holes
+Monsters, Inc.
+The Sandlot
+The Chronicles of Narnia: The Lion, the Witch and the Wardrobe
+Willy Wonka and the Chocolate Factory
+James and the Giant Peach
+Angels in the Outfield
+Beauty and the Beast
+101 Dalmatians
+Cheaper by the Dozen
+Little Giants
+Thumbelina
+Titanic
+Little Women
+The Lion King
+Mr. Smith Goes to Washington
+Indian in the Cupboard
+Home Alone
+Milo and Otis
+Chitty Chitty Bang Bang
+The Fox and the Hound
+The Princess Diaries
+Charlotte's Web
+The Emperor's New Groove
+Cloudy with a Chance of Meatballs

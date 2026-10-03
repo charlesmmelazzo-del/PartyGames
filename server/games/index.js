@@ -16,7 +16,7 @@
 // To add a game: create a file here, add it to the list below, and add a matching
 // renderer in public/games/<id>.js.
 
-const GAMES = [require('./cah'), require('./taboo'), require('./trivia'), require('./buzzer')];
+const GAMES = [require('./cah'), require('./taboo'), require('./trivia'), require('./catchphrase'), require('./buzzer')];
 
 const byId = new Map(GAMES.map((g) => [g.id, g]));
 

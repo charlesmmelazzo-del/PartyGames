@@ -404,3 +404,25 @@ textarea {
 .tv .tb-cell { font-size: 1.8rem; min-height: 50px; }
 .tv .game-header { margin: 6px 0 2px; }
 .tv .game-header strong { font-size: 1.4rem; }
+
+/* Catchphrase: the hidden timer shows up as a pulse that speeds up each stage */
+.cp-pulse { border-radius: 20px; padding: 6px; margin: 10px 0; background: color-mix(in srgb, var(--c) 25%, var(--card)); animation: cp-glow 1.6s ease-in-out infinite; }
+.cp-pulse.stage-1 { animation-duration: 1s; }
+.cp-pulse.stage-2 { animation-duration: 0.6s; }
+.cp-pulse.stage-3 { animation-duration: 0.3s; }
+@keyframes cp-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px color-mix(in srgb, var(--c) 40%, transparent); transform: scale(1); }
+  50% { box-shadow: 0 0 34px 12px color-mix(in srgb, var(--c) 85%, transparent); transform: scale(1.015); }
+}
+@media (prefers-reduced-motion: reduce) { .cp-pulse { animation-name: cp-glow-still; } @keyframes cp-glow-still { 50% { box-shadow: 0 0 30px 10px var(--c); } } }
+.cp-card { background: #fff; color: #111; border-radius: 16px; text-align: center; padding: 26px 14px 30px; }
+.cp-cat { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #666; margin-bottom: 8px; }
+.cp-word { font-size: 2.3rem; font-weight: 900; line-height: 1.15; overflow-wrap: anywhere; }
+.cp-watch { text-align: center; padding: 36px 12px; border-radius: 16px; background: var(--card); }
+.cp-actions { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-top: 10px; }
+.cp-actions .big { margin: 0; min-height: 76px; font-size: 1.35rem; }
+.cp-sound { color: var(--accent); }
+.cp-buzz { text-align: center; border: 3px solid var(--c); background: color-mix(in srgb, var(--c) 30%, var(--card)); border-radius: 16px; padding: 18px; animation: pop 0.3s ease-out; }
+.cp-buzz .huge { font-size: 3rem; }
+.tv .cp-watch .huge { font-size: 4rem; }
+.tv .cp-watch { padding: 70px 12px; font-size: 1.6rem; }
