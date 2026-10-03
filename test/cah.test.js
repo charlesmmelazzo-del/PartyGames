@@ -137,3 +137,17 @@ test('hands refill to 10 and official-only decks filter cards', () => {
   assert.ok(hand.every((c) => CARDS.packs[CARDS.white[c.id][1]].official));
   t.room.clearTimers();
 });
+
+test('card data has no spreadsheet leftovers or unplayable cards', () => {
+  const texts = [...CARDS.black.map((c) => c[0]), ...CARDS.white.map((c) => c[0])];
+  const junk = texts.filter((t) => /#REF|#N\/A|#VALUE|^(set|special|sheet|version|comments?)$|\b(added to v|removed from v)\b/i.test(t));
+  assert.deepStrictEqual(junk, []);
+  assert.deepStrictEqual(CARDS.white.filter(([t]) => /^\[[^\]]*\]$/.test(t)), [], 'picture-only cards');
+  // Every prompt's blanks match how many cards it asks for (or it's a question with no blank).
+  const bad = CARDS.black.filter(([t, pick]) => {
+    const blanks = (t.match(/_/g) || []).length;
+    return blanks ? blanks !== pick : false;
+  });
+  assert.deepStrictEqual(bad, []);
+  assert.ok(CARDS.black.every(([t]) => t.replace(/[_\s.]/g, '').length > 0), 'no empty prompts');
+});
