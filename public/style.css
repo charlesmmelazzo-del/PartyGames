@@ -426,3 +426,22 @@ textarea {
 .cp-buzz .huge { font-size: 3rem; }
 .tv .cp-watch .huge { font-size: 4rem; }
 .tv .cp-watch { padding: 70px 12px; font-size: 1.6rem; }
+
+/* Pictionary */
+.pic-slot { margin: 8px 0; }
+.pic-canvas { display: block; width: 100%; aspect-ratio: 1; background: #fff; border-radius: 14px; touch-action: none; box-shadow: 0 6px 20px #0008; }
+.pic-canvas.drawable { outline: 3px solid var(--team); cursor: crosshair; }
+.pic-word { text-align: center; background: var(--card); border-radius: 12px; padding: 10px; font-size: 1.4rem; display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.pic-word.big { display: block; font-size: 2rem; padding: 18px; margin: 10px 0; }
+.pic-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pic-tools button { background: var(--line); color: var(--text); padding: 14px; font-size: 1.1rem; }
+.pic-tools button.active { background: var(--accent); color: #1b1300; }
+.pic-guess { display: flex; gap: 8px; margin: 10px 0; }
+.pic-guess input { margin: 0; flex: 1; }
+.pic-guess button { padding: 0 20px; }
+.pic-feed li { padding: 6px 10px; margin: 4px 0; background: var(--card); border-left: 4px solid var(--c); border-radius: 6px; overflow-wrap: anywhere; }
+.pic-feed li.right { background: color-mix(in srgb, var(--good) 35%, var(--card)); font-weight: 800; }
+.steal-banner { text-align: center; font-size: 1.2rem; padding: 12px; border-radius: 12px; background: color-mix(in srgb, var(--c) 30%, var(--card)); border: 3px solid var(--c); display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap; animation: pop 0.3s ease-out; }
+.tv .pic-slot { display: flex; justify-content: center; }
+.tv .pic-canvas { width: min(100%, 44vh); }
+.tv .tq-head { margin-top: 0; }

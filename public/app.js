@@ -121,7 +121,7 @@
     if (!state.game) return '';
     const view = GameViews[state.game.id];
     if (!view || !view[role]) return `<p class="muted">This game has no ${role} screen.</p>`;
-    return view[role](state.game.view, { state, esc, team, role });
+    return view[role](state.game.view, gameCtx(role));
   }
 
   // The leading team (or the host for them) writes a dare for the other team.
@@ -229,6 +229,9 @@
     const [a, b] = [...state.teams].sort((x, y) => y.score - x.score);
     return { leader: a, lead: a.score - b.score };
   }
+
+  // What game screens get to work with.
+  const gameCtx = (role) => ({ state, esc, team, role, stream: (msg) => socket.emit('game:stream', msg) });
 
   function renderPlayer() {
     const me = state.me;
@@ -457,6 +460,13 @@
 
   function render() {
     if (!state) return;
+    renderGame();
+    // Let the current game hook into the fresh DOM (e.g. re-attach a drawing canvas).
+    const view = state.game && GameViews[state.game.id];
+    if (view && view.mounted) view.mounted(state.game.view, gameCtx(state.role === 'tv' ? 'tv' : state.isHost && hostTab === 'host' ? 'host' : 'player'));
+  }
+
+  function renderGame() {
     const focused = document.activeElement && document.activeElement.id && app.contains(document.activeElement) ? document.activeElement : null;
     const sel = focused && 'selectionStart' in focused ? [focused.selectionStart, focused.selectionEnd] : null;
     renderScreen();
@@ -482,11 +492,37 @@
   // ---------- events ----------
   const handleResult = (res) => res && res.error && toast(res.error);
 
+  // Pressing Enter in a text box clicks its submit button.
+  app.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' || !e.target.id) return;
+    const btn = document.querySelector(`[data-submit="${e.target.id}"]`);
+    if (btn) {
+      e.preventDefault();
+      btn.click();
+    }
+  });
+
   app.addEventListener('input', (e) => {
     if (e.target.id) drafts[e.target.id] = e.target.value;
   });
 
   app.addEventListener('click', async (e) => {
+    // A button that sends what was typed into a text box as a game action, then clears it.
+    const submit = e.target.closest('[data-submit]');
+    if (submit) {
+      const id = submit.dataset.submit;
+      const text = (drafts[id] || '').trim();
+      if (!text) return;
+      drafts[id] = '';
+      const res = await call('player:action', { action: submit.dataset.action, payload: { text } });
+      if (res.error) toast(res.error);
+      const input = document.getElementById(id);
+      if (input) {
+        input.value = '';
+        input.focus();
+      }
+      return;
+    }
     const act = e.target.closest('[data-act="send-dare"]');
     if (act) {
       const dare = (drafts['dare-input'] || '').trim();
@@ -545,6 +581,11 @@
     if (s.cashOut) picking = null;
     clockOffset = s.serverTime - Date.now();
     render();
+  });
+
+  socket.on('game:stream', (msg) => {
+    const view = state && state.game && GameViews[state.game.id];
+    if (view && view.onStream) view.onStream(msg, state.game.view);
   });
 
   socket.on('room:closed', () => {

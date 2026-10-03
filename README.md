@@ -79,7 +79,19 @@ Based on Hasbro's Catch Phrase rules.
 
 Each team needs 2 people online. The host can set the hidden timer (30–50s / 45–75s / 60–100s), start a round for someone, pass the word to a teammate if the holder wanders off, or buzz early. Browsers only play sound after a tap on the page, so a phone that just reloaded shows "Tap anywhere to turn on the ticking sound".
 
-**Words:** 2,363 words and phrases in 11 categories (everyday words at three difficulties, animals, food & drink, places, famous people, around the house, sayings, characters, movies), from [game-words](https://github.com/nick-aschenbach/game-words) (MIT license). They live in `server/data/catchphrase-words.txt`, one per line under `## Category` headings. Add your own anywhere. `scripts/import-catchphrase.js` rebuilds the file from the source.
+**Words:** 2,362 words and phrases in 11 categories (everyday words at three difficulties, animals, food & drink, places, famous people, around the house, sayings, characters, movies), from [game-words](https://github.com/nick-aschenbach/game-words) (MIT license). They live in `server/data/catchphrase-words.txt`, one per line under `## Category` headings. Add your own anywhere. `scripts/import-catchphrase.js` rebuilds the file from the source.
+
+### Pictionary
+
+1. A **drawer** is chosen each turn. The role alternates between teams, and within a team it goes to whoever has drawn least recently. They see their word (and can swap it before starting), then tap **Start drawing**.
+2. They draw on their phone with a **Marker** and an **Eraser**. **Every screen sees the drawing live**, including the TV.
+3. The drawer's **teammates type guesses**. Guesses don't need to be exact: capitals, "the", plurals, punctuation and small typos are all accepted. Wrong guesses show up for everyone. **The faster the right guess, the more points**: 5 early, down to 1 near the end (default 75 seconds).
+4. If time runs out, **the other team gets 20 seconds to steal** for 2 points by typing the word.
+5. After a right guess or the steal, everyone sees the answer, and **the next turn goes to the other team**.
+
+Each team needs 2 people online. The host can set the drawing time (45–120s), start for the drawer, pick someone else, or end the drawing or steal early. Pen strokes stream directly between phones (not through the full game update), and a phone or TV that reloads mid-drawing catches up on the strokes so far.
+
+**Words:** 995 drawable words in 6 categories (easy, medium, tricky, hard, characters, movies) in `server/data/pictionary-words.txt`, from [game-words](https://github.com/nick-aschenbach/game-words) (MIT license), built by the same import script as Catchphrase.
 
 ### Buzzer Round
 

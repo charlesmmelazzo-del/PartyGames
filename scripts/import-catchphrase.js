@@ -1,4 +1,5 @@
-// Builds server/data/catchphrase-words.txt from the MIT-licensed game-words project
+// Builds server/data/catchphrase-words.txt and server/data/pictionary-words.txt from the
+// MIT-licensed game-words project
 // (https://github.com/nick-aschenbach/game-words). Usage:
 //   git clone --depth 1 https://github.com/nick-aschenbach/game-words /tmp/game-words
 //   node scripts/import-catchphrase.js /tmp/game-words/assets/game_words/game_words.yaml
@@ -6,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Source sections -> category shown on the card. Earlier sections win when a word repeats.
-const SECTIONS = [
+const CATCHPHRASE = [
   ['catchphrase>easy', 'Everyday (easy)'],
   ['catchphrase>medium', 'Everyday (medium)'],
   ['catchphrase>hard', 'Everyday (hard)'],
@@ -19,7 +20,16 @@ const SECTIONS = [
   ['pictionary>characters', 'Characters'],
   ['pictionary>movies', 'Movies'],
 ];
-const DROP = new Set(['blunt', 'crack', 'weed', 'la carte']); // drug slang, and a broken "à la carte" fragment
+// Pictionary only gets words you can draw.
+const PICTIONARY = [
+  ['pictionary>easy', 'Easy'],
+  ['pictionary>medium', 'Medium'],
+  ['pictionary>difficult', 'Tricky'],
+  ['pictionary>hard', 'Hard'],
+  ['pictionary>characters', 'Characters'],
+  ['pictionary>movies', 'Movies'],
+];
+const DROP = new Set(['blunt', 'crack', 'weed', 'la carte', 'indian in the cupboard', 'bomb']); // drug slang, a broken "à la carte" fragment, dated or grim entries
 
 const src = process.argv[2];
 if (!src) {
@@ -49,22 +59,27 @@ const clean = (w) =>
     .trim();
 const key = (w) => w.toLowerCase().replace(/^the /, '');
 
-const seen = new Set();
-let out = `# Catchphrase words and phrases, one per line, under "## Category" headings.
+function build(sections, file, title) {
+  const seen = new Set();
+  let out = `# ${title}, one per line, under "## Category" headings.
 # Imported by scripts/import-catchphrase.js from game-words by Nick Aschenbach (MIT license,
 # https://github.com/nick-aschenbach/game-words). Add your own lines anywhere.
 `;
-let total = 0;
-for (const [section, category] of SECTIONS) {
-  const words = (lists[section] || []).map(clean).filter((w) => {
-    if (!w || DROP.has(w.toLowerCase()) || /[\x00-\x1f\x7f-\x9f]/.test(w) || seen.has(key(w))) return false;
-    seen.add(key(w));
-    return true;
-  });
-  out += `\n## ${category}\n${words.join('\n')}\n`;
-  total += words.length;
-  console.log(`${category.padEnd(20)} ${words.length}`);
+  let total = 0;
+  for (const [section, category] of sections) {
+    const words = (lists[section] || []).map(clean).filter((w) => {
+      if (!w || DROP.has(w.toLowerCase()) || /[\x00-\x1f\x7f-\x9f]/.test(w) || seen.has(key(w))) return false;
+      seen.add(key(w));
+      return true;
+    });
+    out += `\n## ${category}\n${words.join('\n')}\n`;
+    total += words.length;
+    console.log(`  ${category.padEnd(20)} ${words.length}`);
+  }
+  const dest = path.join(__dirname, '..', 'server', 'data', file);
+  fs.writeFileSync(dest, out);
+  console.log(`${total} words -> ${dest}`);
 }
-const dest = path.join(__dirname, '..', 'server', 'data', 'catchphrase-words.txt');
-fs.writeFileSync(dest, out);
-console.log(`${total} words -> ${dest}`);
+
+build(CATCHPHRASE, 'catchphrase-words.txt', 'Catchphrase words and phrases');
+build(PICTIONARY, 'pictionary-words.txt', 'Pictionary words');

@@ -7,6 +7,8 @@
 //   view(state, viewer, api)      - what a given screen sees; viewer = { role, player }
 //   onPlayerRemoved(state, player, api)  (optional)
 //   onPlayerJoined(state, player, api)   (optional)
+//   onStream(state, msg, viewer, api)    (optional) fast side channel, e.g. drawing strokes;
+//                                        return { broadcast, reply } to relay without a full state push
 //
 // `api` gives the game access to the room: teams, players, awardPoints(teamId, n, reason),
 // schedule(ms, fn) for timers, random(), and memory (an object that survives game switches).
@@ -16,7 +18,7 @@
 // To add a game: create a file here, add it to the list below, and add a matching
 // renderer in public/games/<id>.js.
 
-const GAMES = [require('./cah'), require('./taboo'), require('./trivia'), require('./catchphrase'), require('./buzzer')];
+const GAMES = [require('./cah'), require('./taboo'), require('./trivia'), require('./catchphrase'), require('./pictionary'), require('./buzzer')];
 
 const byId = new Map(GAMES.map((g) => [g.id, g]));
 

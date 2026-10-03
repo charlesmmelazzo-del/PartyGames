@@ -357,6 +357,15 @@ class Room {
     this.touch();
   }
 
+  // Fast side channel for high-frequency data (e.g. pen strokes) that shouldn't trigger a
+  // full state broadcast. Returns { broadcast, reply } for the server to relay, or null.
+  gameStream(msg, viewer) {
+    const def = this.game && games.get(this.game.id);
+    if (!def || !def.onStream) return null;
+    const player = viewer.playerId ? this.players.get(viewer.playerId) : null;
+    return def.onStream(this.game.state, msg || {}, { role: viewer.role, player }, this.api());
+  }
+
   // What one connected screen gets to see. viewer = { role: 'host'|'player'|'tv', playerId }
   snapshot(viewer = {}) {
     const player = viewer.playerId ? this.players.get(viewer.playerId) : null;

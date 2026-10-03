@@ -196,6 +196,20 @@ function createServer({ random } = {}) {
       broadcast(room);
     });
 
+    // High-frequency game data (drawing strokes). Never acknowledged; bad messages are dropped.
+    socket.on('game:stream', (msg) => {
+      const room = rooms.get(socket.data.code);
+      if (!room) return;
+      try {
+        const out = room.gameStream(msg, socket.data);
+        if (!out) return;
+        if (out.broadcast) socket.to(room.code).emit('game:stream', out.broadcast);
+        if (out.reply) socket.emit('game:stream', out.reply);
+      } catch (err) {
+        // ignore malformed stream messages
+      }
+    });
+
     socket.on('disconnect', () => {
       const room = rooms.get(socket.data.code);
       if (!room) return;

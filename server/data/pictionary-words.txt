@@ -1,0 +1,1010 @@
+# Pictionary words, one per line, under "## Category" headings.
+# Imported by scripts/import-catchphrase.js from game-words by Nick Aschenbach (MIT license,
+# https://github.com/nick-aschenbach/game-words). Add your own lines anywhere.
+
+## Easy
+pen
+caterpillar
+rocket
+alligator
+pizza
+shirt
+kite
+eyes
+chair
+cup
+jacket
+hippo
+bird
+monster
+bracelet
+coat
+balloon
+dinosaur
+head
+book
+mouse
+smile
+bridge
+blocks
+milk
+eye
+oval
+snowflake
+broom
+cheese
+lion
+lips
+beach
+cloud
+bus
+elephant
+sunglasses
+lemon
+star
+spoon
+boat
+turtle
+drum
+doll
+ant
+motorcycle
+bike
+pencil
+bunk bed
+moon
+inchworm
+slide
+hat
+cat
+tail
+helicopter
+square
+Mickey Mouse
+octopus
+door
+table
+egg
+bell
+nose
+spider
+horse
+finger
+glasses
+jar
+girl
+ear
+lizard
+flower
+snowman
+baby
+car
+bread
+blanket
+apple
+bench
+skateboard
+pig
+ice cream cone
+frog
+feet
+lollipop
+heart
+ears
+bed
+carrot
+person
+boy
+train
+truck
+bug
+legs
+bowl
+lamp
+desk
+purse
+light
+mountain
+snail
+basketball
+orange
+bear
+chicken
+grass
+cookie
+clock
+ghost
+spider web
+ocean
+monkey
+shoe
+dog
+face
+circle
+water
+butterfly
+house
+robot
+mouth
+branch
+worm
+socks
+grapes
+crab
+banana
+computer
+bee
+whale
+seashell
+snake
+sun
+swing
+bat
+pie
+wheel
+bunny
+hand
+cherry
+jellyfish
+tree
+stairs
+duck
+leaf
+dragon
+giraffe
+ball
+pants
+ring
+airplane
+candle
+cow
+cupcake
+football
+hamburger
+bone
+corn
+
+## Medium
+trip
+cobra
+bottle
+curtains
+soap
+mailman
+banana peel
+railroad
+back
+lipstick
+knee
+broccoli
+tape
+hot dog
+shadow
+lawnmower
+trash can
+rainbow
+hippopotamus
+soda
+laundry basket
+city
+match
+hill
+violin
+mailbox
+tire
+pumpkin
+zebra
+shelf
+eel
+salt and pepper
+ladder
+blue jeans
+address
+radish
+sea turtle
+dress
+lid
+family
+ladybug
+window
+cheeseburger
+yo-yo
+whistle
+glove
+magazine
+church
+chameleon
+boot
+tongue
+hospital
+thief
+potato
+hairbrush
+stork
+school
+heel
+pogo stick
+tent
+cucumber
+fox
+three-toed sloth
+sprinkler
+garden
+blowfish
+crib
+wing
+brain
+net
+song
+drums
+bagel
+starfish
+corner
+carpet
+bicycle
+strawberry
+rug
+puzzle
+snowball
+aircraft
+gate
+sidewalk
+pan
+marshmallow
+bell pepper
+watering can
+plate
+jungle
+camera
+forehead
+towel
+surfboard
+coin
+watch
+chin
+key
+blimp
+cowboy
+picture frame
+piano
+lake
+pirate
+box
+paw
+toast
+swimming pool
+silverware
+salt
+tissue
+shovel
+hoof
+dominoes
+roller blading
+base
+rose
+hopscotch
+elbow
+pinwheel
+french fries
+log
+doorknob
+bag
+attic
+beaver
+unicorn
+seahorse
+scar
+eraser
+jelly
+battery
+easel
+barn
+bathtub
+paperclip
+photograph
+maid
+outside
+vase
+electrical outlet
+room
+birthday cake
+map
+coconut
+spool
+chocolate chip cookie
+muffin
+ski
+stapler
+t-shirt
+lock
+braid
+seesaw
+half
+paper
+dock
+shoulder
+lunchbox
+spring
+treasure
+queen
+fang
+round
+dragonfly
+newspaper
+mail
+knot
+tusk
+umbrella
+ticket
+lawn mower
+shark
+neck
+toothbrush
+hook
+wax
+mop
+beehive
+forest
+money
+napkin
+wreath
+music
+quilt
+chain
+backbone
+sheep
+banana split
+baseball
+basket
+printer
+cello
+circus
+whisk
+dimple
+hummingbird
+nest
+wrench
+fork
+garage
+stump
+pine tree
+saw
+stove
+toaster
+park
+hula hoop
+garbage
+peanut
+daddy longlegs
+hair
+bib
+spare
+light switch
+king
+headband
+America
+nature
+refrigerator
+mattress
+tennis
+popsicle
+stomach
+pajamas
+password
+nail
+stamp
+nut
+palace
+gingerbread man
+dog leash
+front porch
+wood
+mitten
+rhinoceros
+popcorn
+teeth
+stingray
+happy
+onion
+wall
+alarm clock
+crayon
+maze
+jewelry
+golf
+gift
+bowtie
+fur
+gumball
+pear
+tiger
+peach
+washing machine
+doormat
+hockey
+cast
+flashlight
+dustpan
+scissors
+skate
+wallet
+sink
+coal
+brick
+hug
+doghouse
+deep
+pelican
+page
+lightsaber
+toe
+rake
+tulip
+torch
+teapot
+bucket
+trumpet
+paint
+hair dryer
+pineapple
+calendar
+pretzel
+sailboat
+storm
+tank
+volcano
+flute
+ironing board
+clam
+waist
+catfish
+top hat
+skirt
+astronaut
+rain
+button
+dollar
+spaceship
+fishing pole
+video camera
+penguin
+poodle
+hip
+roof
+state
+claw
+clown
+rocking chair
+belt
+mini blinds
+airport
+cheetah
+spine
+pond
+cage
+ice
+cake
+cockroach
+batteries
+fist
+flamingo
+lighthouse
+manatee
+iPad
+telephone
+harp
+eagle
+electricity
+lobster
+cheek
+shallow
+suitcase
+campfire
+flagpole
+chalk
+artist
+skunk
+apple pie
+mushroom
+corndog
+smoke
+ship
+grill
+food
+cricket
+TV
+rolly polly
+dolphin
+bathroom scale
+bubble
+porcupine
+owl
+stoplight
+chimney
+light bulb
+deer
+platypus
+globe
+tadpole
+cell phone
+river
+sunflower
+
+## Tricky
+drought
+professor
+barber
+kneel
+orbit
+germ
+darts
+dance
+cape
+beanstalk
+sushi
+baby-sitter
+ping pong
+mime
+Heinz 57
+swamp
+sheep dog
+macaroni
+hurdle
+Internet
+lie
+logo
+rind
+fireman pole
+raft
+wig
+salmon
+pigpen
+letter opener
+cabin
+fireside
+cell phone charger
+dent
+dripping
+saddle
+fabric
+sleep
+mirror
+ski goggles
+ringleader
+scream
+point
+neighborhood
+yardstick
+applause
+cliff
+loveseat
+sponge
+chess
+grandpa
+peasant
+cruise
+CD
+drawback
+chestnut
+yolk
+pilot
+season
+bedbug
+world
+important
+bleach
+biscuit
+bobsled
+pharmacist
+shampoo
+swarm
+moth
+sneeze
+sunburn
+pizza sauce
+houseboat
+dryer sheets
+migrate
+snag
+koala
+catalog
+husband
+darkness
+shower curtain
+rib
+extension cord
+honk
+landscape
+water buffalo
+wooly mammoth
+cheerleader
+cloak
+birthday
+nightmare
+fizz
+clog
+myth
+wind
+banister
+post office
+knight
+rim
+think
+bride
+comfy
+hydrogen
+baguette
+vitamin
+lace
+tiptoe
+sweater vest
+pail
+glitter
+plow
+retail
+leak
+pocket
+crust
+mascot
+macho
+hail
+bargain
+time machine
+drain
+vegetarian
+bookend
+ivy
+taxi
+foil
+mast
+gold
+chime
+commercial
+quicksand
+crow's nest
+lap
+diagonal
+juggle
+dorsal
+exercise
+drip
+boa constrictor
+handle
+rubber
+speakers
+s'mores
+fiddle
+puppet
+pro
+jazz
+cardboard
+dream
+glue stick
+bonnet
+chef
+runt
+plank
+full
+ditch
+hut
+avocado
+zipper
+dizzy
+oar
+mold
+recycle
+wag
+fog
+bald
+ceiling fan
+traffic jam
+firefighter
+picnic
+newsletter
+shrew
+dentist
+gasoline
+brand
+welder
+wedding cake
+dashboard
+caviar
+laser
+download
+baggage
+bruise
+punk
+sandbox
+hot tub
+shrink ray
+safe
+goblin
+baseboards
+dust bunny
+double
+wobble
+coach
+lung
+zoo
+
+## Hard
+offstage
+eureka
+zero
+riddle
+soul
+president
+psychologist
+opaque
+acre
+mine car
+landfill
+flutter
+tinting
+expired
+archaeologist
+exponential
+con
+Chick-fil-A
+stowaway
+overture
+Zen
+lyrics
+pride
+translate
+nutmeg
+inertia
+addendum
+neutron
+blacksmith
+stockholder
+positive
+gallop
+vision
+observatory
+random
+carat
+ligament
+ice fishing
+fragment
+publisher
+figment
+compromise
+Everglades
+ironic
+jig
+crisp
+interference
+implode
+philosopher
+clue
+telepathy
+drift
+handful
+champion
+intern
+default
+brunette
+slump
+armada
+loiterer
+flotsam
+pomp
+century
+mooch
+freshwater
+pastry
+lichen
+trademark
+infection
+siesta
+parody
+chaos
+czar
+tournament
+aristocrat
+reimbursement
+hang ten
+blueprint
+stout
+upgrade
+quarantine
+Atlantis
+population
+kilogram
+panic
+brainstorm
+standing ovation
+transpose
+periwinkle
+twang
+inquisition
+protestant
+tutor
+cartography
+rainwater
+coast
+
+## Characters
+Bill Cosby
+Luke Skywalker
+Audrey Hepburn
+Harry Potter
+Lucille Ball
+John Hancock
+Henry Ford
+Jim Henson
+John Williams
+Sonic the Hedgehog
+Tony Hawk
+Moby Dick
+George Washington
+Scooby Doo
+Socrates
+Gilligan
+Weird Al
+Spider Man
+Mozart
+Cinderella
+Alice in Wonderland
+Shakespeare
+Rocky
+Mary Poppins
+Thomas Jefferson
+Cap'n Crunch
+you
+Amelia Earhart
+Barbie
+Pablo Piccaso
+Coldplay
+James Bond
+Dora the Explorer
+Rapunzel
+Big Bird
+Neil Armstrong
+Captain Hook
+Princess Leia
+Andy Griffith
+Kermit the Frog
+Thomas Edison
+Lewis and Clark
+Waldo
+Inigo Montoya
+Harrison Ford
+Christopher Columbus
+Abraham Lincoln
+the Grinch
+Plato
+Batman
+Darth Vader
+Sean Connery
+Robin Hood
+George of the Jungle
+Ben Franklin
+King George
+the Wright brothers
+Sherlock Holmes
+Mr. Rogers
+Barack Obama
+Elmo
+the Beatles
+Anakin Skywalker
+C. S. Lewis
+Harry Houdini
+Lance Armstrong
+Buzz Lightyear
+Leonardo DiCaprio
+Clark Kent
+Charles Dickens
+Peter Pan
+Charlie Brown
+Dr. Seuss
+Michael Jackson
+Pinocchio
+Oscar the Grouch
+Santa Claus
+Winnie the Pooh
+Robin Williams
+James Earl Jones
+Beethoven
+Mario
+Michael Jordan
+Frankenstein
+Albert Einstein
+Clifford the Big Red Dog
+Columbus
+Romeo and Juliet
+Pablo Picasso
+Billy the Kid
+Isaac Newton
+Babe Ruth
+Elvis Presley
+Charles Darwin
+Neil Diamond
+Vincent Van Gogh
+Alexander Graham Bell
+Bill Gates
+Davy Crockett
+
+## Movies
+Lady and the Tramp
+The Wizard of Oz
+Star Wars
+Swiss Family Robinson
+Cars
+Newsies
+Zorro
+Napoleon Dynamite
+Annie
+A Bug's Life
+Mulan
+Jaws
+Remember the Titans
+Pete's Dragon
+The Sword in the Stone
+Aladdin
+Free Willy
+Tangled
+High School Musical
+The Brave Little Toaster
+Bambi
+Honey, I Shrunk the Kids
+The Little Mermaid
+Indiana Jones
+The Land Before Time
+Dumbo
+Back to the Future
+Air Bud
+RocketMan
+The Rescuers
+Snow White and the Seven Dwarves
+Hercules
+Teenage Mutant Ninja Turtles
+Finding Nemo
+Spider-Man
+Singin' in the Rain
+Ratatouille
+The Incredibles
+Ice Age
+Tron
+Bill and Ted's Excellent Adventure
+The Mighty Ducks
+The Princess Bride
+WALL-E
+Mighty Joe Young
+The Jungle Book
+Pirates of the Caribbean
+The Santa Clause
+The Sound of Music
+Toy Story
+Up
+Tarzan
+Shrek
+The Lord of the Rings
+Inception
+Madagascar
+Holes
+Monsters, Inc.
+The Sandlot
+The Chronicles of Narnia: The Lion, the Witch and the Wardrobe
+Willy Wonka and the Chocolate Factory
+James and the Giant Peach
+Angels in the Outfield
+Beauty and the Beast
+101 Dalmatians
+Cheaper by the Dozen
+Little Giants
+Thumbelina
+Titanic
+Little Women
+The Lion King
+Mr. Smith Goes to Washington
+Home Alone
+Milo and Otis
+Chitty Chitty Bang Bang
+The Fox and the Hound
+The Princess Diaries
+Charlotte's Web
+Pocahontas
+The Emperor's New Groove
+Cloudy with a Chance of Meatballs
