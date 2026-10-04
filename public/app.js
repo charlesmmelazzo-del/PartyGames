@@ -6,8 +6,9 @@
 
   let state = null; // latest snapshot from the server
   let clockOffset = 0; // serverTime - Date.now()
-  let hostTab = 'host'; // when the host is also a player: 'host' | 'play'
+  let hostTab = 'play'; // a host who also plays: 'play' (their game screen) or 'host' (host menu)
   const drafts = {}; // text typed into inputs, kept across re-renders (keyed by element id)
+  let lastHtml = null; // what's on screen now, so unchanged updates don't rebuild the page
   let picking = null; // open chooser: 'cashOut:<teamId>' | 'switch' | 'hostSwitch' | null
   let dismissedAnnouncement = null; // id of the announcement whose display time is over
   let announceTimer = null;
@@ -58,6 +59,7 @@
   // ---------- views ----------
   function renderHome(prefill = '') {
     state = null;
+    lastHtml = null;
     document.body.style.removeProperty('--team');
     document.body.className = '';
     app.innerHTML = `
@@ -71,6 +73,8 @@
         </form>
         <div class="card">
           <h2>Running the party?</h2>
+          <label>Your name<input id="host-name" maxlength="20" placeholder="Your name"></label>
+          <label class="check"><input type="checkbox" id="host-plays" checked> I'm playing too</label>
           <button id="create" class="big secondary">Host a new game</button>
           <button id="tv" class="link">Show a game on a TV / shared screen</button>
         </div>
@@ -84,10 +88,24 @@
       if (res.error) return toast(res.error);
       saveSession({ code: res.code, playerId: res.playerId, playerToken: res.playerToken });
     };
+    const plays = document.getElementById('host-plays');
+    const hostName = document.getElementById('host-name');
+    plays.onchange = () => (hostName.closest('label').hidden = !plays.checked);
     document.getElementById('create').onclick = async () => {
+      const name = hostName.value.trim();
+      if (plays.checked && !name) {
+        hostName.focus();
+        return toast("Enter your name, or untick \"I'm playing too\" to just run the game");
+      }
       const res = await call('host:create', {});
       if (res.error) return toast(res.error);
       saveSession({ code: res.code, hostToken: res.hostToken });
+      if (!plays.checked) return;
+      // The host joins a team like everyone else; host controls live in the Host menu.
+      const joined = await call('player:join', { code: res.code, name });
+      if (joined.error) return toast(joined.error);
+      hostTab = 'play';
+      saveSession({ code: res.code, hostToken: res.hostToken, playerId: joined.playerId, playerToken: joined.playerToken });
     };
     document.getElementById('tv').onclick = async () => {
       const code = form.code.value || prompt('Code word for the game to show:');
@@ -237,7 +255,7 @@
   // What game screens get to work with.
   const gameCtx = (role) => ({ state, esc, team, role, stream: (msg) => socket.emit('game:stream', msg) });
 
-  function renderPlayer() {
+  function playerHtml() {
     const me = state.me;
     const myTeam = team(me.teamId);
     document.body.style.setProperty('--team', myTeam.color);
@@ -255,7 +273,7 @@
         </div>
         ${scoreboard()}
         ${gameHeader()}`;
-    app.innerHTML = `
+    return `
       <section class="player">
         ${top}
         ${cashOutBanner(me.teamId)}
@@ -300,22 +318,24 @@
     </div></div>`;
   }
 
-  function renderHost() {
-    const tabs = state.me
-      ? `<nav class="tabs">
-          <button data-tab="host" class="${hostTab === 'host' ? 'active' : ''}">Host controls</button>
-          <button data-tab="play" class="${hostTab === 'play' ? 'active' : ''}">My team</button>
-        </nav>`
-      : '';
+  // Does the host need to look at the menu? (Shown as a dot on the menu button.)
+  const hostNeeded = () => !!state.cashOut;
+
+  function hostHtml() {
+    // A host who plays sees their normal player screen with a slim bar to open the host menu.
     if (state.me && hostTab === 'play') {
-      renderPlayer();
-      app.insertAdjacentHTML('afterbegin', tabs);
-      return;
+      return `<div class="host-bar">
+          <span class="small muted">You're the host</span>
+          <button class="host-menu-btn" data-tab="host">⚙️ Host menu${hostNeeded() ? '<span class="attn"></span>' : ''}</button>
+        </div>${playerHtml()}`;
     }
+    const bar = state.me
+      ? `<div class="host-bar sticky"><strong>⚙️ Host menu</strong><button class="host-menu-btn back" data-tab="play">← Back to the game</button></div>`
+      : '';
     document.body.style.removeProperty('--team');
     const running = state.game && Date.now() + clockOffset - state.game.startedAt;
-    app.innerHTML = `
-      ${tabs}
+    return `
+      ${bar}
       <section class="host">
         <div class="card code-card">
           <div class="muted small">Code word</div>
@@ -385,7 +405,7 @@
               )
               .join('')}
           </div>
-          ${state.me ? '' : '<button id="host-join" class="secondary">Join a team myself</button>'}
+          ${state.me ? '' : '<button id="host-join" class="secondary" data-act="host-join">Join a team myself</button>'}
         </div>
 
         ${state.log.length ? `<div class="card"><h2>Recent points</h2><ul class="log">${state.log
@@ -408,42 +428,22 @@
             ${[5, 10, 15, 20]
               .map((n) => `<button class="pill ${state.cashOutLead === n ? 'active' : ''}" data-send="host" data-type="setCashOutLead" data-payload='{"lead":${n}}'>${n}</button>`)
               .join('')}
-            <button class="pill ${[5, 10, 15, 20].includes(state.cashOutLead) ? '' : 'active'}" id="custom-lead">${[5, 10, 15, 20].includes(state.cashOutLead) ? '…' : state.cashOutLead}</button>
+            <button class="pill ${[5, 10, 15, 20].includes(state.cashOutLead) ? '' : 'active'}" id="custom-lead" data-act="custom-lead">${[5, 10, 15, 20].includes(state.cashOutLead) ? '…' : state.cashOutLead}</button>
           </div>
         </div>
 
         <div class="card danger-zone">
           <h2>Wrap up</h2>
-          <button id="reset-scores" class="secondary">Reset scores to 0</button>
-          <button id="end-game" class="danger">End game for everyone</button>
+          <button id="reset-scores" class="secondary" data-act="reset-scores">Reset scores to 0</button>
+          <button id="end-game" class="danger" data-act="end-game">End game for everyone</button>
           <p class="muted small">Ending the game unlocks everyone's phones so they can join a fresh game.</p>
         </div>
       </section>`;
-
-    const hj = document.getElementById('host-join');
-    if (hj)
-      hj.onclick = async () => {
-        const name = prompt('Your name:');
-        if (!name) return;
-        const res = await call('player:join', { code: state.code, name });
-        if (res.error) return toast(res.error);
-        saveSession({ ...loadSession(), playerId: res.playerId, playerToken: res.playerToken });
-      };
-    document.getElementById('custom-lead').onclick = () => {
-      const lead = prompt('Lead needed to cash out:', state.cashOutLead);
-      if (lead) call('host:action', { type: 'setCashOutLead', lead: Number(lead) }).then(handleResult);
-    };
-    document.getElementById('reset-scores').onclick = () => {
-      if (confirm('Reset both scores to 0?')) call('host:action', { type: 'resetScores' }).then(handleResult);
-    };
-    document.getElementById('end-game').onclick = () => {
-      if (confirm('End the game for everyone? Teams and scores will be wiped.')) call('host:action', { type: 'endGame' });
-    };
   }
 
-  function renderTv() {
+  function tvHtml() {
     document.body.className = 'tv-mode';
-    app.innerHTML = `
+    return `
       <section class="tv">
         <header>
           <div><span class="muted">Join at</span> <strong>${esc(location.host)}</strong> <span class="muted">code</span> <strong class="code">${esc(state.code)}</strong></div>
@@ -456,10 +456,11 @@
       </section>`;
   }
 
-  function renderScreen() {
-    if (state.role === 'tv') return renderTv();
-    if (state.isHost) return renderHost();
-    if (state.me) return renderPlayer();
+  function screenHtml() {
+    if (state.role === 'tv') return tvHtml();
+    if (state.isHost) return hostHtml();
+    if (state.me) return playerHtml();
+    return '';
   }
 
   function render() {
@@ -471,25 +472,25 @@
   }
 
   function renderGame() {
+    const a = state.announcement;
+    const html = (a && a.id !== dismissedAnnouncement ? announcementBanner() : '') + screenHtml();
+    if (a && a.id !== dismissedAnnouncement && !announceTimer)
+      announceTimer = setTimeout(() => {
+        dismissedAnnouncement = a.id;
+        announceTimer = null;
+        render();
+      }, Math.max(1000, 8000 - (Date.now() + clockOffset - a.at)));
+    if (html === lastHtml) return;
+    lastHtml = html;
     const focused = document.activeElement && document.activeElement.id && app.contains(document.activeElement) ? document.activeElement : null;
     const sel = focused && 'selectionStart' in focused ? [focused.selectionStart, focused.selectionEnd] : null;
-    renderScreen();
+    app.innerHTML = html;
     if (focused) {
       const el = document.getElementById(focused.id);
       if (el) {
         el.focus({ preventScroll: true });
         if (sel) el.setSelectionRange(sel[0], sel[1]);
       }
-    }
-    const a = state.announcement;
-    if (a && a.id !== dismissedAnnouncement) {
-      app.insertAdjacentHTML('afterbegin', announcementBanner());
-      if (!announceTimer)
-        announceTimer = setTimeout(() => {
-          dismissedAnnouncement = a.id;
-          announceTimer = null;
-          render();
-        }, Math.max(1000, 8000 - (Date.now() + clockOffset - a.at)));
     }
   }
 
@@ -527,6 +528,24 @@
       }
       return;
     }
+    const hostAct = e.target.closest('[data-act="host-join"], [data-act="custom-lead"], [data-act="reset-scores"], [data-act="end-game"]');
+    if (hostAct) {
+      const what = hostAct.dataset.act;
+      if (what === 'host-join') {
+        const name = prompt('Your name:');
+        if (!name) return;
+        const res = await call('player:join', { code: state.code, name });
+        if (res.error) return toast(res.error);
+        saveSession({ ...loadSession(), playerId: res.playerId, playerToken: res.playerToken });
+        hostTab = 'play';
+      } else if (what === 'custom-lead') {
+        const lead = prompt('Lead needed to cash out:', state.cashOutLead);
+        if (lead) call('host:action', { type: 'setCashOutLead', lead: Number(lead) }).then(handleResult);
+      } else if (what === 'reset-scores') {
+        if (confirm('Reset both scores to 0?')) call('host:action', { type: 'resetScores' }).then(handleResult);
+      } else if (confirm('End the game for everyone? Teams and scores will be wiped.')) call('host:action', { type: 'endGame' });
+      return;
+    }
     const act = e.target.closest('[data-act="send-dare"]');
     if (act) {
       const dare = (drafts['dare-input'] || '').trim();
@@ -549,7 +568,9 @@
     const tab = e.target.closest('[data-tab]');
     if (tab) {
       hostTab = tab.dataset.tab;
-      return render();
+      render();
+      window.scrollTo(0, 0); // switching between the game and the host menu starts at the top
+      return;
     }
     const pick = e.target.closest('[data-pick]');
     if (pick) {

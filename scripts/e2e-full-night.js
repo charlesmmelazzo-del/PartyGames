@@ -3,14 +3,17 @@
 //
 //   node scripts/e2e-full-night.js                      # starts a local server
 //   BASE_URL=https://your-app.up.railway.app node scripts/e2e-full-night.js
-//   PHONES=6 HOST_PLAYS=1 LATE_JOIN=1 RELOADS=1 node scripts/e2e-full-night.js
+//   PHONES=6 HOST_PLAYS=0 LATE_JOIN=1 RELOADS=1 node scripts/e2e-full-night.js
+//   (HOST_PLAYS=0: the host only runs the game instead of also playing on a team)
 //
 // Needs Chromium (set CHROMIUM_PATH if it isn't at /opt/pw-browsers/chromium).
+// Behind an HTTPS-intercepting proxy, set E2E_PROXY to the proxy URL and E2E_TRUST_SPKI to
+// the proxy CA's SPKI sha256 (base64) so Chromium trusts that one CA, as other tools do.
 const { chromium } = require('playwright-core');
 const path = require('path');
 
 const PHONES = Number(process.env.PHONES || 4);
-const HOST_PLAYS = process.env.HOST_PLAYS === '1';
+const HOST_PLAYS = process.env.HOST_PLAYS !== '0';
 const LATE_JOIN = process.env.LATE_JOIN === '1';
 const RELOADS = process.env.RELOADS === '1';
 const NAMES = ['Ana', 'Ben', 'Cy', 'Dee', 'Eli', 'Fay', 'Gus', 'Hal', 'Ivy', 'Jo'];
@@ -35,7 +38,7 @@ async function until(fn, label, ms = 15000) {
     }
     await new Promise((r) => setTimeout(r, 150));
   }
-  throw new Error(`Timed out waiting for: ${label}`);
+  throw new Error(`Timed out waiting for: ${label}${last !== undefined ? ` (last: ${JSON.stringify(last)})` : ''}`);
 }
 
 async function main() {
@@ -49,12 +52,18 @@ async function main() {
   }
   console.log(`Testing ${base} with ${PHONES} phones${HOST_PLAYS ? ' (host plays too)' : ''}${LATE_JOIN ? ', late joiner' : ''}${RELOADS ? ', reloads' : ''}\n`);
 
-  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium' });
+  const browser = await chromium.launch({
+    executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium',
+    ...(process.env.E2E_PROXY ? { proxy: { server: process.env.E2E_PROXY } } : {}),
+    args: process.env.E2E_TRUST_SPKI ? [`--ignore-certificate-errors-spki-list=${process.env.E2E_TRUST_SPKI}`] : [],
+  });
   const pageErrors = [];
+  const allPages = [];
   async function device(name, viewport = { width: 390, height: 844 }) {
     const ctx = await browser.newContext({ viewport, hasTouch: true });
     const p = await ctx.newPage();
     p.n = name;
+    allPages.push(p);
     p.on('pageerror', (e) => pageErrors.push(`${name}: ${e.message}`));
     p.on('dialog', (d) => d.accept(d.type() === 'prompt' ? name : undefined));
     return p;
@@ -66,7 +75,16 @@ async function main() {
     // ---------- setup: host, phones, TV ----------
     const host = await device('Host');
     await host.goto(base);
+    // The host plays too (with host controls in the Host menu) unless HOST_PLAYS=0.
+    if (HOST_PLAYS) await host.fill('#host-name', 'Host');
+    else await host.uncheck('#host-plays');
     await host.click('#create');
+    if (HOST_PLAYS) {
+      // Starts on their player screen; the code lives in the Host menu.
+      await host.waitForSelector('.host-menu-btn[data-tab="host"]');
+      check(!!(await host.$('.team-banner')), 'playing host starts on their player screen');
+      await host.click('[data-tab="host"]');
+    }
     const code = (await (await host.waitForSelector('.code')).textContent()).trim();
     check(/^[A-Z0-9]+$/.test(code), 'host gets a code word', code);
 
@@ -82,8 +100,10 @@ async function main() {
     }
     for (const name of NAMES.slice(0, PHONES)) await join(name);
     if (HOST_PLAYS) {
-      await host.click('#host-join');
-      await host.waitForSelector('[data-tab="play"]');
+      await host.click('[data-tab="play"]');
+      await host.waitForSelector('.team-banner, .mini-head');
+      await host.click('[data-tab="host"]');
+      check(!!(await host.$('.host-bar.sticky')) && !!(await host.$('[data-tab="play"]')), 'host menu opens and has a way back to the game');
       host.isPlayer = true;
       phones.push(host);
     }
@@ -141,14 +161,19 @@ async function main() {
         await p.click('.submit-bar button');
       }
       await until(() => picker.$('.reveal-count'), 'CAH reveal');
-      check(!!(await tv.$('.reveal-count')), 'CAH: reveal shows on TV');
+      check(!!(await until(() => tv.$('.reveal-count'), 'TV reveal', 5000).catch(() => null)), 'CAH: reveal shows on TV');
       while (await picker.$('.reveal-count')) {
         await picker.click('.instruct + button');
         await picker.waitForTimeout(120);
       }
       await until(() => picker.$('button.answer'), 'CAH judging');
       await picker.click('button.answer >> nth=0');
-      for (const p of phones.filter((x) => x !== picker)) if (await p.$('button.answer')) await p.click('button.answer >> nth=0');
+      // Each voter waits for their own screen to reach voting (slow networks lag behind).
+      for (const p of phones.filter((x) => x !== picker)) {
+        await until(async () => (await p.$('button.answer')) || (await tv.$('.result-win')), `${p.n} voting`);
+        if (await tv.$('.result-win')) break;
+        await p.click('button.answer >> nth=0');
+      }
       await until(() => tv.$('.result-win'), 'CAH result');
       const gained = total(await scores(tv)) - before;
       check(gained >= 1 && gained <= 2, 'CAH: a round is judged and scored', `+${gained}`);
@@ -167,10 +192,14 @@ async function main() {
       await until(() => mates[0].$('.guess-box'), 'Taboo guesser screen');
       check(!(await mates[0].$('.taboo-word')) && !(await tv.$('.taboo-word')), 'Taboo: teammates and TV never see the word', word);
       check(!!(await rivals[0].$('.taboo-word')), 'Taboo: the other team sees the word to buzz');
+      // Like a person, only tap once your own screen shows the current card (slow networks lag).
+      const wordOn = (p) => p.textContent('.taboo-word').then((t) => t.trim()).catch(() => null);
+      const nextCard = (prev) => until(async () => { const w = await wordOn(giver); return w && w !== prev && w; }, 'next Taboo card');
       await giver.click('button:text-is("✓ Got it")');
-      await giver.waitForTimeout(150);
+      const w2 = await nextCard(word);
       await giver.click('button:text-is("Pass ↷")');
-      await giver.waitForTimeout(150);
+      const w3 = await nextCard(w2);
+      await until(async () => (await wordOn(rivals[0])) === w3, 'rival sees the current card');
       await rivals[0].click('.taboo-buzz');
       await until(() => mates[0].$('.buzz-flash'), 'buzz flash');
       await asHost();
@@ -193,10 +222,11 @@ async function main() {
         await until(() => p.$('.tq-opt'), `${p.n} options`);
         await p.click('.tq-opt >> nth=1');
       }
+      let lastCounts;
       const counts = await until(async () => {
         const c = await chooser.$$eval('.tq-count', (e) => e.map((x) => Number(x.textContent)));
-        return c[1] === crowd.length && c;
-      }, 'crowd counts on chooser');
+        return c[1] === crowd.length ? c : (lastCounts = c) && false;
+      }, 'crowd counts on chooser').catch((e) => { throw new Error(`${e.message} counts=${JSON.stringify(lastCounts)} crowd=${crowd.length}`); });
       check(counts[1] === crowd.length, 'Trivia: chooser sees live crowd counts', counts.join('/'));
       check((await crowd[0].$$('.tq-count')).length === 0 && (await tv.$$('.tq-count')).length === 0, 'Trivia: crowd and TV do not see the counts');
       await chooser.click('.tq-opt >> nth=1');
@@ -319,8 +349,16 @@ async function main() {
         await asPlayer(p);
         await until(async () => (await p.$('.vote-row')) || (await decided()), `${p.n} dare vote`);
         if (await decided()) break;
-        await p.click('.vote-row button.good');
+        // Other votes may decide it while we tap; that's fine.
+        await p.click('.vote-row button.good', { timeout: 4000 }).catch(async (e) => {
+          if (!(await decided())) throw e;
+        });
         await p.waitForTimeout(150);
+      }
+      if (HOST_PLAYS) {
+        await asPlayer(host);
+        await until(() => host.$('.host-menu-btn .attn'), 'host menu attention dot');
+        check(true, 'host menu button shows a dot when a dare needs the host');
       }
       await asHost();
       await until(() => host.$('button:text-is("Dare done ✓")'), 'dare accepted');
@@ -348,6 +386,12 @@ async function main() {
     check(pageErrors.length === 0, 'no JavaScript errors on any screen', pageErrors.slice(0, 3).join(' | '));
   } catch (err) {
     check(false, 'run finished', err.message);
+    // Save what every screen looked like, to see why (E2E_SHOTS=dir).
+    if (process.env.E2E_SHOTS) {
+      require('fs').mkdirSync(process.env.E2E_SHOTS, { recursive: true });
+      for (const pg of allPages) await pg.screenshot({ path: `${process.env.E2E_SHOTS}/${pg.n}.png`, fullPage: true }).catch(() => {});
+      console.log(`Screenshots saved to ${process.env.E2E_SHOTS}`);
+    }
   } finally {
     await browser.close();
     if (srv) await srv.close();

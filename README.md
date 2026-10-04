@@ -2,7 +2,8 @@
 
 An all-night team party game you play on your phones, with an optional shared TV screen.
 
-- The first person opens the site and taps **Host a new game**. They get a **code word** (like `MANGO`) and a QR code.
+- The first person opens the site, enters their name and taps **Host a new game**. They get a **code word** (like `MANGO`) and a QR code.
+- **The host plays too**, on a team like everyone else, unless they untick "I'm playing too". Their phone shows the game, with a slim **⚙️ Host menu** button at the top. The menu holds all the host controls: code and QR, points, game picker, current-game controls, team shop prices, teams and wrap-up. **← Back to the game** returns in one tap. The menu button shows a red dot when something needs the host, such as confirming a dare.
 - Everyone else opens the site, enters the code and their name, and is **placed on a team automatically**. Teams stay even, and people can join at any point in the night.
 - Each phone is **locked to its team** for the rest of the game. Reloading the page or losing signal puts the player back on the same team. The lock is cleared only when the host taps **End game for everyone** or removes that player.
 - **Scores add up all night.** The host picks which mini-game is running (switching about once an hour) and can add or remove points by hand at any time.
