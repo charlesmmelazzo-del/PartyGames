@@ -162,9 +162,13 @@ async function main() {
       }
       await until(() => picker.$('.reveal-count'), 'CAH reveal');
       check(!!(await until(() => tv.$('.reveal-count'), 'TV reveal', 5000).catch(() => null)), 'CAH: reveal shows on TV');
+      // Tap through the answers; the last tap flips the screen to judging, which can land mid-click.
       while (await picker.$('.reveal-count')) {
-        await picker.click('.instruct + button');
-        await picker.waitForTimeout(120);
+        const at = await picker.textContent('.reveal-count').catch(() => null);
+        await picker.click('.instruct + button', { timeout: 4000 }).catch(async (e) => {
+          if (await picker.$('.reveal-count')) throw e;
+        });
+        await until(async () => !(await picker.$('.reveal-count')) || (await picker.textContent('.reveal-count').catch(() => null)) !== at, 'next CAH answer');
       }
       await until(() => picker.$('button.answer'), 'CAH judging');
       await picker.click('button.answer >> nth=0');
