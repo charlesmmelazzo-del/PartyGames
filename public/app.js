@@ -463,8 +463,45 @@
     return '';
   }
 
+  // A redraw between finger-down and finger-up swaps the button out from under the tap and
+  // the browser drops it, so updates that land mid-tap wait until the tap has gone through.
+  let pressing = false;
+  let renderPending = false;
+  let pressTimer = null;
+  function releasePress() {
+    clearTimeout(pressTimer);
+    if (!pressing) return;
+    pressing = false;
+    if (renderPending) {
+      renderPending = false;
+      setTimeout(render, 0);
+    }
+  }
+  app.addEventListener(
+    'pointerdown',
+    (e) => {
+      if (e.target.closest('canvas')) return; // drawing keeps its own canvas across redraws
+      pressing = true;
+      clearTimeout(pressTimer);
+      pressTimer = setTimeout(releasePress, 1500); // a long press or drag shouldn't freeze the screen
+    },
+    true
+  );
+  app.addEventListener('click', releasePress, true);
+  // If no click follows (tap on blank space, a scroll), let go shortly after the finger lifts.
+  for (const type of ['pointerup', 'pointercancel'])
+    window.addEventListener(type, () => {
+      if (!pressing) return;
+      clearTimeout(pressTimer);
+      pressTimer = setTimeout(releasePress, 300);
+    });
+
   function render() {
     if (!state) return;
+    if (pressing) {
+      renderPending = true;
+      return;
+    }
     renderGame();
     // Let the current game hook into the fresh DOM (e.g. re-attach a drawing canvas).
     const view = state.game && GameViews[state.game.id];

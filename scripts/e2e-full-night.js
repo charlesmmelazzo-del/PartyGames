@@ -55,12 +55,17 @@ async function main() {
   const browser = await chromium.launch({
     executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium',
     ...(process.env.E2E_PROXY ? { proxy: { server: process.env.E2E_PROXY } } : {}),
+    slowMo: Number(process.env.E2E_SLOWMO) || 0,
     args: process.env.E2E_TRUST_SPKI ? [`--ignore-certificate-errors-spki-list=${process.env.E2E_TRUST_SPKI}`] : [],
   });
   const pageErrors = [];
   const allPages = [];
+  // E2E_VIDEO=dir records these screens (E2E_VIDEO_WHO, default Host,Ana,TV) as dir/<name>.webm.
+  const videoDir = process.env.E2E_VIDEO;
+  const videoWho = (process.env.E2E_VIDEO_WHO || 'Host,Ana,TV').split(',');
   async function device(name, viewport = { width: 390, height: 844 }) {
-    const ctx = await browser.newContext({ viewport, hasTouch: true });
+    const record = videoDir && videoWho.includes(name) ? { recordVideo: { dir: videoDir, size: viewport } } : {};
+    const ctx = await browser.newContext({ viewport, hasTouch: true, ...record });
     const p = await ctx.newPage();
     p.n = name;
     allPages.push(p);
@@ -397,6 +402,11 @@ async function main() {
       console.log(`Screenshots saved to ${process.env.E2E_SHOTS}`);
     }
   } finally {
+    for (const pg of allPages.filter((x) => x.video())) {
+      await pg.context().close().catch(() => {});
+      await pg.video().saveAs(`${videoDir}/${pg.n}.webm`).catch(() => {});
+      await pg.video().delete().catch(() => {});
+    }
     await browser.close();
     if (srv) await srv.close();
   }
