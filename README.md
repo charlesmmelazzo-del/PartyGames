@@ -110,10 +110,14 @@ npm run e2e        # plays a whole night in a real browser with virtual phones
 `npm run e2e` starts a local server and drives a host, several phones and a TV through every game, the team locks, the cash-out dare vote and buying a game switch, checking what each screen can and can't see. Options:
 
 ```bash
-PHONES=6 HOST_PLAYS=1 npm run e2e                      # host also plays on a team
+PHONES=6 HOST_PLAYS=0 npm run e2e                      # host only runs the game (plays by default)
 PHONES=8 LATE_JOIN=1 RELOADS=1 npm run e2e             # someone joins late, screens reload mid-game
 BASE_URL=https://partygames-production.up.railway.app npm run e2e   # test the live site
+E2E_SHOTS=shots npm run e2e                            # on failure, save a screenshot of every screen
+E2E_VIDEO=video E2E_VIDEO_WHO=Host,Ana,TV E2E_SLOWMO=100 npm run e2e   # record those screens as video
 ```
+
+Every run also prints any dropped connections or error pop-ups each screen saw.
 
 It needs Chromium. Set `CHROMIUM_PATH` if Playwright's browser isn't at `/opt/pw-browsers/chromium`.
 
@@ -126,6 +130,8 @@ To try it with several players on one computer, open extra windows in private/in
 3. Under **Settings → Networking**, click **Generate Domain** to get your public URL.
 
 Keep it to **one instance** (Railway's default), since games live in that server's memory.
+
+Every push to the deployed branch restarts the server, which ends any game in progress, so don't push during a party.
 
 ## Adding a mini-game
 

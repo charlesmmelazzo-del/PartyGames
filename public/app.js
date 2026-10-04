@@ -36,8 +36,38 @@
   const esc = (v) =>
     String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
-  const call = (event, msg) =>
-    new Promise((resolve) => socket.timeout(8000).emit(event, msg, (err, res) => resolve(err ? { error: 'No connection, try again' } : res)));
+  const NO_CONNECTION = 'No connection, try again';
+  const send = (event, msg) =>
+    new Promise((resolve) => socket.timeout(8000).emit(event, msg, (err, res) => resolve(err ? { error: NO_CONNECTION } : res)));
+
+  // After a dropped connection, socket.io sends whatever was tapped meanwhile the moment it
+  // reconnects, before this phone has rejoined its game, so the server would turn those taps
+  // away. In-game actions only go out while connected and rejoined.
+  let rejoinDone = false;
+  let markRejoined;
+  let rejoined = new Promise((resolve) => (markRejoined = resolve));
+  socket.on('disconnect', () => {
+    rejoinDone = false;
+    rejoined = new Promise((resolve) => (markRejoined = resolve));
+  });
+  const IN_GAME = new Set(['player:action', 'host:action']);
+
+  // A tap that was mid-send when the connection dropped is sent again once the phone is back.
+  // The request id lets the server spot the repeat if the first one did get through.
+  async function call(event, msg) {
+    if (!IN_GAME.has(event)) return send(event, msg);
+    const req = { ...msg, rid: `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}` };
+    const giveUp = Date.now() + 15000;
+    for (let attempt = 0; ; attempt++) {
+      while (!(socket.connected && rejoinDone)) {
+        const left = giveUp - Date.now();
+        if (left <= 0) return { error: NO_CONNECTION };
+        await Promise.race([rejoined, new Promise((r) => setTimeout(r, left))]);
+      }
+      const res = await send(event, req);
+      if (res.error !== NO_CONNECTION || attempt === 2) return res;
+    }
+  }
 
   let toastTimer;
   function toast(msg) {
@@ -670,7 +700,13 @@
   });
 
   // On every (re)connect, rejoin whatever this phone was part of.
-  socket.on('connect', async () => {
+  socket.on('connect', () =>
+    rejoin().finally(() => {
+      rejoinDone = true;
+      markRejoined();
+    })
+  );
+  async function rejoin() {
     const params = new URLSearchParams(location.search);
     const session = loadSession();
     if (session) {
@@ -680,6 +716,7 @@
         if (!res.isPlayer && session.playerId) saveSession({ code: session.code, hostToken: session.hostToken });
         return;
       }
+      if (res.error === NO_CONNECTION) return; // try again on the next reconnect; don't forget the game
       clearSession();
     }
     if (params.get('tv')) {
@@ -688,7 +725,7 @@
       toast(res.error);
     }
     if (!document.getElementById('join')) renderHome(params.get('code') || '');
-  });
+  }
 
   const fmtLeft = (ms) => {
     const s = Math.max(0, Math.ceil(ms / 1000));

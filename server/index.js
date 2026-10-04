@@ -60,18 +60,34 @@ function createServer({ random } = {}) {
     broadcast(room);
   }
 
+  // Replies to recent requests, by request id, so a resent action isn't applied twice.
+  const RECENT_REPLIES = 5000;
+  const recentReplies = new Map();
+
   io.on('connection', (socket) => {
     socket.data = {};
 
-    // Wraps a handler so thrown errors come back to the caller as { error }.
+    // Wraps a handler so thrown errors come back to the caller as { error }. A phone resends an
+    // action when its connection drops mid-send; the request id (rid) makes sure it only counts once.
     const on = (event, fn) =>
       socket.on(event, (msg, ack) => {
-        const reply = typeof ack === 'function' ? ack : () => {};
+        const respond = typeof ack === 'function' ? ack : () => {};
+        const { rid, ...body } = msg || {};
+        // Scoped to who sent it (the same after a rejoin), so one phone never gets another's reply.
+        const who = `${socket.data.code || ''}:${socket.data.playerId || socket.data.role || ''}`;
+        const key = typeof rid === 'string' && rid.length <= 40 ? `${who}:${event}:${rid}` : null;
+        if (key && recentReplies.has(key)) return respond(recentReplies.get(key));
+        let out;
         try {
-          reply(fn(msg || {}) || { ok: true });
+          out = fn(body) || { ok: true };
         } catch (err) {
-          reply({ error: err.message || 'Something went wrong' });
+          out = { error: err.message || 'Something went wrong' };
         }
+        if (key) {
+          recentReplies.set(key, out);
+          if (recentReplies.size > RECENT_REPLIES) recentReplies.delete(recentReplies.keys().next().value);
+        }
+        respond(out);
       });
 
     const currentRoom = () => {

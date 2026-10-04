@@ -127,3 +127,22 @@ test('static site, health and QR endpoints respond', async () => {
   assert.match(await qr.text(), /<svg/);
   assert.strictEqual((await fetch(`${url}/qr/NOPE.svg`)).status, 404);
 });
+
+test('an action resent after a dropped connection only counts once', async () => {
+  const host = client();
+  const { code, hostToken } = await call(host, 'host:create', {});
+  const teamId = (await settle(), host.last.teams[0].id);
+  const add = { type: 'addPoints', teamId, points: 3, rid: 'tap-1' };
+  assert.ok((await call(host, 'host:action', add)).ok);
+  // The phone never saw the reply, reconnects, and sends the same tap again.
+  host.close();
+  const again = client();
+  assert.ok((await call(again, 'session:resume', { code, hostToken })).ok);
+  assert.ok((await call(again, 'host:action', add)).ok);
+  await settle();
+  assert.strictEqual(again.last.teams.find((t) => t.id === teamId).score, 3);
+  // A new tap (new id) still counts.
+  assert.ok((await call(again, 'host:action', { ...add, rid: 'tap-2' })).ok);
+  await settle();
+  assert.strictEqual(again.last.teams.find((t) => t.id === teamId).score, 6);
+});

@@ -66,6 +66,30 @@ async function main() {
   async function device(name, viewport = { width: 390, height: 844 }) {
     const record = videoDir && videoWho.includes(name) ? { recordVideo: { dir: videoDir, size: viewport } } : {};
     const ctx = await browser.newContext({ viewport, hasTouch: true, ...record });
+    // Note every dropped connection and every error toast, so a lost tap can be explained.
+    await ctx.addInitScript(() => {
+      const log = (window.__net = []);
+      const t0 = Date.now();
+      const note = (m) => log.push(`${((Date.now() - t0) / 1000).toFixed(1)}s ${m}`);
+      let real;
+      Object.defineProperty(window, 'io', {
+        configurable: true,
+        get: () => real,
+        set: (fn) => {
+          real = (...a) => {
+            const sock = fn(...a);
+            sock.on('disconnect', (why) => note(`disconnect (${why})`));
+            sock.io.on('reconnect', () => note('reconnect'));
+            return sock;
+          };
+          Object.assign(real, fn);
+        },
+      });
+      addEventListener('DOMContentLoaded', () => {
+        const el = document.getElementById('toast');
+        if (el) new MutationObserver(() => !el.hidden && note(`toast: ${el.textContent}`)).observe(el, { attributes: true, childList: true });
+      });
+    });
     const p = await ctx.newPage();
     p.n = name;
     allPages.push(p);
@@ -402,6 +426,10 @@ async function main() {
       console.log(`Screenshots saved to ${process.env.E2E_SHOTS}`);
     }
   } finally {
+    for (const pg of allPages) {
+      const net = await pg.evaluate(() => window.__net || []).catch(() => []);
+      if (net.length) console.log(`  ${pg.n}: ${net.join(' | ')}`);
+    }
     for (const pg of allPages.filter((x) => x.video())) {
       await pg.context().close().catch(() => {});
       await pg.video().saveAs(`${videoDir}/${pg.n}.webm`).catch(() => {});
