@@ -14,6 +14,9 @@ const DEFAULT_SWITCH_MIN_MINUTES = 10;
 const ANNOUNCE_MS = 8000;
 const MAX_DARE = 120;
 const DARE_VOTE_MS = 60000;
+const ROTATE_MINUTES = [30, 45, 60, 90];
+const DEFAULT_ROTATE_MINUTES = 60;
+const ROTATE_WARN_MS = 60000; // "next up in 1 min" heads-up before a rotation switch
 
 const secret = () => crypto.randomBytes(16).toString('hex');
 const shortId = () => crypto.randomBytes(6).toString('hex');
@@ -51,6 +54,11 @@ class Room {
     this.switchPrice = DEFAULT_SWITCH_PRICE;
     this.switchMinMinutes = DEFAULT_SWITCH_MIN_MINUTES;
     this.announcement = null; // { id, text, teamId, at } flashed on every screen
+    // Tonight's game plan: one game all night, or rotate through a set of games on a clock.
+    // games: null means every game. clockFrom: when the current rotation countdown started.
+    this.plan = { type: 'rotation', games: null, minutes: DEFAULT_ROTATE_MINUTES, paused: false };
+    this.clockFrom = null;
+    this.rotationTimers = [];
   }
 
   announce(text, teamId) {
@@ -230,7 +238,9 @@ class Room {
   switchBlocker(teamId) {
     const { leader, lead } = this.standings();
     if (games.list().length < 2) return 'Only one game available so far';
+    if (this.plan.type === 'single') return 'The host picked one game for tonight';
     if (!this.game) return 'No game is running';
+    if (!this.switchChoices().length) return 'No other games in tonight\'s rotation';
     if (leader.id !== teamId || lead < this.switchPrice) return `Your team needs a lead of ${this.switchPrice}`;
     const left = this.game.startedAt + this.switchMinMinutes * 60000 - Date.now();
     if (left > 0) return `Unlocks in ${Math.ceil(left / 60000)} min (this game just started)`;
@@ -247,32 +257,121 @@ class Room {
   shop(teamId) {
     const cashOut = this.cashOutBlocker(teamId);
     const sw = this.switchBlocker(teamId);
-    return [
+    const items = [
       { id: 'cashOut', name: 'Cash out', cost: 'Your whole lead', what: 'Write a dare for the other team. If they vote to accept and do it, your lead is banked and the score is tied.', available: !cashOut, reason: cashOut },
-      { id: 'switchGame', name: 'Switch game', cost: `${this.switchPrice} points`, what: 'Your team picks the next game.', available: !sw, reason: sw },
     ];
+    // With one game all night there's nothing to switch to.
+    if (this.plan.type !== 'single') items.push({ id: 'switchGame', name: 'Switch game', cost: `${this.switchPrice} points`, what: 'Your team picks the next game.', available: !sw, reason: sw });
+    return items;
   }
 
   // gameId: a game id or 'random' (any game other than the current one).
   buySwitch(teamId, gameId, byName) {
     const blocker = this.switchBlocker(teamId);
     if (blocker) throw new Error(blocker);
-    const choices = games.list().filter((g) => g.id !== this.game.id);
+    const choices = this.switchChoices();
     const pick = gameId === 'random' ? choices[Math.floor(this.random() * choices.length)] : choices.find((g) => g.id === gameId);
-    if (!pick) throw new Error('Pick a different game');
+    if (!pick) throw new Error('Pick another game from tonight\'s rotation');
     const t = this.team(teamId);
     this.addPoints(teamId, -this.switchPrice, `Bought a switch to ${pick.name}`);
     this.setGame(pick.id);
     this.announce(`${t.name} spent ${this.switchPrice} points to switch to ${pick.name}!`, teamId);
   }
 
-  // Host's "crowd is bored" button: free, any game other than the current one.
+  // Games a team can buy a switch to: the rest of tonight's rotation.
+  switchChoices() {
+    const pool = new Set(this.pool());
+    return games.list().filter((g) => pool.has(g.id) && (!this.game || g.id !== this.game.id));
+  }
+
+  // Host's "crowd is bored" button: free, another game from the rotation (any game if none left).
   randomGame() {
-    const choices = games.list().filter((g) => !this.game || g.id !== this.game.id);
+    let choices = this.plan.type === 'rotation' ? this.switchChoices() : [];
+    if (!choices.length) choices = games.list().filter((g) => !this.game || g.id !== this.game.id);
     if (!choices.length) throw new Error('No other games yet');
     const pick = choices[Math.floor(this.random() * choices.length)];
-    this.setGame(pick.id);
-    this.announce(`New game: ${pick.name}!`);
+    this.hostPick(pick.id);
+  }
+
+  // The host starts a game by hand. With one game all night, that becomes tonight's game.
+  hostPick(gameId) {
+    if (gameId && this.plan.type === 'single') this.plan.games = [gameId];
+    this.setGame(gameId);
+    if (this.game) this.announce(`New game: ${this.game.name}!`);
+  }
+
+  // ---------- game plan: one game all night, or a rotation on a clock ----------
+
+  // Ids of the games in tonight's plan, in play order.
+  pool() {
+    const all = games.list().map((g) => g.id);
+    return this.plan.games ? this.plan.games.filter((id) => all.includes(id)) : all;
+  }
+
+  // plan: { type: 'single', game } or { type: 'rotation', games: [ids], minutes }.
+  // Starts tonight's first game if nothing suitable is running.
+  setPlan(plan = {}) {
+    const all = games.list().map((g) => g.id);
+    if (plan.type === 'single') {
+      const id = plan.game || (this.game && this.game.id);
+      if (!all.includes(id)) throw new Error('Pick a game');
+      this.plan = { ...this.plan, type: 'single', games: [id] };
+    } else if (plan.type === 'rotation') {
+      const ids = plan.games == null ? all : [...new Set(plan.games)].filter((id) => all.includes(id));
+      if (ids.length < 2) throw new Error('Pick at least two games to rotate');
+      const minutes = plan.minutes == null ? this.plan.minutes : Number(plan.minutes);
+      if (!Number.isInteger(minutes) || minutes < 5 || minutes > 240) throw new Error('Rotate every 5-240 minutes');
+      this.plan = { ...this.plan, type: 'rotation', games: ids.length === all.length ? null : ids, minutes };
+    } else throw new Error('Pick one game or a rotation');
+    const pool = this.pool();
+    if (!this.game || !pool.includes(this.game.id)) this.hostPick(pool[0]);
+    else this.planRotation();
+  }
+
+  // Pause or resume the rotation clock. Resuming starts a full countdown.
+  pauseRotation(paused) {
+    if (this.plan.type !== 'rotation') throw new Error('Not rotating games');
+    this.plan.paused = !!paused;
+    this.planRotation(true);
+  }
+
+  // The next game in the rotation after the current one.
+  nextInRotation() {
+    const pool = this.pool();
+    if (this.plan.type !== 'rotation' || pool.length < 2) return null;
+    const at = this.game ? pool.indexOf(this.game.id) : -1; // -1 (not in the rotation): start from the top
+    return pool[(at + 1) % pool.length];
+  }
+
+  rotateNow() {
+    const next = this.nextInRotation();
+    if (!next) throw new Error('Not rotating games');
+    this.hostPick(next);
+  }
+
+  // When the rotation will switch games, or null if it won't.
+  nextGameAt() {
+    if (this.plan.type !== 'rotation' || this.plan.paused || !this.game || !this.nextInRotation()) return null;
+    return this.clockFrom + this.plan.minutes * 60000;
+  }
+
+  // (Re)arm the rotation clock for the current game; restartClock counts from now.
+  planRotation(restartClock = false) {
+    for (const h of this.rotationTimers) {
+      clearTimeout(h);
+      this.timers.delete(h);
+    }
+    this.rotationTimers = [];
+    if (!this.game) return;
+    if (restartClock || this.clockFrom == null) this.clockFrom = Date.now();
+    if (this.nextGameAt() == null) return;
+    // A shorter interval set mid-game still gives everyone the 1-minute heads-up.
+    const soonest = Date.now() + ROTATE_WARN_MS + 1000;
+    if (this.nextGameAt() < soonest) this.clockFrom = soonest - this.plan.minutes * 60000;
+    const left = this.nextGameAt() - Date.now();
+    const next = games.get(this.nextInRotation());
+    if (left >= ROTATE_WARN_MS) this.rotationTimers.push(this.api().schedule(left - ROTATE_WARN_MS, () => this.announce(`Next up in 1 min: ${next.name}`)));
+    this.rotationTimers.push(this.api().schedule(Math.max(0, left), () => this.nextInRotation() && this.hostPick(this.nextInRotation())));
   }
 
   setSwitchPrice(n) {
@@ -339,6 +438,8 @@ class Room {
     this.game = { id: def.id, name: def.name, round: this.round, startedAt: Date.now(), state: null };
     this.game.state = def.init(this.api());
     this.scheduleSwitchUnlock();
+    this.clockFrom = this.game.startedAt;
+    this.planRotation();
   }
 
   // Re-broadcast when buying a switch unlocks, so phones' shops update on their own.
@@ -412,6 +513,14 @@ class Room {
       },
       shop: player ? this.shop(player.teamId) : null,
       allGames: games.list().map(({ id, name }) => ({ id, name })),
+      plan: {
+        type: this.plan.type,
+        games: this.pool(),
+        minutes: this.plan.minutes,
+        paused: this.plan.paused,
+        nextAt: this.nextGameAt(),
+        next: this.nextInRotation() && { id: this.nextInRotation(), name: games.get(this.nextInRotation()).name },
+      },
       switchPrice: this.switchPrice,
       switchMinMinutes: this.switchMinMinutes,
       announcement: this.announcement && Date.now() - this.announcement.at < ANNOUNCE_MS ? this.announcement : null,
@@ -448,4 +557,4 @@ class RoomManager {
   }
 }
 
-module.exports = { Room, RoomManager, cleanName };
+module.exports = { Room, RoomManager, cleanName, ROTATE_MINUTES };

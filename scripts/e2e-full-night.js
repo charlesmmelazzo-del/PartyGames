@@ -107,11 +107,16 @@ async function main() {
     // The host plays too (with host controls in the Host menu) unless HOST_PLAYS=0.
     if (HOST_PLAYS) await host.fill('#host-name', 'Host');
     else await host.uncheck('#host-plays');
+    // Game plan: rotating every game is the default; switch every 45 minutes.
+    await host.waitForSelector('#plan-setup .seg');
+    const ticks = await host.$$eval('[data-plan-game]', (e) => e.map((x) => x.checked));
+    check(!!(await host.$('[data-plan-type="rotation"].active')) && ticks.length >= 6 && ticks.every(Boolean), 'setup: rotating every game is the default', `${ticks.length} games`);
+    await host.click('[data-plan-minutes="45"]');
     await host.click('#create');
     if (HOST_PLAYS) {
       // Starts on their player screen; the code lives in the Host menu.
       await host.waitForSelector('.host-menu-btn[data-tab="host"]');
-      check(!!(await host.$('.team-banner')), 'playing host starts on their player screen');
+      check(!!(await host.$('.team-banner, .mini-head')), 'playing host starts on their player screen');
       await host.click('[data-tab="host"]');
     }
     const code = (await (await host.waitForSelector('.code')).textContent()).trim();
@@ -139,6 +144,8 @@ async function main() {
     const tv = await device('TV', { width: 1280, height: 720 });
     await tv.goto(`${base}/?tv=${code}`);
     await tv.waitForSelector('.tv');
+    const header = await (await tv.waitForSelector('.game-header')).textContent();
+    check(/Round 1/.test(header) && /next up: .+ in \d+:\d\d/i.test(header), 'rotation: first game starts by itself, TV shows what is next', header.replace(/\s+/g, ' ').trim());
 
     const sizes = await tv.$$eval('.score .muted.small', (e) => e.map((x) => parseInt(x.textContent, 10)));
     check(Math.abs(sizes[0] - sizes[1]) <= 1, 'teams are balanced', sizes.join(' vs '));
@@ -164,7 +171,8 @@ async function main() {
 
     async function startGame(name) {
       await asHost();
-      await host.locator('.game-pick', { hasText: name }).locator('button').click();
+      const btn = host.locator('.game-pick', { hasText: name }).locator('button');
+      if (await btn.isEnabled()) await btn.click(); // the rotation may have started it already
       await until(() => tv.$('.game-header strong, .mini-game'), `${name} on TV`);
     }
     // Every phone, switched to its player screen, that matches a selector.
@@ -414,6 +422,22 @@ async function main() {
       await leader.click('button:text-is("🎲 Random game")');
       await until(async () => (await tv.textContent('.announce')).includes('to switch to'), 'switch announced');
       check(true, 'Team shop: leading team bought a game switch');
+    }
+
+    // ---------- game plan from the Host menu ----------
+    {
+      await asHost();
+      check(!!(await host.$('.plan-card button.pill.active:text-is("45m")')), 'host menu shows the 45-minute rotation');
+      const skipTo = (await host.textContent('.plan-card button:has-text("Skip to")')).replace(/.*Skip to /, '').trim();
+      await host.click('.plan-card button:has-text("Skip to")');
+      await until(async () => (await tv.textContent('.game-header strong')).includes(skipTo), `skip to ${skipTo}`);
+      check(true, 'host skips ahead in the rotation', skipTo);
+      await host.click('.plan-card button:has-text("all night")');
+      await until(async () => !/next up/i.test(await tv.textContent('.game-header')), 'one game: no next up');
+      const fan = phones.find((p) => p !== host) || phones[0];
+      await asPlayer(fan);
+      const shop = await fan.textContent('.shop');
+      check(!/Switch game/.test(shop) && (await host.textContent('.plan-card h2')).includes('one game'), 'one game all night: no next game, no switch in the team shop');
     }
 
     check(pageErrors.length === 0, 'no JavaScript errors on any screen', pageErrors.slice(0, 3).join(' | '));

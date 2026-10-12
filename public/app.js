@@ -37,6 +37,7 @@
     String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
   const NO_CONNECTION = 'No connection, try again';
+  const ROTATE_MINUTES = [30, 45, 60, 90];
   const send = (event, msg) =>
     new Promise((resolve) => socket.timeout(8000).emit(event, msg, (err, res) => resolve(err ? { error: NO_CONNECTION } : res)));
 
@@ -105,6 +106,7 @@
           <h2>Running the party?</h2>
           <label>Your name<input id="host-name" maxlength="20" placeholder="Your name"></label>
           <label class="check"><input type="checkbox" id="host-plays" checked> I'm playing too</label>
+          <div id="plan-setup"></div>
           <button id="create" class="big secondary">Host a new game</button>
           <button id="tv" class="link">Show a game on a TV / shared screen</button>
         </div>
@@ -121,13 +123,61 @@
     const plays = document.getElementById('host-plays');
     const hostName = document.getElementById('host-name');
     plays.onchange = () => (hostName.closest('label').hidden = !plays.checked);
+    // Tonight's game plan: rotate through a set of games on a clock, or one game all night.
+    const setup = { type: 'rotation', games: null, minutes: 60, single: null, list: [] };
+    const planBox = document.getElementById('plan-setup');
+    const drawPlan = () => {
+      if (!setup.list.length) return;
+      const on = (id) => !setup.games || setup.games.includes(id);
+      planBox.innerHTML = `
+        <p class="field-label">Games tonight</p>
+        <div class="seg">
+          <button type="button" class="pill ${setup.type === 'rotation' ? 'active' : ''}" data-plan-type="rotation">🔄 Rotate games</button>
+          <button type="button" class="pill ${setup.type === 'single' ? 'active' : ''}" data-plan-type="single">🎯 One game</button>
+        </div>
+        ${setup.type === 'rotation'
+          ? `<div class="plan-games">${setup.list
+              .map((g) => `<label class="check"><input type="checkbox" data-plan-game="${g.id}" ${on(g.id) ? 'checked' : ''}> ${esc(g.name)}</label>`)
+              .join('')}</div>
+            <div class="row"><span class="grow small">Switch every</span>${ROTATE_MINUTES.map(
+              (m) => `<button type="button" class="pill ${setup.minutes === m ? 'active' : ''}" data-plan-minutes="${m}">${m}m</button>`,
+            ).join('')}</div>`
+          : `<div class="plan-games">${setup.list
+              .map((g) => `<label class="check"><input type="radio" name="single-game" data-single-game="${g.id}" ${setup.single === g.id ? 'checked' : ''}> ${esc(g.name)}</label>`)
+              .join('')}</div>`}`;
+    };
+    planBox.onclick = (e) => {
+      const b = e.target.closest('[data-plan-type], [data-plan-minutes]');
+      if (!b) return;
+      if (b.dataset.planType) setup.type = b.dataset.planType;
+      if (b.dataset.planMinutes) setup.minutes = Number(b.dataset.planMinutes);
+      drawPlan();
+    };
+    planBox.onchange = (e) => {
+      if (e.target.dataset.singleGame) setup.single = e.target.dataset.singleGame;
+      if (e.target.dataset.planGame) setup.games = [...planBox.querySelectorAll('[data-plan-game]:checked')].map((x) => x.dataset.planGame);
+    };
+    fetch('/games.json')
+      .then((r) => r.json())
+      .then((list) => {
+        setup.list = list;
+        setup.single = list[0] && list[0].id;
+        drawPlan();
+      })
+      .catch(() => {}); // without the list, the room starts with every game rotating
+
     document.getElementById('create').onclick = async () => {
       const name = hostName.value.trim();
       if (plays.checked && !name) {
         hostName.focus();
         return toast("Enter your name, or untick \"I'm playing too\" to just run the game");
       }
-      const res = await call('host:create', {});
+      const plan =
+        setup.type === 'single'
+          ? { type: 'single', game: setup.single }
+          : { type: 'rotation', games: setup.games && setup.games.length === setup.list.length ? null : setup.games, minutes: setup.minutes };
+      if (plan.type === 'rotation' && plan.games && plan.games.length < 2) return toast('Tick at least two games to rotate, or pick One game');
+      const res = await call('host:create', { plan });
       if (res.error) return toast(res.error);
       saveSession({ code: res.code, hostToken: res.hostToken });
       if (!plays.checked) return;
@@ -161,8 +211,10 @@
 
   function gameHeader() {
     if (!state.game) return `<div class="game-header"><strong>Intermission</strong><span class="muted">Waiting for the host to start a game</span></div>`;
+    const p = state.plan;
+    const next = p && p.nextAt && p.next ? ` · next up: ${esc(p.next.name)} in <span data-until="${p.nextAt}"></span>` : '';
     return `<div class="game-header"><strong>Round ${state.game.round}: ${esc(state.game.name)}</strong>
-      <span class="muted">running <span data-since="${state.game.startedAt}"></span></span></div>`;
+      <span class="muted">running <span data-since="${state.game.startedAt}"></span>${next}</span></div>`;
   }
 
   function gameBody(role) {
@@ -188,9 +240,46 @@
     </div>`;
   }
 
+  // Host menu: tonight's game plan (rotation or one game), editable mid-party.
+  function planCard() {
+    const p = state.plan;
+    const hostBtn = (type, payload, label, cls = 'pill') =>
+      `<button class="${cls}" data-send="host" data-type="${type}" data-payload='${JSON.stringify(payload)}'>${label}</button>`;
+    const setPlan = (plan) => ({ plan });
+    const rotation = { type: 'rotation', games: p.games, minutes: p.minutes };
+    let body;
+    if (p.type === 'single') {
+      body = `<p>Playing <strong>${esc(state.game ? state.game.name : '…')}</strong> all night. Pick another game below to change it.</p>
+        ${hostBtn('setPlan', setPlan({ type: 'rotation', games: null, minutes: p.minutes }), '🔄 Rotate all games instead', 'secondary')}`;
+    } else {
+      const toggled = (id) => (p.games.includes(id) ? p.games.filter((g) => g !== id) : state.allGames.map((g) => g.id).filter((g) => g === id || p.games.includes(g)));
+      body = `<p class="small muted">${p.paused ? 'Rotation paused.' : p.nextAt ? `Next up: <strong>${esc(p.next.name)}</strong> in <span data-until="${p.nextAt}"></span>` : ''}</p>
+        <p class="small muted">Tap a game to add it to or drop it from the rotation.</p>
+        <div class="row wrap">${state.allGames
+          .map((g) => {
+            const on = p.games.includes(g.id);
+            const next = toggled(g.id);
+            return next.length < 2
+              ? `<button class="pill active" disabled title="Keep at least two">${esc(g.name)}</button>`
+              : hostBtn('setPlan', setPlan({ ...rotation, games: next }), esc(g.name), `pill ${on ? 'active' : ''}`);
+          })
+          .join('')}</div>
+        <div class="row"><span class="grow small">Switch every</span>${ROTATE_MINUTES.map((m) =>
+          hostBtn('setPlan', setPlan({ ...rotation, minutes: m }), `${m}m`, `pill ${p.minutes === m ? 'active' : ''}`),
+        ).join('')}</div>
+        <div class="row">
+          ${hostBtn('pauseRotation', { paused: !p.paused }, p.paused ? 'Resume rotation' : 'Pause rotation', 'secondary')}
+          ${p.next ? hostBtn('rotateNow', {}, `⏭ Skip to ${esc(p.next.name)}`, 'secondary') : ''}
+        </div>
+        ${state.game ? hostBtn('setPlan', setPlan({ type: 'single', game: state.game.id }), `🎯 Just play ${esc(state.game.name)} all night`, 'link') : ''}`;
+    }
+    return `<div class="card plan-card"><h2>Game plan: ${p.type === 'single' ? 'one game' : 'rotating'}</h2>${body}</div>`;
+  }
+
   // Game list for buying a switch (player) or the host's quick switch.
   function gamePicker(send) {
-    const others = state.allGames.filter((g) => !state.game || g.id !== state.game.id);
+    const pool = send === 'host' ? null : state.plan.games; // teams pick from tonight's rotation
+    const others = state.allGames.filter((g) => (!state.game || g.id !== state.game.id) && (!pool || pool.includes(g.id)));
     const btn = (gameId, label, cls) =>
       send === 'host'
         ? `<button class="${cls}" data-send="host" data-type="setGame" data-payload='${JSON.stringify({ gameId })}'>${label}</button>`
@@ -295,7 +384,9 @@
           <span class="team-pill">🔒 ${esc(myTeam.name)} · ${esc(me.name)}</span>
           <span class="mini-score">${state.teams.map((t) => `<b style="color:${t.color}">${t.score}</b>`).join(' – ')}</span>
         </div>
-        <div class="mini-game muted small">Round ${state.game.round}: ${esc(state.game.name)} · game ${esc(state.code)}</div>`
+        <div class="mini-game muted small">Round ${state.game.round}: ${esc(state.game.name)} · game ${esc(state.code)}${
+          state.plan.nextAt && state.plan.next ? `<br>Next up: ${esc(state.plan.next.name)} in <span data-until="${state.plan.nextAt}"></span>` : ''
+        }</div>`
       : `<div class="team-banner">
           <div class="small">🔒 You're on</div>
           <div class="team-name">${esc(myTeam.name)}</div>
@@ -404,6 +495,8 @@
                 <button class="secondary" data-pick="hostSwitch">Switch…</button>
               </div>`}
         </div>
+
+        ${planCard()}
 
         <div class="card">
           <h2>Pick the next game</h2>

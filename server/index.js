@@ -4,6 +4,7 @@ const express = require('express');
 const QRCode = require('qrcode');
 const { Server } = require('socket.io');
 const { RoomManager } = require('./rooms');
+const games = require('./games');
 
 const IDLE_ROOM_MS = 6 * 60 * 60 * 1000; // empty rooms with no activity for 6h are deleted
 const SWEEP_MS = 10 * 60 * 1000;
@@ -15,6 +16,8 @@ function createServer({ random } = {}) {
   const io = new Server(server);
   const rooms = new RoomManager({ random, onChange: (room) => broadcast(room) });
 
+  // The setup screen lists the games before there's a room to ask.
+  app.get('/games.json', (req, res) => res.json(games.list()));
   app.get('/health', (req, res) => res.json({ ok: true, rooms: rooms.rooms.size }));
 
   // QR code that opens the join screen with the code pre-filled.
@@ -96,8 +99,16 @@ function createServer({ random } = {}) {
       return room;
     };
 
-    on('host:create', ({ teamNames }) => {
+    on('host:create', ({ teamNames, plan }) => {
       const room = rooms.create({ teamNames });
+      if (plan) {
+        try {
+          room.setPlan(plan); // starts tonight's first game
+        } catch (err) {
+          rooms.delete(room.code);
+          throw err;
+        }
+      }
       attach(socket, room, { role: 'host' });
       return { code: room.code, hostToken: room.hostToken };
     });
@@ -142,8 +153,16 @@ function createServer({ random } = {}) {
           room.renameTeam(msg.teamId, msg.name);
           break;
         case 'setGame':
-          room.setGame(msg.gameId);
-          if (room.game) room.announce(`New game: ${room.game.name}!`);
+          room.hostPick(msg.gameId);
+          break;
+        case 'setPlan':
+          room.setPlan(msg.plan);
+          break;
+        case 'pauseRotation':
+          room.pauseRotation(msg.paused);
+          break;
+        case 'rotateNow':
+          room.rotateNow();
           break;
         case 'game':
           room.gameAction('host', msg.action, msg.payload);
