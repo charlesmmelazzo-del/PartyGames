@@ -232,7 +232,7 @@ async function main() {
       const rivals = phones.filter((p) => p.team !== giver.team);
       await until(() => mates[0].$('.guess-box'), 'Taboo guesser screen');
       check(!(await mates[0].$('.taboo-word')) && !(await tv.$('.taboo-word')), 'Taboo: teammates and TV never see the word', word);
-      check(!!(await rivals[0].$('.taboo-word')), 'Taboo: the other team sees the word to buzz');
+      check(!!(await until(() => rivals[0].$('.taboo-word'), 'rival sees the card', 8000).catch(() => null)), 'Taboo: the other team sees the word to buzz');
       // Like a person, only tap once your own screen shows the current card (slow networks lag).
       const wordOn = (p) => p.textContent('.taboo-word').then((t) => t.trim()).catch(() => null);
       const nextCard = (prev) => until(async () => { const w = await wordOn(giver); return w && w !== prev && w; }, 'next Taboo card');
