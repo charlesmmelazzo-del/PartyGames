@@ -124,7 +124,7 @@
     const hostName = document.getElementById('host-name');
     plays.onchange = () => (hostName.closest('label').hidden = !plays.checked);
     // Tonight's game plan: rotate through a set of games on a clock, or one game all night.
-    const setup = { type: 'rotation', games: null, minutes: 60, single: null, list: [] };
+    const setup = { type: 'rotation', games: null, minutes: 60, single: null, cahScoring: 'teams', list: [] };
     const planBox = document.getElementById('plan-setup');
     const drawPlan = () => {
       if (!setup.list.length) return;
@@ -144,17 +144,28 @@
             ).join('')}</div>`
           : `<div class="plan-games">${setup.list
               .map((g) => `<label class="check"><input type="radio" name="single-game" data-single-game="${g.id}" ${setup.single === g.id ? 'checked' : ''}> ${esc(g.name)}</label>`)
-              .join('')}</div>`}`;
+              .join('')}</div>
+            ${setup.single === 'cah'
+              ? `<p class="field-label">Scoring</p>
+                <div class="seg">
+                  <button type="button" class="pill ${setup.cahScoring === 'teams' ? 'active' : ''}" data-cah-scoring="teams">👥 Teams</button>
+                  <button type="button" class="pill ${setup.cahScoring === 'solo' ? 'active' : ''}" data-cah-scoring="solo">🙋 Every player for themselves</button>
+                </div>`
+              : ''}`}`;
     };
     planBox.onclick = (e) => {
-      const b = e.target.closest('[data-plan-type], [data-plan-minutes]');
+      const b = e.target.closest('[data-plan-type], [data-plan-minutes], [data-cah-scoring]');
       if (!b) return;
       if (b.dataset.planType) setup.type = b.dataset.planType;
+      if (b.dataset.cahScoring) setup.cahScoring = b.dataset.cahScoring;
       if (b.dataset.planMinutes) setup.minutes = Number(b.dataset.planMinutes);
       drawPlan();
     };
     planBox.onchange = (e) => {
-      if (e.target.dataset.singleGame) setup.single = e.target.dataset.singleGame;
+      if (e.target.dataset.singleGame) {
+        setup.single = e.target.dataset.singleGame;
+        drawPlan(); // Cards Against Humanity offers teams or every player for themselves
+      }
       if (e.target.dataset.planGame) setup.games = [...planBox.querySelectorAll('[data-plan-game]:checked')].map((x) => x.dataset.planGame);
     };
     fetch('/games.json')
@@ -174,7 +185,7 @@
       }
       const plan =
         setup.type === 'single'
-          ? { type: 'single', game: setup.single }
+          ? { type: 'single', game: setup.single, ...(setup.single === 'cah' ? { cahScoring: setup.cahScoring } : {}) }
           : { type: 'rotation', games: setup.games && setup.games.length === setup.list.length ? null : setup.games, minutes: setup.minutes };
       if (plan.type === 'rotation' && plan.games && plan.games.length < 2) return toast('Tick at least two games to rotate, or pick One game');
       const res = await call('host:create', { plan });
@@ -194,6 +205,28 @@
       if (res.error) return toast(res.error);
       history.replaceState(null, '', `/?tv=${res.code}`);
     };
+  }
+
+  // A game played every player for themselves (e.g. Cards Against Humanity in solo mode)
+  // shows a player leaderboard instead of team scores.
+  const soloOf = () => (state.game && state.game.view && state.game.view.solo) || null;
+  const ordinal = (n) => {
+    const tens = n % 100;
+    const ones = n % 10;
+    return n + (tens >= 11 && tens <= 13 ? 'th' : ones === 1 ? 'st' : ones === 2 ? 'nd' : ones === 3 ? 'rd' : 'th');
+  };
+  function soloBoard(max = 10) {
+    const solo = soloOf();
+    const mine = state.me && state.me.id;
+    const rows = solo.leaders.slice(0, max);
+    if (mine && !rows.some((l) => l.id === mine)) rows.push(...solo.leaders.filter((l) => l.id === mine));
+    return `<div class="solo-board">
+      <div class="solo-title">🙋 Every player for themselves</div>
+      <ol>${rows
+        .map((l) => `<li class="${l.id === mine ? 'me' : ''}"><span class="place">${ordinal(l.place)}</span><span class="grow">${esc(l.name)}</span><b>${l.points}</b></li>`)
+        .join('')}</ol>
+      ${solo.leaders.length > rows.length ? `<div class="muted small">+${solo.leaders.length - rows.length} more</div>` : ''}
+    </div>`;
   }
 
   function scoreboard({ big = false } = {}) {
@@ -379,10 +412,14 @@
     const myTeam = team(me.teamId);
     document.body.style.setProperty('--team', myTeam.color);
     // While a game runs, team + score shrink to one bar so the game sits at the top of the screen.
+    const solo = soloOf();
     const top = state.game
       ? `<div class="mini-head">
-          <span class="team-pill">🔒 ${esc(myTeam.name)} · ${esc(me.name)}</span>
-          <span class="mini-score">${state.teams.map((t) => `<b style="color:${t.color}">${t.score}</b>`).join(' – ')}</span>
+          ${solo
+            ? `<span class="team-pill solo">🙋 ${esc(me.name)}</span>
+               <span class="mini-score">${solo.me ? `<b>${solo.me.points}</b> pt${solo.me.points === 1 ? '' : 's'} · ${ordinal(solo.me.place)} of ${solo.me.of}` : ''}</span>`
+            : `<span class="team-pill">🔒 ${esc(myTeam.name)} · ${esc(me.name)}</span>
+               <span class="mini-score">${state.teams.map((t) => `<b style="color:${t.color}">${t.score}</b>`).join(' – ')}</span>`}
         </div>
         <div class="mini-game muted small">Round ${state.game.round}: ${esc(state.game.name)} · game ${esc(state.code)}${
           state.plan.nextAt && state.plan.next ? `<br>Next up: ${esc(state.plan.next.name)} in <span data-until="${state.plan.nextAt}"></span>` : ''
@@ -398,12 +435,13 @@
       <section class="player">
         ${top}
         ${cashOutBanner(me.teamId)}
-        ${state.shop.some((i) => i.available) || !state.game ? teamShop() : ''}
+        ${!solo && (state.shop.some((i) => i.available) || !state.game) ? teamShop() : ''}
         <div class="game">${gameBody('player')}</div>
-        ${state.game && !state.shop.some((i) => i.available) ? teamShop() : ''}
-        <details class="card roster"><summary>Your teammates (${myTeam.players.length})</summary>
+        ${solo ? `<details class="card roster"><summary>Leaderboard</summary>${soloBoard()}</details>` : ''}
+        ${!solo && state.game && !state.shop.some((i) => i.available) ? teamShop() : ''}
+        ${solo ? '' : `<details class="card roster"><summary>Your teammates (${myTeam.players.length})</summary>
           <ul>${myTeam.players.map((p) => `<li class="${p.connected ? '' : 'muted'}">${esc(p.name)}</li>`).join('')}</ul>
-        </details>
+        </details>`}
       </section>`;
   }
 
@@ -465,6 +503,7 @@
           <img class="qr" src="/qr/${esc(state.code)}.svg" alt="QR code to join">
         </div>
 
+        ${soloOf() ? `<div class="card">${soloBoard(20)}</div><p class="muted small">Team scores (kept as they are while it's every player for themselves):</p>` : ''}
         ${scoreboard()}
 
         ${hostCashOut()}
@@ -572,7 +611,7 @@
           <div><span class="muted">Join at</span> <strong>${esc(location.host)}</strong> <span class="muted">code</span> <strong class="code">${esc(state.code)}</strong></div>
           <img class="qr" src="/qr/${esc(state.code)}.svg" alt="">
         </header>
-        ${scoreboard({ big: !state.game })}
+        ${soloOf() ? soloBoard(8) : scoreboard({ big: !state.game })}
         ${cashOutBanner()}
         ${gameHeader()}
         <div class="game">${gameBody('tv')}</div>

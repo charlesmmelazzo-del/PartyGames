@@ -21,7 +21,7 @@ Games are kept in memory only. When the host ends a game, or the server restarts
 
 ## Games
 
-### Cards Against Humanity (team edition)
+### Cards Against Humanity (teams or every player for themselves)
 
 Comes with **205 decks** (every official deck plus published third-party decks from the community master spreadsheet): **6,271 prompt cards and 22,223 answer cards**.
 
@@ -36,7 +36,16 @@ The host can change the timer (Off/45/60/90s), skip a prompt, stop waiting and r
 - **Rating: 21+** (default; 194 adult decks, 5,631 prompts, 19,950 answers) or **Family friendly** (11 decks, 640 prompts, 2,273 answers). The family decks are those sold as family games, confirmed by reading their cards: CAH Family Edition, Kids Against Maturity, Not Parent Approved (and 2 expansions), Kids Create Absurdity, Cards Against Profanity, and The Catholic Card Game (4 decks). As a safety net, family mode also drops any card mentioning sex, nudity, drinking, drugs, swearing and similar. Decks with innocent names but adult cards (KinderPerfect, Babies vs. Parents, Knitters Against Swatches) stay 21+. Family mode is PG, about the level of CAH's own Family Edition: expect gross-out jokes, not innocence.
 - **Decks: All published** or **Official CAH only.** Family + Official is just CAH Family Edition.
 
-Changing either setting mid-game swaps out cards in players' hands that no longer qualify. Fan-made and custom cards from the spreadsheet are deliberately not included.
+Changing either setting mid-game swaps out cards in players' hands that no longer qualify.
+
+**Scoring: Teams or Every player for themselves.** Choose it at setup (pick **One game → Cards Against Humanity**) or any time in the card game settings. Playing every player for themselves:
+
+- The picker rotates through everyone: whoever has gone longest without picking, whatever their team.
+- The win point and crowd bonus go to the player who played the winning card.
+- The TV shows a player leaderboard instead of the team scores. Each phone shows that player's points and place, and the team shop and teammates list are hidden.
+- Team scores are left exactly as they were. Player points are remembered for the night, so switching away and back picks up where it left off.
+
+The card game settings (timer, rating, decks, scoring) also carry over when the game switches away and comes back. Fan-made and custom cards from the spreadsheet are deliberately not included.
 
 The cards come from the published decks only: official CAH, commercial third-party games, and Kickstarter and print-on-demand decks. The spreadsheet's other sheets (changelogs, index, editor notes, fan-made and custom card lists, blank templates) aren't imported. The import also drops picture-only cards like `[banana condom]`, "hand this card to another player" action cards and empty prompts, and a test checks that no spreadsheet leftovers (`#REF!`, headers, version notes) ever get in.
 

@@ -311,6 +311,7 @@ class Room {
   // plan: { type: 'single', game } or { type: 'rotation', games: [ids], minutes }.
   // Starts tonight's first game if nothing suitable is running.
   setPlan(plan = {}) {
+    if (plan.cahScoring !== undefined && !['teams', 'solo'].includes(plan.cahScoring)) throw new Error('Pick teams or every player for themselves');
     const all = games.list().map((g) => g.id);
     if (plan.type === 'single') {
       const id = plan.game || (this.game && this.game.id);
@@ -323,6 +324,11 @@ class Room {
       if (!Number.isInteger(minutes) || minutes < 5 || minutes > 240) throw new Error('Rotate every 5-240 minutes');
       this.plan = { ...this.plan, type: 'rotation', games: ids.length === all.length ? null : ids, minutes };
     } else throw new Error('Pick one game or a rotation');
+    // Cards Against Humanity can be played as teams or every player for themselves.
+    if (plan.cahScoring !== undefined) {
+      this.memory.cahSettings = { ...this.memory.cahSettings, scoring: plan.cahScoring };
+      if (this.game && this.game.id === 'cah') this.game.state.settings.scoring = plan.cahScoring;
+    }
     const pool = this.pool();
     if (!this.game || !pool.includes(this.game.id)) this.hostPick(pool[0]);
     else this.planRotation();

@@ -1,4 +1,4 @@
-// Cards Against Humanity, team edition.
+// Cards Against Humanity, team edition (or every player for themselves).
 //
 // Each round a picker is chosen, alternating between teams. Everyone sees the prompt; the
 // picker reads it out loud. Every other player plays response card(s) from their hand (or a
@@ -6,6 +6,10 @@
 // answers one at a time, in sync on every screen, reading each out loud. Finally the picker
 // chooses a winner while everyone else votes for their favourite. The winning card's team
 // scores, plus a bonus if the picker's choice was also the crowd's favourite.
+//
+// Solo scoring (settings.scoring = 'solo'): the picker rotates through everyone, and points go
+// to the player who played the winning card instead of their team. Solo points live in room
+// memory, so they survive switching games and coming back; team scores are left alone.
 
 const CARDS = require('../data/cah-cards.json');
 
@@ -13,7 +17,8 @@ const HAND_SIZE = 10;
 const MIN_PLAYERS = 3; // picker + two answers
 const RESULT_MS = 25000; // result screen stays up this long before the next round deals
 // rating: 'adult' (21+ decks) or 'family' (family-friendly decks); decks: 'all' published or 'official' CAH only.
-const DEFAULTS = { timer: 60, rating: 'adult', decks: 'all', winPoints: 1, bonusPoints: 1 };
+// scoring: 'teams' (the winning card's team scores) or 'solo' (every player for themselves).
+const DEFAULTS = { timer: 60, rating: 'adult', decks: 'all', winPoints: 1, bonusPoints: 1, scoring: 'teams' };
 
 const now = () => Date.now();
 
@@ -62,9 +67,18 @@ function fillHand(state, playerId, api) {
 const connected = (api) => api.players.filter((p) => p.connected);
 const playerById = (api, id) => api.players.find((p) => p.id === id);
 
+const solo = (state) => state.settings.scoring === 'solo';
+const soloScores = (api) => (api.memory.cahSolo = api.memory.cahSolo || {});
+
 // Alternate teams; within a team, whoever has gone longest without picking.
+// Solo: whoever has gone longest without picking, team doesn't matter.
 function choosePicker(state, api) {
   const online = connected(api);
+  if (solo(state)) {
+    const pool = shuffle([...online], api.random);
+    pool.sort((a, b) => (state.pickedAt[a.id] || 0) - (state.pickedAt[b.id] || 0));
+    return pool[0] || null;
+  }
   const teamOrder = api.teams.map((t) => t.id);
   const start = state.lastPickerTeam ? (teamOrder.indexOf(state.lastPickerTeam) + 1) % teamOrder.length : Math.floor(api.random() * teamOrder.length);
   for (let k = 0; k < teamOrder.length; k++) {
@@ -171,8 +185,18 @@ function finishRound(state, api) {
   const crowdAgrees = top > 0 && tally[r.pickerChoice] === top;
   const winner = playerById(api, r.pickerChoice);
   // The winner may have been removed by the host mid-round; then nobody scores.
+  const points = winner ? state.settings.winPoints + (crowdAgrees ? state.settings.bonusPoints : 0) : 0;
+  if (winner && solo(state)) {
+    const scores = soloScores(api);
+    scores[winner.id] = (scores[winner.id] || 0) + points;
+    r.result = { tally, crowdAgrees, teamId: null, points, solo: true };
+    r.resultAt = now();
+    state.phase = 'result';
+    const n = r.n;
+    api.schedule(RESULT_MS, () => state.round && state.round.n === n && state.phase === 'result' && startRound(state, api));
+    return;
+  }
   const teamId = winner ? winner.teamId : null;
-  const points = teamId ? state.settings.winPoints + (crowdAgrees ? state.settings.bonusPoints : 0) : 0;
   if (teamId) {
     api.awardPoints(teamId, state.settings.winPoints, `${winner.name} won the round`);
     if (crowdAgrees && state.settings.bonusPoints) api.awardPoints(teamId, state.settings.bonusPoints, 'Crowd agreed with the picker');
@@ -184,6 +208,19 @@ function finishRound(state, api) {
   api.schedule(RESULT_MS, () => state.round && state.round.n === n && state.phase === 'result' && startRound(state, api));
 }
 
+// Solo leaderboard: everyone online or with points, best first. Shown instead of team scores.
+function soloBoard(api, me) {
+  const scores = soloScores(api);
+  const leaders = api.players
+    .filter((p) => p.connected || scores[p.id])
+    .map((p) => ({ id: p.id, name: p.name, points: scores[p.id] || 0 }))
+    .sort((a, b) => b.points - a.points || a.name.localeCompare(b.name));
+  // Ties share a place: 5, 3, 3, 1 -> 1st, 2nd, 2nd, 4th.
+  leaders.forEach((l, i) => (l.place = i && l.points === leaders[i - 1].points ? leaders[i - 1].place : i + 1));
+  const mine = me && leaders.find((l) => l.id === me.id);
+  return { leaders, me: mine ? { points: mine.points, place: mine.place, of: leaders.length } : null };
+}
+
 module.exports = {
   id: 'cah',
   name: 'Cards Against Humanity',
@@ -193,7 +230,7 @@ module.exports = {
   init(api) {
     const state = {
       phase: 'waiting',
-      settings: { ...DEFAULTS },
+      settings: { ...DEFAULTS, ...api.memory.cahSettings }, // the host's choices stick across game switches
       hands: {},
       pickedAt: {},
       lastPickerTeam: null,
@@ -307,6 +344,10 @@ module.exports = {
         }
         if (s.decks !== undefined && !['all', 'official'].includes(s.decks)) throw new Error('Bad deck choice');
         if (s.rating !== undefined && !['adult', 'family'].includes(s.rating)) throw new Error('Bad rating');
+        if (s.scoring !== undefined) {
+          if (!['teams', 'solo'].includes(s.scoring)) throw new Error('Bad scoring');
+          state.settings.scoring = s.scoring; // from the next round's picker and points on
+        }
         if (s.decks !== undefined || s.rating !== undefined) {
           if (s.decks !== undefined) state.settings.decks = s.decks;
           if (s.rating !== undefined) state.settings.rating = s.rating;
@@ -320,6 +361,7 @@ module.exports = {
             r.pick = CARDS.black[r.black][1];
           }
         }
+        api.memory.cahSettings = { ...state.settings };
         return;
       }
       default:
@@ -337,6 +379,7 @@ module.exports = {
       minPlayers: MIN_PLAYERS,
       online: connected(api).length,
       deckSize: { black: state.pool.black, white: state.pool.white, packs: state.pool.decks },
+      solo: solo(state) ? soloBoard(api, me) : null,
     };
     if (!r) return v;
     const picker = playerById(api, r.pickerId);

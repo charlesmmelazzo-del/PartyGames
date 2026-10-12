@@ -179,3 +179,65 @@ test('family decks contain no adult content', () => {
   assert.deepStrictEqual(bad, []);
   assert.ok(CARDS.white.every(([t]) => !/^\*RANDOM\*/i.test(t)), 'no action cards');
 });
+
+// Plays one full round where the picker and everyone else pick `winner`'s card.
+function playRoundFor(t, winner) {
+  playAll(t);
+  const r = t.s().round;
+  const picker = t.players.find((p) => p.id === r.pickerId);
+  while (t.s().phase === 'reveal') t.act(picker, 'next');
+  t.act(picker, 'pick', { playerId: winner.id });
+  for (const p of t.players) if (p.id !== r.pickerId) t.act(p, 'vote', { playerId: winner.id });
+  assert.strictEqual(t.s().phase, 'result');
+}
+
+test('solo scoring: points go to the player, team scores stay put, picker rotates through everyone', () => {
+  const t = setup(5);
+  t.host('settings', { scoring: 'solo' });
+  t.host('skip'); // fresh round under solo rules
+  const pickers = new Set();
+  for (let i = 0; i < 5; i++) {
+    const r = t.s().round;
+    pickers.add(r.pickerId);
+    const winner = t.players.find((p) => p.id !== r.pickerId);
+    playRoundFor(t, winner);
+    assert.strictEqual(t.s().round.result.solo, true);
+    t.host('next');
+  }
+  assert.strictEqual(pickers.size, 5, 'everyone picks once before anyone picks twice');
+  assert.deepStrictEqual(t.room.teams.map((x) => x.score), [0, 0], 'team scores untouched');
+  const board = t.view(t.players[0]).solo;
+  assert.strictEqual(board.leaders.reduce((a, l) => a + l.points, 0), 10, '5 rounds x (1 win + 1 crowd bonus)');
+  assert.ok(board.me && board.me.place >= 1 && board.me.of === 5);
+  t.room.clearTimers();
+});
+
+test('solo scoring: ties share a place, scores and the setting survive a game switch', () => {
+  const t = setup(4);
+  t.host('settings', { scoring: 'solo' });
+  t.host('skip');
+  const r = t.s().round;
+  const [w] = t.players.filter((p) => p.id !== r.pickerId);
+  playRoundFor(t, w);
+  let board = t.view(w).solo;
+  assert.deepStrictEqual([board.me.points, board.me.place], [2, 1]);
+  assert.deepStrictEqual(board.leaders.slice(1).map((l) => l.place), [2, 2, 2], 'the rest tie for 2nd');
+  t.room.setGame('buzzer');
+  t.room.setGame('cah');
+  assert.strictEqual(t.s().settings.scoring, 'solo');
+  board = t.view(w).solo;
+  assert.strictEqual(board.me.points, 2);
+  t.host('settings', { scoring: 'teams' });
+  assert.strictEqual(t.view(w).solo, null);
+  assert.throws(() => t.host('settings', { scoring: 'pairs' }), /Bad scoring/);
+  t.room.clearTimers();
+});
+
+test('setup can pick Cards Against Humanity, every player for themselves', () => {
+  const room = new Room('TEST');
+  room.setPlan({ type: 'single', game: 'cah', cahScoring: 'solo' });
+  assert.strictEqual(room.game.id, 'cah');
+  assert.strictEqual(room.game.state.settings.scoring, 'solo');
+  assert.throws(() => new Room('X').setPlan({ type: 'single', game: 'cah', cahScoring: 'nope' }), /themselves/);
+  room.clearTimers();
+});

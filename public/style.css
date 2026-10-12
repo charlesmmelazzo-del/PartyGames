@@ -471,3 +471,18 @@ textarea {
 .host-menu-btn .attn { position: absolute; top: -4px; right: -4px; width: 12px; height: 12px; border-radius: 50%; background: var(--bad); box-shadow: 0 0 0 2px var(--bg); animation: pop 0.6s ease-in-out infinite alternate; }
 label.check { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 1rem; }
 label.check input { width: 22px; height: 22px; margin: 0; display: inline-block; }
+
+/* every player for themselves: leaderboard instead of team scores */
+.solo-board { background: var(--card); border-radius: 14px; padding: 12px 14px; margin: 8px 0; }
+.solo-title { font-weight: 800; margin-bottom: 6px; }
+.solo-board ol { list-style: none; margin: 0; padding: 0; }
+.solo-board li { display: flex; gap: 10px; align-items: center; padding: 4px 0; border-top: 1px solid var(--line); }
+.solo-board li:first-child { border-top: 0; }
+.solo-board li.me { color: var(--accent); font-weight: 700; }
+.solo-board .place { width: 2.6em; color: var(--muted); font-size: 0.9em; }
+.solo-board b { font-size: 1.1em; }
+.roster .solo-board { padding: 6px 0 0; margin: 0; }
+.team-pill.solo { background: var(--accent); color: #1b1300; text-shadow: none; }
+.tv .solo-board { columns: 2; column-gap: 32px; font-size: 1.2rem; }
+.tv .solo-board .solo-title { column-span: all; }
+.tv .solo-board li { break-inside: avoid; }

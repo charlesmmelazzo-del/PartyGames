@@ -36,6 +36,7 @@ window.GameViews = window.GameViews || {};
 
   function pickerLine(v, { team, esc }) {
     if (!v.picker) return '';
+    if (v.solo) return `<div class="picker-line">Picker: <strong>${esc(v.picker.name)}</strong></div>`;
     const t = team(v.picker.teamId);
     return `<div class="picker-line" style="--c:${t.color}">Picker: <strong>${esc(v.picker.name)}</strong> <span class="muted">(${esc(t.name)})</span></div>`;
   }
@@ -106,12 +107,12 @@ window.GameViews = window.GameViews || {};
     const r = v.result;
     const win = r.answers.find((a) => a.key === r.winnerKey);
     const winAnswer = v.answers.find((a) => a.key === r.winnerKey);
-    const wt = win && win.teamId && team(win.teamId);
+    const wt = !r.solo && win && win.teamId && team(win.teamId);
     const others = r.answers
       .filter((a) => a.key !== r.winnerKey)
       .map((a) => {
         const ans = v.answers.find((x) => x.key === a.key);
-        const t = a.teamId && team(a.teamId);
+        const t = !r.solo && a.teamId && team(a.teamId);
         return `<li style="--c:${t ? t.color : 'var(--line)'}"><span class="who">${esc(a.name)}${a.auto ? ' <span class="muted">(auto)</span>' : ''}</span>
           <span class="grow">${esc(ans.cards.join(' / '))}</span><span class="votes">${a.votes} 🗳</span></li>`;
       })
@@ -177,8 +178,11 @@ window.GameViews = window.GameViews || {};
       <div class="row"><span class="grow">Timer</span>${[0, 45, 60, 90].map((t) => pill('timer', t, t ? `${t}s` : 'Off')).join('')}</div>
       <div class="row"><span class="grow">Rating</span>${pill('rating', 'adult', '21+')}${pill('rating', 'family', 'Family friendly')}</div>
       <div class="row"><span class="grow">Decks</span>${pill('decks', 'all', 'All published')}${pill('decks', 'official', 'Official CAH only')}</div>
+      <div class="row"><span class="grow">Scoring</span>${pill('scoring', 'teams', '👥 Teams')}${pill('scoring', 'solo', '🙋 Every player')}</div>
       <p class="muted small">In play: ${v.deckSize.packs} decks · ${v.deckSize.black.toLocaleString()} prompts · ${v.deckSize.white.toLocaleString()} answers</p>
-      <p class="muted small">Win = ${v.settings.winPoints} point, +${v.settings.bonusPoints} bonus when the crowd vote matches the picker.</p>
+      <p class="muted small">Win = ${v.settings.winPoints} point, +${v.settings.bonusPoints} bonus when the crowd vote matches the picker. ${
+        v.solo ? 'Every player for themselves: points go to the player, team scores stay as they are.' : 'Points go to the winning card\'s team.'
+      }</p>
     </details>`;
   }
 
