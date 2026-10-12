@@ -428,6 +428,9 @@ async function main() {
     {
       await asHost();
       check(!!(await host.$('.plan-card button.pill.active:text-is("45m")')), 'host menu shows the 45-minute rotation');
+      // Read "Skip to …" only once the host's screen has caught up with the game everyone is on.
+      const nowOn = async (pg) => (await pg.textContent('.game-header strong')).trim();
+      await until(async () => (await nowOn(host)) === (await nowOn(tv)), 'host screen caught up');
       const skipTo = (await host.textContent('.plan-card button:has-text("Skip to")')).replace(/.*Skip to /, '').trim();
       await host.click('.plan-card button:has-text("Skip to")');
       await until(async () => (await tv.textContent('.game-header strong')).includes(skipTo), `skip to ${skipTo}`);
@@ -436,8 +439,10 @@ async function main() {
       await until(async () => !/next up/i.test(await tv.textContent('.game-header')), 'one game: no next up');
       const fan = phones.find((p) => p !== host) || phones[0];
       await asPlayer(fan);
-      const shop = await fan.textContent('.shop');
-      check(!/Switch game/.test(shop) && (await host.textContent('.plan-card h2')).includes('one game'), 'one game all night: no next game, no switch in the team shop');
+      // Like a person, give each phone a moment to catch up on a slow network.
+      const shop = await until(async () => { const t = await fan.textContent('.shop'); return !/Switch game/.test(t) && t; }, 'switch gone from the team shop', 8000).catch(async () => `still: ${await fan.textContent('.shop')}`);
+      const h2 = await until(async () => { const t = await host.textContent('.plan-card h2'); return t.includes('one game') && t; }, 'host plan says one game', 8000).catch(async () => `still: ${await host.textContent('.plan-card h2')}`);
+      check(!/^still/.test(shop) && !/^still/.test(h2), 'one game all night: no next game, no switch in the team shop', /^still/.test(shop) ? shop.replace(/\s+/g, ' ').slice(0, 200) : /^still/.test(h2) ? h2 : '');
     }
 
     check(pageErrors.length === 0, 'no JavaScript errors on any screen', pageErrors.slice(0, 3).join(' | '));
